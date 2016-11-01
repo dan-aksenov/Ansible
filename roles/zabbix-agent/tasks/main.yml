@@ -20,3 +20,4 @@
 
 - name: add firewall exception
   firewalld: port=10050/tcp permanent=true state=disabled 
+  ignore_errors: yes
