@@ -7,12 +7,10 @@
       - python2-devel 
       - python-setuptools
 
-- name: drop sources if exists(todo make git pull if repo already cloned)
-  file: path=/tmp/mamonsu state=absent
-
 - name: git clone mamonsu 
   git: repo=https://github.com/postgrespro/mamonsu
        dest=/tmp/mamonsu
+       update=yes
 
 - name: make rpm from source
   shell: make rpm 
