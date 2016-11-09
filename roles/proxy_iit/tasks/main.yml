@@ -1,0 +1,10 @@
+- name: Installing packages
+  yum: name={{ item }}
+  with_items:
+      - wget
+      - python-pip
+      - git
+
+- name: proxy for git
+  shell: git config --global http.proxy 192.168.154.42:48080
+
