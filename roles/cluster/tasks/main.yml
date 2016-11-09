@@ -2,6 +2,7 @@
   fail: msg="Cluster hosts must be members of a group"
   when: pacemaker_ansible_group is not iterable
 
+#todo need to find needed fence and resource agents
 - name: Installing packages
   yum: name={{ item }}
   with_items:
@@ -11,12 +12,15 @@
       #- fence-agents-all
       #- fence-agents-virsh 
 
-#todo keep selinux(?) and firewall online
+#todo keep selinux(do we really need this?)
 - name: disable selinux
   selinux: policy=targeted state=disabled
 
-- name: ensure firewalld is disabled and stopped
-  service: name=firewalld enabled=no state=stopped
+- name: configure firewall
+  firewalld: service=high-availability permanent=true state=disabled 
+
+#- name: ensure firewalld is disabled and stopped
+#  service: name=firewalld enabled=no state=stopped
 
 - name: ensure corosync and pacemaker is disabled and stopped
   service: name=corosync enabled=no state=stopped
