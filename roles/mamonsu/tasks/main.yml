@@ -36,7 +36,7 @@
   ignore_errors: yes
 
 #- name: start monitoring service. systemd module will be supported in 2.5
-- service: name=mamonsu state=started enabled=yes
+- service: name=mamonsu state=restarted enabled=yes
 #- shell: systemctl enable mamonsu
 #- shell: systemctl start mamonsu
 
