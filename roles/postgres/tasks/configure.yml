@@ -18,6 +18,9 @@
 #    group: "{{ postgresql_admin_user }}"
 #  when: postgresql_cluster_symlink_src|length > 0
 
+- name: configure firewall
+  firewalld: service=postgresql permanent=true state=enabled
+
 - name: "Stage 2: initialize new postgresql cluster"
   become: yes
   become_user: "{{ postgresql_admin_user }}"
