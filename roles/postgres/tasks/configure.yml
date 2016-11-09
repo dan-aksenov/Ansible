@@ -20,6 +20,7 @@
 
 - name: configure firewall
   firewalld: service=postgresql permanent=true state=enabled
+  ignore_errors: yes
 
 - name: "Stage 2: initialize new postgresql cluster"
   become: yes
