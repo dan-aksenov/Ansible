@@ -1,3 +1,6 @@
+- name: edit yum.conf 
+  lineinfile: dest=/etc/yum.conf regexp='Proxy' line='Proxy=http://{{ proxy_ip }}'
+
 - name: Installing packages
   yum: name={{ item }}
   with_items:
@@ -6,6 +9,4 @@
       - git
 
 - name: proxy for git
-  shell: git config --global http.proxy 192.168.154.42:48080
-
-- lineinfile: dest=/etc/yum.conf regexp='Proxy' line='Proxy=http://192.168.154.42:48080'
+  shell: git config --global http.proxy {{ proxy_ip }}
