@@ -10,3 +10,15 @@
 
 - name: proxy for git
   shell: git config --global http.proxy {{ proxy_ip }}
+
+- name: http_proxy
+  lineinfile: dest=/root/.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
+
+- name: https_proxy
+  lineinfile: dest=/root/.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
+
+- name: http_proxy
+  lineinfile: dest=.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
+
+- name: https_proxy
+  lineinfile: dest=.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
