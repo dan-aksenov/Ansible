@@ -1,0 +1,2 @@
+- include: db_server_conf.yml
+- include: barman_servef_conf.yml
