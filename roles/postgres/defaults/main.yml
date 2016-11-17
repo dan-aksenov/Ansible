@@ -1,5 +1,3 @@
-# file: roles/install-postgresql-on-el6/defaults/main.yml -- main variables
-
 # Basic settings
 el_version: 7
 postgresql_version: 9.5
