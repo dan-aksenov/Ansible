@@ -19,3 +19,6 @@
     state: latest
     pkg: postgresql{{ postgresql_version | replace('.', '') }}-contrib
   when: postgresql_contrib
+
+- name: Update alternatives
+  shell: ls /usr/pgsql-{{ postgresql_version }}/bin/ | grep -v postmaster | xargs -I{} sudo update-alternatives --install /usr/bin/{} pgsql-{}  /usr/pgsql-{{ postgresql_version }}/bin/{} {{ postgresql_version | replace('.', '') }}0
