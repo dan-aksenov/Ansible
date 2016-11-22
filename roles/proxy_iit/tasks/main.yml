@@ -8,8 +8,11 @@
       - python-pip
       - git
 
-- name: proxy for git
+- name: http proxy for git
   shell: git config --global http.proxy {{ proxy_ip }}
+
+- name: https proxy for git
+  shell: git config --global https.proxy {{ proxy_ip }}
 
 - name: http_proxy
   lineinfile: dest=/root/.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
