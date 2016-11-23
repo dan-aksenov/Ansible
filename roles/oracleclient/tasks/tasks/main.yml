@@ -6,4 +6,9 @@
         - ~/localrepo/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
         - ~/localrepo/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
 
-#- name: install client packages
+- name: install client packages
+  yum: name={{ item }}
+  with_items: 
+      - /tmp/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
+      - /tmp/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
+      - /tmp/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
