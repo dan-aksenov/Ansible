@@ -4,12 +4,20 @@
       - gcc
       - make
 
-- name: Download oracle client stuff
-  get_url: url={{ item }} dest=/tmp 
-  with_items: 
-        - http://download.oracle.com/otn/linux/instantclient/121020/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
-        - http://download.oracle.com/otn/linux/instantclient/121020/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
-        - http://download.oracle.com/otn/linux/instantclient/121020/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
+#- name: Download oracle client stuff
+  #get_url: url={{ item }} dest=/tmp 
+  #with_items: 
+        #- http://download.oracle.com/otn/linux/instantclient/121020/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
+        #- http://download.oracle.com/otn/linux/instantclient/121020/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
+        #- http://download.oracle.com/otn/linux/instantclient/121020/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
+
+- name: copy oracle client from local repo
+  copy: src={{ item }} 
+        dest=/tmp
+  with_items:
+        - ~/localrepo/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
+        - ~/localrepo/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
+        - ~/localrepo/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
 
 #- name: Set variables
 # pg_config
