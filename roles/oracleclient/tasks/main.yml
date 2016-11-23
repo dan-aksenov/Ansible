@@ -1,0 +1,15 @@
+- name: copy oracle client from local repo
+  copy: src={{ item }} 
+        dest=/tmp
+  with_items:
+        - ~/localrepo/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
+        - ~/localrepo/oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm 
+        - ~/localrepo/oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm
+
+- name: install client packages
+  shell: yum install -y /tmp/oracle-*.rpm
+  #yum: name={{ item }}
+  #with_items: 
+      #- /tmp/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
+      #- /tmp/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
+      #- /tmp/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
