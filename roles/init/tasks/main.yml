@@ -1,14 +1,14 @@
-- name: add my ansible 
+- name: add my ansible user(currently dbax)
   user: name=dbax
         groups=wheel
         createhome=yes
         home=/home/dbax
         state=present
 
-- name: add key
+- name: add my ansible user pub_key
   authorized_key: user=dbax key="{{ lookup('file', '/home/dbax/.ssh/id_rsa.pub') }}"
 
-- name: configure sudoers
+- name: configure sudoers(allow nopasswd for my ansible user)
   lineinfile:   dest=/etc/sudoers.d/dbax
                 line="%wheel ALL=(ALL) NOPASSWD:ALL"
                 state=present

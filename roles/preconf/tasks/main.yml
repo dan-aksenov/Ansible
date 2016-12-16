@@ -1,3 +1,10 @@
+- name: Install epel
+  yum:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - epel-release
+
 - name: Installing packages
   yum: name={{ item }}
   with_items:
@@ -17,3 +24,4 @@
 
 - name: Sync time
   shell: ntpdate dc3
+  ignore_errors: yes
