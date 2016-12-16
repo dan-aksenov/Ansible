@@ -1,11 +1,11 @@
 - name: Installing packages
   yum: name={{ item }}
   with_items:
-      - oracle-rdbms-server-12cR1-preinstall
+      - oracle-rdbms-server-{{ ora_version }}-preinstall
       # minimal X for graphical install
       - xorg-x11-xauth
       - xorg-x11-xinit 
-      - xorg-x11-deprecated-libs 
+     # - xorg-x11-deprecated-libs 
       - libXtst
 
 - name: oracle-recommended selinux
