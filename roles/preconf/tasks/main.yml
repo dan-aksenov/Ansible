@@ -22,6 +22,9 @@
       - ntp
       - mlocate
 
+- shell: systemctl set-default multi-user.target
+- shell: systemctl isolate multi-user.target
+
 - name: Sync time
   shell: ntpdate dc3
   ignore_errors: yes
