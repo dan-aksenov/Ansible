@@ -6,7 +6,7 @@ yum_cron_download_only: 'no'
 yum_cron_mailto: ''
 
 # Centos 7.
-yum_cron_update_cmd: default
+yum_cron_update_cmd: security 
 yum_cron_update_messages: 'yes'
 yum_cron_download_updates: 'yes'
 yum_cron_apply_updates: 'no'
