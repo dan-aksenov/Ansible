@@ -10,6 +10,6 @@ cat > $1.yml << EOF
       - $1 
 EOF
 mkdir roles/$1
-cd $1
+cd roles/$1
 mkdir tasks handlers templates files vars defaults meta 
 touch tasks/main.yml
