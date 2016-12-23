@@ -1,0 +1,9 @@
+- hosts: all
+  user: dbax 
+  become: yes 
+
+  roles:
+    - preconf
+    - yum-update
+    - yum-cron
+    - zabbix-agent
