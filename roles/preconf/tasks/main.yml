@@ -3,12 +3,23 @@
     state: present
     key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 
 
-- name: Install epel
+
+
+- name: Install EPEL Centos
   yum:
     state: latest
     pkg: "{{ item }}"
   with_items:
     - epel-release
+  when: ansible_distribution == 'CentOS'
+
+- name: Install EPEL OL
+  yum:
+    state: present 
+    pkg: "{{ item }}"
+  with_items:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+  when: ansible_distribution == 'OracleLinux'
 
 - name: Installing packages
   yum: name={{ item }}
