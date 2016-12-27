@@ -1,0 +1,32 @@
+- name: Import epel key
+  rpm_key:
+    state: present
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 
+  when: ansible_distribution == 'CentOS'
+
+- name: Install EPEL Centos
+  yum:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - epel-release
+  when: ansible_distribution == 'CentOS'
+
+- name: Install EPEL OL
+  yum:
+    state: present 
+    pkg: "{{ item }}"
+  with_items:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+  when: ansible_distribution == 'OracleLinux'
+
+- name: Enable Optional repo on OL
+  yum_repository:
+    name: ol7_optional_latest 
+    description: Oracle Linux $releasever Optional Latest ($basearch)
+    file: public-yum-ol7 
+    baseurl: http://public-yum.oracle.com/repo/OracleLinux/OL{{ ansible_distribution_major_version }}/optional/latest/$basearch/ 
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+    gpgcheck: yes
+    enabled: yes
+  when: ansible_distribution == 'OracleLinux'
