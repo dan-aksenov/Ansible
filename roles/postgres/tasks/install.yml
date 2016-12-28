@@ -4,7 +4,7 @@
   yum_repository:
     name: pgdg 
     description: Postgresql {{ postgresql_version}} repository
-    baseurl: https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-1.noarch.rpm
+    baseurl: https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-3.noarch.rpm
 #add gpgkey?
 
 - name: "Stage 1: install postgresql packages"
