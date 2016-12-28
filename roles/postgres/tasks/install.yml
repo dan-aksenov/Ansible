@@ -2,9 +2,10 @@
 
 - name: Add repository
   yum_repository:
-    name: pgdg 
+    name: pgdg-{{ postgresql_version | replace('.','') }}-{{ ansible_distribution | lower }} 
     description: Postgresql {{ postgresql_version}} repository
     baseurl: https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-3.noarch.rpm
+#Need to find way to edit last repo number {{ postgresql_version }}-x.noarch.rpm
 #add gpgkey?
 
 - name: "Stage 1: install postgresql packages"
