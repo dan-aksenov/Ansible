@@ -13,6 +13,7 @@
       - atop
       - lshw
       - tmux
+      - mailx
       - python-pip
       - git
       - ntp
