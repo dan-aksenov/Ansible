@@ -28,6 +28,10 @@
 - name: Set multi-user as current runlevel
   shell: systemctl isolate multi-user.target
 
+- name: set timezone
+  timezone:
+    name: "{{ t_zone }}"
+
 - name: Sync time
   shell: ntpdate dc3
   ignore_errors: yes
