@@ -17,11 +17,11 @@
 
 - name: Disable password authentication
   lineinfile:   dest=/etc/ssh/sshd_config
-                regexp="#PasswordAuthentication"
+                regexp="PasswordAuthentication yes"
                 line="PasswordAuthentication no"
                 state=present
 
 - name: Restart sshd
   systemd:
-           state=started
+           state=restarted
            name=sshd
