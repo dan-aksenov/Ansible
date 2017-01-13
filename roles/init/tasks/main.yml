@@ -8,6 +8,9 @@
 - name: add my ansible user pub_key
   authorized_key: user=dbax key="{{ lookup('file', '/home/dbax/.ssh/id_rsa.pub') }}"
 
+- name: add my ansible user pub_key from Windows Ws
+  authorized_key: user=dbax key="{{ lookup('file', '/home/dbax/localrepo/my_key_win') }}"
+
 - name: configure sudoers(allow nopasswd for my ansible user)
   lineinfile:   dest=/etc/sudoers.d/dbax
                 line="%wheel ALL=(ALL) NOPASSWD:ALL"
