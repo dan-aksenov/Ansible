@@ -1,0 +1,9 @@
+TYPE="Ethernet"
+BOOTPROTO="static"
+NAME=
+DEVICE=
+ONBOOT="yes"
+HWADDR=
+IPADDR=
+NETMASK=
+GATEWAY=

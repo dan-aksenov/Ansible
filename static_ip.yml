@@ -1,0 +1,6 @@
+- hosts: all
+  user: dbax
+  become: yes
+
+  roles:
+      - static_ip 

@@ -1,0 +1,6 @@
+- debug: var=ansible_all_ipv4_addresses.0
+
+- set_fact:
+      ip_address_1: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'][0] }}"
+
+- debug: var=ip_address_1
