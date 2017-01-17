@@ -4,8 +4,6 @@ galaxy_info:
   author: "Daniil Aksenov"
   description: A role to install PostgreSQL 8.4/9.x on RedHat/CentOS/Scientific/Oracle Enterprise Linux.
   license: as-is
-  min_ansible_version: 1.4
-  version: 1.0
   platforms:
     - name: EL
       versions:
@@ -14,4 +12,6 @@ galaxy_info:
   categories:
    - database
    - database:sql
-dependencies: []
+dependencies: 
+   - { role: pgdg, postgresql_version:{{ postgresql_version }} }
+
