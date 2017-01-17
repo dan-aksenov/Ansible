@@ -1,14 +1,8 @@
-- name: Get repo number
-  shell: for x in {1..3}; do wget --spider hhttps://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-$x.noarch.rpm && a=$x && break; done && echo $a
-  register: repo_num
-
-- debug: var=repo_num
+- name: download repo file 
+  shell: for x in {1..3}; do wget -O /tmp/pgdg.rpm https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-$x.noarch.rpm && break; done
 
 - name: Add pgdg repository
-  yum_repository:
-    name: pgdg-{{ postgresql_version | replace('.','') }}-{{ ansible_distribution | lower }} 
-    description: Postgresql {{ postgresql_version}} repository
-    baseurl: https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-{{ repo_num }}.noarch.rpm
-#Need to find way to edit last repo number {{ postgresql_version }}-x.noarch.rpm
-#add gpgkey?
+  yum:
+    name: /tmp/pgdg.rpm
+    state: present
 
