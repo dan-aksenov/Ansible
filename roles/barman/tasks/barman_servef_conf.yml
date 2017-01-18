@@ -1,0 +1,23 @@
+# create config for new backup client
+#cat > /tmp/$pg_host.conf << EOF
+#[$pg_host]
+#description =  "Some PostgreSQL server"
+#conninfo = host=$pg_host user=barman dbname=postgres
+#backup_method = postgres
+#streaming_conninfo = host=$pg_host user=streaming_barman dbname=postgres
+#streaming_archiver = on
+#slot_name = barman
+#EOF
+#sudo cp /tmp/$pg_host.conf /etc/barman.d/
+
+# add passw to .pgpass on barman server
+# cat >>.pgpass << EOF
+# $pg_host:5432:postgres:barman:barman
+# $pg_host:5432:postgres:streaming_barman:barman
+# EOF
+
+# add new backup job to cron
+# crontab -l > /tmp/cron.tmp
+# echo "0 1 * * * barman backup $pg_host &>/var/lib/barman/log/backup_$pg_host.log" >> /tmp/cron.tmp
+# crontab /tmp/cron.tmp
+# rm /tmp/cron.tmp

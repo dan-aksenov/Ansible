@@ -1,0 +1,13 @@
+# copy barman's key to db server
+# ssh-copy-id postgres@$pg_host
+
+#create pg database users from backup and streaming
+#createuser -h $pg_host -s -W -P -U postgres barman 
+#createuser -h $pg_host -s -W -P -U postgres --replication streaming_barman 
+
+# to do: add pg_hba on target!
+
+# PostgreSQL WAL archiving and replication postgresql.conf
+# ssh postgres@$pg_host sed -i -e "s/#wal_level = 'minimal'/wal_level = 'hot_standby'/g" /var/lib/pgsql/*/data/postgresql.conf
+# ssh postgres@$pg_host sed -i -e "s/#max_wal_senders = 0/max_wal_senders = 2/g" /var/lib/pgsql/*/data/postgresql.conf
+# ssh postgres@$pg_host sed -i -e "s/#max_replication_slots = 0/max_replication_slots = 2/g" /var/lib/pgsql/*/data/postgresql.conf
