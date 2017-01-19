@@ -4,13 +4,13 @@
 - name: add barman db user
   postgresql_user:
     name: barman
-    password: {{ barman_password }}
+    password: "{{ barman_password }}"
     role_attr_flags: SUPERUSER
 
-- name: add barman streamin db user
+- name: add barman streaming db user
   postgresql_user:
     name: streaming_barman
-    password: {{ streaming_barman_passwordi }}
+    password: "{{ streaming_barman_password }}"
     role_attr_flags: SUPERUSER,REPLICATION
 
 # to do: add pg_hba on target!
