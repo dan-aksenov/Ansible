@@ -1,2 +1,7 @@
+- name: Installing psycopg2 (required) 
+  yum: name={{ item }}
+  with_items:
+      - python-psycopg2
+
 - include: db_server_conf.yml
 - include: barman_servef_conf.yml

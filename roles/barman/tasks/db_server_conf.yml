@@ -1,6 +1,7 @@
 - name: add barman user pub_key
   authorized_key: user=postgres key="{{ lookup('file', '/home/dbax/localrepo/barman_key') }}"
 
+# to make this work need psycopg + libs installed
 - name: add barman db user
   postgresql_user:
     name: barman
