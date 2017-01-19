@@ -1,24 +1,14 @@
 # file: roles/install-postgresql-on-el6/tasks/install.yml -- install postgresql packages
 
-# add repo moved to another role
-#- name: Add repository
-#  yum_repository:
-#    name: pgdg-{{ postgresql_version | replace('.','') }}-{{ ansible_distribution | lower }} 
-#    description: Postgresql {{ postgresql_version}} repository
-#    baseurl: https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-3.noarch.rpm
-
 - name: "Stage 1: install postgresql packages"
   yum: 
     state: latest
     pkg: "{{ item }}"
   with_items:
+    - postgresql{{ postgresql_version | replace('.', '') }}
     - postgresql{{ postgresql_version | replace('.', '') }}-server
+    - postgresql{{ postgresql_version | replace('.', '') }}-contrib
+    - postgresql{{ postgresql_version | replace('.', '') }}-libs
 
-- name: "Stage 1: install postgresql contrib package"
-  yum: 
-    state: latest
-    pkg: postgresql{{ postgresql_version | replace('.', '') }}-contrib
-  when: postgresql_contrib
-
-- name: Update alternatives
+- name: Update alternatives (redo this with alternatives module?)
   shell: ls /usr/pgsql-{{ postgresql_version }}/bin/ | grep -v postmaster | xargs -I{} sudo update-alternatives --install /usr/bin/{} pgsql-{}  /usr/pgsql-{{ postgresql_version }}/bin/{} {{ postgresql_version | replace('.', '') }}0
