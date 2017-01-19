@@ -5,8 +5,10 @@
       - make
 
 #- name: Set variables
-# pg_config
+# pg_config //do we need it?
 # LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+# ldconfig comehow
+
 
 - name: git clone oraclefdw 
   git: repo=https://github.com/laurenz/oracle_fdw
@@ -17,3 +19,7 @@
   shell: make && make install 
   args:
     chdir: /tmp/oracle_fdw
+
+#psql -U postgres
+#CREATE EXTENSION oracle_fdw;
+
