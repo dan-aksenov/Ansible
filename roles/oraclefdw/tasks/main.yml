@@ -9,6 +9,15 @@
 # LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
 # ldconfig comehow
 
+- name: add oracle library
+  lineinfile:
+    dest: "/etc/ld.so.conf.d/oracle.conf"
+    state: present
+    line: "/usr/lib/oracle/11.2/client64/lib"
+    create: yes
+
+- name: run ldconfig to register libs
+  shell: ldconfig
 
 - name: git clone oraclefdw 
   git: repo=https://github.com/laurenz/oracle_fdw
@@ -20,6 +29,7 @@
   args:
     chdir: /tmp/oracle_fdw
 
-#psql -U postgres
-#CREATE EXTENSION oracle_fdw;
+- name: create extension
+  shell: psql -U postgres -c "CREATE EXTENSION oracle_fdw"
+  become_user: postgres
 
