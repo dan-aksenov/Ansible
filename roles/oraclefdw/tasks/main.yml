@@ -4,11 +4,6 @@
       - gcc
       - make
 
-#- name: Set variables
-# pg_config //do we need it?
-# LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
-# ldconfig comehow
-
 - name: add oracle library
   lineinfile:
     dest: "/etc/ld.so.conf.d/oracle.conf"
@@ -21,13 +16,13 @@
 
 - name: git clone oraclefdw 
   git: repo=https://github.com/laurenz/oracle_fdw
-       dest=/tmp/oracle_fdw
+       dest=~/src/oracle_fdw
        update=yes
 
 - name: make oracle_fdw
   shell: make && make install 
   args:
-    chdir: /tmp/oracle_fdw
+    chdir: ~/src/oracle_fdw
 
 - name: create extension
   shell: psql -U postgres -c "CREATE EXTENSION oracle_fdw"
