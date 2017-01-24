@@ -1,8 +1,24 @@
-- debug: var=ansible_all_ipv4_addresses.0
-- debug: var=ansible_all_ipv4_addresses
+- name: get ip if dynamic
+  shell: ip addr | grep dynamic | cut -d " " -f 6 | cut -d "/" -f 1 
+  register: host_ip 
 
+- debug: msg="{{ host_ip.stdout }}"
 
-- set_fact:
-      ip_address_1: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'][0] }}"
+- name: get interface name 
+  shell: ip addr | grep dynamic | cut -d " " -f 12
+  register: if_name
 
-- debug: var=ip_address_1
+- name: Quit if no dynamic ips found. //Improve?
+  fail: msg="No dynamically assigned ips found. Nothing to do."
+  when: host_ip.stdout == "" 
+
+#- name: Backup previous ip config file.
+#  shell: cp /etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }} /etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }}.bkp
+
+- name: Setup static ip from dhcp assigned.
+  template: owner=root group=root mode=644 
+            src=ifcfg-interface 
+            dest=/etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }}
+ 
+- name: Restart Network
+  service: name=network state=restarted

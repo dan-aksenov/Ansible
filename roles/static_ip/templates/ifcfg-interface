@@ -1,9 +1,13 @@
-TYPE="Ethernet"
+# configured via ansible
 BOOTPROTO="static"
-NAME=
-DEVICE=
-ONBOOT="yes"
-HWADDR=
-IPADDR=
-NETMASK=
-GATEWAY=
+DEVICE="{{ if_name.stdout }}"
+ONBOOT=yes
+TYPE=Ethernet
+IPADDR="{{ host_ip.stdout }}"
+NETMASK="{{ netmask }}" 
+GATEWAY="{{ gateway }}" 
+DNS1="{{ dns }}"
+DOMAIN="{{ domain }}"
+NM_CONTROLLED=no
+NAME="{{ if_name.stdout }}"
+
