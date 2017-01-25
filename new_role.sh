@@ -12,4 +12,5 @@ EOF
 mkdir roles/$1
 cd roles/$1
 mkdir tasks handlers templates files vars defaults meta 
-touch tasks/main.yml
+#touch tasks/main.yml
+for i in $(ls); do touch $i/main.yml; done
