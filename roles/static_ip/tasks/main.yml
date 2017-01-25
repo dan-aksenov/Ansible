@@ -22,3 +22,7 @@
  
 - name: Restart Network
   service: name=network state=restarted
+
+- name: Reminder
+  debug:
+     msg: Do not forget to exclude "{{ host_ip.stdout }}" from dhcp.
