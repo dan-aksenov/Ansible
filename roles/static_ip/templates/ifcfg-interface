@@ -1,5 +1,5 @@
 # configured via ansible
-BOOTPROTO="static"
+BOOTPROTO="none"
 DEVICE="{{ if_name.stdout }}"
 ONBOOT=yes
 TYPE=Ethernet
@@ -10,4 +10,4 @@ DNS1="{{ dns }}"
 DOMAIN="{{ domain }}"
 NM_CONTROLLED=no
 NAME="{{ if_name.stdout }}"
-
+"{{ hardware_address }}"

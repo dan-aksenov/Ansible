@@ -8,6 +8,10 @@
   shell: ip addr | grep dynamic | cut -d " " -f 12
   register: if_name
 
+- name: get interface MAC
+  shell: grep HWADDR /etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }}
+  registger: hardware_address
+
 - name: Quit if no dynamic ips found. //Improve?
   fail: msg="No dynamically assigned ips found. Nothing to do."
   when: host_ip.stdout == "" 
