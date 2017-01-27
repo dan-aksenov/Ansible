@@ -1,3 +1,4 @@
+# move to another role?
 - name: Installing prereqs
   yum: name={{ item }}
   with_items:
@@ -10,26 +11,31 @@
 
 - name: git clone mamonsu 
   git: repo=https://github.com/postgrespro/mamonsu
-       dest=/tmp/mamonsu
+       dest=~/src/mamonsu
        update=yes
 
 - name: make rpm from source
   shell: make rpm 
   args:
-    chdir: /tmp/mamonsu
+    chdir: ~/src/mamonsu
 
 - name: install mamonsu from local file
   shell: yum localinstall -y mamonsu*.rpm
   args:
-    chdir: /tmp/mamonsu
+    chdir: ~/src/mamonsu
 
-# Edit config file
-- lineinfile: dest=/etc/mamonsu/agent.conf regexp='address' line='address = 192.168.154.145'
-- lineinfile: dest=/etc/mamonsu/agent.conf regexp='client' line='client = {{ ansible_hostname }}'
-- lineinfile: dest=/etc/mamonsu/agent.conf regexp='user' line='user = mamonsu'
-- lineinfile: dest=/etc/mamonsu/agent.conf regexp='database' line='database = mamonsu'
+- name: Copy agent.conf template 
+  template: owner=root group=root mode=644 
+            src=agent.conf
+            dest=/etc/mamonsu/agent.conf
+
+#- lineinfile: dest=/etc/mamonsu/agent.conf regexp='address' line='address = 192.168.154.145'
+#- lineinfile: dest=/etc/mamonsu/agent.conf regexp='client' line='client = {{ ansible_hostname }}'
+#- lineinfile: dest=/etc/mamonsu/agent.conf regexp='user' line='user = mamonsu'
+#- lineinfile: dest=/etc/mamonsu/agent.conf regexp='database' line='database = mamonsu'
 
 # Bootstrap DDL for monitoring (if you want to monitoring without superuser rights)
+# Redo user and db create with ansible postgres module
 - name: Bootstrap DDL for monitoring
   shell: createdb mamonsu && createuser mamonsu && mamonsu bootstrap -U postgres -d mamonsu
   become: true
@@ -41,6 +47,7 @@
 #- shell: systemctl enable mamonsu
 #- shell: systemctl start mamonsu
 
+# redo as handler?
 - systemd: 
     name: mamonsu 
     enabled: yes 
