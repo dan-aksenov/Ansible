@@ -9,6 +9,12 @@
     chdir: ~/src/plpgsql_check
 
 - name: create extension
-  shell: psql -U postgres -c "CREATE EXTENSION plpgsql_check"
+  postgresql_ext:
+    name: plpgsql_check
+    db: postgres
   become_user: postgres
+
+#- name: create extension
+ # shell: psql -U postgres -c "CREATE EXTENSION plpgsql_check"
+  #become_user: postgres
 

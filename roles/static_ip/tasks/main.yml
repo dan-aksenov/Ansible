@@ -22,4 +22,4 @@
 
 - name: Reminder
   debug:
-     msg: Do not forget to exclude "{{ host_ip.stdout }}" from dhcp.
+     msg: Do not forget to exclude "{{ host_ip.stdout }}" from dhcp!
