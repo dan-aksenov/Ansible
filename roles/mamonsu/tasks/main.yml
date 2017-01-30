@@ -28,6 +28,8 @@
   template: owner=root group=root mode=644 
             src=agent.conf
             dest=/etc/mamonsu/agent.conf
+  notify:
+    - restart mamonsu
 
 #- lineinfile: dest=/etc/mamonsu/agent.conf regexp='address' line='address = 192.168.154.145'
 #- lineinfile: dest=/etc/mamonsu/agent.conf regexp='client' line='client = {{ ansible_hostname }}'
@@ -47,7 +49,6 @@
 #- shell: systemctl enable mamonsu
 #- shell: systemctl start mamonsu
 
-# redo as handler?
 - systemd: 
     name: mamonsu 
     enabled: yes 
