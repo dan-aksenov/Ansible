@@ -6,3 +6,8 @@
     name: /tmp/pgdg.rpm
     state: present
 
+- name: update repository
+  yum: 
+    name: 'pgdg*'
+    state: latest
+

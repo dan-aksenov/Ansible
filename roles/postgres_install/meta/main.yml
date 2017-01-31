@@ -1,5 +1,3 @@
-# file: roles/install-postgresql-on-el6/meta/main.yml
-
 galaxy_info:
   author: "Daniil Aksenov"
   description: A role to install PostgreSQL 8.4/9.x on RedHat/CentOS/Scientific/Oracle Enterprise Linux.
@@ -7,8 +5,7 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-      - 7
-      - 6
+      - 7 mostly
   categories:
    - database
    - database:sql
