@@ -1,4 +1,5 @@
 - include: repos.yml
+  tags: preconf
 
 - name: Installing packages
   yum: name={{ item }}
@@ -13,25 +14,30 @@
       - atop
       - lshw
       - tmux
-      - mailx
       - strace
       - python-pip
       - git
       - ntp
       - mlocate
       - glances
+  tags: preconf
 
 # can we redo it in systemctl module?
 - name: Set multi-user as default target
   shell: systemctl set-default multi-user.target
+  tags: preconf
 
 - name: Set multi-user as current runlevel
   shell: systemctl isolate multi-user.target
+  tags: preconf
 
+# move to ntp role
 - name: set timezone
   timezone:
     name: "{{ t_zone }}"
+  tags: preconf
 
 - name: Sync time
   shell: ntpdate dc3
   ignore_errors: yes
+  tags: preconf
