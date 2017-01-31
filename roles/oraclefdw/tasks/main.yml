@@ -24,7 +24,7 @@
   args:
     chdir: ~/src/oracle_fdw
 
-- name: create extension
+- name: create extension. redo with postgresql_ext
   shell: psql -U postgres -c "CREATE EXTENSION oracle_fdw"
   become_user: postgres
 
