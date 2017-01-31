@@ -15,9 +15,9 @@
     group: "{{ postgresql_admin_user }}"
     mode: 0640
 
-- name: postgresql should listen on all ports
+- name: postgresql should listen on all ports. if setting bouncer. this is not needed
   lineinfile: dest="/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
-    regexp="^listen_addresses"
+    regexp="^#listen_addresses"
     line="listen_addresses = '*'" 
     state=present
   notify: restart postgresql
