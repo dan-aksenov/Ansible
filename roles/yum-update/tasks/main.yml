@@ -2,3 +2,4 @@
   yum:
     name: '*'
     state: latest
+  tags: yum-update

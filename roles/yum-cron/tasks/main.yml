@@ -2,12 +2,14 @@
   yum:
     name: yum
     state: latest
+  tags: yum-cron
 
 - name: Install yum-cron.
   become: yes
   yum:
     name: yum-cron
     state: present
+  tags: yum-cron
 
 - name: Copy the configuration file (CentOS 6).
   become: yes
@@ -17,6 +19,7 @@
   notify:
     - restart yum-cron
   when: ansible_distribution_version < 7
+  tags: yum-cron
 
 - name: Copy the configuration file (CentOS 7).
   become: yes
@@ -26,6 +29,7 @@
   notify:
     - restart yum-cron
   when: ansible_distribution_version >= 7
+  tags: yum-cron
 
 - name: Start yum-cron.
   become: yes
@@ -33,3 +37,4 @@
     name: yum-cron
     state: running
     enabled: yes
+  tags: yum-cron

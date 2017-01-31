@@ -3,6 +3,7 @@
   #yum: 
   #  state: present
   #  name: http://repo.zabbix.com/zabbix/2.4/rhel/7/x86_64/zabbix-release-2.4-1.el7.noarch.rpm
+  tags: zabbix-agent
 
 - name: "install zabbix-agent"
   yum: 
@@ -10,6 +11,7 @@
     pkg: "{{ item }}"
   with_items:
     - zabbix-agent
+  tags: zabbix-agent
 
 #name: "edit agent.conf file"
 - lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server=192.168.154.145'
@@ -17,7 +19,9 @@
 
 - name: "start agent"
   service: name=zabbix-agent state=started enabled=yes 
+  tags: zabbix-agent
 
 - name: add firewall exception
   firewalld: port=10050/tcp permanent=true state=enabled immediate=yes
   ignore_errors: yes
+  tags: zabbix-agent
