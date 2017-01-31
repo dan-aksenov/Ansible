@@ -7,3 +7,4 @@
     - yum-update
     - yum-cron
     - zabbix-agent
+    - postfix
