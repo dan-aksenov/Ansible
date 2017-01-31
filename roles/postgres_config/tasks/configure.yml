@@ -1,0 +1,31 @@
+- name: Configure firewall. Ingnore if servicei is not running.
+  firewalld: service=postgresql permanent=true state=enabled
+  ignore_errors: yes
+
+- name: Initialize new postgresql cluster.
+  become: yes
+  become_user: "{{ postgresql_admin_user }}"
+  command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D /var/lib/pgsql/{{ postgresql_version }}/data"
+
+- name: Stage 2: configure pg_hba.conf. simplify
+  template:
+    src: pg_hba.conf.j2
+    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0640
+
+#This needs to be redone
+#- name: "Stage 2: configure postgresql.conf"
+#  lineinfile:
+#    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
+#    state: present
+#    regexp: "{{ item.regexp }}"
+#    line: "{{ item.guc }}"
+#  with_items: postgresql_conf_default_guc
+
+- name: Start and enable postgresql service
+  service: 
+    name: "postgresql-{{ postgresql_version }}" 
+    state: started 
+    enabled: yes
