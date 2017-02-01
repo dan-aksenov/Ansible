@@ -13,9 +13,16 @@
     - zabbix-agent
   tags: zabbix-agent
 
-#name: "edit agent.conf file"
-- lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server=192.168.154.145'
-- lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=*' line='Hostname={{ ansible_hostname }}'
+- name: edit agent.conf file
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server=192.168.154.145'
+  tags: zabbix-agent
+  notify: restart agent
+  
+- name: eidt agent.conf file
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=*' line='Hostname={{ ansible_hostname }}'
+  tags: zabbix-agent
+  notify: restart agent
+
 
 - name: "start agent"
   service: name=zabbix-agent state=started enabled=yes 
