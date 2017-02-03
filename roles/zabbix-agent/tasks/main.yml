@@ -18,7 +18,7 @@
   tags: zabbix-agent
   notify: restart agent
   
-- name: eidt agent.conf file
+- name: edit agent.conf file
   lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=*' line='Hostname={{ ansible_hostname }}'
   tags: zabbix-agent
   notify: restart agent
