@@ -1,7 +1,0 @@
-#It aint working
-- hosts: all
-  user: dbax 
-  become: yes 
-  
-  roles:
-      - oraclefdw 
