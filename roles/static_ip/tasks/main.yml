@@ -16,10 +16,8 @@
   template: owner=root group=root mode=644 
             src=ifcfg-interface 
             dest=/etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }}
+  notify: restart network
  
-- name: Restart Network
-  service: name=network state=restarted
-
 - name: Reminder
   debug:
      msg: Do not forget to exclude "{{ host_ip.stdout }}" from dhcp!
