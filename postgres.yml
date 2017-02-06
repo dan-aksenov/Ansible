@@ -1,0 +1,14 @@
+
+- hosts: all
+  user: dbax
+  become: yes
+
+  roles:
+      - pgdg
+      - postgres_install 
+      - postgres_config
+      - mamonsu
+      - pg_agent
+      - pg_bouncer
+      - oraclefdw
+      - plpgsql_check
