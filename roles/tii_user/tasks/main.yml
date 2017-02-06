@@ -3,6 +3,8 @@
         createhome=yes
         home=/home/tii
         state=present
+  tags: tii_user
 
 - name: add tii's pub_key
   authorized_key: user=tii key="{{ lookup('file', '/home/dbax/localrepo/tii_key') }}"
+  tags: tii_user
