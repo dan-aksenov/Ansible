@@ -8,7 +8,7 @@
       - postgres_install 
       - postgres_config
       - mamonsu
-      - pg_agent
-      - pg_bouncer
+      - pgagent
+      - pgbouncer
       - oraclefdw
       - plpgsql_check
