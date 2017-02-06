@@ -20,7 +20,7 @@
     regexp="^#listen_addresses"
     line="listen_addresses = '*'" 
     state=present
-  notify: restart postgresql
+  notify: restart postgres
 
 - name: Start and enable postgresql service
   service: 
