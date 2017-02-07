@@ -7,3 +7,4 @@
 
 - name: add tii's pub_key
   authorized_key: user=tii key="{{ lookup('file', '/home/dbax/localrepo/tii_key') }}"
+...
