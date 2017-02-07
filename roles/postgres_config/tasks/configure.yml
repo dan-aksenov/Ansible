@@ -2,10 +2,15 @@
   firewalld: service=postgresql permanent=true state=enabled
   ignore_errors: yes
 
-- name: Initialize new postgresql cluster.
+- name: find if pg cluster already exists
+  find: paths="/var/lib/pgsql/{{ postgresql_version }}/data" file_type=directory patterns="PG_VERSION"
+  register: pg_dir
+
+- name: Initialize new postgresql cluster. If not already exists.
   become: yes
   become_user: "{{ postgresql_admin_user }}"
   command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D /var/lib/pgsql/{{ postgresql_version }}/data"
+  when: pg_dir.matched|int != 0
 
 - name: Configure pg_hba.conf. simplify this...
   template:
