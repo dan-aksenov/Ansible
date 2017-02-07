@@ -1,0 +1,34 @@
+- name: git clone mamonsu 
+  git: repo=https://github.com/postgrespro/mamonsu
+       dest=~/src/mamonsu
+       update=yes
+
+- name: make rpm from source
+  shell: make rpm 
+  args:
+    chdir: ~/src/mamonsu
+
+- name: install mamonsu from local file
+  shell: yum localinstall -y mamonsu*.rpm
+  args:
+    chdir: ~/src/mamonsu
+
+- name: Copy agent.conf template 
+  template: owner=root group=root mode=644 
+            src=agent.conf
+            dest=/etc/mamonsu/agent.conf
+  notify:
+    - restart mamonsu
+  tags: mamonsu
+
+# Redo user and db create with ansible postgres module
+- name: Bootstrap DDL for monitoring
+  shell: createdb mamonsu && createuser mamonsu && mamonsu bootstrap -U postgres -d mamonsu
+  become: true
+  become_user: postgres
+  ignore_errors: yes
+  tags: mamonsu
+
+- name: start monitoring service.
+  service: name=mamonsu state=restarted enabled=yes
+
