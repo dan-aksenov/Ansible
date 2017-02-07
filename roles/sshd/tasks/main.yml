@@ -1,19 +1,10 @@
-#- name: Installing packages
-#  yum: name={{ item }}
-#  with_items:
-#      - sshd
-
+---
 - name: Disable root login. Need to redo this with template.
   lineinfile:   dest=/etc/ssh/sshd_config
                 regexp="#PermitRootLogin"
                 line="PermitRootLogin no"
                 state=present
-
-# Limit login users ?
-
-# If you are unable to limit source IP addresses, then iptables can still help prevent brute-force attacks by logging and blocking repeated attempts to login from the same IP address.
-
-#- name: Set firewall to prevent brute-force attacks by logging and blocking repeated attempts to login from the same IP address.
+  notify: restart sshd
 
 - name: Disable password authentication
   lineinfile:   dest=/etc/ssh/sshd_config
@@ -21,3 +12,7 @@
                 line="PasswordAuthentication no"
                 state=present
   notify: restart sshd
+
+# Limit login users ?
+
+#- name: Set firewall to prevent brute-force attacks by logging and blocking repeated attempts to login from the same IP address.
