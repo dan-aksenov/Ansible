@@ -14,13 +14,13 @@
 
 - name: add new server to pgpass
   lineinfile:
-    path: /var/lib/barman/.pgpass
+    path: "/var/lib/barman/.pgpass"
     state: present
     line: '"{{ pg_server }}":5432:postgres:barman:barman:barman'
 
 - name: add new server to pgpass
   lineinfile:
-    path: /var/lib/barman/.pgpass
+    path: "/var/lib/barman/.pgpass"
     state: present
     line: '"{{ pg_server }}":5432:postgres:barman:streaming_barman:barman'
 
