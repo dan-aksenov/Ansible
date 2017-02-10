@@ -12,3 +12,4 @@
       - pgbouncer
       - oraclefdw
       - plpgsql_check
+      - barman
