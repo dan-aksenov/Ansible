@@ -1,8 +1,10 @@
-- name: Configure firewall. Ingnore if servicei is not running.
+--- 
+
+- name: Configure firewall. Ingnore if service is not running.
   firewalld: service=postgresql permanent=true state=enabled
   ignore_errors: yes
 
-- name: find if pg cluster already exists
+- name: Find if pg cluster already exists
   find: paths="/var/lib/pgsql/{{ postgresql_version }}/data" file_type=directory patterns="PG_VERSION"
   register: pg_dir
 
@@ -19,16 +21,20 @@
     owner: "{{ postgresql_admin_user }}"
     group: "{{ postgresql_admin_user }}"
     mode: 0640
+    backup: yes
+  notify: restart postgres
 
-- name: postgresql should listen on all ports. if setting bouncer. this is not needed
+- name: Postgresql should listen on all ports. with bouncer this is not needed.
   lineinfile: dest="/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
     regexp="^#listen_addresses"
     line="listen_addresses = '*'" 
     state=present
   notify: restart postgres
 
-- name: Start and enable postgresql service
+- name: Start and enable postgresql service.
   service: 
     name: "postgresql-{{ postgresql_version }}" 
     state: started 
     enabled: yes
+
+...
