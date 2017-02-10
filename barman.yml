@@ -1,6 +1,9 @@
-- hosts: pg-barman 
+---
+- name: setup client
+  hosts: all
   user: dbax 
   become: yes 
 
   roles:
     - barman
+...
