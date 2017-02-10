@@ -17,8 +17,8 @@
   become_user: postgres   
 
 # to do: add pg_hba on target! move this to postgres role?
-#host    all             barman              10.197.72.152/24     md5
-#host replication streaming_barman 10.197.72.152/24 trust
+#host    all             barman    {{ barman_server  }}/24     md5
+#host replication streaming_barman {{ barman_server  }}/24 trust
 
 # move this to postgres role?
 # PostgreSQL WAL archiving and replication postgresql.conf
