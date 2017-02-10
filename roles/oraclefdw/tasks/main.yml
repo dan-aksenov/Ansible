@@ -1,30 +1,4 @@
-- name: Installing packages
-  yum: name={{ item }}
-  with_items:
-      - gcc
-      - make
-
-- name: add oracle library
-  lineinfile:
-    dest: "/etc/ld.so.conf.d/oracle.conf"
-    state: present
-    line: "/usr/lib/oracle/11.2/client64/lib"
-    create: yes
-
-- name: run ldconfig to register libs
-  shell: ldconfig
-
-- name: git clone oraclefdw 
-  git: repo=https://github.com/laurenz/oracle_fdw
-       dest=~/src/oracle_fdw
-       update=yes
-
-- name: make oracle_fdw
-  shell: make && make install 
-  args:
-    chdir: ~/src/oracle_fdw
-
-- name: create extension. redo with postgresql_ext
-  shell: psql -U postgres -c "CREATE EXTENSION oracle_fdw"
-  become_user: postgres
-
+---
+- include: install.yml
+  tags: oracle_fdw
+...
