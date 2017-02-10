@@ -20,11 +20,4 @@
     state: present
     line: '"{{ pg_server }}":5432:postgres:barman:streaming_barman:barman'
 
-# add new backup job to cron
-# crontab -l > /tmp/cron.tmp
-# echo "0 1 * * * barman backup $pg_host &>/var/lib/barman/log/backup_$pg_host.log" >> /tmp/cron.tmp
-# crontab /tmp/cron.tmp
-# rm /tmp/cron.tmp
-
 ...
-
