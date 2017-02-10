@@ -1,7 +1,10 @@
-- name: Installing psycopg2 (required) 
+- name: Installing psycopg2 (move to some general pg  prereqs?)
   yum: name={{ item }}
   with_items:
       - python-psycopg2
 
 - include: db_server_conf.yml
-- include: barman_servef_conf.yml
+  tags: barman_client
+
+- include: barman_server_conf.yml
+  tags: barman_server
