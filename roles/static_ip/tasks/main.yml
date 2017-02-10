@@ -16,6 +16,7 @@
   template: owner=root group=root mode=644 
             src=ifcfg-interface 
             dest=/etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }}
+            backup=yes
   notify: restart network
  
 - name: Reminder
