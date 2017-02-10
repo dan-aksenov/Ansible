@@ -1,26 +1,28 @@
-#- hosts: pg-barman
-- debug:
-      msg: "{{ ansible_host }}"
-# create config for new backup client
-#cat > /tmp/$pg_host.conf << EOF
-#[$pg_host]
-#description =  "Some PostgreSQL server"
-#conninfo = host=$pg_host user=barman dbname=postgres
-#backup_method = postgres
-#streaming_conninfo = host=$pg_host user=streaming_barman dbname=postgres
-#streaming_archiver = on
-#slot_name = barman
-#EOF
-#sudo cp /tmp/$pg_host.conf /etc/barman.d/
+---
 
-# add passw to .pgpass on barman server
-# cat >>.pgpass << EOF
-# $pg_host:5432:postgres:barman:barman
-# $pg_host:5432:postgres:streaming_barman:barman
-# EOF
+- name: config file for new backup client
+  template:
+    src: pg_server.conf.y2 
+    dest: "/etc/barman.d/{{ pg_server }}.conf"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: add new server to pgpass
+  lineinfile:
+    path: /var/lib/barman/.pgpass
+    state: present
+    line: '"{{ pg_server }}":5432:postgres:barman:barman:barman
+
+- name: add new server to pgpass
+  lineinfile:
+    path: /var/lib/barman/.pgpass
+    state: present
+    line: '"{{ pg_server }}":5432:postgres:barman:streaming_barman:barman
 
 # add new backup job to cron
 # crontab -l > /tmp/cron.tmp
 # echo "0 1 * * * barman backup $pg_host &>/var/lib/barman/log/backup_$pg_host.log" >> /tmp/cron.tmp
 # crontab /tmp/cron.tmp
 # rm /tmp/cron.tmp
+...
