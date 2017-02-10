@@ -1,9 +1,13 @@
+---
 - name: add barman user pub_key
   authorized_key: user=postgres key="{{ lookup('file', '/home/dbax/localrepo/barman_key') }}"
 
 # to make this work need psycopg + libs installed
 - name: add barman db user
   postgresql_user:
+    become: true 
+    become_mode: sudo
+    become_user: postgres   
     name: barman
     password: "{{ barman_password }}"
     role_attr_flags: SUPERUSER
@@ -23,3 +27,4 @@
 # ssh postgres@$pg_host sed -i -e "s/#wal_level = 'minimal'/wal_level = 'hot_standby'/g" /var/lib/pgsql/*/data/postgresql.conf
 # ssh postgres@$pg_host sed -i -e "s/#max_wal_senders = 0/max_wal_senders = 2/g" /var/lib/pgsql/*/data/postgresql.conf
 # ssh postgres@$pg_host sed -i -e "s/#max_replication_slots = 0/max_replication_slots = 2/g" /var/lib/pgsql/*/data/postgresql.conf
+...
