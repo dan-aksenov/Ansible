@@ -1,3 +1,4 @@
+--- 
 # Basic settings
 el_version: 7
 postgresql_version: 9.5
@@ -24,3 +25,5 @@ postgresql_pg_hba_default:
 # Specify custom rules for pg_hba.conf. Specify here all necessary pg_hba rules.
 postgresql_pg_hba_custom:
  - { type: host, database: replication, role: "{{ postgresql_admin_user }}", address: "127.0.0.1/32", method: "{{ postgresql_default_ipv4_auth_method }}", comment: '' }
+
+...

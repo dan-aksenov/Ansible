@@ -1,6 +1,6 @@
 --- 
 
-- name: Configure firewall. Ingnore if service is not running.
+- name: Configure firewall. Ingnore if service is not running. Or turn in on?
   firewalld: service=postgresql permanent=true state=enabled
   ignore_errors: yes
 
@@ -8,13 +8,13 @@
   find: paths="/var/lib/pgsql/{{ postgresql_version }}/data" file_type=directory patterns="PG_VERSION"
   register: pg_dir
 
-- name: Initialize new postgresql cluster. If not already exists.
+- name: Initialize new postgresql cluster in default directory. If not already exists.
   become: yes
   become_user: "{{ postgresql_admin_user }}"
   command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D /var/lib/pgsql/{{ postgresql_version }}/data"
   when: pg_dir.matched|int != 0
 
-- name: Configure pg_hba.conf. simplify this...
+- name: Configure pg_hba.conf. simplify this...?
   template:
     src: pg_hba.conf.j2
     dest: "/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf"
@@ -24,7 +24,7 @@
     backup: yes
   notify: restart postgres
 
-- name: Postgresql should listen on all ports. with bouncer this is not needed.
+- name: Postgresql should listen on all ports. Redo this with template.
   lineinfile: dest="/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
     regexp="^#listen_addresses"
     line="listen_addresses = '*'" 
