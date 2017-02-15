@@ -1,0 +1,25 @@
+---
+
+- name: Add my ansible user.
+  user: name="{{ my_ansible_user }}"
+        groups=wheel
+        createhome=yes
+        home="/home/{{ my_ansible_user }}"
+        state=present
+
+- name: add my ansible user pub_key
+  authorized_key: user={{ my_ansible_user }} key="{{ lookup('file', '/home/{{ my_ansible_user }}/.ssh/id_rsa.pub') }}"
+
+- name: add my ansible user pub_key for Windows Ws
+  authorized_key: user={{ my_ansible_user }} key="{{ lookup('file', '/home/{{ my_ansible_user }}/localrepo/my_key_win') }}"
+
+- name: configure sudoers
+  template:
+    src: sudoers.d.j2
+    dest: "/etc/sudoers.d/{{ my_ansible_user }}"
+    owner: root
+    group: root
+    mode: 0644
+    validate: 'visudo -cf %s'
+
+...

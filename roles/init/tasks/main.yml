@@ -1,19 +1,6 @@
-- name: add my ansible user(currently dbax)
-  user: name=dbax
-        groups=wheel
-        createhome=yes
-        home=/home/dbax
-        state=present
+---
 
-- name: add my ansible user pub_key
-  authorized_key: user=dbax key="{{ lookup('file', '/home/dbax/.ssh/id_rsa.pub') }}"
+- include: init.yml
+  tags: init
 
-- name: add my ansible user pub_key from Windows Ws
-  authorized_key: user=dbax key="{{ lookup('file', '/home/dbax/localrepo/my_key_win') }}"
-
-- name: configure sudoers(allow nopasswd for my ansible user)
-  lineinfile:   dest=/etc/sudoers.d/dbax
-                line="%wheel ALL=(ALL) NOPASSWD:ALL"
-                state=present
-                create=yes
-                validate='visudo -cf %s'
+...
