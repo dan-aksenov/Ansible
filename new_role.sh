@@ -1,16 +1,10 @@
 #!/bin/bash
 if [ -z "$1" ]; then echo "role name var is unset" && exit 1; fi
-touch $1.yml
-cat > $1.yml << EOF
-- hosts: all
-  user: dbax
-  become: yes
 
-  roles:
-      - $1 
-EOF
+# Create role's main directorie
 mkdir roles/$1
 cd roles/$1
+# Create role's subdirectories
 mkdir tasks handlers templates files vars defaults meta 
-#touch tasks/main.yml
+# Create sample files in all role's subdirectories
 for i in $(ls); do touch $i/main.yml; done
