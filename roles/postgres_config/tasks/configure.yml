@@ -14,7 +14,7 @@
   command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D /var/lib/pgsql/{{ postgresql_version }}/data"
   when: pg_dir.matched|int != 0
 
-- name: Configure pg_hba.conf. simplify this...?
+- name: Configure pg_hba.conf.
   template:
     src: pg_hba.conf.j2
     dest: "/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf"
@@ -32,11 +32,14 @@
     group: "{{ postgresql_admin_user }}"
     mode: 0755  
 
-- name: Postgresql should listen on all ports. Redo this with template.
-  lineinfile: dest="/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
-    regexp="^#listen_addresses"
-    line="listen_addresses = '*'" 
-    state=present
+- name: Configure postgresql.conf.
+  template:
+    src: "postgresql.conf.{{ postgresql_version }}.j2"
+    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0640
+    backup: yes
   notify: restart postgres
 
 - name: Start and enable postgresql service.
