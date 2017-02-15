@@ -24,6 +24,14 @@
     backup: yes
   notify: restart postgres
 
+- name: Create directory to hold archivelogs
+  file:
+    path: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
+    state: directory
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0755  
+
 - name: Postgresql should listen on all ports. Redo this with template.
   lineinfile: dest="/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
     regexp="^#listen_addresses"
