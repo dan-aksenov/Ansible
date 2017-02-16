@@ -11,6 +11,5 @@
     - postgresql{{ postgresql_version | replace('.', '') }}-server
     - postgresql{{ postgresql_version | replace('.', '') }}-contrib
     - postgresql{{ postgresql_version | replace('.', '') }}-libs
-    - python-psycopg2
 
 ...
