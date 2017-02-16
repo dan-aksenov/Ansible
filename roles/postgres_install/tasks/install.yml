@@ -1,3 +1,5 @@
+---
+
 - name: "Install postgresql packages"
   yum: 
     state: latest
@@ -8,6 +10,4 @@
     - postgresql{{ postgresql_version | replace('.', '') }}-contrib
     - postgresql{{ postgresql_version | replace('.', '') }}-libs
 
-# do we need this? removed for now
-#- name: Update alternatives (redo this with alternatives module?)
-#  shell: ls /usr/pgsql-{{ postgresql_version }}/bin/ | grep -v postmaster | xargs -I{} sudo update-alternatives --install /usr/bin/{} pgsql-{}  /usr/pgsql-{{ postgresql_version }}/bin/{} {{ postgresql_version | replace('.', '') }}0
+...
