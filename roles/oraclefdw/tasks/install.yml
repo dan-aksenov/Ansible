@@ -1,30 +1,29 @@
 ---
 
-- name: Add oracle library
+- name: Add oracle library.
   lineinfile:
     dest: "/etc/ld.so.conf.d/oracle.conf"
     state: present
     line: "/usr/lib/oracle/11.2/client64/lib"
     create: yes
 
-- name: Run ldconfig to register libs
+- name: Run ldconfig to register libs.
   shell: ldconfig
 
-- name: Git clone oraclefdw 
+- name: Git clone oraclefdw. 
   git: repo=https://github.com/laurenz/oracle_fdw
        dest=~/src/oracle_fdw
        update=yes
 
-- name: Make oracle_fdw
+- name: Make oracle_fdw.
   shell: make && make install 
   args:
     chdir: ~/src/oracle_fdw
 
-- name: Create extension. redo with postgresql_ext
+- name: Create extension.
   postgresql_ext: 
     name: oracle_fdw
     db: postgres
-  #shell: psql -U postgres -c "CREATE EXTENSION oracle_fdw"
   become_user: postgres
 
 ...

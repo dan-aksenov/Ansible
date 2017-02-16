@@ -3,4 +3,7 @@
 - include: install.yml
   tags: pg_install
 
+- include: install_langs.yml
+  tags: pg_install_langs
+
 ...
