@@ -1,3 +1,5 @@
+---
+
 - name: Add oracle library
   lineinfile:
     dest: "/etc/ld.so.conf.d/oracle.conf"
@@ -25,3 +27,4 @@
   #shell: psql -U postgres -c "CREATE EXTENSION oracle_fdw"
   become_user: postgres
 
+...
