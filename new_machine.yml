@@ -1,3 +1,5 @@
+---
+
 - hosts: all
   user: dbax 
   become: yes 
@@ -9,3 +11,6 @@
     - yum-cron
     - zabbix-agent
     - postfix
+    - sshd
+
+...
