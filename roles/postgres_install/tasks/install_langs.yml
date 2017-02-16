@@ -8,7 +8,6 @@
     disablerepo: '*' 
     pkg: "{{ item }}"
   with_items:
-    - python-psycopg2
     - postgresql{{ postgresql_version | replace('.', '') }}-plperl
     - postgresql{{ postgresql_version | replace('.', '') }}-plpython
     - postgresql{{ postgresql_version | replace('.', '') }}-pltcl
