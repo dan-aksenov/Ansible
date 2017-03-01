@@ -1,6 +1,10 @@
 - include: repos.yml
   tags: preconf
 
+- name: set hostname to {{ inventory_hostname }}
+  shell: hostnamectl set-hostname {{ inventory_hostname }}
+  tags: preconf
+
 - name: Installing packages
   yum: name={{ item }}
   with_items:
