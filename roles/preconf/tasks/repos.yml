@@ -1,3 +1,5 @@
+---
+
 - name: Install EPEL Centos
   yum:
     state: latest
@@ -24,3 +26,5 @@
     gpgcheck: yes
     enabled: yes
   when: ansible_distribution == 'OracleLinux'
+
+...
