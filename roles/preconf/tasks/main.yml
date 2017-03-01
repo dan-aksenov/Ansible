@@ -1,43 +1,13 @@
 - include: repos.yml
   tags: preconf
 
-- name: set hostname to {{ inventory_hostname }}
-  shell: hostnamectl set-hostname {{ inventory_hostname }}
+- include: hostname.yml
   tags: preconf
 
-- name: Installing packages
-  yum: name={{ item }}
-  with_items:
-      - vim
-      - open-vm-tools
-      - wget
-      - iftop
-      - iotop
-      - sysstat
-      - hdparm
-      - atop
-      - lshw
-      - tmux
-      - strace
-      - python-pip
-      - git
-      - make
-      - rpm-build
-      - python2-devel
-      - libselinux-python
-      - python-setuptools
-      - ntp
-      - mlocate
-      - glances
+- include: packages.yml
   tags: preconf
 
-# can we redo it in systemctl module?
-- name: Set multi-user as default target
-  shell: systemctl set-default multi-user.target
-  tags: preconf
-
-- name: Set multi-user as current runlevel
-  shell: systemctl isolate multi-user.target
+- include: targets.yml
   tags: preconf
 
 # move to ntp role
