@@ -1,0 +1,28 @@
+---
+
+- name: Installing packages
+  yum: name={{ item }}
+  with_items:
+      - vim
+      - open-vm-tools
+      - wget
+      - iftop
+      - iotop
+      - sysstat
+      - hdparm
+      - atop
+      - lshw
+      - tmux
+      - strace
+      - python-pip
+      - git
+      - make
+      - rpm-build
+      - python2-devel
+      - libselinux-python
+      - python-setuptools
+      - ntp
+      - mlocate
+      - glances
+
+...
