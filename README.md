@@ -1,2 +1,2 @@
 # ansible
-some home-made ansible playbooks
+some ansible playbooks
