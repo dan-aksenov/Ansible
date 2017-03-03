@@ -1,0 +1,6 @@
+---
+
+- include: journald-persistent.yml
+  tags: journald
+
+...
