@@ -7,4 +7,5 @@ cd roles/$1
 # Create role's subdirectories
 mkdir tasks handlers templates files vars defaults meta 
 # Create sample files in all role's subdirectories
-for i in $(ls); do touch $i/main.yml; done
+for i in $(ls); do  echo --- > $i/main.yml; done
+for i in $(ls); do  echo ... >> $i/main.yml; done
