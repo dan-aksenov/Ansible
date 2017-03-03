@@ -12,5 +12,6 @@
     - zabbix-agent
     - postfix
     - sshd
+    - journald
 
 ...
