@@ -5,6 +5,7 @@
   become: yes 
 
   roles:
+    - proxy_settings
     - preconf
     - tii_user
     - yum-update
