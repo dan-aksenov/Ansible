@@ -23,6 +23,7 @@
     mode: 0640
     backup: yes
   notify: restart postgres
+  tags: pg_hba_conf
 
 - name: Create directory to hold archivelogs
   file:
@@ -30,7 +31,7 @@
     state: directory
     owner: "{{ postgresql_admin_user }}"
     group: "{{ postgresql_admin_user }}"
-    mode: 0755  
+    mode: 0755
 
 - name: Configure postgresql.conf.
   template:
@@ -41,6 +42,7 @@
     mode: 0640
     backup: yes
   notify: restart postgres
+  tags: postgresql_conf
 
 - name: Start and enable postgresql service.
   service: 
