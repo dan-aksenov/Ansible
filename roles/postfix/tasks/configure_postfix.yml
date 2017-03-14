@@ -1,0 +1,27 @@
+---
+
+- name: Installing packages.
+  yum: name={{ item }}
+  with_items:
+      - mailx
+      - postfix
+
+- name: Edit config file. Set relayhost.
+  lineinfile: dest=/etc/postfix/main.cf line='relayhost = {{ smtp_server }}:{{ smtp_port }}'
+  notify: restart postfix
+
+- name: Edit config file. Set mailbox_size_limit to 0.
+  lineinfile: dest=/etc/postfix/main.cf line='mailbox_size_limit=0'
+  notify: restart postfix
+
+- name: Edit config file. Set message_size_limit to 0.
+  lineinfile: dest=/etc/postfix/main.cf line='message_size_limit=0'
+  notify: restart postfix
+
+- name: Start and enable postfis.
+  systemd: 
+    name: postfix
+    enabled: yes 
+    state: started
+
+...

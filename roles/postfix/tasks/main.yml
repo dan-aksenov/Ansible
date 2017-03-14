@@ -1,17 +1,6 @@
-- name: Installing packages
-  yum: name={{ item }}
-  with_items:
-      - mailx
-      - postfix
+---
+
+- include: configure_postfix.yml
   tags: postfix
 
-- name: Edit config file
-  lineinfile: dest=/etc/postfix/main.cf line='relayhost = {{ smtp_server }}:{{ smtp_port }}'
-  tags: postfix 
-
-- name: Start and enable postfis
-  systemd: 
-    name: postfix
-    enabled: yes 
-    state: started
-  tags: postfix
+...
