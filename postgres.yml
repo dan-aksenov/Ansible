@@ -14,5 +14,6 @@
       - oraclefdw
       - plpgsql_check
       - barman
+      - pgbadger
 
 ...
