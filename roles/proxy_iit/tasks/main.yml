@@ -1,5 +1,8 @@
+---
+
 - name: edit yum.conf 
   lineinfile: dest=/etc/yum.conf regexp='Proxy' line='Proxy=http://{{ proxy_ip }}'
+  tags: yum_conf
 
 - name: Installing packages
   yum: name={{ item }}
@@ -10,18 +13,26 @@
 
 - name: http proxy for git
   shell: git config --global http.proxy {{ proxy_ip }}
+  tags: git
 
 - name: https proxy for git
   shell: git config --global https.proxy {{ proxy_ip }}
+  tags: git
 
 - name: http_proxy
   lineinfile: dest=/root/.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
+  tags: bash_profile
 
 - name: https_proxy
   lineinfile: dest=/root/.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
+  tags: bash_profile
 
 - name: http_proxy
   lineinfile: dest=.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
+  tags: bash_profile
 
 - name: https_proxy
   lineinfile: dest=.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
+  tags: bash_profile
+
+...
