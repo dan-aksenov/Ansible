@@ -1,2 +1,6 @@
 ---
+
+dependencies:
+  - { role: 'postgres_config', tags: ['postgresql_conf'] }
+
 ...
