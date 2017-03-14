@@ -1,0 +1,28 @@
+---
+ 
+- name: install pgbadger
+  yum:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - pgbadger
+
+- name: Create badger directory.
+  file:
+    path: /var/lib/pgsql/badger
+    owner: postgres
+    group: postgres
+    state: directory
+    mode: 0755
+
+- name: Configure cron for badger.
+  cron:
+    name: "pgbadber daily"
+    minute: "50"
+    hour: "23"
+    job: "pgbadger -Z '+03' -I -O /var/lib/pgsql/badger/ /var/lib/pgsql/{{ postgresql_version }}/data/pg_log/postgresql*.log &>/tmp/pgbadger.log"
+
+...
+
+
+
