@@ -1,13 +1,11 @@
-- name: check postgresql version
-  shell: 'psql --version | cut -d " " -f 3 | cut -d "." -f 1,2 | tr -d "."'
-  register: postgresql_version
- 
+---
+
 - name: install pgagent
   yum:
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - pgagent_{{ postgresql_version.stdout }}
+    - pgagent_{{ postgresql_version | replace('.', '') }}
 
 - name: add pgagent user
   user: name=pgagent
@@ -32,3 +30,4 @@
 - name: "start pgagent"
   service: name=pgagent_{{ postgresql_version.stdout }} state=started enabled=yes 
 
+...

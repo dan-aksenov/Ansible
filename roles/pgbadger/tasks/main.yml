@@ -1,0 +1,6 @@
+---
+
+- include: pgbadger_install.yml
+  tags: pgbadger
+
+...
