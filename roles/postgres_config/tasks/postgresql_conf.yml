@@ -1,0 +1,21 @@
+--- 
+
+- name: Create directory to hold archivelogs.
+  file:
+    path: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
+    state: directory
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0755
+
+- name: Configure postgresql.conf. from template. Redo this with modular 'include' postgresql.conf files!
+  template:
+    src: "postgresql.conf.{{ postgresql_version }}.j2"
+    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0640
+    backup: yes
+  notify: restart postgres
+
+...
