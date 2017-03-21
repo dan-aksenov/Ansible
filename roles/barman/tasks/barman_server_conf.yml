@@ -12,13 +12,13 @@
     group: root
     mode: '0644'
 
-- name: add new server to pgpass
+- name: add barman's password pgpass
   lineinfile:
     path: "/var/lib/barman/.pgpass"
     state: present
     line: '"{{ pg_server }}":5432:postgres:barman:{{ barman_password }}'
 
-- name: add new server to pgpass
+- name: add streaming_barman password to pgpass
   lineinfile:
     path: "/var/lib/barman/.pgpass"
     state: present
