@@ -1,0 +1,7 @@
+---
+
+- postgresql_ext:
+    name: pg_buffercache
+    db: postgres
+
+...
