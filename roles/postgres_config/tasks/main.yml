@@ -3,4 +3,7 @@
 - include: configure.yml
   tags: pg_config
 
+- include: extensions.yml
+  tags: pg_extensions
+
 ...
