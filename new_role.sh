@@ -19,4 +19,5 @@ galaxy_info:
       name: EL
       versions: 7
   categories:
+  dependencies:
 EOF
