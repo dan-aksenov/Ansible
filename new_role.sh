@@ -13,7 +13,7 @@ for i in $(ls); do  echo ... >> $i/main.yml; done
 cat > meta/main.yml <<EOF
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Ansible role for administrative sudo user, who will run all subsequent ansible scripts. Must be executed with --ask-pass.
+  description: Role description to be here... 
   license: as-is
   platforms:
       name: EL
