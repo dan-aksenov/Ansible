@@ -1,6 +1,8 @@
+---
+
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Role to create administrative sudo user, who will run all subsequent ansible scripts. Must be executed with --ask-pass.
+  description: Ansible role for administrative sudo user, who will run all subsequent ansible scripts. Must be executed with --ask-pass.
   license: as-is
   platforms:
     - name: EL
@@ -8,3 +10,5 @@ galaxy_info:
   categories:
    - security
    - security:sudo 
+
+...
