@@ -1,7 +1,13 @@
 ---
 
 - include: configure.yml
-  tags: pg_config
+  tags: pg_configure
+
+- include: postgresql_conf.yml
+  tags: postgresql_conf
+
+- include: pg_hba_conf.yml
+  tags: pg_hba_conf
 
 - include: extensions.yml
   tags: pg_extensions
