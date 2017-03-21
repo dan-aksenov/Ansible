@@ -1,6 +1,9 @@
+---
 
 - hosts: all
   user: root 
 
   roles:
     - init
+
+...
