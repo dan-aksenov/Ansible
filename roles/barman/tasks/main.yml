@@ -1,7 +1,9 @@
 ---
+
 - include: db_server_conf.yml
   tags: barman_client
 
 - include: barman_server_conf.yml
   tags: barman_server
+
 ...
