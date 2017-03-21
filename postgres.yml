@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: postgres 
   user: dbax
   become: yes
 
