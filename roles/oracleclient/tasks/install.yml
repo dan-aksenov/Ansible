@@ -1,0 +1,18 @@
+---
+
+- name: copy oracle client from local repo
+  copy: src={{ item }} 
+        dest=~/distr
+  with_items:
+        - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-basic-{{ ora_version }}.x86_64.rpm
+        - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-devel-{{ ora_version }}.x86_64.rpm 
+        - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-sqlplus-{{ ora_version }}.x86_64.rpm
+
+- name: install client packages
+  yum: name={{ item }}
+  with_items: 
+        - ~/distr/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-basic-{{ ora_version }}.x86_64.rpm
+        - ~/distr/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-devel-{{ ora_version }}.x86_64.rpm
+        - ~/distr/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-sqlplus-{{ ora_version }}.x86_64.rpm
+
+...
