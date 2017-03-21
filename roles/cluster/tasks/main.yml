@@ -1,3 +1,5 @@
+---
+
 - name: Ensure cluster group membership
   fail: msg="Cluster hosts must be members of a group"
   when: pacemaker_ansible_group is not iterable
@@ -56,3 +58,5 @@
     {% endfor %}
   args:
     creates: /etc/corosync/corosync.conf
+
+...
