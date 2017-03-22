@@ -1,6 +1,6 @@
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/pgsql-{{ postgresql_version }}/bin"
 PGHOME=/var/lib/pgsql/{{ postgresql_version }}
-PGARCH=/u01/pgsql/{{ postgresql_version }}/backups/arch
+PGARCH=/var/lib/pgsql/{{ postgresql_version }}/backups/arch
 PG_ARCHIVECLEANUP=$(which pg_archivecleanup)
 AGE="-mtime +3"
 
