@@ -21,8 +21,8 @@
 #host    all             barman    {{ barman_server  }}/24     md5
 #host replication streaming_barman {{ barman_server  }}/24 trust
 
- - name: Reminder
-   debug:
-        msg: PostgreSQL WAL archiving and replication is in initial postgres config role.
+- name: Reminder
+  debug:
+      msg: PostgreSQL WAL archiving and replication is in initial postgres config role.
 
 ...
