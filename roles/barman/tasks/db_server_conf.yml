@@ -25,4 +25,20 @@
   debug:
       msg: PostgreSQL WAL archiving and replication is in initial postgres config role.
 
+- name: Copy cleanup script. 
+  template:
+    src: archivecleanup.sh.j2
+    dest: /var/lib/pgsql/scripts/archivecleanup.sh
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0700
+
+- name: Configure cron for archivecleanup.
+  cron:
+    user: "{{ postgresql_admin_user }}"
+    name: "archive_cleanup"
+    minute: "0"
+    hour: "2"
+    job: "/var/lib/pgsql/scripts/archivecleanup.sh &>/tmp/archivecleanup.log"
+
 ...
