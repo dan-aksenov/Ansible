@@ -12,19 +12,20 @@
     group: root
     mode: '0644'
 
-- name: add barman's password pgpass
+- name: Add barman's password pgpass.
   lineinfile:
-    path: "/var/lib/barman/.pgpass"
+    dest: "/var/lib/barman/.pgpass"
     state: present
     line: '"{{ pg_server }}":5432:postgres:barman:{{ barman_password }}'
 
 - name: Add streaming_barman password to pgpass.
   lineinfile:
-    path: "/var/lib/barman/.pgpass"
+    dest: "/var/lib/barman/.pgpass"
     state: present
     line: '"{{ pg_server }}":5432:postgres:streaming_barman:{{ streaming_barman_password }}'
 
 - name: Create replication slot.
   shell: barman receive-wal --create-slot "{{ pg_server }}"
-
+  become: yes
+  become_user: barman
 ...

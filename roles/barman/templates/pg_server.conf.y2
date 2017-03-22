@@ -1,8 +1,8 @@
-["{{ pg_server  }}"]
-description =  "{{ pg_server  }}" database server
-conninfo = host="{{ pg_server  }}"oe-lkk-db user=barman dbname=postgres
+[{{ pg_server  }}]
+description =  {{ pg_server  }} database server
+conninfo = host={{ pg_server  }} user=barman dbname=postgres
 backup_method = postgres
-streaming_conninfo = host="{{ pg_server  }}" user=streaming_barman dbname=postgres
+streaming_conninfo = host={{ pg_server  }} user=streaming_barman dbname=postgres
 streaming_archiver = on
 slot_name = barman
 
