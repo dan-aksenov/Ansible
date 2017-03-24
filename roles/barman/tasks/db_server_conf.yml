@@ -25,6 +25,13 @@
   debug:
       msg: PostgreSQL WAL archiving and replication is in initial postgres config role.
 
+- name: Create directory for postgresql scripts
+  file: 
+    path: /var/lib/pgsql/scripts
+    state: directory
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+
 - name: Copy cleanup script. 
   template:
     src: archivecleanup.sh.j2
