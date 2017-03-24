@@ -16,13 +16,13 @@
   lineinfile:
     dest: "/var/lib/barman/.pgpass"
     state: present
-    line: '"{{ pg_server }}":5432:postgres:barman:{{ barman_password }}'
+    line: '{{ pg_server }}:5432:postgres:barman:{{ barman_password }}'
 
 - name: Add streaming_barman password to pgpass.
   lineinfile:
     dest: "/var/lib/barman/.pgpass"
     state: present
-    line: '"{{ pg_server }}":5432:postgres:streaming_barman:{{ streaming_barman_password }}'
+    line: '{{ pg_server }}:5432:postgres:streaming_barman:{{ streaming_barman_password }}'
 
 - name: Create replication slot.
   shell: barman receive-wal --create-slot "{{ pg_server }}"
