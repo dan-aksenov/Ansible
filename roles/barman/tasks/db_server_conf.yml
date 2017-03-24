@@ -18,8 +18,10 @@
   become_user: postgres   
 
 # to do: add pg_hba on target! move this to postgres role?
-#host    all             barman    {{ barman_server  }}/24     md5
-#host replication streaming_barman {{ barman_server  }}/24 trust
+#host all barman {{ barman_server  }}/24 md5
+#host replication streaming_barman {{ barman_server  }}/24 trust # can we change to md5
+
+
 
 - name: Reminder
   debug:
