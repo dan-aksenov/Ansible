@@ -18,11 +18,11 @@
   become_user: postgres   
 
 - name: Edit hba.conf for barman.
-  lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host all barman {{ barman_server  }}/24 md5'
+  lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host all barman {{ barman_server  }}/23 md5'
   tags: proxy_bash_profile
 
 - name: Edit hba.conf for streaming_barman. Can it be redone with md5?
-  lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host replication streaming_barman {{ barman_server  }}/24 trust'
+  lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host replication streaming_barman {{ barman_server  }}/23 trust'
   tags: proxy_bash_profile
 
 - name: Reminder
