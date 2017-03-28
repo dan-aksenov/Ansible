@@ -11,6 +11,7 @@
     - yum-update
     - yum-cron
     - zabbix-agent
+    - atop
     - postfix
     - sshd
     - journald
