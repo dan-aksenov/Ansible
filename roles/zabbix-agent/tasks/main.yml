@@ -16,7 +16,7 @@
   tags: zabbix-agent
 
 - name: edit agent.conf file
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server=192.168.154.145'
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server={{ zabbix_server }}'
   tags: zabbix-agent
   notify: restart agent
   
