@@ -1,3 +1,5 @@
+---
+
 - name: Installing packages
   yum: name={{ item }}
   with_items:
@@ -13,3 +15,5 @@
   
 - name: ensure firewalld is disabled and stopped
   service: name=firewalld enabled=no state=stopped
+
+...
