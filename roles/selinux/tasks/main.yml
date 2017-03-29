@@ -1,6 +1,6 @@
 ---
 
-- name: just turn it off 
+- name: Just turn it off.
   selinux: policy=targeted state=disabled
   tags: selinux
 
