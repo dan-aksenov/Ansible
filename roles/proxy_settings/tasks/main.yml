@@ -35,4 +35,13 @@
   lineinfile: dest=.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
   tags: proxy_bash_profile
 
+- name: wget proxy
+  template:
+    src: wgetrc.j2
+    dest: /root/.wgetrc
+    owner: root
+    group: root
+    mode: 0644
+  tags: proxy_wget
+
 ...
