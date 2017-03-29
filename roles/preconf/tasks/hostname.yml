@@ -1,6 +1,6 @@
 ---
 
-- name: set hostname to {{ inventory_hostname }}
+- name: Set hostname to match ansible's inventory_hostname.
   shell: hostnamectl set-hostname {{ inventory_hostname }}
 
 ...
