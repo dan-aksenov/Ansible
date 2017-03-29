@@ -1,0 +1,31 @@
+---
+
+- name: Install repository package.
+  shell: yum localinstall -y http://repo.zabbix.com/zabbix/3.0/rhel/7/x86_64/zabbix-release-3.0-1.el7.noarch.rpm
+  #yum: 
+  #  state: present
+  #  name: http://repo.zabbix.com/zabbix/2.4/rhel/7/x86_64/zabbix-release-2.4-1.el7.noarch.rpm
+
+- name: Install zabbix-agent.
+  yum: 
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - zabbix-agent
+
+- name: Edit agent.conf file.
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server={{ zabbix_server }}'
+  notify: restart agent
+  
+- name: Edit agent.conf file.
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=*' line='Hostname={{ ansible_hostname }}'
+  notify: restart agent
+
+- name: Start and enable agent.
+  service: name=zabbix-agent state=started enabled=yes 
+
+- name: Add firewall exception. If firewall is on.
+  firewalld: port=10050/tcp permanent=true state=enabled immediate=yes
+  ignore_errors: yes
+
+...
