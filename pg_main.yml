@@ -9,11 +9,7 @@
       - postgres_install 
       - postgres_config
       - mamonsu
-      - pgagent
       - pgbouncer
-      - oraclefdw
-      - plpgsql_check
-      - barman
       - pgbadger
 
 ...
