@@ -1,0 +1,15 @@
+---
+
+- hosts: postgres 
+  user: dbax
+  become: yes
+
+  roles:
+      - pgagent
+      - pgbouncer
+      - oraclefdw
+      - plpgsql_check
+      - barman
+      - pgbadger
+
+...
