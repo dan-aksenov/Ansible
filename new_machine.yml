@@ -14,6 +14,7 @@
     - zabbix-agent
     - atop
     - postfix
+    - journald
     - sshd
     - journald
 
