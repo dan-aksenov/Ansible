@@ -2,7 +2,7 @@
   tags: preconf
 
 - include: hostname.yml
-  tags: preconf
+  tags: hostname 
 
 - include: packages.yml
   tags: preconf
@@ -14,9 +14,9 @@
 - name: set timezone
   timezone:
     name: "{{ t_zone }}"
-  tags: preconf
+  tags: ntp
 
 - name: Sync time
   shell: ntpdate dc3
   ignore_errors: yes
-  tags: preconf
+  tags: ntp
