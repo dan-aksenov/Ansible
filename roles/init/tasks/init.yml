@@ -25,4 +25,5 @@
     mode: 0644
     validate: 'visudo -cf %s'
   tags: sudoers
+
 ...
