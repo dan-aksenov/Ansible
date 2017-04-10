@@ -17,5 +17,6 @@
     - journald
     - sshd
     - journald
+    - ntpd
 
 ...

@@ -1,0 +1,13 @@
+---
+
+galaxy_info:
+  author: Daniil Aksenov (dbax)
+  description: Time sync and ntpd enable.
+  license: as-is
+  platforms:
+      name: EL
+      versions: 7
+  categories:
+  dependencies:
+
+...
