@@ -1,3 +1,5 @@
+---
+
 - include: repos.yml
   tags: preconf
 
@@ -10,13 +12,4 @@
 - include: targets.yml
   tags: preconf
 
-# move to ntp role
-- name: set timezone
-  timezone:
-    name: "{{ t_zone }}"
-  tags: ntp
-
-- name: Sync time
-  shell: ntpdate dc3
-  ignore_errors: yes
-  tags: ntp
+...
