@@ -1,6 +1,6 @@
 --- 
 
-- name: Create directory to hold archivelogs.
+- name: Create directory to hold archivelogs. todo: create and mount nfs share to barman server?
   file:
     path: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
     state: directory
