@@ -4,6 +4,7 @@
   yum: name={{ item }}
   with_items:
       - ntpdate
+      - ntp
 
 - name: Set timezone.
   timezone:
