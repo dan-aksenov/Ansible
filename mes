@@ -29,3 +29,4 @@ proxy_ip=10.197.72.239:8080
 zabbix_server=10.197.72.153
 barman_server=10.197.72.152/24
 smtp_server=172.16.2.236
+ntp_server=prime.mosenergosbyt.ru

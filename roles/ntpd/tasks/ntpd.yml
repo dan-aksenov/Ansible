@@ -4,8 +4,11 @@
   timezone:
     name: "{{ t_zone }}"
 
+- name: Enshure ntpd is stopped for successfull initial sync.
+  service: name=ntpd state=stopped enabled=yes
+
 - name: Sync time
-  shell: ntpdate dc3
+  shell: ntpdate {{ ntp_server }} 
   ignore_errors: yes
 
 - name: Start and enable ntpd service.
