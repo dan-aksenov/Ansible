@@ -1,13 +1,18 @@
 ---
 
-- name: set timezone
+- name: Ensure ntpd installed.
+  yum: name={{ item }}
+  with_items:
+      - ntpdate
+
+- name: Set timezone.
   timezone:
     name: "{{ t_zone }}"
 
 - name: Enshure ntpd is stopped for successfull initial sync.
   service: name=ntpd state=stopped enabled=yes
 
-- name: Sync time
+- name: Sync time.
   shell: ntpdate {{ ntp_server }} 
   ignore_errors: yes
 
