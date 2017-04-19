@@ -1,0 +1,11 @@
+---
+
+- name: Audit tty in system_auth.
+  pamd:
+    name: system-auth
+    type: session
+    control: required
+    module_path: pam_tty_audit.so
+    new_control: '[enable=*]'
+
+...

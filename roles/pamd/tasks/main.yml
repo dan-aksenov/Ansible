@@ -1,0 +1,6 @@
+---
+
+- include: pamd_config.yml
+  tags: pamd
+
+...
