@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  user: dbax 
+  become: yes 
+
+  roles:
+    - proxy_settings
+
+...
