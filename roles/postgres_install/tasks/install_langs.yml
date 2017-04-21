@@ -1,11 +1,10 @@
-
 ---
 
-- name: "Install postgresql packages"
+- name: "Install additional postgresql languages."
   yum: 
     state: latest
-    enablerepo: "pgdg{{ postgresql_version | replace('.', '') }}"
-    disablerepo: '*' 
+   #enablerepo: "pgdg{{ postgresql_version | replace('.', '') }}"
+   #disablerepo: '*' 
     pkg: "{{ item }}"
   with_items:
     - postgresql{{ postgresql_version | replace('.', '') }}-plperl

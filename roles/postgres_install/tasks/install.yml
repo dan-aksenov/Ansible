@@ -3,15 +3,14 @@
 - name: "Install postgresql packages"
   yum: 
     state: latest
-    enablerepo: "pgdg{{ postgresql_version | replace('.', '') }}"
-    disablerepo: '*' 
+    #enablerepo: "pgdg{{ postgresql_version | replace('.', '') }}"
+    #disablerepo: '*' 
     pkg: "{{ item }}"
   with_items:
     - postgresql{{ postgresql_version | replace('.', '') }}
     - postgresql{{ postgresql_version | replace('.', '') }}-server
     - postgresql{{ postgresql_version | replace('.', '') }}-contrib
     - postgresql{{ postgresql_version | replace('.', '') }}-libs
-    # psycopg is essential for ansible postgres modules, so installed here
     - python-psycopg2
 
 ...

@@ -21,6 +21,7 @@ suvk2-db2
 alfresco-db-1
 suvk2-kd-std
 asumb-db-1
+centos7-test
 
 [oracle]
 omega1
@@ -42,3 +43,4 @@ misc
 proxy_ip=192.168.154.42:48080
 zabbix_server=192.168.154.145
 smtp_server=192.168.155.219
+postgresql_version=9.6
