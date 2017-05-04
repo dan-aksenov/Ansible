@@ -1,3 +1,5 @@
+---
+
 - name: get ip if dynamic
   shell: ip addr | grep dynamic | cut -d " " -f 6 | cut -d "/" -f 1 
   register: host_ip 
@@ -22,3 +24,5 @@
 - name: Reminder
   debug:
      msg: Do not forget to exclude "{{ host_ip.stdout }}" from dhcp!
+
+...

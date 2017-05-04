@@ -22,6 +22,10 @@
     hour: "23"
     job: "pgbadger -Z '+03' -I -O /var/lib/pgsql/badger/ /var/lib/pgsql/{{ postgresql_version }}/data/pg_log/postgresql*.log &>/tmp/pgbadger.log"
 
+- name: Reminder
+  debug:
+     msg: Keep in mind. postgresql.conf must be configured correctly to work with badger!
+
 ...
 
 
