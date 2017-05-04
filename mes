@@ -2,16 +2,14 @@
 pg-barman
 suvk2-kd-std
 
-[suvk2-kd]
+[misc]
 suvk2-kd
+forsazhtestdb1
+moe-lkk-db
 
 [frsg-lkk-db]
 frsg-lkk-db1
 frsg-lkk-db2
-forsazhtestdb1
-
-[moe-lkk-db]
-moe-lkk-db
 
 [asumb]
 asumb-db-01
@@ -20,9 +18,8 @@ asumb-web-01
    
 [postgres:children]
 frsg-lkk-db
-moe-lkk-db
-suvk2-kd
 asumb
+misc
 
 [postgres:vars]
 proxy_ip=10.197.72.239:8080
