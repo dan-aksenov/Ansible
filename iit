@@ -44,3 +44,4 @@ proxy_ip=192.168.154.42:48080
 zabbix_server=192.168.154.145
 smtp_server=192.168.155.219
 postgresql_version=9.6
+rsyslog_server=192.168.155.224
