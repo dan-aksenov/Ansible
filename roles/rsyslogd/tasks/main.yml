@@ -1,0 +1,6 @@
+---
+
+- include: client_setup.yml
+  tags: rsyslog_client
+
+...

@@ -1,0 +1,14 @@
+---
+
+- name: Ensure rsyslog package is installed.
+  yum: name={{ item }}
+  with_items:
+      - rsyslog
+
+- name: Forward logs to syslog servers.
+  template: owner=root group=root mode=644
+            src=rsyslog_client.conf
+            dest=/etc/rsyslog.d/rsyslog_client.conf
+  notify: restart rsyslog  
+
+...
