@@ -1,4 +1,5 @@
 --- 
+
 # Basic settings
 el_version: 7
 postgresql_version: 9.5
