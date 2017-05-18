@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pgver=9.6
+pgver='9.6'
 
 clear
 
@@ -17,4 +17,4 @@ read -p "Install and configure postgresql 9.6."
 ansible-playbook -i test pg_main.yml --extra-vars "postgresql_version=$pgver"
 
 read -p "Install postgresql's optional extensions."
-ansible-playbook -i test pg_main.yml --tags oracle_client, oracle_fdw, pgbadger --extra-vars "postgresql_version=$pgver"
+ansible-playbook -i test pg_misc.yml --tags oracle_fdw,pgbadger --extra-vars "postgresql_version=$pgver"
