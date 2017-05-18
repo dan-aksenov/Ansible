@@ -11,5 +11,6 @@
 - postgresql_ext:
     name: pg_wait_sampling
     db: postgres
+  when: postgresql_version == '9.6'
 
 ...
