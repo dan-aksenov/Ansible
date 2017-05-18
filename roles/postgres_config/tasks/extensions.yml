@@ -8,4 +8,8 @@
     name: pg_stat_statements
     db: postgres
 
+- postgresql_ext:
+    name: pg_wait_sampling
+    db: postgres
+
 ...
