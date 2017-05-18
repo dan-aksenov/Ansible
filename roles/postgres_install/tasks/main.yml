@@ -6,4 +6,6 @@
 - include: install_langs.yml
   tags: pg_install_langs
 
+- include: pg_wait_sampling.yml
+  tags: pg_wait_sampling
 ...

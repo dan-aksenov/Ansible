@@ -6,11 +6,9 @@
 
   roles:
       - pgagent
-      - pgbouncer
       - oraclefdw
       - plpgsql_check
       - barman
-      - pgbadger
 
   vars:
      local_path: "{{ lookup('env','PATH') }}"

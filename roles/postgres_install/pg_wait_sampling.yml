@@ -1,0 +1,13 @@
+---
+
+- name: Git clone pg_wait_sampling.
+  git: repo=https://github.com/postgrespro/pg_wait_sampling.git
+       dest=/tmp/oracle_fdw
+       update=yes
+
+- name: Make pg_wait_sampling.
+  shell: make USE_PGXS=1 && make USE_PGXS=1 install 
+  args:
+    chdir: /tmp/oracle_fdw
+
+...
