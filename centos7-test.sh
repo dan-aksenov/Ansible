@@ -2,6 +2,8 @@
 
 pgver=9.6
 
+clear
+
 read -p "Initialize default ansible user (root password will be prompted)."
 ansible-playbook -i test init.yml --ask-pass
 
