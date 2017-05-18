@@ -3,8 +3,6 @@
 - name: "Install postgresql packages"
   yum: 
     state: latest
-    #enablerepo: "pgdg{{ postgresql_version | replace('.', '') }}"
-    #disablerepo: '*' 
     pkg: "{{ item }}"
   with_items:
     - postgresql{{ postgresql_version | replace('.', '') }}
