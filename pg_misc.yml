@@ -12,4 +12,10 @@
       - barman
       - pgbadger
 
+  vars:
+     local_path: "{{ lookup('env','PATH') }}"
+
+  environment:
+    PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
+
 ...
