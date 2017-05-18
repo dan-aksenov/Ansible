@@ -4,4 +4,8 @@
     name: pg_buffercache
     db: postgres
 
+- postgresql_ext:
+    name: pg_stat_statements
+    db: postgres
+
 ...
