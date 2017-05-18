@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pgver='9.6'
+pgver=9.6
 
 clear
 
