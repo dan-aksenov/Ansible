@@ -1,20 +1,6 @@
-- name: git clone plpgsql_check  
-  git: repo=https://github.com/okbob/plpgsql_check
-       dest=~/src/plpgsql_check
-       update=yes
+---
 
-- name: make it 
-  shell: make && make install 
-  args:
-    chdir: ~/src/plpgsql_check
+- include: install.yml
+  tags: plpgsql_check
 
-- name: create extension
-  postgresql_ext:
-    name: plpgsql_check
-    db: postgres
-  become_user: postgres
-
-#- name: create extension
- # shell: psql -U postgres -c "CREATE EXTENSION plpgsql_check"
-  #become_user: postgres
-
+...
