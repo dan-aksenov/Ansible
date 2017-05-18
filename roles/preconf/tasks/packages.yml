@@ -11,6 +11,7 @@
       - sysstat
       - hdparm
       - atop
+      - gcc
       - lshw
       - tmux
       - strace
