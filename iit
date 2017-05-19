@@ -1,5 +1,3 @@
-ax-nix-ws
-
 [misc]
 jira7-app-1
 jira7-app-test
@@ -9,6 +7,9 @@ alfresco
 [nlb-ensb]
 nlb-ensb1
 nlb-ensb2
+EX-NLB1
+EX-NLB2
+ora-traffic
 
 [postgres]
 pg-test-dev
@@ -21,6 +22,7 @@ alfresco-db-1
 suvk2-kd-std
 asumb-db-1
 centos7-test
+ax-nix-ws
 
 [oracle]
 omega1
@@ -37,6 +39,7 @@ asumb
 oracle
 postgres
 misc
+nlb-ensb
 
 [iit:vars]
 proxy_ip=192.168.154.42:48080
