@@ -17,6 +17,10 @@
     role_attr_flags: SUPERUSER,REPLICATION
   become_user: postgres   
 
+- name: Edit hba.conf for postgres. fix this with general postgresql.conf
+  lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host all postgres {{ barman_server  }} md5'
+  tags: barman_hba 
+
 - name: Edit hba.conf for barman.
   lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host all barman {{ barman_server  }} md5'
   tags: barman_hba 
