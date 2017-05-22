@@ -1,9 +1,10 @@
 ---
 
 - include: db_server_conf.yml
-  tags: barman_client
+  tags: barman
 
 - include: barman_server_conf.yml
-  tags: barman_server
+  tags: barman
+  delegate_to: pg-barman
 
 ...
