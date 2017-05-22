@@ -2,6 +2,7 @@
 
 - name: add barman user pub_key
   authorized_key: user=postgres key="{{ lookup('file', '/home/dbax/localrepo/barman_key') }}"
+#"
 
 - name: Add barman db user.
   postgresql_user:
@@ -28,10 +29,6 @@
 - name: Edit hba.conf for streaming_barman. Can it be redone with md5?
   lineinfile: dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf line='host replication streaming_barman {{ barman_server  }} trust'
   tags:  barman_hba
-
-- name: Reminder
-  debug:
-      msg: PostgreSQL WAL archiving and replication is in initial postgres config role.
 
 - name: Create directory for postgresql scripts
   file: 
