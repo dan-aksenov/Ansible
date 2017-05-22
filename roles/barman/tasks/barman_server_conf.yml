@@ -1,9 +1,5 @@
 ---
 
-- name: Reminder
-  debug:
-     msg: postgresql server name should be supplied via --extra-vars "pg_server="
-
 - name: config file for new backup client
   template:
     src: pg_server.conf.j2 
