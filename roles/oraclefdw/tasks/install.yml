@@ -1,5 +1,9 @@
 ---
 
+- name: Reminder.
+  debug:
+     msg: Dependencies in playbook not working correctly(ansible issue 13406). Need to install oracle clent by hands!
+
 - name: Git clone oraclefdw. 
   git: repo=https://github.com/laurenz/oracle_fdw
        dest=~/src/oracle_fdw
