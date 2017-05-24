@@ -1,15 +1,5 @@
 ---
 
-- name: Add oracle library.
-  lineinfile:
-    dest: "/etc/ld.so.conf.d/oracle.conf"
-    state: present
-    line: "/usr/lib/oracle/11.2/client64/lib"
-    create: yes
-
-- name: Run ldconfig to register libs.
-  shell: ldconfig
-
 - name: Git clone oraclefdw. 
   git: repo=https://github.com/laurenz/oracle_fdw
        dest=~/src/oracle_fdw
