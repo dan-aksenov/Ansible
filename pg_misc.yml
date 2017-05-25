@@ -9,6 +9,7 @@
       - oraclefdw
       - plpgsql_check
       - barman
+      - pg_dumps
 
   vars:
      local_path: "{{ lookup('env','PATH') }}"

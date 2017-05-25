@@ -1,0 +1,17 @@
+---
+
+- name: Installing nfs packages
+  yum: name={{ item }}
+  with_items:
+      - nfs-utils
+
+- name: Mount backup share.
+  mount:
+    path: /mnt/barman
+    src: 192.168.155.224:/var/lib/pgsql/dumps
+    fstype: nfs
+    opts: rw
+    state: mounted
+
+
+...
