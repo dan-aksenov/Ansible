@@ -1,6 +1,6 @@
 ---
 
 dependencies:
-  - { role: 'oracle_client', tags: 'oracle_client' }
+  - { role: 'oracleclient', tags: 'oracle_client' }
 
 ...
