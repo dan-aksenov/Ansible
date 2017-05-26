@@ -25,5 +25,6 @@
       - ntp
       - mlocate
       - glances
+      - lsof
 
 ...

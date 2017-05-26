@@ -11,6 +11,7 @@ nlb-ensb2
 EX-NLB1
 EX-NLB2
 ora-traffic
+openvpn1
 
 [postgres]
 pg-test-dev
