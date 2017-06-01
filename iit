@@ -24,6 +24,8 @@ suvk2-kd-std
 asumb-db-1
 centos7-test
 ax-nix-ws
+pg1
+pg2
 
 [oracle]
 omega1
