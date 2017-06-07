@@ -1,0 +1,28 @@
+---
+
+- name: get ip if dynamic
+  shell: ip addr | grep dynamic | cut -d " " -f 6 | cut -d "/" -f 1 
+  register: host_ip 
+
+- debug: msg="{{ host_ip.stdout }}"
+
+- name: get interface name 
+  shell: ip addr | grep dynamic | cut -d " " -f 12
+  register: if_name
+
+- name: Quit if no dynamic ips found. //Improve?
+  fail: msg="No dynamically assigned ips found. Nothing to do."
+  when: host_ip.stdout == "" 
+
+- name: Setup static ip from dhcp assigned.
+  template: owner=root group=root mode=644 
+            src=ifcfg-interface 
+            dest=/etc/sysconfig/network-scripts/ifcfg-{{ if_name.stdout }}
+            backup=yes
+  notify: restart network
+ 
+- name: Reminder
+  debug:
+     msg: Do not forget to exclude "{{ host_ip.stdout }}" from dhcp!
+
+...

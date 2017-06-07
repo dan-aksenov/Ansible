@@ -4,6 +4,7 @@ jira7-app-test
 alfresco-app-1
 alfresco
 sonarqube-1
+paypal-app
 
 [nlb-ensb]
 nlb-ensb1
@@ -26,6 +27,7 @@ centos7-test
 ax-nix-ws
 pg1
 pg2
+paypal-db
 
 [oracle]
 omega1
