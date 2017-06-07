@@ -14,7 +14,7 @@
     - atop
     - postfix
     - journald
-    - static_ip
+    - network
     - journald
     - ntpd
 #    - rsyslogd
