@@ -3,4 +3,7 @@
 - include: setup_static_ip.yml
   tags: static_ip
 
+- include: setup_routes.yml
+  tags: routes
+
 ...
