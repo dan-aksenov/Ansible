@@ -1,18 +1,18 @@
 ---
 
-- name: get ip if dynamic
-  shell: ip addr | grep dynamic | cut -d " " -f 6 | cut -d "/" -f 1 
-  register: host_ip 
+#- name: get ip if dynamic
+#  shell: ip addr | grep dynamic | cut -d " " -f 6 | cut -d "/" -f 1 
+#  register: host_ip 
 
-- debug: msg="{{ host_ip.stdout }}"
+#- debug: msg="{{ host_ip.stdout }}"
 
-- name: get interface name 
-  shell: ip addr | grep dynamic | cut -d " " -f 12
-  register: if_name
+#- name: get interface name 
+#  shell: ip addr | grep dynamic | cut -d " " -f 12
+#  register: if_name
 
-- name: Quit if no dynamic ips found. //Improve?
-  fail: msg="No dynamically assigned ips found. Nothing to do."
-  when: host_ip.stdout == "" 
+#- name: Quit if no dynamic ips found. //Improve?
+#  fail: msg="No dynamically assigned ips found. Nothing to do."
+#  when: host_ip.stdout == "" 
 
 - name: Setup static ip from dhcp assigned.
   template: owner=root group=root mode=644 
