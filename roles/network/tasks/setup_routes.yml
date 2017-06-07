@@ -1,10 +1,15 @@
 ---
 
-- name: Set route file for default interface
-  template: owner=root group=root mode=644 
-            src=route-interface 
-            dest=/etc/sysconfig/network-scripts/route-{{ ansible_default_ipv4.interface }}
-            backup=yes
-  notify: restart network
- 
+- name: Set route file for default interface. not yet implementes
+#  template: owner=root group=root mode=644 
+#            src=route-interface 
+#            dest=/etc/sysconfig/network-scripts/route-{{ ansible_default_ipv4.interface }}
+#            backup=yes
+#  notify: restart network
+
+- name: Set specific routes for default interface. temporary solution
+  lineinfile:
+    path: /etc/sysconfig/network-scripts/route-{{ ansible_default_ipv4.interface }}
+    line: '192.168.192.0/24 via 192.168.154.178'
+
 ...

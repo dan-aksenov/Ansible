@@ -1,12 +1,12 @@
 # configured via ansible
 BOOTPROTO="none"
-DEVICE="{{ if_name.stdout }}"
+DEVICE="{{ ansible_default_ipv4.interface }}"
 ONBOOT=yes
 TYPE=Ethernet
-IPADDR="{{ host_ip.stdout }}"
-NETMASK="{{ netmask }}" 
+IPADDR="{{ ansible_default_ipv4.address }}"
+NETMASK="{{ ansible_default_ipv4.netmask }}" 
 GATEWAY="{{ gateway }}" 
 DNS1="{{ dns }}"
 DOMAIN="{{ domain }}"
 NM_CONTROLLED=no
-NAME="{{ if_name.stdout }}"
+NAME="{{ ansible_default_ipv4.interface }}"
