@@ -1,6 +1,6 @@
 ---
 
-- name: Set route file for default interface. not yet implementes
+#- name: Set route file for default interface. not yet implementes
 #  template: owner=root group=root mode=644 
 #            src=route-interface 
 #            dest=/etc/sysconfig/network-scripts/route-{{ ansible_default_ipv4.interface }}
