@@ -6,7 +6,7 @@ alfresco
 sonarqube-1
 paypal-app
 
-[nlb-ensb]
+[network]
 nlb-ensb1
 nlb-ensb2
 EX-NLB1
@@ -44,7 +44,7 @@ asumb
 oracle
 postgres
 misc
-nlb-ensb
+network
 
 [iit:vars]
 proxy_ip=192.168.154.42:48080
