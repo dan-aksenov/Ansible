@@ -1,7 +1,7 @@
 ---
 
 - name: add barman user pub_key
-  authorized_key: user=postgres key="{{ lookup('file', '/home/dbax/localrepo/barman_key') }}"
+  authorized_key: user=postgres key="{{ lookup('file', '~/localrepo/barman_key') }}"
 #"
 
 - name: Add barman db user.
