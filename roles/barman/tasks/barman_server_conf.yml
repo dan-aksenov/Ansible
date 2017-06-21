@@ -1,6 +1,6 @@
 ---
 
-- name: config file for new backup client
+- name: Config file for new backup client
   template:
     src: pg_server.conf.j2 
     dest: "/etc/barman.d/{{ ansible_hostname }}.conf"
