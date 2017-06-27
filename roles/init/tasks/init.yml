@@ -12,9 +12,10 @@
   authorized_key: user={{ my_ansible_user }} key="{{ lookup('file', '/home/{{ my_ansible_user }}/.ssh/id_rsa.pub') }}"
   tags: key-lin
 
-- name: add my ansible user pub_key for Windows Ws
-  authorized_key: user={{ my_ansible_user }} key="{{ lookup('file', '/home/{{ my_ansible_user }}/localrepo/my_key_win') }}"
-  tags: key-win
+# This section commented for now. Possibly to be deleted.
+#- name: add my ansible user pub_key for Windows Ws
+#  authorized_key: user={{ my_ansible_user }} key="{{ lookup('file', '/home/{{ my_ansible_user }}/localrepo/my_key_win') }}"
+#  tags: key-win
 
 - name: configure sudoers
   template:
