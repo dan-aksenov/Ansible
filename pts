@@ -1,1 +1,5 @@
+[pts]
 pts-tst-brm1
+
+[pts:vars]
+my_ansible_user=ansible
