@@ -1,5 +1,5 @@
 ---
 
-my_ansible_user: dbax
+my_ansible_user: ansible
 
 ...
