@@ -1,15 +1,15 @@
 ---
 
 - include: repos.yml
-  tags: preconf
+  tags: repos
 
 - include: hostname.yml
   tags: hostname 
 
 - include: packages.yml
-  tags: preconf
+  tags: packages
 
 - include: targets.yml
-  tags: preconf
+  tags: runlevels
 
 ...
