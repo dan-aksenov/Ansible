@@ -15,7 +15,6 @@
     - postfix
     - journald
     - network
-    - journald
     - ntpd
 #    - rsyslogd
 #    - sshd
