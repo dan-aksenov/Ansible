@@ -1,0 +1,13 @@
+[tomcat]
+skpdi
+
+[postgres]
+mo-ghkh-dev
+
+[skpdi:children]
+postgres
+tomcat
+
+[skpdi:vars]
+my_ansible_user=ansible
+zabbix_server=oemcc.fors.ru
