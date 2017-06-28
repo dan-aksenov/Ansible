@@ -1,5 +1,8 @@
 ---
 
+- include: repository.yml
+  tags: repository
+                  
 - include: users.yml
   tags: users
 
