@@ -1,5 +1,6 @@
 ---
 
 ntp_server: dc3
+t_zone: Europe/Moscow
 
 ...
