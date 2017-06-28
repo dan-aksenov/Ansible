@@ -1,13 +1,9 @@
 ---
 
-- name: Database var converted to a list
-  debug: var="{{ item }}" 
-  with_items: "{{ ansible_distirbution_version }}.split('.')"
-
-#- name: Install repository package.
-#  shell: yum localinstall -y https://download.ceph.com/rpm/el6/noarch/ceph-release-1-0.el6.noarch.rpm
-  #yum: 
-  #  state: present
-  #  name: http://repo.zabbix.com/zabbix/2.4/rhel/7/x86_64/zabbix-release-2.4-1.el7.noarch.rpm
+- name: Install repository package.
+  #shell: yum localinstall -y https://download.ceph.com/rpm/el{{ ansible_distribution_major_version }}/noarch/ceph-release-1-0.el6.noarch.rpm
+  yum: 
+    state: present
+    name: https://download.ceph.com/rpm/el{{ ansible_distribution_major_version }}/noarch/ceph-release-1-0.el6.noarch.rpm
 
 ...
