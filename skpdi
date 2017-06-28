@@ -4,10 +4,10 @@ skpdi
 [postgres]
 mo-ghkh-dev
 
-[skpdi:children]
+[all:children]
 postgres
 tomcat
 
-[skpdi:vars]
+[all:vars]
 my_ansible_user=ansible
 zabbix_server=oemcc.fors.ru
