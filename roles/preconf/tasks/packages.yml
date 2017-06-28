@@ -20,8 +20,8 @@
       - make
       - rpm-build
 #      - python2-devel
-#      - libselinux-python
-#      - python-setuptools
+      - libselinux-python
+      - python-setuptools
       - ntp
       - mlocate
       - glances
