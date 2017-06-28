@@ -2,7 +2,7 @@
 
 - name: Database var converted to a list
   debug: var="{{ item }}" 
-  with_items: "ansible_distirbution_version.split('.')"
+  with_items: "{{ ansible_distirbution_version }}.split('.')"
 
 #- name: Install repository package.
 #  shell: yum localinstall -y https://download.ceph.com/rpm/el6/noarch/ceph-release-1-0.el6.noarch.rpm
