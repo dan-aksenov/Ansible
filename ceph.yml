@@ -1,7 +1,8 @@
 ---
 
 - hosts: all
-  user: ansible 
+  user: "{{ my_ansible_user }}" 
+  become: yes 
 
   roles:
     - ceph
