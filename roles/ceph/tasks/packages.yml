@@ -1,0 +1,9 @@
+---
+
+- name: Installing packages
+  yum: name={{ item }}
+  with_items:
+      - ceph
+#     - ntp,ntpdate must be installed in another role
+
+...
