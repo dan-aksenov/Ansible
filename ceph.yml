@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  user: ansible 
+
+  roles:
+    - ceph
+
+...
