@@ -4,9 +4,15 @@ skpdi
 [postgres]
 mo-ghkh-dev
 
+[ceph]
+ceph01
+ceph02
+ceph03
+
 [all:children]
 postgres
 tomcat
+ceph
 
 [all:vars]
 my_ansible_user=ansible
