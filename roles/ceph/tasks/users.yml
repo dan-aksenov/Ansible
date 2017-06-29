@@ -18,4 +18,13 @@
 - name: Add ceph_deploy_user pub_key.
   authorized_key: user={{ ceph_deploy_user }} key="{{ lookup('file', '~/localrepo/ceph-deploy-key') }}"
 
+- name: Configure sudoers.
+  template:
+    src: sudoers.d.j2
+    dest: "/etc/sudoers.d/{{ ceph_deploy_user }}"
+    owner: root
+    group: root
+    mode: 0644
+    validate: 'visudo -cf %s'
+         
 ...
