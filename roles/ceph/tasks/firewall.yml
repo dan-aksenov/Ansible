@@ -1,0 +1,11 @@
+---
+
+- name: Add firewall exception. If firewall is on.
+  firewalld: service=ceph-mon permanent=true state=enabled immediate=yes
+#  ignore_errors: yes
+
+- name: Add firewall exception. If firewall is on.
+  firewalld: service=ceph permanent=true state=enabled immediate=yes
+#  ignore_errors: yes
+
+...
