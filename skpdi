@@ -18,3 +18,4 @@ ceph
 my_ansible_user=ansible
 zabbix_server=oemcc.fors.ru
 ntp_server=ntp.fors.ru
+proxy_ip=cache.fors.ru:3128
