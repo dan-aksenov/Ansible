@@ -5,6 +5,9 @@
 
 - include: packages.yml
   tags: packages
+
+- include: firewall.yml
+  tags: firewall
                   
 #- include: users.yml
 #  tags: users

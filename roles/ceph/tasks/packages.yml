@@ -4,6 +4,7 @@
   yum: name={{ item }}
   with_items:
       - ceph
+      - ceph-deploy
 #     - ntp,ntpdate must be installed in another role
 
 ...
