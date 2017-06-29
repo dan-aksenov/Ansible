@@ -1,7 +1,7 @@
 ---
 
 - name: Install repository package.
-  shell: yum -y https://download.ceph.com/rpm/el{{ ansible_distribution_major_version }}/noarch/ceph-release-1-0.el6.noarch.rpm
+  shell: yum install -y https://download.ceph.com/rpm/el{{ ansible_distribution_major_version }}/noarch/ceph-release-1-0.el6.noarch.rpm
   #yum: 
   #  state: present
   #  name: https://download.ceph.com/rpm/el{{ ansible_distribution_major_version }}/noarch/ceph-release-1-0.el6.noarch.rpm
