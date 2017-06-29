@@ -1,2 +1,5 @@
 ---
+
+ceph_deploy_user: ceph-deploy
+
 ...

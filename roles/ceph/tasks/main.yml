@@ -9,7 +9,7 @@
 - include: firewall.yml
   tags: firewall
                   
-#- include: users.yml
-#  tags: users
+- include: users.yml
+  tags: users
 
 ...
