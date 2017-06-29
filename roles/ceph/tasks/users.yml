@@ -1,5 +1,10 @@
 ---
 
-# create user here
+- name: Add Ceph deploy user.
+  user: name="{{ ceph_deploy_user }}"
+        createhome=yes
+        home="/home/{{ ceph_deploy_user }}"
+        state=present
+        generate_ssh_key=yes
 
 ...
