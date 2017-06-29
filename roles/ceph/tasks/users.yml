@@ -14,6 +14,6 @@
     validate_checksum: yes
 
 - name: Add ceph_deploy_user pub_key.
-  authorized_key: user={{ ceph_deploy_user }} key="{{ lookup('file', '/tmp/ceph_pub_key/*/home/{{ ceph_deploy_user }}/.ssh/id_rsa.pub') }}"
+  authorized_key: user={{ ceph_deploy_user }} key="/tmp/ceph_pub_key/*/home/{{ ceph_deploy_user }}/.ssh/id_rsa.pub'"
 
 ...
