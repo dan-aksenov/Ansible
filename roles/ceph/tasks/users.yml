@@ -15,6 +15,6 @@
 #    host: "{{ ceph-deploy-server }}"
 
 - name: Add ceph_deploy_user pub_key.
-  authorized_key: user={{ ceph_deploy_user }} key="{{ lookup('file', '~/localrepo/ceph-ceph-deploy-key') }}"
+  authorized_key: user={{ ceph_deploy_user }} key="{{ lookup('file', '~/localrepo/ceph-deploy-key') }}"
 
 ...
