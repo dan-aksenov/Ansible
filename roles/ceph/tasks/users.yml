@@ -12,7 +12,7 @@
     src: /home/{{ ceph_deploy_user }}/.ssh/id_rsa.pub
     dest: /tmp/ceph_pub_key
     validate_checksum: yes
-  host: {{ ceph-deploy-server }}
+  host: "{{ ceph-deploy-server }}"
 
 - name: Add ceph_deploy_user pub_key.
   authorized_key: user=postgres key="{{ lookup('file', '~/localrepo/ceph-deploy-key') }}"
