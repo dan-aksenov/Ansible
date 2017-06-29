@@ -2,6 +2,7 @@
 
 - name: Add Ceph deploy user.
   user: name="{{ ceph_deploy_user }}"
+        groups=wheel
         createhome=yes
         home="/home/{{ ceph_deploy_user }}"
         state=present
