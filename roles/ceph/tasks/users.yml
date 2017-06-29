@@ -26,5 +26,14 @@
     group: root
     mode: 0644
     validate: 'visudo -cf %s'
+
+- name: http_proxy
+  lineinfile: dest=/home/{{ ceph_deploy_user }}/.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
+  tags: proxy_bash_profile
+
+- name: https_proxy
+  lineinfile: dest=/home/{{ ceph_deploy_user }}/.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
+  tags: proxy_bash_profile
+
          
 ...
