@@ -15,6 +15,8 @@
   with_items:
     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
   when: ansible_distribution == 'OracleLinux'
+  environment:
+    https_proxy: http://{{ proxy_ip }}
 
 - name: Enable Optional repo on OL
   yum_repository:
