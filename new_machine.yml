@@ -7,12 +7,12 @@
   roles:
     - preconf
     - selinux
-#    - tii_user
+   #- tii_user
     - yum-update
-#    - yum-cron
+   #- yum-cron
     - zabbix-agent
     - atop
-    - postfix
+   #- postfix
     - journald
     - network
     - ntpd
