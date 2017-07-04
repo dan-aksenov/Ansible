@@ -18,7 +18,7 @@
   environment:
     https_proxy: http://{{ proxy_ip }}
 
-- name: Enable Optional repo on OL
+- name: Enable Optional repo on OL7
   yum_repository:
     name: ol{{ ansible_distribution_major_version }}_optional_latest 
     description: Oracle Linux $releasever Optional Latest ($basearch)
