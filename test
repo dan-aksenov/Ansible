@@ -1,5 +1,6 @@
 [postgres]
-centos7-test
+db1
+db2
 
 [test:children]
 postgres
@@ -11,3 +12,4 @@ smtp_server=10.197.72.239
 smtp_port=26
 postgresql_version=9.6
 rsyslog_server=192.168.155.224
+my_ansible_user=pi
