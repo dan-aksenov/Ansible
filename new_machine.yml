@@ -9,7 +9,7 @@
     - selinux
 #    - tii_user
     - yum-update
-    - yum-cron
+#    - yum-cron
     - zabbix-agent
     - atop
     - postfix
