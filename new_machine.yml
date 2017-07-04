@@ -14,10 +14,10 @@
     - atop
    #- postfix
     - journald
-    - network
+   #- network
     - ntpd
-#    - rsyslogd
-#    - sshd
+   #- rsyslogd
+   #- sshd
 
 ...
 
