@@ -38,7 +38,7 @@
 - name: ensure pcsd enabled and started
   service: name=pcsd enabled=yes state=started
 
-- name: Authenticate all nodes
+- name: Authenticate all nodes. This is not working yet.
   command: >
     pcs cluster auth
     {% for host in groups[pacemaker_ansible_group] %}
