@@ -17,11 +17,11 @@
       - strace
       - python-pip
       - git
-      - make
-      - rpm-build
+#      - make
+#      - rpm-build
 #      - python2-devel
+#      - python-setuptools
       - libselinux-python
-      - python-setuptools
       - ntp
       - mlocate
       - glances
