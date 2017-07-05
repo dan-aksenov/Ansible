@@ -1,21 +1,35 @@
 ---
 
-- name: git clone mamonsu 
-  git: repo=https://github.com/postgrespro/mamonsu
-       dest=~/src/mamonsu
-       update=yes
+- name: Install repository package.
+  yum: 
+    state: present
+    name: https://packagecloud.io/install/repositories/postgrespro/mamonsu/config_file.repo?os={{ ansible_distribution_name }}&dist={{ ansible_distribution_major_version }}&source=script
+  environment:
+    https_proxy: http://{{ proxy_ip }}
 
-- name: make rpm from source
-  shell: make rpm 
-  args:
-    chdir: ~/src/mamonsu
+#- name: git clone mamonsu 
+#  git: repo=https://github.com/postgrespro/mamonsu
+#       dest=~/src/mamonsu
+#       update=yes
 
-- name: install mamonsu from local file
-  shell: yum localinstall -y mamonsu*.rpm
-  args:
-    chdir: ~/src/mamonsu
-  notify:
-    - restart mamonsu
+#- name: make rpm from source
+#  shell: make rpm 
+#  args:
+#    chdir: ~/src/mamonsu
+
+#- name: install mamonsu from local file
+#  shell: yum localinstall -y mamonsu*.rpm
+#  args:
+#    chdir: ~/src/mamonsu
+#  notify:
+#    - restart mamonsu
+
+- name: Install mamonsu.
+  yum: 
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - mamonsu
 
 - name: Copy agent.conf template 
   template: owner=root group=root mode=644 
