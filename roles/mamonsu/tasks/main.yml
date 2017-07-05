@@ -1,8 +1,5 @@
 ---
 
-#- include: prereqs.yml
-#  tags: mamonsu
-
 - include: install.yml
   tags: mamonsu 
 
