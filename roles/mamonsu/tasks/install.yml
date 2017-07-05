@@ -3,7 +3,7 @@
 - name: Install repository package.
   yum: 
     state: present
-    name: https://packagecloud.io/install/repositories/postgrespro/mamonsu/config_file.repo?os={{ ansible_distribution_name }}&dist={{ ansible_distribution_major_version }}&source=script
+    name: https://packagecloud.io/install/repositories/postgrespro/mamonsu/config_file.repo?os={{ ansible_distribution }}&dist={{ ansible_distribution_major_version }}&source=script
   environment:
     https_proxy: http://{{ proxy_ip }}
 
