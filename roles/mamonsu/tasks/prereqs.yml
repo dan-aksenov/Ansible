@@ -1,0 +1,12 @@
+---
+
+- name: Install required prereqs if not present.
+  yum: name={{ item }}
+  with_items:
+      - make 
+      - rpm-build
+      - python2-devel
+      - python-setuptools
+
+
+...
