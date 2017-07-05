@@ -1,11 +1,15 @@
 ---
 
-- name: Install repository package.
-  yum: 
-    state: present
-    name: https://packagecloud.io/install/repositories/postgrespro/mamonsu/config_file.repo?os={{ ansible_distribution }}&dist={{ ansible_distribution_major_version }}&source=script
-  environment:
-    https_proxy: http://{{ proxy_ip }}
+- name: Enable Optional repo on OL7
+  yum_repository:
+    name: ol{{ ansible_distribution_major_version }}_optional_latest 
+    description: Oracle Linux $releasever Optional Latest ($basearch)
+    #file: public-yum-ol{{ ansible_distribution_major_version }} 
+    baseurl: https://packagecloud.io/install/repositories/postgrespro/mamonsu/config_file.repo?os={{ ansible_distribution }}&dist={{ ansible_distribution_major_version }}&source=script
+    #gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+    #gpgcheck: yes
+    enabled: yes
+  when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version|int >= 7
 
 #- name: git clone mamonsu 
 #  git: repo=https://github.com/postgrespro/mamonsu
