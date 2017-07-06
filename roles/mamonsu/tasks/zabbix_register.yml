@@ -7,7 +7,7 @@
 - name: Create a new of update existing zabbix host. 
   local_action:
     module: zabbix_host
-    server_url: {{ zabbix_url }}
+    server_url: "{{ zabbix_url }}"
     login_user: Admin
     login_password: zabbix
     host_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
