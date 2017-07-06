@@ -1,6 +1,8 @@
 ---
 
-- name: Create a new host or update an existing host's info
+- name: Create a new of update existing zabbix host. 
+  debug:
+    msg: pip install zabbix-api is prerequisite!
   local_action:
     module: zabbix_host
     server_url: http://{{ zabbix_server }}/zabbix
