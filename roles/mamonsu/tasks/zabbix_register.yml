@@ -1,8 +1,10 @@
 ---
 
-- name: Create a new of update existing zabbix host. 
+- name: Reminder.
   debug:
     msg: pip install zabbix-api is prerequisite!
+
+- name: Create a new of update existing zabbix host. 
   local_action:
     module: zabbix_host
     server_url: http://{{ zabbix_server }}/zabbix
