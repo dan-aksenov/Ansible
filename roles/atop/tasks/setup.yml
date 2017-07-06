@@ -13,6 +13,6 @@
       dest: /etc/sysconfig/atop
       regexp: '^INTERVAL='
       line: 'INTERVAL=60'
-  nitify: restart atop
+  notify: restart atop
 
 ...
