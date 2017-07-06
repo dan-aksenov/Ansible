@@ -3,4 +3,7 @@
 - include: install.yml
   tags: mamonsu 
 
+- include: zabbix_register.yml
+  tags: mamonsu
+
 ...
