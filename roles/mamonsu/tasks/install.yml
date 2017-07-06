@@ -6,7 +6,7 @@
     description: postgrespro_mamonsu
     baseurl: https://packagecloud.io/postgrespro/mamonsu/el/{{ ansible_distribution_major_version }}/$basearch
     gpgkey: https://packagecloud.io/postgrespro/mamonsu/gpgkey
-    gpgcheck: yes
+    gpgcheck: no
     enabled: yes
 
 #- name: git clone mamonsu 
