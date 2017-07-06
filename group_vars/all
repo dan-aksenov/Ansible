@@ -1,6 +1,6 @@
 #file: group_var/all
 my_ansible_user: "ansible"
 zabbix_server: "oemcc.fors.ru"
-zabbix_url: http://{{ zabbix_server }}\zabbix321
+zabbix_url: http://{{ zabbix_server }}/zabbix321
 ntp_server: "ntp.fors.ru"
 proxy_ip: "cache.fors.ru:3128"
