@@ -7,18 +7,18 @@
 - name: Create a new of update existing zabbix host. 
   local_action:
     module: zabbix_host
-    server_url: http://{{ zabbix_server }}/zabbix
+    server_url: http://{{ zabbix_server }}/zabbix321
     login_user: Admin
     login_password: zabbix
     host_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
     visible_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
-    #host_groups:
-    #  - Linux servers
-    #  - postgresql
+    host_groups:
+      - Linux servers
+      - postgresql
     link_templates:
-      - "Template OS Linux"
-      - "PostgreSQL-Template"
-      - "PostgresPro-Linux"
+      - Template OS Linux
+      - PostgreSQL-Template
+      - PostgresPro-Linux
     status: enabled
     state: present
     inventory_mode: automatic
