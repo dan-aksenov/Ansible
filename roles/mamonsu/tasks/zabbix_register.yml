@@ -22,7 +22,7 @@
       - type: 1
         main: 1
         useip: 1
-        ip: {{ ansible_default_ipv4.interface }}
+        ip: "{{ ansible_default_ipv4.interface }}"
         dns: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
         port: 10050
      # - type: 4
