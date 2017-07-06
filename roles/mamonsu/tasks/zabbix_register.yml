@@ -16,9 +16,9 @@
     #  - Linux servers
     #  - postgresql
     link_templates:
-      - Template OS Linux
-      - PostgreSQL-Template
-      - PostgresPro-Linux
+      - "Template OS Linux"
+      - "PostgreSQL-Template"
+      - "PostgresPro-Linux"
     status: enabled
     state: present
     inventory_mode: automatic
