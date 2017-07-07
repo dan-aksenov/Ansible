@@ -2,7 +2,6 @@
 
 - include: postgresql_conf.yml
   tags: pgbadger
-  notify: reload postgres
 
 - include: pgbadger_install.yml
   tags: pgbadger
