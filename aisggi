@@ -1,2 +1,5 @@
 [aisggi_all]
 aisggi
+
+[fors:children]
+aisggi_all
