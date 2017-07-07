@@ -5,4 +5,7 @@
     name: httpd
     state: restarted
 
+- name: reload postgres
+  service: name=postgresql-{{ postgresql_version }} state=reloaded
+
 ...
