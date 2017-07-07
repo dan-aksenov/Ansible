@@ -1,5 +1,12 @@
 ---
 
+- name: Install barman software.
+  yum:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - barman
+
 - name: Barman sever. Config file for new backup client
   template:
     src: pg_server.conf.j2 
@@ -13,6 +20,7 @@
     dest: "/var/lib/barman/.pgpass"
     state: present
     line: '{{ ansible_hostname }}:5432:postgres:barman:{{ barman_password }}'
+#'
 
 - name: Barman sever. Add streaming_barman password to pgpass.
   lineinfile:
