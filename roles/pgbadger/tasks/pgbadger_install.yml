@@ -42,9 +42,4 @@
   shell: pgbadger -Z '+03' -I -O /var/www/badger/ /var/lib/pgsql/{{ postgresql_version }}/data/pg_log/postgresql*.log
   become_user: postgres
 
-- name: Reminder.
-  debug:
-     msg: Keep in mind. postgresql.conf must be configured correctly to work with badger!
-
 ...
-
