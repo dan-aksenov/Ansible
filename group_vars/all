@@ -1,5 +1,6 @@
 #file: group_var/all
 my_ansible_user: "ansible"
+barman_server: 172.19.1.137/16
 zabbix_server: "oemcc.fors.ru"
 zabbix_url: http://{{ zabbix_server }}/zabbix321
 ntp_server: "ntp.fors.ru"
