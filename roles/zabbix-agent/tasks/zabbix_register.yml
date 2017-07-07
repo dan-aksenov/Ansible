@@ -14,11 +14,8 @@
     visible_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
     host_groups:
       - Linux servers
-      - postgresql
     link_templates:
       - Template OS Linux
-      - PostgreSQL-Template
-      - PostgresPro-Linux
     status: enabled
     state: present
     inventory_mode: automatic
@@ -29,12 +26,5 @@
         ip: "{{ ansible_default_ipv4.address }}"
         dns: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
         port: 10050
-     # - type: 4
-     #   main: 1
-     #   useip: 1
-     #   ip: 10.xx.xx.xx
-     #   dns: ""
-     #   port: 12345
-    #proxy: a.zabbix.proxy
 
 ...
