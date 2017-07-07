@@ -5,6 +5,6 @@
 
 - include: barman_server_conf.yml
   tags: barman
-  delegate_to: pg-barman
+  delegate_to: {{ barman_host }}
 
 ...
