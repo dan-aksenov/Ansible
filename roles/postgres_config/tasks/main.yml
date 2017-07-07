@@ -6,8 +6,8 @@
 - include: postgresql_conf.yml
   tags: postgresql_conf
 
-#- include: postgresql_conf_log.yml
-#  tags: postgresql_conf_log
+#- include: postgresql_log_conf.yml
+#  tags: postgresql_log_conf
 
 - include: pg_hba_conf.yml
   tags: pg_hba_conf
