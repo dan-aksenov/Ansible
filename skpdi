@@ -9,7 +9,7 @@ ceph01
 ceph02
 ceph03
 
-[all:children]
+[fors:children]
 postgres
 tomcat
 ceph
