@@ -13,7 +13,7 @@ pts-tst-db2c
 pts-tst-db3n
 pts-tst-db4n
 
-[pts:children]
+[fors:children]
 postgres
 tomcat
 misc
