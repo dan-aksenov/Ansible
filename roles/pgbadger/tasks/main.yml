@@ -1,5 +1,8 @@
 ---
 
+- include: postgresql_conf.yml
+  tags: pgbadger
+
 - include: pgbadger_install.yml
   tags: pgbadger
 
