@@ -2,7 +2,7 @@
 
 - name: Reminder.
   debug:
-    msg: pip install zabbix-api on ansible host is prerequisite!
+    msg: pip install zabbix-api on ansible host is prerequisite! Also mamonsu template must be present in zabbix server.
 
 - name: Create new of update existing zabbix host. 
   local_action:
