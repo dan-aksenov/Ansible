@@ -1,4 +1,5 @@
 ---
+
 galaxy_info:
   author: dbax
   license: GPLv3
@@ -10,4 +11,7 @@ galaxy_info:
   - name: Centos
   categories:
   - clustering
+  - pacemacker
 dependencies: []
+
+...
