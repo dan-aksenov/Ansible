@@ -11,7 +11,7 @@
   yum_repository:
     name: postgrespro_mamonsu
     description: postgrespro_mamonsu
-    name: http://repo.zabbix.com/zabbix/3.4/rhel/{{ ansible_distribution_major_version }}/$basearch/
+    baseurl: http://repo.zabbix.com/zabbix/3.4/rhel/{{ ansible_distribution_major_version }}/$basearch/
     #gpgkey: https://packagecloud.io/postgrespro/mamonsu/gpgkey
     gpgcheck: yes
     enabled: yes
