@@ -17,3 +17,7 @@ zabbix_url: http://{{ zabbix_server }}/zabbix321
 #misc configs
 ntp_server: "ntp.fors.ru"
 proxy_ip: "cache.fors.ru:3128"
+
+#posftix settings
+postfix_relayhost: smtp.gmail.com
+postfix_relayhost_port: 587
