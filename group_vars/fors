@@ -21,3 +21,5 @@ proxy_ip: "cache.fors.ru:3128"
 #posftix configs
 postfix_relayhost: "smtp.gmail.com"
 postfix_relayhost_port: "587"
+postfix_mailer_user: "ods.mailer"
+postfix_mailer_user_password: "not now..." 

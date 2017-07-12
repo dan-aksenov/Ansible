@@ -1,6 +1,9 @@
 ---
 
 - include: configure_postfix.yml
-  tags: postfix
+  tags: postfix_setup
+
+- include: mailer_google.yml
+  tags: postfix_auth
 
 ...
