@@ -1,23 +1,23 @@
-#file: group_var/all
+#file: group_var/fors
 
 # ansible config
 my_ansible_user: "ansible"
 
 #postgresql configs
-postgresql_version: 9.5
+postgresql_version: "9.5"
 
 #barman config
-barman_server: 172.19.1.137/16
-barman_host: pts-tst-brm1
+barman_server: "172.19.1.137/16"
+barman_host: "pts-tst-brm1"
 
 #zabbix configs
 zabbix_server: "oemcc.fors.ru"
-zabbix_url: http://{{ zabbix_server }}/zabbix321
+zabbix_url: "http://{{ zabbix_server }}/zabbix321"
 
 #misc configs
 ntp_server: "ntp.fors.ru"
 proxy_ip: "cache.fors.ru:3128"
 
 #posftix settings
-postfix_relayhost: smtp.gmail.com
-postfix_relayhost_port: 587
+postfix_relayhost: "smtp.gmail.com"
+postfix_relayhost_port: "587"
