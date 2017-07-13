@@ -16,6 +16,7 @@
     - journald
    #- network
     - ntpd
+    - add_admin
    #- rsyslogd
    #- sshd
 
