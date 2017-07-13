@@ -12,10 +12,10 @@
    #- yum-cron
     - zabbix-agent
     - atop
-    - postfix
+   #- postfix
     - journald
    #- network
-    - ntpd
+   #- ntpd
     - add_admin
    #- rsyslogd
    #- sshd
