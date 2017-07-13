@@ -1,0 +1,6 @@
+---
+
+- include: add.admin.yml
+  tags: add_admin
+
+...
