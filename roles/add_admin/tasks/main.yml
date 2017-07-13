@@ -1,6 +1,6 @@
 ---
 
-- include: add.admin.yml
+- include: add_admin.yml
   tags: add_admin
 
 ...
