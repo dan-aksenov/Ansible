@@ -1,6 +1,6 @@
 #file: group_var/fors
 
-# ansible configs
+#ansible configs
 my_ansible_user: "ansible"
 
 #postgresql configs
