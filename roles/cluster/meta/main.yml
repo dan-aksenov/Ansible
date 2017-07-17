@@ -2,8 +2,7 @@
 
 galaxy_info:
   author: dbax
-  license: GPLv3
-  min_ansible_version: 0.1
+  description: Corosync/pacemaker cluster setup. Incomplete.
   platforms:
   - name: EL
     versions:
