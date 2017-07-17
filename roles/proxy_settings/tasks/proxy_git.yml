@@ -1,0 +1,9 @@
+---
+
+- name: http proxy for git
+  shell: git config --global http.proxy {{ proxy_ip }}
+
+- name: https proxy for git
+  shell: git config --global https.proxy {{ proxy_ip }}
+
+...
