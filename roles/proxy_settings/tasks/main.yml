@@ -1,47 +1,6 @@
 ---
 
-- name: edit yum.conf 
-  lineinfile: dest=/etc/yum.conf regexp='proxy' line='proxy=http://{{ proxy_ip }}'
-  tags: proxy_yum_conf
-
-- name: Installing packages.
-  yum: name={{ item }}
-  with_items:
-      - wget
-      - python-pip
-      - git
-
-- name: http proxy for git
-  shell: git config --global http.proxy {{ proxy_ip }}
-  tags: proxy_git
-
-- name: https proxy for git
-  shell: git config --global https.proxy {{ proxy_ip }}
-  tags: proxy_git
-
-- name: http_proxy for root bash_profile
-  lineinfile: dest=/root/.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
-  tags: proxy_bash_profile
-
-- name: https_proxy for root bash_profile
-  lineinfile: dest=/root/.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
-  tags: proxy_bash_profile
-
-- name: http_proxy for ansible bash_profile
-  lineinfile: dest=.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
-  tags: proxy_bash_profile
-
-- name: https_proxy for ansible bash_profile
-  lineinfile: dest=.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
-  tags: proxy_bash_profile
-
-- name: wget proxy
-  template:
-    src: wgetrc.j2
-    dest: /root/.wgetrc
-    owner: root
-    group: root
-    mode: 0644
-  tags: proxy_wget
+- include: proxy_yum.yml
+  tags: proxy_yum
 
 ...
