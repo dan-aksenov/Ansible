@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Role description to be here... 
+  description: Ceph cluster setup. Incomplete.
   license: as-is
   platforms:
       name: EL
