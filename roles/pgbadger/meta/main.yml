@@ -1,5 +1,14 @@
 ---
 
-dependencies:
+galaxy_info:
+  author: Daniil Aksenov (dbax)
+  description: Setup pgbadger postgresql log analizer with apache webserver to view logs.
+  license: as-is
+  platforms:
+    - name: EL
+      versions: 7
+  categories:
+   - monitoring
+   - database:postgresql
 
 ...

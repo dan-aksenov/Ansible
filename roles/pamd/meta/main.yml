@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Role description to be here... 
+  description: Audit tty sessinon. Not tested.
   license: as-is
   platforms:
       name: EL
