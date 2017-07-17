@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Add aditional admin user.
+  description: Add aditional administrative user.
   license: as-is
   platforms:
       name: EL
