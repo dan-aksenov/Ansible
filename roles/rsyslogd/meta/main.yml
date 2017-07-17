@@ -1,9 +1,10 @@
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Role description to be here... 
+  description: Rsyslog remote logging.
   license: as-is
   platforms:
       name: EL
       versions: 7
   categories:
+      - monitoring
   dependencies:
