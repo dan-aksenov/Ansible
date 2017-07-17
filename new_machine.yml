@@ -7,7 +7,6 @@
   roles:
     - preconf
     - selinux
-   #- tii_user
     - yum-update
    #- yum-cron
     - zabbix-agent
