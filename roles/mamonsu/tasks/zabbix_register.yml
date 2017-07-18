@@ -1,13 +1,13 @@
 ---
 
-- name: Reminder.
-  debug:
-    msg: pip install zabbix-api on ansible host is prerequisite! Also mamonsu template must be present in zabbix server.
-
 - name: Install zabbix-api on ansible host.
   local_action:
     module: pip
     name: zabbix-api
+  run_once: true
+
+- name: Import mamonsus template.
+  shell: mamonsu zabbix template export /usr/share/mamonsu/template.xml --url="{{ zabbix_url }}" --user=Admin --password=zabbix
   run_once: true
 
 - name: Create new of update existing zabbix host. 
