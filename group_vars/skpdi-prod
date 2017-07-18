@@ -1,0 +1,25 @@
+#file: group_var/skpdi-prod
+
+#ansible configs
+my_ansible_user: "ansible"
+
+#postgresql configs
+postgresql_version: "9.5"
+
+#barman configs
+#barman_server: "172.19.1.137/16"
+#barman_host: "pts-tst-brm1"
+
+#zabbix configs
+zabbix_server: "10.139.127.12"
+zabbix_url: "http://{{ zabbix_server }}/zabbix"
+
+#misc configs
+#ntp_server: "ntp.fors.ru"
+#proxy_ip: "cache.fors.ru:3128"
+
+#posftix configs
+#postfix_relayhost: "mail.fors.ru"
+#postfix_relayhost_port: "25"
+#postfix_mailer_user: "ods.mailer"
+#postfix_mailer_user_password: "not now..." 
