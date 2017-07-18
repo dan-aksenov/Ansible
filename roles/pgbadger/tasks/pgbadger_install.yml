@@ -41,5 +41,6 @@
 - name: Badger initial run.
   shell: pgbadger -Z '+03' -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log
   become_user: postgres
+  ignore_errors: yes
 
 ...
