@@ -16,8 +16,8 @@
     server_url: "{{ zabbix_url }}"
     login_user: Admin
     login_password: zabbix
-    host_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
-    visible_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
+    host_name: "{{ inventory_hostname }}" #.ansible_dns.search[0]
+    visible_name: "{{ inventory_hostname }}" #.ansible_dns.search[0]
     host_groups:
       - Linux servers
       - postgresql
