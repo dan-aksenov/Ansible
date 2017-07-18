@@ -71,4 +71,11 @@
       line: "lc_messages = 'C'"
   notify: reload postgres
 
+- name: Modify postgresql.conf lc_messages.
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?log_timezone ="
+      line: "log_timezone = 'W-SU'"
+  notify: reload postgres
+
 ...
