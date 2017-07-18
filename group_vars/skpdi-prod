@@ -5,7 +5,7 @@ my_ansible_user: "ansible"
 
 #postgresql configs
 postgresql_version: "9.5"
-pg_data: "/usr/local/pgsql/data/"
+pg_data: "/usr/local/pgsql/data"
 
 #barman configs
 #barman_server: "172.19.1.137/16"
