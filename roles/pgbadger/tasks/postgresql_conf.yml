@@ -3,70 +3,70 @@
 
 - name: Modify postgresql.conf log_line_prefix.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_line_prefix ="
       line: "log_line_prefix = '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '"
   notify: reload postgres
 
 - name: Modify postgresql.conf log_min_duration_statement.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_min_duration_statement ="
       line: "log_min_duration_statement = 0"
   notify: reload postgres
   
 - name: Modify postgresql.conf log_checkpoints.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_checkpoints ="
       line: "log_checkpoints = on"
   notify: reload postgres
   
 - name: Modify postgresql.conf log_connections.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_connections ="
       line: "log_connections = on"
   notify: reload postgres
 
 - name: Modify postgresql.conf log_disconnections.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_disconnections ="
       line: "log_disconnections = on"
   notify: reload postgres
   
 - name: Modify postgresql.conf log_lock_waits.
   lineinfile:            
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_lock_waits ="
       line: "log_lock_waits = on"
   notify: reload postgres
 
 - name: Modify postgresql.conf log_temp_files.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_temp_files ="
       line: "log_temp_files = 0"
   notify: reload postgres
 
 - name: Modify postgresql.conf log_autovacuum_min_duration.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_autovacuum_min_duration ="
       line: "log_autovacuum_min_duration = 0"
   notify: reload postgres
 
 - name: Modify postgresql.conf log_error_verbosity.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?log_error_verbosity ="
       line: "log_error_verbosity = default"
   notify: reload postgres
 
 - name: Modify postgresql.conf lc_messages.
   lineinfile:
-      dest: {{ pg_data }}/postgresql.conf
+      dest: "{{ pg_data }}"/postgresql.conf
       regexp: "^#?lc_messages ="
       line: "lc_messages = 'C'"
   notify: reload postgres

@@ -36,10 +36,10 @@
     user: postgres
     minute: "50"
     hour: "23"
-    job: "pgbadger -Z '+03' -I -O /var/www/badger/ /var/lib/pgsql/{{ postgresql_version }}/data/pg_log/postgresql*.log &>/tmp/pgbadger.log"
+    job: "pgbadger -Z '+03' -I -O /var/www/badger/ "{{ pg_data }}"/pg_log/postgresql*.log &>/tmp/pgbadger.log"
 
 - name: Badger initial run.
-  shell: pgbadger -Z '+03' -I -O /var/www/badger/ /var/lib/pgsql/{{ postgresql_version }}/data/pg_log/postgresql*.log
+  shell: pgbadger -Z '+03' -I -O /var/www/badger/ "{{ pg_data }}"/pg_log/postgresql*.log
   become_user: postgres
 
 ...
