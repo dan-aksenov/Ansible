@@ -2,5 +2,8 @@
 
 tomcat_user: tomcat
 tomcat_version: 8.5.16
+tomcat_dir: /u01/apache-tomcat-{{ tomcat_version }}
+java_version: 1.8.0_121
+java_dir: /u01/jdk{{ java_version }} 
 
 ...

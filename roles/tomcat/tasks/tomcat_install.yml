@@ -1,10 +1,5 @@
 ---
 
-# here to be tomcat install from archive
-
-# sudo groupadd tomcat
-# sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
-
 - name: Add Ceph deploy user.
   user: name="{{ tomcat_user }}"
         createhome=yes
@@ -12,12 +7,9 @@
         shell="/sbin/nologin"
         state=present
 
-# sudo mkdir /u01
-# sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
-
 - name: Create directory for tomcat stuff.
   file:
-    path: "/u01/apache-tomcat-{{ tomcat_version }}/" 
+    path: "{{ tomcat_dir }}" 
     state: directory
     owner: "{{ tomcat_user }}"
     group: "{{ tomcat_user }}"
@@ -26,7 +18,7 @@
 - name: Download and untar tomcat. 
   unarchive:
     src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/src/apache-tomcat-{{ tomcat_version }}-src.tar.gz"
-    dest: "/u01/apache-tomcat-{{ tomcat_version }}/" 
+    dest: "{{ tomcat_dir }}" 
     remote_src: True
     group: tomcat
     owner: tomcat
