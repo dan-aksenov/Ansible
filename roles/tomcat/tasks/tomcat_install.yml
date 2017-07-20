@@ -30,6 +30,9 @@
     remote_src: True
     group: tomcat
     owner: tomcat
+  environment:
+    https_proxy: http://{{ proxy_ip }}
+
 
 # sudo chgrp -R tomcat /opt/tomcat
 # sudo chmod -R g+r conf
