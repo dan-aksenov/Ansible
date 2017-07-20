@@ -19,8 +19,8 @@
 - file:
     path: "/u01/apache-tomcat-{{ tomcat_version }}/" 
     state: directory
-    owner: {{ tomcat_user }}
-    group: {{ tomcat_user }}
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_user }}"
     mode: 0755
         
 - name: Download and untar tomcat. 
