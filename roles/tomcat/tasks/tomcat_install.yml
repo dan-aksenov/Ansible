@@ -25,13 +25,25 @@
   environment:
     http_proxy: http://{{ proxy_ip }}
 
-
 # sudo chgrp -R tomcat /opt/tomcat
 # sudo chmod -R g+r conf
 # sudo chmod g+x conf
 # sudo chown -R tomcat webapps/ work/ temp/ logs/
 
-# Install Systemd Unit File. From template
+- name: Create systemd file for tomcat.
+  template:
+    src: tomcat.service.j2
+    dest: "/etc/systemd/system/tomcat.service"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Start and enable tomcat.
+  systemd:
+    state: started
+    name: tomcat
+    daemon_reload: yes
+    enabled: yes
 
 # Configure Tomcat Web Management Interface
 
