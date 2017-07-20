@@ -3,6 +3,8 @@
 - hosts: all
   remote_user: {{ my_ansible_user }}
   become: yes
+  vars_files:
+    - ./vars.yml
   roles:
     - tomcat
 
