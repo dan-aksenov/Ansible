@@ -13,20 +13,22 @@
         state=present
 
 # sudo mkdir /u01
+# sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
         
 - name: Download and untar tomcat. 
   unarchive:
     src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/src/apache-tomcat-{{ tomcat_version }}-src.tar.gz"
     dest: "/u01/apache-tomcat-{{ tomcat_version }}/" 
     remote_src: True
+    group: tomcat
+    owner: tomcat
 
-# sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
 # sudo chgrp -R tomcat /opt/tomcat
 # sudo chmod -R g+r conf
 # sudo chmod g+x conf
 # sudo chown -R tomcat webapps/ work/ temp/ logs/
 
-# Install Systemd Unit File. From template!
+# Install Systemd Unit File. From template
 
 # Configure Tomcat Web Management Interface
 
