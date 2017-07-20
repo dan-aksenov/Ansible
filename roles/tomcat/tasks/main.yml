@@ -1,2 +1,9 @@
 ---
+
+- include: java_install.yml
+  tags: java_install
+
+- include: tomcat_install.yml
+  tags: install_tomcat
+
 ...

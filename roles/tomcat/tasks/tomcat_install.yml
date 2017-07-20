@@ -5,8 +5,21 @@
 # sudo groupadd tomcat
 # sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 
-# wget http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.9/bin/apache-tomcat-8.5.9.tar.gz
-# sudo mkdir /opt/tomcat
+- name: Add Ceph deploy user.
+  user: name="{{ tomcat_user }}"
+        createhome=yes
+        home="/home/{{ tomcat_user }}"
+        shell: /sbin/nologin
+        state=present
+
+# sudo mkdir /u01
+        
+- name: Download and untar tomcat. 
+  unarchive:
+    src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/src/apache-tomcat-{{ tomcat_version }}-src.tar.gz"
+    dest: "/u01/apache-tomcat-{{ tomcat_version }}/" 
+    remote_src: True
+
 # sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
 # sudo chgrp -R tomcat /opt/tomcat
 # sudo chmod -R g+r conf
