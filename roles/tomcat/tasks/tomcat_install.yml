@@ -16,7 +16,7 @@
 # sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
 
 - name: Create directory for tomcat stuff.
-- file:
+  file:
     path: "/u01/apache-tomcat-{{ tomcat_version }}/" 
     state: directory
     owner: "{{ tomcat_user }}"
