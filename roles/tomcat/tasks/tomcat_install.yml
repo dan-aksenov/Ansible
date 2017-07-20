@@ -9,7 +9,7 @@
   user: name="{{ tomcat_user }}"
         createhome=yes
         home="/home/{{ tomcat_user }}"
-        shell: /sbin/nologin
+        shell="/sbin/nologin"
         state=present
 
 # sudo mkdir /u01
