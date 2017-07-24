@@ -6,12 +6,15 @@ pts-tst-zab
 [tomcat]
 pts-tst-as1
 pts-tst-as2
+pts-dev-as1
+pts-dev-as2
 
 [postgres]
 pts-tst-db1c
 pts-tst-db2c
 pts-tst-db3n
 pts-tst-db4n
+pts-dev-db
 
 [fors:children]
 postgres
