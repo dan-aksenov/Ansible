@@ -10,7 +10,7 @@
         
 - name: Download and untar tomcat. 
   unarchive:
-    src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/src/apache-tomcat-{{ tomcat_version }}-src.tar.gz"
+    src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
     dest: "{{ root_dir }}"
     remote_src: True
     group: tomcat
