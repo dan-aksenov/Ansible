@@ -14,7 +14,7 @@
    #- postfix
     - journald
    #- network
-   #- ntpd
+    - ntpd
     - add_admin
     - proxy_settings
    #- rsyslogd
