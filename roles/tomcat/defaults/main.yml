@@ -2,7 +2,7 @@
 
 tomcat_user: tomcat
 tomcat_version: 8.5.16
-tomcat_dir: /u01/apache-tomcat-{{ tomcat_version }}
+tomcat_dir: /u01/apache-tomcat-{{ tomcat_version }}-src
 java_version: 1.{{ java_major_v }}.0_{{ java_minor_v }}
 java_major_v: 8
 java_minor_v: 141
