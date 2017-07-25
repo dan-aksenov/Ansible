@@ -30,9 +30,7 @@ tomcat_dir: /u01/apache-tomcat-{{ tomcat_version }}
 java_version: 1.{{ java_major_v }}.0_{{ java_minor_v }}
 java_major_v: 8
 java_minor_v: 141
-java_dir: /u01/jdk{{ java_version }}
-
-
+java_dir: /u01
 
 #postfix_mailer_user: "ods.mailer"
 #postfix_mailer_user_password: "not now..." 
