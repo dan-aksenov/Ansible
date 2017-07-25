@@ -1,5 +1,8 @@
 ---
 
+- include: add_user.yml
+  tags: tomcat_user
+
 - include: java_install.yml
   tags: install_java
 
