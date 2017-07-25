@@ -8,7 +8,7 @@
 
 - name: Create directory for jdk stuff.
   file:
-    path: "{{ java_dir }}" 
+    path: "{{ root_dir }}" 
     state: directory
     group: "{{ tomcat_user }}"
     owner: "{{ tomcat_user }}"
@@ -17,7 +17,7 @@
 - name: Untar JDK. 
   unarchive:
     src: "/tmp/jdk-{{ java_major_v }}u{{ java_minor_v }}-linux-x64.tar.gz"
-    dest: "{{ java_dir }}" 
+    dest: "{{ root_dir }}" 
     remote_src: True
     group: "{{ tomcat_user }}"
     owner: "{{ tomcat_user }}"
