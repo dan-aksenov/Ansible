@@ -18,17 +18,25 @@
 - name: Download and untar tomcat. 
   unarchive:
     src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/src/apache-tomcat-{{ tomcat_version }}-src.tar.gz"
-    dest: "{{ tomcat_dir }}" 
+    dest: /tmp 
     remote_src: True
     group: tomcat
     owner: tomcat
   environment:
     http_proxy: http://{{ proxy_ip }}
 
+- name: Place tomcat to disired destination
+  copy:
+    src: /tmp/apache-tomcat-8.5.16-src/
+    dest: "{{ tomcat_dir }}"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_user }}"
+    mode: 0755
+
 # sudo chgrp -R tomcat /opt/tomcat
 # sudo chmod -R g+r conf
 # sudo chmod g+x conf
-# sudo chown -R tomcat webapps/ work/ temp/ logs/
+# sudo chown -R tomcat webapps/ work/ temp/ logs/ "
 
 - name: Create systemd file for tomcat.
   template:
