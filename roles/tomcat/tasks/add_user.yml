@@ -1,0 +1,10 @@
+---
+
+- name: Add tomcat user.
+  user: name="{{ tomcat_user }}"
+        createhome=yes
+        home="/home/{{ tomcat_user }}"
+        shell="/sbin/nologin"
+        state=present
+
+...
