@@ -1,6 +1,6 @@
 ---
 
-- name: Add Ceph deploy user.
+- name: Add tomcat user.
   user: name="{{ tomcat_user }}"
         createhome=yes
         home="/home/{{ tomcat_user }}"
