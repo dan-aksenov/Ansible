@@ -7,7 +7,7 @@ After=syslog.target network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME="{{ root_dir }}/{{ java_version }}/jre"
+Environment=JAVA_HOME="{{ root_dir }}/jdk{{ java_version }}/jre"
 Environment=CATALINA_PID={{ tomcat_dir }}/temp/tomcat.pid
 Environment=CATALINA_HOME={{ tomcat_dir }}
 Environment=CATALINA_BASE={{ tomcat_dir }}
