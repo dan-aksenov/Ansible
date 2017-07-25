@@ -22,5 +22,17 @@ proxy_ip: "cache.fors.ru:3128"
 #posftix configs
 postfix_relayhost: "mail.fors.ru"
 postfix_relayhost_port: "25"
+
+#java & tomcat configs
+tomcat_user: tomcat
+tomcat_version: 8.5.16
+tomcat_dir: /u01/apache-tomcat-{{ tomcat_version }}
+java_version: 1.{{ java_major_v }}.0_{{ java_minor_v }}
+java_major_v: 8
+java_minor_v: 141
+java_dir: /u01/jdk{{ java_version }}
+
+
+
 #postfix_mailer_user: "ods.mailer"
 #postfix_mailer_user_password: "not now..." 
