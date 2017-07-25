@@ -37,6 +37,7 @@
     dest: "/etc/systemd/system/tomcat.service"
     owner: root
     group: root
+    force: yes
     mode: 0644
 
 - name: Start and enable tomcat.
