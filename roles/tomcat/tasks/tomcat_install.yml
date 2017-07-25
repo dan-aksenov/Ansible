@@ -9,7 +9,7 @@
 
 - name: Create directory for tomcat stuff.
   file:
-    path: "{{ tomcat_dir }}" 
+    path: "{{ tomcat_dir }}/logs" 
     state: directory
     owner: "{{ tomcat_user }}"
     group: "{{ tomcat_user }}"
