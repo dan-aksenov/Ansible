@@ -3,6 +3,9 @@
 #ansible configs
 my_ansible_user: "ansible"
 
+#user env config
+tmux_status_bar_colour_bg: green
+
 #postgresql configs
 postgresql_version: "9.5"
 pg_data: "/usr/local/pgsql/data"
