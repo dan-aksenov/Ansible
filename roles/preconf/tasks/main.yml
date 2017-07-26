@@ -9,6 +9,9 @@
 - include: packages.yml
   tags: packages
 
+- include: tmux.yml
+  tags: tmux
+
 - include: targets.yml
   tags: runlevels
 
