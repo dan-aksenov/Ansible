@@ -4,7 +4,7 @@
 my_ansible_user: "ansible"
 
 #user env config
-tmux_status_bar_colour_bg: green
+tmux_status_bar_colour_bg: red
 
 #postgresql configs
 postgresql_version: "9.5"
