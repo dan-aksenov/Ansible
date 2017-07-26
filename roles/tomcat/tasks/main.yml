@@ -7,6 +7,6 @@
   tags: java_install
 
 - include: tomcat_install.yml
-  tags: tomcat_install_
+  tags: tomcat_install
 
 ...
