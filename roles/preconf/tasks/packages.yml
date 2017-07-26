@@ -12,7 +12,6 @@
       - hdparm
 #      - gcc
       - lshw
-      - tmux
       - strace
       - python-pip
       - git
