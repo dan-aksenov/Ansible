@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  remote_user: "{{ my_ansible_user }}"
+  become: yes
+  roles:
+    - oracle
+
+...
