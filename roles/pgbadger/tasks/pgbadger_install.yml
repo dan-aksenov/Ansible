@@ -14,10 +14,10 @@
 - name: Create apache badger directory. Need to reconfigure with non 777 rights.
   file:
     path: /var/www/badger
-    owner: apache
-    group: apache
+    owner: postgres
+    group: postgres
     state: directory
-    mode: 0777
+    mode: 0755
 
 - name: Add firewall exceptioni for http. If firewall is on.
   firewalld: service=http permanent=true state=enabled immediate=yes
@@ -37,10 +37,5 @@
     minute: "50"
     hour: "23"
     job: "pgbadger -Z '+03' -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log &>/tmp/pgbadger.log"
-
-- name: Badger initial run.
-  shell: pgbadger -Z '+03' -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log
-  become_user: postgres
-  ignore_errors: yes
 
 ...
