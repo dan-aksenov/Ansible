@@ -1,4 +1,8 @@
+---
+
 barman_password: barman
 streaming_barman_password: barman
 barman_server: 192.168.155.224/23
 postgresql_admin_user: postgres
+
+...
