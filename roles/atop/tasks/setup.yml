@@ -6,7 +6,10 @@
       - atop
 
 - name: Start atop service
-  service: name=atop state=started enabled=yes
+  service: 
+      name: atop
+      state: started
+      enabled: yes
 
 - name: Minutely schedule
   lineinfile:
