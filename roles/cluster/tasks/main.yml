@@ -40,8 +40,7 @@
 - name: Authenticate all nodes. This is not working yet.
   command: >
     pcs cluster auth
-    {% for host in groups[pacemaker_ansible_group] %}
-    {{ hostvars[host]['ansible_hostname'] }}
+    {% for host in {{ play_hosts }} %}
     {% endfor %}
     -u {{ pacemaker_user }} -p {{ pacemaker_password }}
   run_once: true
