@@ -39,10 +39,7 @@
 # Whats this for? no such in https://wiki.clusterlabs.org/wiki/PgSQL_Replicated_Cluster.
 - name: Authenticate all nodes. This is not working yet.
   command: >
-    pcs cluster auth
-    {% for host in {{ play_hosts }} %}
-    {% endfor %}
-    -u {{ pacemaker_user }} -p {{ pacemaker_password }}
+    pcs cluster auth {{ play_hosts }} -u {{ pacemaker_user }} -p {{ pacemaker_password }}
   run_once: true
   args:
     creates: /var/lib/pcsd/tokens
