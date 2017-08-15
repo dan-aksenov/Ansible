@@ -37,7 +37,8 @@
   run_once: true
 
 # Whats this for? no such in https://wiki.clusterlabs.org/wiki/PgSQL_Replicated_Cluster.
-- name: Authenticate all nodes. This is not working yet.
+# look https://github.com/styopa/ansible-pacemaker/blob/master/tasks/main.yml for directions.
+- name: Authenticate all nodes.
   command: >
     pcs cluster auth {{ play_hosts }} -u {{ pacemaker_user }} -p {{ pacemaker_password }}
   run_once: true
