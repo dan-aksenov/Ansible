@@ -33,6 +33,9 @@
 - name: Ensure pcsd enabled and started.
   service: name=pcsd enabled=yes state=started
 
+- debug: msg="play_hosts={{play_hosts}}"
+  run_once: true
+
 # Whats this for? no such in https://wiki.clusterlabs.org/wiki/PgSQL_Replicated_Cluster.
 - name: Authenticate all nodes. This is not working yet.
   command: >
