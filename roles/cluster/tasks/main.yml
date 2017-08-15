@@ -33,6 +33,7 @@
 - name: Ensure pcsd enabled and started.
   service: name=pcsd enabled=yes state=started
 
+# Whats this for? no such in https://wiki.clusterlabs.org/wiki/PgSQL_Replicated_Cluster.
 - name: Authenticate all nodes. This is not working yet.
   command: >
     pcs cluster auth
