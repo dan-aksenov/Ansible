@@ -17,6 +17,8 @@ pg_data: "/usr/local/pgsql/data"
 #zabbix configs
 zabbix_server: "10.139.127.12"
 zabbix_url: "http://{{ zabbix_server }}/zabbix"
+zabbix_server_port: "10053"
+
 
 #misc configs
 #ntp_server: "ntp.fors.ru"
