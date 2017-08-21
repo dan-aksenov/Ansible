@@ -1,7 +1,8 @@
 ---
 
 - name: Add my additional admin user.
-  user: name: "{{ my_admin_user }}"
+  user: 
+        name: "{{ my_admin_user }}"
         groups: wheel
         createhome: yes
         home: "/home/{{ my_admin_user }}"
@@ -10,12 +11,12 @@
 
 - name: Add my users pub_key.
   authorized_key: 
-        user: {{ my_admin_user }}
+        user: "{{ my_admin_user }}"
         key: "{{ lookup('file', '/home/{{ my_admin_user }}/.ssh/id_rsa.pub') }}"
 
 - name: Add my ansible user pub_key from Windows.
   authorized_key:
-        user: {{ my_admin_user }}
+        user: "{{ my_admin_user }}"
         key: "{{ lookup('file', '/home/{{ my_ansible_user }}/localrepo/my_key_win') }}"
 
 - name: configure sudoers
