@@ -15,6 +15,7 @@
       - strace
       - python-pip
       - git
+      - lnav
 #      - make
 #      - rpm-build
 #      - python2-devel
