@@ -1,4 +1,4 @@
-#file: group_var/skpdi-prod
+#file: group_var/skpdi-test
 
 #ansible configs
 my_ansible_user: "ansible"
