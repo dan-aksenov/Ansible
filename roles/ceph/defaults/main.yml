@@ -1,5 +1,6 @@
 ---
 
+# should be installed as ansible user.
 ceph_deploy_user: ceph-deploy
 
 ...
