@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Ceph cluster setup. Incomplete.
+  description: Ceph cluster basic setup. Right now repo,packages and firewall rules only.
   license: as-is
   platforms:
       name: EL
