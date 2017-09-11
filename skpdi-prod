@@ -18,6 +18,7 @@ gudhskpdi-mon
 gudhskpdi-ceph-01
 gudhskpdi-ceph-02
 gudhskpdi-ceph-03
+gudhskpdi-bal-01
 
 [skpdi-prod:children]
 ceph
