@@ -4,14 +4,26 @@
   debug:
     msg: pip install zabbix-api on ansible host is prerequisite!
 
+- name: Set zabbix-agent name
+  set_fact:
+     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
+     when: ansible_dns.search[0] is defined
+     exists: "{{ result.stdout }}"
+
+- name: Set zabbix-agent name
+  set_fact:
+     agent_name: "{{ inventory_hostname }}"   
+     when: ansible_dns.search[0] is undefined
+     exists: "{{ result.stdout }}"
+ 
 - name: Create new of update existing zabbix host. 
   local_action:
     module: zabbix_host
     server_url: "{{ zabbix_url }}"
     login_user: Admin
     login_password: zabbix
-    host_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
-    visible_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
+    host_name: "{{ agent_name }}"
+    visible_name: "{{ agent_name }}"
     host_groups:
       - Linux servers
     link_templates:
@@ -24,7 +36,7 @@
         main: 1
         useip: 1
         ip: "{{ ansible_default_ipv4.address }}"
-        dns: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
+        dns: "{{ agent_name }}"
         port: 10050
 
 ...
