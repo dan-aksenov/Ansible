@@ -4,6 +4,6 @@
   tags: zabbix-agent
 
 - include: zabbix_register.yml
-  tags: zabbix-agent
+  tags: zabbix-agent-register
   
 ...
