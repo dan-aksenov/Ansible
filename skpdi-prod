@@ -14,7 +14,11 @@ gudhskpdi-gis-01
 gudhskpdi-gis-02
 gudhskpdi-mon
 
+[ceph]
+gudhskpdi-ceph-01
+
 [skpdi-prod:children]
+ceph
 postgres
 tomcat
 misc
