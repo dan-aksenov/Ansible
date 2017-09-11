@@ -6,15 +6,15 @@
 
 - name: Set zabbix-agent name
   set_fact:
-     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
-     when: ansible_dns.search[0] is defined
-     exists: "{{ result.stdout }}"
+     agent_name: "{{ inventory_hostname }}"   
+     when: ansible_dns.search[0] is undefined
 
 - name: Set zabbix-agent name
   set_fact:
-     agent_name: "{{ inventory_hostname }}"   
-     when: ansible_dns.search[0] is undefined
-     exists: "{{ result.stdout }}"
+     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
+     when: ansible_dns.search[0] is defined
+  ignore_errors: True
+  # find nicer way to escape it.
  
 - name: Create new of update existing zabbix host. 
   local_action:
