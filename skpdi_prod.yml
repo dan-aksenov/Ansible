@@ -1,0 +1,6 @@
+- hosts: skpdi-prod
+  user: "{{ my_ansible_user }}"
+  become: yes 
+
+  roles:
+    - skpdi-prod
