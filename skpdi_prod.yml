@@ -3,4 +3,4 @@
   become: yes 
 
   roles:
-    - skpdi-prod
+    - skpdi_prod
