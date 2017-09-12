@@ -1,7 +1,7 @@
 ---
 
 - name: Edit host file.
-  lineinfile
+  lineinfile:
      dest: /etc/hosts
      line: '10.139.127.14 data.skpdi.mosreg.ru'
 
