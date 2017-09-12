@@ -10,7 +10,7 @@ cd roles/$role
 mkdir tasks handlers templates files vars defaults meta tests
 # Create dummy files in all role's subdirectories.
 for i in $(ls); do  echo --- > $i/main.yml; done
-for i in $(ls); do  echo '#This is dummy file to make shure directory is commited. Can be deleted after something usefull added to this dir.' > $i/main.yml; done
+for i in $(ls); do  echo '#This is dummy file to make shure directory is commited. Can be deleted after something usefull added to this dir.' >> $i/main.yml; done
 for i in $(ls); do  echo ... >> $i/main.yml; done
 
 # Create sample test file
