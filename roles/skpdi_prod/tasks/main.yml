@@ -1,0 +1,10 @@
+#This is dummy file to make shure directory is commited. Can be deleted after something usefull added to this dir.
+---
+
+- name: Edit host file.
+  lineinfile
+     dest: /etc/hosts
+     line: '10.139.127.14 data.skpdi.mosreg.ru'
+
+...
+
