@@ -5,5 +5,13 @@
      dest: /etc/hosts
      line: '10.139.127.14 data.skpdi.mosreg.ru'
 
+#- name: Update web app.
+#  copy: src={{ item }}
+#        dest=/tomcat/webapps/skpdi.war
+#  with_items:
+#        - ~/localrepo/skpdi/
+
+#- name: start tomcat async.
+
 ...
 
