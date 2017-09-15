@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  user: "{{ my_ansible_user }}"
+  become: yes 
+
+  roles:
+    - oracleclient
+
+...
+
