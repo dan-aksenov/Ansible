@@ -2,6 +2,7 @@
 pts-tst-brm1
 pts-tst-log
 pts-tst-zab
+fishery-test-app
 
 [tomcat]
 pts-tst-as1
