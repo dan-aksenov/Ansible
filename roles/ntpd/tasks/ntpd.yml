@@ -21,7 +21,7 @@
   lineinfile:
       dest: /etc/ntp.conf
       insertafter: '^# Please'
-      line: 'server {{ ntp_server }}'
+      line: 'server {{ ntp_server }} iburst'
   notify: restart atop
 
 - name: Start and enable ntpd service.
