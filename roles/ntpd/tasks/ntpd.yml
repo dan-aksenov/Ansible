@@ -17,6 +17,13 @@
   shell: ntpdate {{ ntp_server }} 
   ignore_errors: yes
 
+- name: Add server to ntpd.conf
+  lineinfile:
+      dest: /etc/ntpd.conf
+      insertafter: '^#Please'
+      line: 'server {{ ntp_server }}'
+  notify: restart atop
+
 - name: Start and enable ntpd service.
   service: name=ntpd state=started enabled=yes  
 
