@@ -19,7 +19,7 @@
 
 - name: Add server to ntpd.conf
   lineinfile:
-      dest: /etc/ntpd.conf
+      dest: /etc/ntp.conf
       insertafter: '^#Please'
       line: 'server {{ ntp_server }}'
   notify: restart atop
