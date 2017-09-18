@@ -21,7 +21,7 @@ zabbix_server_port: "10053"
 
 
 #misc configs
-#ntp_server: "ntp.fors.ru"
+ntp_server: "gudhskpdi-mon"
 #proxy_ip: "cache.fors.ru:3128"
 
 #posftix configs
