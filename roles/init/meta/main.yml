@@ -5,7 +5,7 @@ galaxy_info:
   description: Ansible role for administrative sudo user, who will run all subsequent ansible scripts. Must be executed with --ask-pass.
   license: as-is
   platforms:
-    - name: EL,Alt
+    - name: EL
     - versions: 7
   categories:
    - security
