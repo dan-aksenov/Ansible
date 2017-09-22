@@ -10,14 +10,14 @@
   timezone:
     name: "{{ t_zone }}"
 
-- name: Copy config from template
+- name: Copy config from template.
   template:
     src: ntp.conf.j2
     dest: "/etc/ntp.conf"
     owner: root
     group: root
     mode: 0644
-  backup: yes
+    backup: yes
   notify:
     - restart ntpd
 
