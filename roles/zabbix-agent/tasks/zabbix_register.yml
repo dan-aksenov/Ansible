@@ -1,9 +1,10 @@
 ---
 
-- name: Reminder.
-  debug:
-    msg: pip install zabbix-api on ansible host is prerequisite!
-
+- name: Install zabbix-api pythons package on ansible host.
+  local_action:
+    module: pip
+    name: zabbix-api
+ 
 - name: Set zabbix-agent name
   set_fact:
      agent_name: "{{ inventory_hostname }}"   
