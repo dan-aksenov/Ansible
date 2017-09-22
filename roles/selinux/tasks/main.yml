@@ -1,7 +1,7 @@
 ---
 
 - name: Just turn it off.
-  selinux: policy=targeted state=disabled
+  selinux: policy="{{ se_policy }}" state="{{ sestate }}"
   tags: selinux
 
 ...
