@@ -4,7 +4,8 @@
   local_action:
     module: pip
     name: zabbix-api
- 
+  run_once: true
+
 - name: Set zabbix-agent name
   set_fact:
      agent_name: "{{ inventory_hostname }}"   
