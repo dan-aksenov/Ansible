@@ -1,6 +1,6 @@
 ---
 
-- name: Just turn it off.
+- name: Setup selinux.
   selinux: policy="{{ se_policy }}" state="{{ se_state }}"
   tags: selinux
 
