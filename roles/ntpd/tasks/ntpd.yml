@@ -10,19 +10,15 @@
   timezone:
     name: "{{ t_zone }}"
 
-- name: Enshure ntpd is stopped for successfull initial sync.
-  service: name=ntpd state=stopped enabled=yes
-
-- name: Sync time.
-  shell: ntpdate {{ ntp_server }} 
-  ignore_errors: yes
-
-- name: Add server to ntpd.conf
-  lineinfile:
-      dest: /etc/ntp.conf
-      insertafter: '^# Please'
-      line: 'server {{ ntp_server }} iburst'
-  notify: restart atop
+- name: Copy config from template
+  template:
+    src: ntp.conf.j2
+    dest: "/etc/ntp.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart ntpd
 
 - name: Start and enable ntpd service.
   service: name=ntpd state=started enabled=yes  
