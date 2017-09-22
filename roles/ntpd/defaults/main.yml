@@ -1,5 +1,6 @@
 ---
 
 t_zone: Europe/Moscow
+ntp_minpool: 6
 
 ...
