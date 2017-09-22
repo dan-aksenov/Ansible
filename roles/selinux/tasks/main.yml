@@ -1,7 +1,7 @@
 ---
 
 - name: Just turn it off.
-  selinux: policy="{{ se_policy }}" state="{{ sestate }}"
+  selinux: policy="{{ se_policy }}" state="{{ se_state }}"
   tags: selinux
 
 ...
