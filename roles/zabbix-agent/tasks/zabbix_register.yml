@@ -18,7 +18,7 @@
   ignore_errors: True
   # find nicer way to escape it.
  
-- name: Create new of update existing zabbix host. 
+- name: Create new or update existing zabbix host. 
   local_action:
     module: zabbix_host
     server_url: "{{ zabbix_url }}"
