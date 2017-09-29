@@ -15,7 +15,7 @@
     - journald
    #- network
     - ntpd
-    - add_admin
+   #- add_admin
     - proxy_settings
    #- rsyslogd
    #- sshd
