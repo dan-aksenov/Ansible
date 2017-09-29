@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -z "$1" ]; then echo "role name var is unset" && exit 1; fi
+if [ -z "$1" ]; then echo "Role name var is unset. Set it as first positional parameter." && exit 1; fi
 
 role=$1
 
@@ -10,7 +10,7 @@ cd roles/$role
 mkdir tasks handlers templates files vars defaults meta tests
 # Create dummy files in all role's subdirectories.
 for i in $(ls); do  echo --- > $i/main.yml; done
-for i in $(ls); do  echo '#This is dummy file to make shure directory is commited. Can be deleted after something usefull added to this dir.' >> $i/main.yml; done
+for i in $(ls); do  echo '#This is dummy file to make sure directory is commited. Can be deleted after something usefull placed into this dir.' >> $i/main.yml; done
 for i in $(ls); do  echo ... >> $i/main.yml; done
 
 # Create sample test file
