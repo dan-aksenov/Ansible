@@ -1,6 +1,6 @@
 ---
 
-- name: Add my additional admin user.
+- name: Add additional admin user.
   user: 
         name: "{{ my_admin_user }}"
         groups: wheel
@@ -19,7 +19,7 @@
         user: "{{ my_admin_user }}"
         key: "{{ lookup('file', '/home/{{ my_ansible_user }}/localrepo/my_key_win') }}"
 
-- name: configure sudoers
+- name: Configure sudoers.
   template:
     src: sudoers.d.j2
     dest: "/etc/sudoers.d/{{ my_admin_user }}"
