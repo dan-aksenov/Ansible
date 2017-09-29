@@ -16,7 +16,7 @@
    #- network
     - ntpd
    #- add_admin
-    - proxy_settings
+   #- proxy_settings
    #- rsyslogd
    #- sshd
 
