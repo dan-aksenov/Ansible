@@ -1,6 +1,6 @@
 ---
 
-- name: "Install postgresql packages"
+- name: "Install postgresql packages."
   yum: 
     state: latest
     pkg: "{{ item }}"
