@@ -5,6 +5,7 @@
   become: yes 
 
   roles:
+    - proxy_settings
     - preconf
     - selinux
     - yum-update
@@ -16,7 +17,6 @@
    #- network
     - ntpd
    #- add_admin
-   #- proxy_settings
    #- rsyslogd
    #- sshd
 
