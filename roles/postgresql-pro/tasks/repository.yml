@@ -5,7 +5,7 @@
 #  tags: pgdg
 
 - name: Add postgres pro repository.
-   yum_repository:
+  yum_repository:
      name: postgresql-pro
      description: postgresql-pro
      # Here need to check what is 2.2 in pro.yum-9.5-2.2.noarch.rpm!
