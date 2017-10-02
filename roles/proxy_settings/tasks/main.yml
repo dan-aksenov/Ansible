@@ -3,4 +3,10 @@
 - include: proxy_yum.yml
   tags: proxy_yum
 
+#- include: proxy_git.yml
+ 
+#- include: proxy_wget.yml
+
+#- include: proxy_bash_profile.yml
+
 ...
