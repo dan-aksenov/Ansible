@@ -1,6 +1,6 @@
 ---
 
 - name: edit yum.conf 
-  lineinfile: dest=/etc/yum.conf regexp='proxy' line='proxy=http://{{ proxy_ip }}'
+  lineinfile: dest=/etc/yum.conf regexp='proxy' line='proxy={{ proxy_ip }}'
 
 ...
