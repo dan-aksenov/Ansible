@@ -6,12 +6,12 @@
     name: zabbix-api
   run_once: true
 
-- name: Set zabbix-agent name
+- name: Set zabbix-agent name.
   set_fact:
      agent_name: "{{ inventory_hostname }}"   
      when: ansible_dns.search[0] is undefined
 
-- name: Set zabbix-agent name
+- name: Set zabbix-agent name.
   set_fact:
      agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
      when: ansible_dns.search[0] is defined
