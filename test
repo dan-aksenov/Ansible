@@ -6,11 +6,11 @@ db2
 postgres
 
 [test:vars]
-proxy_ip=192.168.154.42:48080
+proxy_ip=http://cache.fors.ru:3128
+postgresql_version=9.6
+pg_data="/var/lib/pgsql/{{ postgresql_version }}/data"
+my_ansible_user=ansible
 zabbix_server=192.168.154.145
 smtp_server=10.197.72.239
 smtp_port=26
-postgresql_version=9.6
-pg_data="/var/lib/pgsql/{{ postgresql_version }}/data"
 rsyslog_server=192.168.155.224
-my_ansible_user=ansible
