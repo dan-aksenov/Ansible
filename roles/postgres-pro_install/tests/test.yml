@@ -6,4 +6,6 @@
   roles:
     - postgres-pro_install
 
+  environment:
+    http_proxy: "{{ proxy_ip }}"
 ...
