@@ -13,29 +13,24 @@
 #    params:
 #      USE_PGX: 1
 
-- debug: msg="{{ ansible_env.PATH }}"
-  environment:
-    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
-
-- name: make install
-  shell: make USE_PGX=1 && make USE_PGX=1 install
-  environment:
-    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
-
-#- name: Make pg_wait_sampling.
-#  make:  
-#    chdir: /tmp/pg_wait_sampling
-#    params:
-#      USE_PGX: 1
+#- name: make install
+#  shell: make USE_PGX=1 && make USE_PGX=1 install
 #  environment:
-#    PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
+#    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
+	
+- name: Make pg_wait_sampling.
+  make:  
+    chdir: /tmp/pg_wait_sampling
+    params:
+      USE_PGX: 1
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
 
-#- name: Install pg_wait_sampling.
-#  make:  
-
-#    chdir: /tmp/pg_wait_sampling
-#    target: install    
-#    params:
-#      USE_PGX: 1
+- name: Install pg_wait_sampling.
+  make:  
+    chdir: /tmp/pg_wait_sampling
+    target: install    
+    params:
+      USE_PGX: 1
 
 ...
