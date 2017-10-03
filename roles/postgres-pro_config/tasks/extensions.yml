@@ -1,0 +1,16 @@
+---
+
+- postgresql_ext:
+    name: pg_buffercache
+    db: postgres
+
+- postgresql_ext:
+    name: pg_stat_statements
+    db: postgres
+
+- postgresql_ext:
+    name: pg_wait_sampling
+    db: postgres
+  when: postgresql_version == '9.6'
+
+...

@@ -1,0 +1,13 @@
+--- 
+
+- name: Configure postgresql.conf for logging from template.
+  template:
+    src: "postgresql_log.conf.{{ postgresql_version }}.j2"
+    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/postgresql_log.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0640
+    backup: yes
+  notify: reload postgres
+
+...

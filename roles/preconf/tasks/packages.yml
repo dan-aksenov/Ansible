@@ -10,13 +10,13 @@
       - iotop
       - sysstat
       - hdparm
-#      - gcc
+      - gcc
       - lshw
       - strace
       - python-pip
       - git
       - lnav
-#      - make
+      - make
 #      - rpm-build
 #      - python2-devel
 #      - python-setuptools
