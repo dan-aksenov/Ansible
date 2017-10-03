@@ -12,4 +12,5 @@
     chdir: /tmp/pg_wait_sampling
   environment:
     PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
+
 ...
