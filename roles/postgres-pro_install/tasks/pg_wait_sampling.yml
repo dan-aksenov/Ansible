@@ -16,7 +16,7 @@
 - name: Make pg_wait_sampling.
   make:  
     chdir: /tmp/pg_wait_sampling
-  params:
+    params:
       USE_PGX: 1
   environment:
     PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
