@@ -11,15 +11,22 @@ mkdir tasks handlers templates files vars defaults meta tests
 # Create dummy files in all role's subdirectories.
 for i in $(ls); do  echo --- > $i/main.yml; done
 for i in $(ls); do  echo '#This is dummy file to make sure directory is commited. Can be deleted after something usefull placed into this dir.' >> $i/main.yml; done
-for i in $(ls); do  echo ... >> $i/main.yml; done
 
 # Create sample test file
 cat > tests/tests.yml <<EOF
+---
+
 - hosts: all
   remote_user: "{{ my_ansible_user }}"
   become: yes
   roles:
     - $role
+
+  environment:
+    http_proxy: "{{ proxy_ip }}"
+    https_proxy: "{{ proxy_ip }}"
+
+...
 EOF
 
 # Create template info file in meta.
