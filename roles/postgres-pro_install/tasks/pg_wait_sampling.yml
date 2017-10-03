@@ -6,7 +6,8 @@
     dest: /tmp/pg_wait_sampling
     update: yes
 
-- make:
+- name: Params.
+  make:
     chdir: /tmp/pg_wait_sampling
     target: all
     params:
