@@ -7,10 +7,16 @@
     update: yes
 
 - name: Make pg_wait_sampling.
-  shell: make USE_PGXS=1 && make USE_PGXS=1 install 
-  args:
+  make:  
     chdir: /tmp/pg_wait_sampling
+    params:
+      USE_PGX: 1
   environment:
     PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
+
+- name: Install pg_wait_sampling.
+  make:  
+    chdir: /tmp/pg_wait_sampling
+    target: install    
 
 ...
