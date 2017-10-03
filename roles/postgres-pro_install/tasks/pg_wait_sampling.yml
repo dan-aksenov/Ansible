@@ -15,8 +15,8 @@
 
 - name: check path
   command: msg="{{ ansible_env.PATH }}"
-  environment:
-    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
+  #environment:
+  #  PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
 
 - name: make install
   shell: make USE_PGX=1 && make USE_PGX=1 install
