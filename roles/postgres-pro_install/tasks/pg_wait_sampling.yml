@@ -10,6 +10,6 @@
   shell: make USE_PGXS=1 && make USE_PGXS=1 install 
   args:
     chdir: /tmp/pg_wait_sampling
-   environment:
-       PATH:$PATH:/usr/pgpro-{{ postgresql_version }}/bin
+  environment:
+    PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
 ...
