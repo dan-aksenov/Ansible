@@ -13,8 +13,7 @@
 #    params:
 #      USE_PGX: 1
 
-- name: check path
-  msg: "{{ ansible_env.PATH }}"
+- debug: msg="{{ ansible_env.PATH }}"
   #environment:
   #  PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
 
