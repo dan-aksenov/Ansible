@@ -16,7 +16,7 @@
 - name: make install
   shell: make USE_PGX=1 && make USE_PGX=1 install
   environment:
-   PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
+    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
 	
 #- name: Make pg_wait_sampling.
 #  make:  
