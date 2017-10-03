@@ -11,7 +11,7 @@
 #    chdir: /tmp/pg_wait_sampling
 #    target: all
 #    params:
-#      USE_PGX: 1
+	#      USE_PGX: 1
 
 - name: make install
   shell: make USE_PGX=1 && make USE_PGX=1 install
