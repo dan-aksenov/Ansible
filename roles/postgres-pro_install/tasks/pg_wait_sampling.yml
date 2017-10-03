@@ -13,6 +13,11 @@
 #    params:
 #      USE_PGX: 1
 
+- name: check path
+  command: msg="{{ print $PATH }}"
+  environment:
+    PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
+
 - name: make install
   shell: make USE_PGX=1 && make USE_PGX=1 install
   environment:
