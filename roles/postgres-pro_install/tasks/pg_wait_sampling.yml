@@ -18,7 +18,7 @@
 #  environment:
 #    PATH: "{{ ansible_env.PATH }}:/usr/pgpro-{{ postgresql_version }}/bin"
 
-- name: Make pg_wait_sampling.
+- name: Make pg_wait_sampling. NOT YET WORKING
   make:  
    chdir: /tmp/pg_wait_sampling
    params:
