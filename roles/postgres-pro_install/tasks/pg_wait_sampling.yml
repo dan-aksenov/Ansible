@@ -6,11 +6,15 @@
     dest: /tmp/pg_wait_sampling
     update: yes
 
+- make:
+    chdir: /tmp/pg_wait_sampling
+    target: all
+    params:
+      USE_PGX: 1
+
 - name: Make pg_wait_sampling.
   make:  
     chdir: /tmp/pg_wait_sampling
-    params:
-      USE_PGX: 1
   environment:
     PATH: $PATH:/usr/pgpro-{{ postgresql_version }}/bin
 
