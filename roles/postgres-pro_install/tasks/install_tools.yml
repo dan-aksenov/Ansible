@@ -7,8 +7,8 @@
   with_items:
     - pgcenter
 
-- name: "Install pgcli command shell."
-  pip:
-    name: pgcli
+#- name: "Install pgcli command shell."
+#  pip:
+#    name: pgcli
    
 ...
