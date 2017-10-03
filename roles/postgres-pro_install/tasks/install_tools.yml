@@ -1,0 +1,14 @@
+---
+
+- name: "Install additional postgresql tools."
+  yum: 
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - pg_center
+
+- name: "Install pgcli command shell."
+  pip:
+    name: pgcli
+   
+...

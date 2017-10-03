@@ -14,6 +14,8 @@ my_ansible_user=ansible
 zabbix_server="oemcc.fors.ru"
 zabbix_url="http://{{ zabbix_server }}/zabbix321"
 
+ntp_server=127.0.0.1
+
 #smtp_server=
 #smtp_port=
 #rsyslog_server=
