@@ -5,11 +5,11 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - postgresql{{ postgresql_version | replace('.', '') }}
-    - postgresql{{ postgresql_version | replace('.', '') }}-server
-    - postgresql{{ postgresql_version | replace('.', '') }}-contrib
-    - postgresql{{ postgresql_version | replace('.', '') }}-libs
-    - postgresql{{ postgresql_version | replace('.', '') }}-devel
+    - postgrespro{{ postgresql_version | replace('.', '') }}
+    - postgrespro{{ postgresql_version | replace('.', '') }}-server
+    - postgrespro{{ postgresql_version | replace('.', '') }}-contrib
+    - postgrespro{{ postgresql_version | replace('.', '') }}-libs
+    - postgrespro{{ postgresql_version | replace('.', '') }}-devel
     - python-psycopg2
 
 ...
