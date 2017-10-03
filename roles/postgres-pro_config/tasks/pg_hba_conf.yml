@@ -1,0 +1,14 @@
+--- 
+
+- name: Configure pg_hba.conf.
+  template:
+    src: pg_hba.conf.j2
+    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0640
+    backup: yes
+  notify: reload postgres
+  tags: pg_hba_conf
+
+...
