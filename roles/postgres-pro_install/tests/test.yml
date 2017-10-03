@@ -8,4 +8,6 @@
 
   environment:
     http_proxy: "{{ proxy_ip }}"
+    https_proxy: "{{ proxy_ip }}"
+
 ...
