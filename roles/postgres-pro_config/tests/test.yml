@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  remote_user: "{{ my_ansible_user }}"
+  become: yes
+  roles:
+    - postgres-pro_config
+
+  environment:
+     pg_data="/var/lib/pgpro/{{ postgresql_version }}/data"
+  
+...
