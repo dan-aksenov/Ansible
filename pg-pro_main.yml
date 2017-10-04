@@ -1,0 +1,21 @@
+---
+
+- hosts: postgres 
+  user: "{{ my_ansible_user }}"
+  become: yes
+
+  roles:
+      - postgres-pro_repo
+      - postgres-pro_install 
+     # - postgres_config
+     # - mamonsu
+     # - pgbouncer
+     # - pgbadger
+
+  vars:
+     local_path: "{{ lookup('env','PATH') }}"
+
+  #environment:
+  #  PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
+
+...
