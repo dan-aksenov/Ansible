@@ -2,15 +2,15 @@
 
 # Basic settings
 el_version: 7
-postgresql_version: 9.5
-postgresql_contrib: yes
+postgresql_version: 9.6
+# postgresql_contrib: yes
 
 # PostgreSQL users and roles
 postgresql_admin_user: "postgres"
 
 # Extensions which will be installed into databases. This list of extensions will be installed to all databases within postgresql_databases.
-postgresql_extensions:
- - pg_stat_statements
+# postgresql_extensions:
+# - pg_stat_statements
 
 # Settings related to the pg_hba rules
 postgresql_default_unix_auth_method: "trust"
