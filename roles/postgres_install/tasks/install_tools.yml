@@ -5,7 +5,7 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - pg_center
+    - pgcenter
 
 - name: "Install pgcli command shell."
   pip:
