@@ -27,4 +27,6 @@ postgresql_pg_hba_default:
 postgresql_pg_hba_custom:
  - { type: host, database: replication, role: "{{ postgresql_admin_user }}", address: "127.0.0.1/32", method: "{{ postgresql_default_ipv4_auth_method }}", comment: '' }
 
+# default variable for pgdata
+pg_data: "/var/lib/pgpro/{{ postgresql_version }}/data"
 ...
