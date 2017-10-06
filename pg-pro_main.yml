@@ -11,7 +11,7 @@
       - mamonsu
       - pgbouncer
       - pgbadger
-      - pg_utils
+      - pg-utils
 
   vars:
      local_path: "{{ lookup('env','PATH') }}"
