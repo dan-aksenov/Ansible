@@ -6,6 +6,8 @@
     pkg: "{{ item }}"
   with_items:
     - pgcenter
+    # python-devel requered for pgcli
+    - python-devel
 
 - name: "Install pgcli command shell."
   pip:
