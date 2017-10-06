@@ -7,7 +7,7 @@
   roles:
       - postgres-pro_repo
       - postgres-pro_install 
-      - postgres_config
+      - postgres-pro_config
       - mamonsu
       - pgbouncer
       - pgbadger
