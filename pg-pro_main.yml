@@ -7,10 +7,10 @@
   roles:
       - postgres-pro_repo
       - postgres-pro_install 
-     # - postgres_config
-     # - mamonsu
-     # - pgbouncer
-     # - pgbadger
+      - postgres_config
+      - mamonsu
+      - pgbouncer
+      - pgbadger
       - pg_utils
 
   vars:
