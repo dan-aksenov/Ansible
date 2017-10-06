@@ -16,7 +16,7 @@
   vars:
      local_path: "{{ lookup('env','PATH') }}"
 
-  #environment:
-  #  PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
+  environment:
+    PATH: "{{ local_path }}:/usr/pgpro-{{ postgresql_version }}/bin"
 
 ...
