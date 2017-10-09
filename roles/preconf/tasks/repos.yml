@@ -16,7 +16,7 @@
     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
   when: ansible_distribution == 'OracleLinux'
   environment:
-    https_proxy: http://{{ proxy_ip }}
+    https_proxy: {{ proxy_ip }}
 
 - name: Enable Optional repo on OL7
   yum_repository:
