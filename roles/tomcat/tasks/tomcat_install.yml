@@ -17,7 +17,7 @@
     owner: tomcat
     mode: 0755
   environment:
-    http_proxy: http://{{ proxy_ip }}
+    http_proxy: {{ proxy_ip }}
 
 # sudo chgrp -R tomcat /opt/tomcat
 # sudo chmod -R g+r conf
