@@ -17,6 +17,7 @@ pts-tst-db2c
 pts-tst-db3n
 pts-tst-db4n
 pts-dev-db
+pts-load-frs
 
 [fors:children]
 postgres
