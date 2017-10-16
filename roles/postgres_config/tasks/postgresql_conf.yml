@@ -11,7 +11,7 @@
 - name: Configure postgresql.conf. from template. Redo this with modular 'include' postgresql.conf files!
   template:
     src: "postgresql.conf.{{ postgresql_version }}.j2"
-    dest: "/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf"
+    dest: "{{ pg_data }}/postgresql.conf"
     owner: "{{ postgresql_admin_user }}"
     group: "{{ postgresql_admin_user }}"
     mode: 0640
