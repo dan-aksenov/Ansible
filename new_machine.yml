@@ -20,5 +20,8 @@
    #- rsyslogd
    #- sshd
 
+  environment:
+    https_proxy: "{{ proxy_ip }}"
+
 ...
 
