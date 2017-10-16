@@ -1,6 +1,7 @@
 ---
 
-- name: Install EPEL Centos
+# Install repository wont work if proxy required. Yum-proxy tag required.
+- name: Install EPEL Centos.
   yum:
     state: latest
     pkg: "{{ item }}"
