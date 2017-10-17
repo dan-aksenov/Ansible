@@ -15,9 +15,10 @@
     group: root
     mode: '0644'
 
-- name: Barman sever. Add barman's password pgpass.
+- name: "Barman sever. Add barman's password pgpass."
   lineinfile:
     dest: "/var/lib/barman/.pgpass"
+    create: yes
     state: present
     line: '{{ ansible_hostname }}:5432:postgres:barman:{{ barman_password }}'
 #'
