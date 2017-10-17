@@ -2,7 +2,6 @@
 
 - name: Database server. Add barman user pub_key
   authorized_key: user=postgres key="{{ lookup('file', '~/localrepo/barman_key') }}"
-#"
 
 - name: Database server. Add barman db user.
   postgresql_user:
