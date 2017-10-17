@@ -2,7 +2,7 @@
 
 - include: barman_server_conf.yml
   tags: barman
-  delegate_to: "{{ barman_host }}"
+  delegate_to: "{{ barman_server }}"
 
 - include: db_server_conf.yml
   tags: barman
