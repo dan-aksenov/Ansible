@@ -2,7 +2,7 @@
 
 barman_password: barman
 streaming_barman_password: barman
-barman_server: "{{ ansible_hostname }}"
+barman_server: "{{ inventory_hostname }}"
 postgresql_admin_user: postgres
 
 ...
