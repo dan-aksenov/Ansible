@@ -7,7 +7,7 @@
 - include: db_server_conf.yml
   tags: barman
 
-# Create need to be runed after database configured. ie barman and streaming_barman users created.
+# Create need to be run after database configured. Barman and streaming_barman users created.
 - include: create_slot.yml
   tags: barman
   delegate_to: "{{ barman_server }}"

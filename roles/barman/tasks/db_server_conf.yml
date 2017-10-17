@@ -52,4 +52,6 @@
     hour: "2"
     job: "/var/lib/pgsql/scripts/archivecleanup.sh &>/tmp/archivecleanup.log"
 
+# reload postgres.
+
 ...
