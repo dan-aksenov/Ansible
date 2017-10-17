@@ -1,0 +1,8 @@
+...
+
+- name: Barman sever. Create replication slot.
+  shell: barman receive-wal --create-slot "{{ ansible_hostname }}"
+  become: yes
+  become_user: barman
+
+...

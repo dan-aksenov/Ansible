@@ -15,7 +15,7 @@
     group: root
     mode: '0644'
 
-- name: "Barman sever. Add barman's password pgpass."
+- name: Barman sever. Add barman password pgpass.
   lineinfile:
     dest: "/var/lib/barman/.pgpass"
     create: yes
@@ -25,17 +25,11 @@
 
     state: present
     line: '{{ ansible_hostname }}:5432:postgres:barman:{{ barman_password }}'
-#'
 
 - name: Barman sever. Add streaming_barman password to pgpass.
   lineinfile:
     dest: "/var/lib/barman/.pgpass"
     state: present
     line: '{{ ansible_hostname }}:5432:postgres:streaming_barman:{{ streaming_barman_password }}'
-
-- name: Barman sever. Create replication slot.
-  shell: barman receive-wal --create-slot "{{ ansible_hostname }}"
-  become: yes
-  become_user: barman
 
 ...
