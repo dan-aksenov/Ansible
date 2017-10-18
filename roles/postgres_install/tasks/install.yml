@@ -9,10 +9,10 @@
     pkg: "{{ item }}"
   with_items:
     - "{{ pcg_name }}"
-    - "{{ pcg_name }}"-server
-    - "{{ pcg_name }}"-contrib
-    - "{{ pcg_name }}"-libs
-    - "{{ pcg_name }}"-devel
+    - "{{ pcg_name }}-server"
+    - "{{ pcg_name }}-contrib"
+    - "{{ pcg_name }}-libs"
+    - "{{ pcg_name }}-devel"
     - python-psycopg2
 
 ...
