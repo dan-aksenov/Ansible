@@ -5,6 +5,9 @@ el_version: 7
 postgresql_version: 9.5
 postgresql_contrib: yes
 
+# Postgresql distribution postgresql or postgrespro.
+postgresql_distribution: "postgresql"
+
 # PostgreSQL users and roles
 postgresql_admin_user: "postgres"
 
