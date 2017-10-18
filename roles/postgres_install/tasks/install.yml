@@ -1,7 +1,7 @@
 ---
 
 - set_fact:
-    pcg_name: "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"
+    pcg_name: {{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}
 
 - name: "Install {{ postgresql_distribution }} packages."
   yum: 
