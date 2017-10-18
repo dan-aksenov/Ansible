@@ -5,11 +5,11 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - "{{ postgresql_distribution }}"{{ postgresql_version | replace('.', '') }}
-    - "{{ postgresql_distribution }}"{{ postgresql_version | replace('.', '') }}-server
-    - "{{ postgresql_distribution }}"{{ postgresql_version | replace('.', '') }}-contrib
-    - "{{ postgresql_distribution }}"{{ postgresql_version | replace('.', '') }}-libs
-    - "{{ postgresql_distribution }}"{{ postgresql_version | replace('.', '') }}-devel
+    - "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"
+    - "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"-server
+    - "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"-contrib
+    - "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"-libs
+    - "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"-devel
     - python-psycopg2
 
 ...
