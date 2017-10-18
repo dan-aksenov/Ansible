@@ -4,4 +4,7 @@
 el_version: 7
 postgresql_version: 9.6
 
+# Postgresql distribution postgresql or postgrespro.
+postgresql_distribution: "postgresql"
+
 ...
