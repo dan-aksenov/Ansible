@@ -2,10 +2,10 @@
 
 - name: reload postgres
   service: 
-     name: "{{ postgres_distribution}}-{{ postgresql_version }}" 
+     name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
      state: reloaded
 - name: restart postgres
   service: 
-     name: "{{ postgres_distribution}}-{{ postgresql_version }}"
+     name: "{{ postgresql_distribution }}-{{ postgresql_version }}"
      state: restarted
 ...
