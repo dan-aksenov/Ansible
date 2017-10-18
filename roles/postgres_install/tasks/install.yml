@@ -1,6 +1,6 @@
 ---
-
-- set_fact:
+- name: Set postgresql package name.
+  set_fact:
     pcg_name: "{{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}"
 
 - name: "Install {{ postgresql_distribution }} packages."
