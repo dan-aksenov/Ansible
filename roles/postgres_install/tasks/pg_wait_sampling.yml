@@ -7,7 +7,7 @@
 - name: Git clone pg_wait_sampling.
   git: 
     repo: https://github.com/postgrespro/pg_wait_sampling.git
-    dest: {{ src_location }}
+    dest: "{{ src_location }}"
     update: yes
 
 #- name: Make pg_wait_sampling.
@@ -17,13 +17,13 @@
 
 - name: Make pg_wait_sampling.
   make:  
-   chdir: {{ src_location }}
+   chdir: "{{ src_location }}"
    params:
     USE_PGX: 1
 
 - name: Install pg_wait_sampling.
   make:  
-   chdir: {{ src_location }}
+   chdir: "{{ src_location }}"
    target: install    
    params:
     USE_PGX: 1
