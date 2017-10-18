@@ -12,4 +12,11 @@
    params:
     USE_PGX: 1
 
+- name: Install pg_wait_sampling.
+  make:  
+   chdir: /tmp/pg_wait_sampling
+   target: install    
+   params:
+    USE_PGX: 1
+
 ...
