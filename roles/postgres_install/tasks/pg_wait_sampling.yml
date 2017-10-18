@@ -1,14 +1,32 @@
 ---
 
+- name: Declare variable for pg_wait_sampling soruces.
+  set_fact: 
+    src_location:"/tmp/pg_wait_sampling"
+
 - name: Git clone pg_wait_sampling.
   git: 
     repo: https://github.com/postgrespro/pg_wait_sampling.git
-    dest: /tmp/oracle_fdw
+    dest: {{ src_location }}
     update: yes
 
+#- name: Make pg_wait_sampling.
+#  shell: make USE_PGXS=1 && make USE_PGXS=1 install 
+#  args:
+#    chdir: /tmp/oracle_fdw
+
 - name: Make pg_wait_sampling.
-  shell: make USE_PGXS=1 && make USE_PGXS=1 install 
-  args:
-    chdir: /tmp/oracle_fdw
+  make:  
+   chdir: {{ src_location }}
+   params:
+    USE_PGX: 1
+
+- name: Install pg_wait_sampling.
+  make:  
+   chdir: {{ src_location }}
+   target: install    
+   params:
+    USE_PGX: 1
+
 
 ...
