@@ -12,9 +12,9 @@
    params:
     USE_PGX: 1
 
-- name: Install pg_wait_sampling.
+- name: Install pg_stat_kcache.
   make:  
-   chdir: /tmp/pg_wait_sampling
+   chdir: /tmp/pg_stat_kcache
    target: install    
    params:
     USE_PGX: 1
