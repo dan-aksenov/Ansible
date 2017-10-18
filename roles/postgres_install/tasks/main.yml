@@ -10,5 +10,8 @@
 - include: pg_wait_sampling.yml
   tags: pg_wait_sampling
 
+- include: pg_wait_sampling.yml
+  tags: pg_wait_sampling
+
 ...
 
