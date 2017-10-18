@@ -2,7 +2,7 @@
 
 - name: Declare variable for pg_wait_sampling soruces.
   set_fact: 
-    src_location:"/tmp/pg_wait_sampling"
+    src_location: "/tmp/pg_wait_sampling"
 
 - name: Git clone pg_wait_sampling.
   git: 
