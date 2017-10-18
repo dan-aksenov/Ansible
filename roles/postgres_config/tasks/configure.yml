@@ -16,7 +16,7 @@
 
 - name: Start and enable postgresql service.
   service: 
-    name: "postgresql-{{ postgresql_version }}" 
+    name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
     state: started 
     enabled: yes
 
