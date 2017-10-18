@@ -1,17 +1,18 @@
 ---
 
-
+- set_fact:
+    pcg_name: "{{ postgresql_distribution }}""{{ postgresql_version | replace('.', '') }}"
 
 - name: "Install {{ postgresql_distribution }} packages."
   yum: 
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - "{{ postgresql_distribution }}"+"{{ postgresql_version | replace('.', '') }}"
-    - "{{ postgresql_distribution }}"+"{{ postgresql_version | replace('.', '') }}"-server
-    - "{{ postgresql_distribution }}"+"{{ postgresql_version | replace('.', '') }}"-contrib
-    - "{{ postgresql_distribution }}"+"{{ postgresql_version | replace('.', '') }}"-libs
-    - "{{ postgresql_distribution }}"+"{{ postgresql_version | replace('.', '') }}"-devel
+    - "{{ pcg_name }}"
+    - "{{ pcg_name }}"-server
+    - "{{ pcg_name }}"-contrib
+    - "{{ pcg_name }}"-libs
+    - "{{ pcg_name }}"-devel
     - python-psycopg2
 
 ...
