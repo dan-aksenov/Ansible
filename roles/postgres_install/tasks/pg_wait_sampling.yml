@@ -15,6 +15,7 @@
   args:
     chdir: "{{ src_location }}"
 
+# Seems not working this way. Strange pg_stat_kcache works fine
 #- name: Make pg_wait_sampling.
 #  make:  
 #   chdir: "{{ src_location }}"
