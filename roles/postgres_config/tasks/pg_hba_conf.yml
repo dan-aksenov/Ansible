@@ -11,4 +11,6 @@
   notify: reload postgres
   tags: pg_hba_conf
 
+- meta: flush_handlers
+
 ...
