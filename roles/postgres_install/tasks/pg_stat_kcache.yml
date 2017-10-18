@@ -1,0 +1,15 @@
+---
+
+- name: Git clone pg_stat_kcache.
+  git: 
+    repo: https://github.com/dalibo/pg_stat_kcache.git
+    dest: /tmp/pg_stat_kcache
+    update: yes
+
+- name: Make pg_stat_kcache.
+  make:  
+   chdir: /tmp/pg_stat_kcache
+   params:
+    USE_PGX: 1
+
+...
