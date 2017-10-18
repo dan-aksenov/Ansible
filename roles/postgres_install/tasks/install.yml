@@ -1,15 +1,15 @@
 ---
 
-- name: "Install postgresql packages."
+- name: "Install {{ postgresql_distribution }} packages."
   yum: 
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - postgresql{{ postgresql_version | replace('.', '') }}
-    - postgresql{{ postgresql_version | replace('.', '') }}-server
-    - postgresql{{ postgresql_version | replace('.', '') }}-contrib
-    - postgresql{{ postgresql_version | replace('.', '') }}-libs
-    - postgresql{{ postgresql_version | replace('.', '') }}-devel
+    - {{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}
+    - {{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}-server
+    - {{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}-contrib
+    - {{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}-libs
+    - {{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}-devel
     - python-psycopg2
 
 ...
