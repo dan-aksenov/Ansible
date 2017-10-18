@@ -8,7 +8,7 @@
     group: "{{ postgresql_admin_user }}"
     mode: 0755
 
-- name: Configure postgresql.conf. from template. Redo this with modular 'include' postgresql.conf files!
+- name: Configure postgresql.conf. from template.
   template:
     src: "postgresql.conf.{{ postgresql_version }}.j2"
     dest: "{{ pg_data }}/postgresql.conf"
@@ -17,5 +17,7 @@
     mode: 0640
     backup: yes
   notify: restart postgres
+
+- meta: flush_handlers
 
 ...
