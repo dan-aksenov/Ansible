@@ -1,6 +1,6 @@
 ---
 
-- name: Declare variable for pg_wait_sampling soruces.
+- name: Set source directory name.
   set_fact: 
     src_location: "/tmp/pg_wait_sampling"
 
