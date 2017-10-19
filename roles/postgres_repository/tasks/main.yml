@@ -1,34 +1,6 @@
 ---
 
-- name: download repo file 
-  shell: for x in {1..3}; do wget -O /tmp/pgdg{{ postgresql_version | replace('.', '') }}.rpm https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-$x.noarch.rpm && break; done
-  when: postgresql_distribution == 'postgresql'
-  tags: pgdg
-
-- name: Add pgdg repository
-  yum:
-    name: /tmp/pgdg{{ postgresql_version | replace('.', '') }}.rpm
-    state: present
-  when: postgresql_distribution == 'postgresql'
-  tags: pgdg
-
-- name: update repository
-  yum: 
-    name: 'pgdg*'
-    state: latest
-  when: postgresql_distribution == 'postgresql'
-  tags: pgdg
-
-- name: Add postgres pro repository.
-  yum_repository:
-     name: postgresql-pro
-     description: postgresql-pro
-     # Here need to check what is 2.2 in pro.yum-9.5-2.2.noarch.rpm!
-     baseurl: http://repo.postgrespro.ru/pgpro-{{ postgresql_version }}/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/os/x86_64/rpms
-     #baseurl: http://repo.postgrespro.ru/pgpro-{{ postgresql_version }}/keys/postgrespro-{{ postgresql_version }}.rhel.pro.yum-1.0-1.noarch.rpm
-     #gpgkey: https://packagecloud.io/postgrespro/mamonsu/gpgkey
-     gpgcheck: no
-     enabled: yes
-  when: postgresql_distribution == 'postgrespro'
+- include: repository.yml
+  tags: 1_repository
 
 ...
