@@ -5,7 +5,7 @@
   become: yes
 
   roles:
-      - pgdg
+      - postgres_repository
       - postgres_install 
       - postgres_config
       - mamonsu
