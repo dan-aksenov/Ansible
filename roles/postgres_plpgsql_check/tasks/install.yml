@@ -1,0 +1,19 @@
+---
+
+- name: git clone plpgsql_check  
+  git: repo=https://github.com/okbob/plpgsql_check
+       dest=~/src/plpgsql_check
+       update=yes
+
+- name: make it 
+  shell: make && make install 
+  args:
+    chdir: ~/src/plpgsql_check
+
+- name: create extension
+  postgresql_ext:
+    name: plpgsql_check
+    db: postgres
+  become_user: postgres
+
+...
