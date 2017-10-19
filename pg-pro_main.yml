@@ -18,9 +18,9 @@
      postgresql_distribution: "postgrespro"
 
   environment:
-    PATH: "{{ local_path }}:/usr/pgpro-{{ postgresql_version }}/bin"
-    http_proxy: "{{ proxy_ip }}"
-    https_proxy: "{{ proxy_ip }}"
+     PATH: "{{ local_path }}:/usr/pgpro-{{ postgresql_version }}/bin"
+     http_proxy: "{{ proxy_ip }}"
+     https_proxy: "{{ proxy_ip }}"
 
 
 ...
