@@ -1,0 +1,33 @@
+---
+
+- name: install pgagent
+  yum:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - pgagent_{{ postgresql_version | replace('.', '') }}
+
+- name: add pgagent user
+  user: name=pgagent
+        createhome=yes
+        home=/home/pgagent
+        state=present
+
+#sudo -u postgres psql -f /usr/share/pgagent_94-3.4.0/pgagent.sql postgres
+
+- file: path=/var/log/pgagent_{{ postgresql_version.stdout }}.log owner=pgagent group=pgagent
+
+- name: edit pgpass
+  lineinfile:
+    dest: "/path=/home/pgagent/.pgpass" 
+    state: present
+    line: "localhost:5432:*:postgres:postgres" 
+
+- file: path=/home/pgagent/.pgpass owner=pgagent group=pgagent mode=600
+
+# edit systemd script to restart on fail
+
+- name: "start pgagent"
+  service: name=pgagent_{{ postgresql_version.stdout }} state=started enabled=yes 
+
+...

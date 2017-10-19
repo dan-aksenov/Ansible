@@ -1,0 +1,7 @@
+[{{ ansible_hostname  }}]
+description =  {{ ansible_hostname  }} database server
+conninfo = host={{ ansible_hostname  }} user=barman dbname=postgres
+backup_method = postgres
+streaming_conninfo = host={{ ansible_hostname  }} user=streaming_barman dbname=postgres
+streaming_archiver = on
+slot_name = barman
