@@ -11,7 +11,8 @@
 - name: Initialize new postgresql cluster in default directory. If not already exists.
   become: yes
   become_user: "{{ postgresql_admin_user }}"
-  command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D {{ pg_data }}"
+  command: initdb -D {{ pg_data }}
+# command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D {{ pg_data }}"
   when: pg_dir.matched|int == 0
 
 - name: Start and enable postgresql service.

@@ -2,7 +2,7 @@
 
 - name: Create directory to hold archivelogs. 
   file:
-    path: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
+    path: "{{ pg_arch }}"
     state: directory
     owner: "{{ postgresql_admin_user }}"
     group: "{{ postgresql_admin_user }}"
