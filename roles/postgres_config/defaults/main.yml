@@ -5,6 +5,9 @@ el_version: 7
 postgresql_version: 9.5
 postgresql_contrib: yes
 
+# archivelog data
+pg_arch: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
+
 # Postgresql distribution postgresql or postgrespro.
 postgresql_distribution: "postgresql"
 
