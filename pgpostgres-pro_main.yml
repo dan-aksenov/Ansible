@@ -1,0 +1,26 @@
+---
+
+- hosts: postgres 
+  user: "{{ my_ansible_user }}"
+  become: yes
+
+  roles:
+      - postgres-pro_repo
+      - postgres-pro_install 
+      - postgres-pro_config
+      - mamonsu
+      - pgbouncer
+      - pgbadger
+      - pg-utils
+
+  vars:
+     local_path: "{{ lookup('env','PATH') }}"
+     postgresql_distribution: "postgrespro"
+
+  environment:
+     PATH: "{{ local_path }}:/usr/pgpro-{{ postgresql_version }}/bin"
+     http_proxy: "{{ proxy_ip }}"
+     https_proxy: "{{ proxy_ip }}"
+
+
+...
