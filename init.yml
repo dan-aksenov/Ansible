@@ -1,5 +1,6 @@
 ---
 
+# Run first role. Create and configure ansible user.
 - hosts: all
   user: root 
 
