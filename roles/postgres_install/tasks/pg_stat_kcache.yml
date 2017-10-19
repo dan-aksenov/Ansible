@@ -1,6 +1,7 @@
 ---
 
-- set_fact:
+- name: Set source directory name.
+  set_fact:
     src_dir: "/tmp/pg_stat_kcache"
 
 - name: Git clone pg_stat_kcache.
