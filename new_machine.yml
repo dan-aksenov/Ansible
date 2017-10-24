@@ -6,7 +6,7 @@
 
   roles:
     - proxy_settings
-    - preconf
+    - essentials
     - selinux
     - yum-update
     - zabbix-agent
