@@ -6,7 +6,6 @@
 
   roles:
     - proxy_settings
-    # stange. yum proxy doesnt apply in first run ( need fix.
     - essentials
     - selinux
     - yum-update
