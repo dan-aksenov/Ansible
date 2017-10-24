@@ -20,7 +20,7 @@
       - hdparm
       - iotop
       - sysstat
-      # I have special role for atop, but let be here for list completeness.
+      # I have special role for atop, let be here just in case.
       - atop
       - htop
       # Logfile browser
@@ -35,6 +35,8 @@
       - lm_sensors
       
       # MISC tools
+      # I have special role for tmux, let it be here just in case.
+      - tmux
       - vim
       - open-vm-tools
       # Database for local files
