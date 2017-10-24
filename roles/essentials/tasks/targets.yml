@@ -1,0 +1,10 @@
+---
+
+# can we redo it in systemctl module?
+- name: Set multi-user as default target
+  shell: systemctl set-default multi-user.target
+
+- name: Set multi-user as current runlevel
+  shell: systemctl isolate multi-user.target
+
+...
