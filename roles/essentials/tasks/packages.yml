@@ -3,27 +3,57 @@
 - name: Installing packages
   yum: name={{ item }}
   with_items:
-      - vim
-      - open-vm-tools
-      - wget
-      - iftop
+      # DEV tools
+      - git
+      - gcc
+      - make
+      - rpm-build
+      - gdb 
+      
+      # PY tools
+      - python-pip 
+      - python-devel
+      - python-setuptools
+      - libselinux-python
+      
+      # MON tools
+      - hdparm
       - iotop
       - sysstat
-      - hdparm
-      - gcc
+      # I have special role for atop, but let be here for list completeness.
+      - atop
+      - htop
+      # Logfile browser
+      - lnav
       - lshw
       - strace
-      - python-pip
-      - git
-      - lnav
-      - make
-#      - rpm-build
-#      - python2-devel
-#      - python-setuptools
-      - libselinux-python
-      - ntp
-      - mlocate
       - glances
       - lsof
-
+      # A set of utilities that use the proc filesystem (fuser, killall, pidof, pstree)
+      - psmisc
+      # tools and drivers for monitoring temperatures, voltage, and fans.
+      - lm_sensors
+      
+      # MISC tools
+      - vim
+      - open-vm-tools
+      # Database for local files
+      - mlocate
+      - rsync
+      - zip
+      - unzip
+   
+      # Network tools
+      - net-tools
+      - iptraf    
+      - nethogs
+      - tcpdump
+      - iperf
+      - mtr
+      - iftop
+      - wget
+      - ntpdate      
+      - ngrep
+      - bind-utils
+        
 ...
