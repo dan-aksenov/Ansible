@@ -7,6 +7,7 @@
         - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-basic-{{ ora_version }}.x86_64.rpm
         - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-devel-{{ ora_version }}.x86_64.rpm 
         - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-sqlplus-{{ ora_version }}.x86_64.rpm
+        - ~/localrepo/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-odbc-{{ ora_version }}.x86_64.rpm
 
 - name: install client packages
   yum: name={{ item }}
@@ -14,6 +15,7 @@
         - /tmp/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-basic-{{ ora_version }}.x86_64.rpm
         - /tmp/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-devel-{{ ora_version }}.x86_64.rpm
         - /tmp/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-sqlplus-{{ ora_version }}.x86_64.rpm
+        - /tmp/oracle-instantclient{{ ora_version | truncate(4,False,"") }}-odbc-{{ ora_version }}.x86_64.rpm
 
 - name: Add oracle library.
   lineinfile:
