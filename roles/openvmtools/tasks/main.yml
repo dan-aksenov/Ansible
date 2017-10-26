@@ -1,0 +1,6 @@
+---
+
+- include: install.yml
+  tags: open-vm-tools
+
+...
