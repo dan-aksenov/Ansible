@@ -1,6 +1,6 @@
 [postgres]
 db1
-db2
+alt1
 
 [test:children]
 postgres
