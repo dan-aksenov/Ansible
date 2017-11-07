@@ -22,7 +22,7 @@
     dest: "/etc/sudoers.d/{{ my_ansible_user }}"
     owner: root
     group: root
-    mode: 0644
+    mode: 0400
     validate: 'visudo -cf %s'
   tags: sudoers
 
