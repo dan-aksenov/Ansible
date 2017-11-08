@@ -22,7 +22,7 @@
    #  Needs to be fixed and revorked to work properly in all(not only iit's) environment.
    #- postfix
 
-   # IIT's legacy. No need to setup static address and custom rotes now.
+   # IIT's legacy. No need to setup static address and custom routes now.
    #- network
  
    # yum-cron not works properly on CentOS(unable to apply security only updates), thus removed.
