@@ -9,8 +9,4 @@
 - include: firewall.yml
   tags: firewall
                   
-# Should be deployed as ansible user.
-#- include: users.yml
-#  tags: users
-
 ...
