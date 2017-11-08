@@ -3,8 +3,8 @@
 - include: repos.yml
   tags: repos
 
-#- include: hostname.yml
-#  tags: hostname 
+- include: hostname.yml
+  tags: hostname 
 
 - include: packages.yml
   tags: packages
@@ -12,7 +12,7 @@
 - include: tmux.yml
   tags: tmux
 
-#- include: targets.yml
-#  tags: runlevels
+- include: targets.yml
+  tags: runlevels
 
 ...
