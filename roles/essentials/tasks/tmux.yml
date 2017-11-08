@@ -5,12 +5,20 @@
   with_items:
       - tmux
 
-- name: Setup tmux.conf as template. Its root for now. To be replaced in future.
+#- name: Setup tmux.conf as template. Its root for now. To be replaced in future.
+#  template:
+#    src: tmux.conf.j2
+#    dest: /root/.tmux.conf
+#    owner: root
+#    group: root
+#    mode: 0700
+
+- name: Setup tmux.conf as template.
   template:
     src: tmux.conf.j2
-    dest: /root/.tmux.conf
-    owner: root
-    group: root
+    dest: /home/{{ my_ansible_user }}/.tmux.conf
+    owner: {{ my_ansible_user }}
+    group: {{ my_ansible_user }}
     mode: 0700
 
 ...
