@@ -16,7 +16,7 @@
 - name: Setup tmux.conf as template.
   template:
     src: tmux.conf.j2
-    dest: /home/"{{ my_ansible_user }}"/.tmux.conf
+    dest: "/home/{{ my_ansible_user }}/.tmux.conf"
     owner: "{{ my_ansible_user }}"
     group: "{{ my_ansible_user }}"
     mode: 0700
