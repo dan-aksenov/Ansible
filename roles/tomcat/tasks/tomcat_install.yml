@@ -13,8 +13,8 @@
     src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
     dest: "{{ root_dir }}"
     remote_src: True
-    group: tomcat
-    owner: tomcat
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_user }}"
     mode: 0755
   environment:
     http_proxy: {{ proxy_ip }}
@@ -30,6 +30,24 @@
     dest: "/etc/systemd/system/tomcat.service"
     owner: root
     group: root
+    force: yes
+    mode: 0644
+
+- name: Setup tomcat manager interface (tomcat_users).
+  template:
+    src: tomcat_users.j2
+    dest: "{{ tomcat_dir }}/conf/tomcat-users.xml"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_user }}"
+    force: yes
+    mode: 0644
+
+- name: Setup tomcat manager interface (manager context).
+  template:
+    src: manager_context.j2
+    dest: "{{ tomcat_dir }}/webapps/manager/META-INF/context.xml"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_user }}"
     force: yes
     mode: 0644
 
