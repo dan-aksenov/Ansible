@@ -50,6 +50,9 @@
     - restart mamonsu
 
 - name: start monitoring service.
-  service: name=mamonsu state=restarted enabled=yes
+  service: 
+     name: mamonsu
+     state: started
+     enabled: yes
 
 ...
