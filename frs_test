@@ -8,7 +8,6 @@ postgres
 [test:vars]
 proxy_ip=http://cache.fors.ru:3128
 postgresql_version=9.6
-pg_data="/var/lib/pgsql/{{ postgresql_version }}/data"
 
 my_ansible_user=ansible
 

@@ -16,6 +16,7 @@
   vars:
      local_path: "{{ lookup('env','PATH') }}"
      postgresql_distribution: "postgresql"
+     pg_data: "/var/lib/pgsql/{{ postgresql_version }}/data"
 
   environment:
     PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
