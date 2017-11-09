@@ -61,6 +61,4 @@
     daemon_reload: yes
     enabled: yes
 
-# Configure Tomcat Web Management Interface
-
 ...
