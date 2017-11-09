@@ -5,13 +5,13 @@
   become: yes
 
   roles:
-      - postgres-repo
-      - postgres-install 
-      - postgres-config
-      - mamonsu
-      - pgbouncer
-      - pgbadger
-      - pg-utils
+      - postgres_repository
+      - postgres_install 
+      - postgres_config
+      - postgres_mamonsu
+      - postgres_pgbouncer
+      - postgres_pgbadger
+      - postgres_utils
 
   vars:
      local_path: "{{ lookup('env','PATH') }}"
