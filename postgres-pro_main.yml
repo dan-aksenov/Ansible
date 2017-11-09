@@ -5,9 +5,9 @@
   become: yes
 
   roles:
-      - postgres-pro_repo
-      - postgres-pro_install 
-      - postgres-pro_config
+      - postgres-repo
+      - postgres-install 
+      - postgres-config
       - mamonsu
       - pgbouncer
       - pgbadger
