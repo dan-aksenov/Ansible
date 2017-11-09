@@ -50,6 +50,10 @@
     force: yes
     mode: 0644
 
+- name: Add firewall exception. If firewall is on.
+  firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
+  ignore_errors: yes
+    
 - name: Start and enable tomcat.
   systemd:
     state: started
