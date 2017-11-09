@@ -6,7 +6,7 @@
     name: zabbix-api
   run_once: true
 
-- name: Import mamonsus template.
+- name: Import mamonsu template.
   shell: mamonsu zabbix template export /usr/share/mamonsu/template.xml --url="{{ zabbix_url }}" --user=Admin --password=zabbix
   run_once: true
 
