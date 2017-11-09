@@ -7,22 +7,20 @@
     owner: "{{ tomcat_user }}"
     group: "{{ tomcat_user }}"
     mode: 0755
+
+- name: Copy tomcat from local repo.
+  copy: src={{ item }}
+        dest=/tmp
+  with_items:
+        - ~/localrepo/apache-tomcat-8.5.23-deployer.tar.gz
         
 - name: Download and untar tomcat. 
   unarchive:
-    src: "http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
+    src: "/tmp/apache-tomcat-8.5.23-deployer.tar.gz"
     dest: "{{ root_dir }}"
-    remote_src: True
     owner: "{{ tomcat_user }}"
     group: "{{ tomcat_user }}"
     mode: 0755
-  environment:
-    http_proxy: "{{ proxy_ip }}"
-
-# sudo chgrp -R tomcat /opt/tomcat
-# sudo chmod -R g+r conf
-# sudo chmod g+x conf
-# sudo chown -R tomcat webapps/ work/ temp/ logs/ "
 
 - name: Create systemd file for tomcat.
   template:
