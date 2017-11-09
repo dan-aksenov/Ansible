@@ -18,6 +18,7 @@
   unarchive:
     src: "/tmp/apache-tomcat-8.5.23.tar.gz"
     dest: "{{ root_dir }}"
+    remote_src: True
     owner: "{{ tomcat_user }}"
     group: "{{ tomcat_user }}"
     mode: 0755
