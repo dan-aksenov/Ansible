@@ -14,7 +14,7 @@
   with_items:
         - ~/localrepo/apache-tomcat-8.5.23-deployer.tar.gz
         
-- name: Download and untar tomcat. 
+- name: Untar tomcat. 
   unarchive:
     src: "/tmp/apache-tomcat-8.5.23-deployer.tar.gz"
     dest: "{{ root_dir }}"
