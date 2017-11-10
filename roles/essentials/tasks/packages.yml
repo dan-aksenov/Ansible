@@ -57,5 +57,6 @@
       - ntpdate      
       - ngrep
       - bind-utils
+      - traceroute
         
 ...
