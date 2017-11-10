@@ -1,21 +1,6 @@
-- name: Install pgbouncer
-  yum:
-    state: latest
-    pkg: "{{ item }}"
-  with_items:
-    - pgbouncer
+---
 
-- name: Copy pgbouncer.ini template 
-  template: owner=root group=root mode=644 
-            src=pgbouncer.ini
-            dest=/etc/pgbouncer/pgbouncer.ini
-  notify:
-    - restart pgbouncer
+- include: setup.yml
+  tags: pg_bouncer
 
-- name: Start pgbouncer
-  service: 
-    name: pgbouncer 
-    state: started
-    enabled: yes 
-
-
+...
