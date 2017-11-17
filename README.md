@@ -1,2 +1,2 @@
 # ansible
-Some personal ansible playbooks used for small automations.
+Some personal ansible playbooks used for various automations.
