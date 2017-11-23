@@ -9,6 +9,7 @@
 
 - include: pg_wait_sampling.yml
   tags: pg_wait_sampling
+  when: postgresql_version >= '6'
 
 - include: pg_stat_kcache.yml
   tags: pg_stat_kcache

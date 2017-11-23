@@ -1,7 +1,7 @@
 ---
 
 - include: configure.yml
-  tags: 2_configure
+  tags: 3_configure
 
 - include: postgresql_conf.yml
   tags: postgresql_conf
