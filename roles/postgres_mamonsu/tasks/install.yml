@@ -16,6 +16,9 @@
   with_items:
     - mamonsu
 
+- debug:
+    msg: "{{agent_name}}"
+
 - name: Copy agent.conf template 
   template: owner=root group=root mode=644 
             src=agent.conf
