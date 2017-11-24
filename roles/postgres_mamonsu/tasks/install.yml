@@ -9,23 +9,6 @@
     gpgcheck: no
     enabled: yes
 
-#- name: git clone mamonsu 
-#  git: repo=https://github.com/postgrespro/mamonsu
-#       dest=~/src/mamonsu
-#       update=yes
-
-#- name: make rpm from source
-#  shell: make rpm 
-#  args:
-#    chdir: ~/src/mamonsu
-
-#- name: install mamonsu from local file
-#  shell: yum localinstall -y mamonsu*.rpm
-#  args:
-#    chdir: ~/src/mamonsu
-#  notify:
-#    - restart mamonsu
-
 - name: Install mamonsu.
   yum: 
     state: latest
