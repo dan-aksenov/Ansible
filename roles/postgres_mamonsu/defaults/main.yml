@@ -1,3 +1,3 @@
 zabbix_server:
 zabbix_server_port: 10051
-agent_name: "{{ inventory_hostname.ansible_dns.search[0] }} if {{ ansible_dns.search[0] }} is defined else {{ ansible_dns.search[0] }}"
+agent_name: "{{ inventory_hostname.ansible_dns.search[0] }} if ansible_dns.search is defined else {{ inventory_hostname.ansible_dns.search[0] }}"
