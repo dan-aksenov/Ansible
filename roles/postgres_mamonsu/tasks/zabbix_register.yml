@@ -21,7 +21,7 @@
     visible_name: "{{ inventory_hostname }}" #.ansible_dns.search[0]
     host_groups:
       - Linux servers
-      - postgresql
+      - PostgreSQL
     link_templates:
       - Template OS Linux
       - PostgreSQL-Template
