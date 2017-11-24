@@ -6,7 +6,18 @@
     name: zabbix-api
   run_once: true
 
-- name: Import mamonsu template. Ain't working right now.
+- name: Set zabbix-agent name. If no domain name defined.
+  set_fact:
+     agent_name: "{{ inventory_hostname }}"   
+     when: ansible_dns.search[0] is undefined
+
+- name: Set zabbix-agent name. If domain name defined.
+  set_fact:
+     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
+     when: ansible_dns.search[0] is defined
+  ignore_errors: True
+  
+- name: Import mamonsu template. Not working in Zab-3.4
   shell: mamonsu zabbix template export /usr/share/mamonsu/template.xml --url="{{ zabbix_url }}" --user=Admin --password=zabbix
   run_once: true
   ignore_errors: yes
@@ -17,8 +28,8 @@
     server_url: "{{ zabbix_url }}"
     login_user: Admin
     login_password: zabbix
-    host_name: "{{ inventory_hostname }}" #.ansible_dns.search[0]
-    visible_name: "{{ inventory_hostname }}" #.ansible_dns.search[0]
+    host_name: "{{ agent_name }}"
+    visible_name: "{{ agent_name }}"
     host_groups:
       - Linux servers
       - PostgreSQL
@@ -34,7 +45,7 @@
         main: 1
         useip: 1
         ip: "{{ ansible_default_ipv4.address }}"
-        dns: "{{ inventory_hostname }}" #.{{ ansible_dns.search[0]
+        dns: "{{ agent_name }}"
         port: 10050
 
 ...
