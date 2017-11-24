@@ -5,18 +5,7 @@
     module: pip
     name: zabbix-api
   run_once: true
-
-- name: Set zabbix-agent name. If no domain name defined.
-  set_fact:
-     agent_name: "{{ inventory_hostname }}"   
-     when: ansible_dns.search[0] is undefined
-
-- name: Set zabbix-agent name. If domain name defined.
-  set_fact:
-     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
-     when: ansible_dns.search[0] is defined
-  ignore_errors: True
-  
+ 
 - name: Import mamonsu template. Not working in Zab-3.4
   shell: mamonsu zabbix template export /usr/share/mamonsu/template.xml --url="{{ zabbix_url }}" --user=Admin --password=zabbix
   run_once: true
