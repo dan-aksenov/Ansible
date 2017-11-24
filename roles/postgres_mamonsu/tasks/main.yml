@@ -12,11 +12,21 @@
   ignore_errors: True
 
 - include: install.yml
-  agent_name: "{{ agent_name }}"
-  tags: mamonsu 
+  tags: mamonsu
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
+    - "{{ inventory_hostname }}"
+  name: agent_name 
 
 - include: zabbix_register.yml
   agent_name: "{{ agent_name }}"
   tags: mamonsu-register
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
+    - "{{ inventory_hostname }}"
+  name: agent_name 
+
 
 ...
