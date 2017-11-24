@@ -1,4 +1,15 @@
 ---
+# Temporary solution. Need to fix this in later revision.
+- name: Set zabbix-agent name. If no domain name defined.
+  set_fact:
+     agent_name: "{{ inventory_hostname }}"   
+     when: ansible_dns.search[0] is undefined
+
+- name: Set zabbix-agent name. If domain name defined.
+  set_fact:
+     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
+     when: ansible_dns.search[0] is defined
+  ignore_errors: True
 
 - name: Enable mamonsu repository.
   yum_repository:
