@@ -12,11 +12,11 @@
   ignore_errors: True
 
 - include: install.yml
-  agent_name="{{ agent_name }}"
+  agent_name: "{{ agent_name }}"
   tags: mamonsu 
 
 - include: zabbix_register.yml
-  agent_name="{{ agent_name }}"
+  agent_name: "{{ agent_name }}"
   tags: mamonsu-register
 
 ...
