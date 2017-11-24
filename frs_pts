@@ -14,8 +14,6 @@ pts-dev-as2
 [postgres]
 pts-tst-db1c
 pts-tst-db2c
-pts-tst-db3n
-pts-tst-db4n
 pts-dev-db
 
 [fors:children]
