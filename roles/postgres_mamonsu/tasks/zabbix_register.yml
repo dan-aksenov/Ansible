@@ -6,10 +6,10 @@
     name: zabbix-api
   run_once: true
 
-- name: Import mamonsu template. Ain't working right now.
-  shell: mamonsu zabbix template export /usr/share/mamonsu/template.xml --url="{{ zabbix_url }}" --user=Admin --password=zabbix
-  run_once: true
-  ignore_errors: yes
+#- name: Import mamonsu template. Ain't working right now.
+#  shell: mamonsu zabbix template export /usr/share/mamonsu/template.xml --url="{{ zabbix_url }}" --user=Admin --password=zabbix
+#  run_once: true
+#  ignore_errors: yes
 
 - name: Create new of update existing zabbix host. 
   local_action:
