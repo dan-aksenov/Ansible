@@ -12,7 +12,7 @@ barman_host: "pts-tst-brm1"
 
 #zabbix configs
 zabbix_server: "oemcc.fors.ru"
-zabbix_url: "http://{{ zabbix_server }}/zabbix321"
+zabbix_url: "http://{{ zabbix_server }}/zabbix"
 
 #misc configs
 ntp_server: "ntp.fors.ru"
