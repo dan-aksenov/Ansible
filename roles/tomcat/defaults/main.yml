@@ -1,6 +1,6 @@
 ---
 
-# This is defaults! For real variables loog higher!
+# This is defaults! For real variables look group var level.
 tomcat_user: tomcat
 tomcat_version: 8.5.23
 tomcat_dir: /u01/apache-tomcat-{{ tomcat_version }}

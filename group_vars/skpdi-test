@@ -16,7 +16,7 @@ pg_data: "/home/postgres/data"
 
 #zabbix configs
 zabbix_server: "oemcc.fors.ru"
-zabbix_url: "http://{{ zabbix_server }}/zabbix321"
+zabbix_url: "http://{{ zabbix_server }}/zabbix"
 
 #misc configs
 ntp_server: "ntp.fors.ru"
