@@ -18,6 +18,10 @@
      postgresql_distribution: "postgresql"
      pg_data: "/var/lib/pgsql/{{ postgresql_version }}/data"
 
+  vars_prompt:
+    - name: "postgresql_version"
+      prompt: "Postgresql version number (i.e 9.6): "
+
   environment:
     PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
     http_proxy: "{{ proxy_ip }}"
