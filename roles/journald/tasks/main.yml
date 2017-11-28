@@ -1,6 +1,6 @@
 ---
 
-- include: journald-persistent.yml
+- include_tasks: journald-persistent.yml
   tags: journald
 
 ...

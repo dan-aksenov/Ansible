@@ -1,6 +1,6 @@
 ---
 
-- include: setup.yml
+- include_tasks: setup.yml
   tags: pg_bouncer
 
 ...

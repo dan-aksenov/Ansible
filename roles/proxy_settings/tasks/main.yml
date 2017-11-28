@@ -1,12 +1,12 @@
 ---
 
-- include: proxy_yum.yml
+- include_tasks: proxy_yum.yml
   tags: proxy_yum
 
-#- include: proxy_git.yml
+#- include_tasks: proxy_git.yml
  
-#- include: proxy_wget.yml
+#- include_tasks: proxy_wget.yml
 
-#- include: proxy_bash_profile.yml
+#- include_tasks: proxy_bash_profile.yml
 
 ...

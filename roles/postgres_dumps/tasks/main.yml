@@ -1,9 +1,9 @@
 ---
 
-- include: setup_nfs.yml
+- include_tasks: setup_nfs.yml
   tags: pg_dumps
 
-#- include: schedule_pgdump.yml
+#- include_tasks: schedule_pgdump.yml
 #  tags: pg_dumps
 
 ...

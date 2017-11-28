@@ -1,12 +1,12 @@
 ---
 
-- include: add_user.yml
+- include_tasks: add_user.yml
   tags: tomcat_user
 
-- include: java_install.yml
+- include_tasks: java_install.yml
   tags: java_install
 
-- include: tomcat_install.yml
+- include_tasks: tomcat_install.yml
   tags: tomcat_install
 
 ...
