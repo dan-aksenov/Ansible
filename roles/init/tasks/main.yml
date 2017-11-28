@@ -1,7 +1,7 @@
 ---
 
-- tasks: 
-      include_tasks: init.yml
-      tags: init
+tasks: 
+- import_tasks: common_tasks.yml
+  tags: init
 
 ...
