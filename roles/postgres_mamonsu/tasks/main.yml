@@ -1,9 +1,9 @@
 ---
 
-- include: install.yml
+- include_tasks: install.yml
   tags: mamonsu
 
-- include: zabbix_register.yml
+- include_tasks: zabbix_register.yml
   tags: mamonsu-register
 
 ...

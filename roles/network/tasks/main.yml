@@ -1,9 +1,9 @@
 ---
 
-- include: setup_static_ip.yml
+- include_tasks: setup_static_ip.yml
   tags: static_ip
 
-- include: setup_routes.yml
+- include_tasks: setup_routes.yml
   tags: routes
 
 ...

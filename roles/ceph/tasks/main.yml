@@ -1,12 +1,12 @@
 ---
 
-- include: repository.yml
+- include_tasks: repository.yml
   tags: repository
 
-- include: packages.yml
+- include_tasks: packages.yml
   tags: packages
 
-- include: firewall.yml
+- include_tasks: firewall.yml
   tags: firewall
                   
 ...

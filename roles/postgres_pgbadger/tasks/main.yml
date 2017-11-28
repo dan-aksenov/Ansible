@@ -1,9 +1,9 @@
 ---
 
-- include: postgresql_conf.yml
+- include_tasks: postgresql_conf.yml
   tags: pgbadger
 
-- include: pgbadger_install.yml
+- include_tasks: pgbadger_install.yml
   tags: pgbadger
 
 ...

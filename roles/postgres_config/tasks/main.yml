@@ -1,18 +1,18 @@
 ---
 
-- include: configure.yml
+- include_tasks: configure.yml
   tags: 3_configure
 
-- include: postgresql_conf.yml
+- include_tasks: postgresql_conf.yml
   tags: postgresql_conf
 
-#- include: postgresql_log_conf.yml
+#- include_tasks: postgresql_log_conf.yml
 #  tags: postgresql_log_conf
 
-- include: pg_hba_conf.yml
+- include_tasks: pg_hba_conf.yml
   tags: pg_hba_conf
 
-- include: extensions.yml
+- include_tasks: extensions.yml
   tags: pg_extensions
 
 ...
