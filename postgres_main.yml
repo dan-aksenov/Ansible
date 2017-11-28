@@ -21,6 +21,7 @@
   vars_prompt:
     - name: "postgresql_version"
       prompt: "Postgresql version number (i.e 9.6): "
+      private: no
 
   environment:
     PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
