@@ -1,7 +1,6 @@
 ---
 
-tasks: 
-  - import_tasks: init.yml
-#  tags: init
+- import_tasks: init.yml
+# tags: init
 
 ...
