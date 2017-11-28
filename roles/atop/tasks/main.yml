@@ -1,6 +1,6 @@
 ---
 
-- include_task: setup.yml
+  include: setup.yml
   tags: atop
 
 ...
