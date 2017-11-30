@@ -1,6 +1,6 @@
 [postgres]
 db1
-remsmed2
+ora1
 
 [test:children]
 postgres
