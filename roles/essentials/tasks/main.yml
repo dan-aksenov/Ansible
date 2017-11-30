@@ -7,8 +7,20 @@
   tags: hostname 
 
 - include_tasks: packages.yml
-  tags: packages
+  tags: packages-misc
 
+- include_tasks: packages-mon.yml
+  tags: packages-mon
+
+- include_tasks: packages-net.yml
+  tags: packages-net
+
+- include_tasks: packages-dev.yml
+  tags: packages-dev
+
+- include_tasks: packages-py.yml
+  tags: packages-py
+  
 - include_tasks: tmux.yml
   tags: tmux
 
