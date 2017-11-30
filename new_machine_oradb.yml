@@ -1,0 +1,23 @@
+---
+
+- hosts: all
+  user: "{{ my_ansible_user }}"
+  become: yes 
+
+  roles:
+    - proxy_settings
+    - essentials
+    - openvmtools
+    - selinux
+    - yum-update
+    - zabbix-agent
+    - atop
+    - journald
+    - ntpd
+    - oracle
+
+  environment:
+    http_proxy: "{{ proxy_ip }}"
+    https_proxy: "{{ proxy_ip }}"
+
+...
