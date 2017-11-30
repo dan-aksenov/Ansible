@@ -20,8 +20,6 @@
       - hdparm
       - iotop
       - sysstat
-      # I have special role for atop, let be here just in case.
-      - atop
       - htop
       # Logfile browser
       - lnav
@@ -36,11 +34,8 @@
       
       # MISC tools
       - vim
-      - open-vm-tools
       # Database for local files
       - mlocate
-      # I have special role for tmux, let it be here just in case.
-      - tmux
       - rsync
       - zip
       - unzip
