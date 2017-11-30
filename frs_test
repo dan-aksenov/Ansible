@@ -12,7 +12,7 @@ postgresql_version=9.6
 my_ansible_user=ansible
 
 zabbix_server="oemcc.fors.ru"
-zabbix_url="http://{{ zabbix_server }}/zabbix321"
+zabbix_url="http://{{ zabbix_server }}/zabbix"
 
 ntp_server=127.0.0.1
 
