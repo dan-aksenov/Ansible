@@ -1,0 +1,19 @@
+---
+
+- name: Installing network tools.
+  yum: name={{ item }}
+  with_items:
+      - net-tools
+      - iptraf    
+      - nethogs
+      - tcpdump
+      - iperf
+      - mtr
+      - iftop
+      - wget
+      - ntpdate      
+      - ngrep
+      - bind-utils
+      - traceroute
+        
+...

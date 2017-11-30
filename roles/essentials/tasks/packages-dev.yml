@@ -1,0 +1,12 @@
+---
+
+- name: Installing development tools
+  yum: name={{ item }}
+  with_items:
+      - git
+      - gcc
+      - make
+      - rpm-build
+      - gdb 
+      
+...

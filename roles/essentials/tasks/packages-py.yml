@@ -1,0 +1,11 @@
+---
+
+- name: Installing packages
+  yum: name={{ item }}
+  with_items:
+      - python-pip 
+      - python-devel
+      - python-setuptools
+      - libselinux-python
+  
+...

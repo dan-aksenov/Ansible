@@ -1,0 +1,21 @@
+---
+
+- name: Installing monitoring tools.
+  yum: name={{ item }}
+  with_items:
+      - hdparm
+      - iotop
+      - sysstat
+      - htop
+      # Logfile browser
+      - lnav
+      - lshw
+      - strace
+      - glances
+      - lsof
+      # A set of utilities that use the proc filesystem (fuser, killall, pidof, pstree).
+      - psmisc
+      # tools and drivers for monitoring temperatures, voltage, and fans.
+      - lm_sensors
+
+...

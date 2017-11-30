@@ -3,36 +3,6 @@
 - name: Installing packages
   yum: name={{ item }}
   with_items:
-      # DEV tools
-      - git
-      - gcc
-      - make
-      - rpm-build
-      - gdb 
-      
-      # PY tools
-      - python-pip 
-      - python-devel
-      - python-setuptools
-      - libselinux-python
-      
-      # MON tools
-      - hdparm
-      - iotop
-      - sysstat
-      - htop
-      # Logfile browser
-      - lnav
-      - lshw
-      - strace
-      - glances
-      - lsof
-      # A set of utilities that use the proc filesystem (fuser, killall, pidof, pstree).
-      - psmisc
-      # tools and drivers for monitoring temperatures, voltage, and fans.
-      - lm_sensors
-      
-      # MISC tools
       - vim
       # Database for local files
       - mlocate
@@ -40,19 +10,5 @@
       - zip
       - unzip
       - tree
-   
-      # Network tools
-      - net-tools
-      - iptraf    
-      - nethogs
-      - tcpdump
-      - iperf
-      - mtr
-      - iftop
-      - wget
-      - ntpdate      
-      - ngrep
-      - bind-utils
-      - traceroute
         
 ...
