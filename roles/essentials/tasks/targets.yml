@@ -1,6 +1,5 @@
 ---
 
-# can we redo it in systemctl module?
 - name: Set multi-user as default target
   shell: systemctl set-default multi-user.target
 
