@@ -1,6 +1,6 @@
 ---
 
 # should be installed as ansible user.
-ceph_deploy_user: ceph-deploy
+ceph_deploy_user: {{ my_ansible_user }}
 
 ...
