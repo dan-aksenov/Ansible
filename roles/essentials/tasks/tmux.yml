@@ -1,6 +1,6 @@
 ---
 
-- name: Installing packages.
+- name: Installing tmux.
   yum: name={{ item }}
   with_items:
       - tmux
