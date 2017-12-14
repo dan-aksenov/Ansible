@@ -6,6 +6,9 @@
 - include_tasks: hostname.yml
   tags: hostname 
 
+- include_tasks: hosts.yml
+  tags: hosts
+
 - include_tasks: packages.yml
   tags: packages-misc
 
