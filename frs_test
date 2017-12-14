@@ -1,5 +1,7 @@
 [postgres]
-db1
+cos-1
+cos-2
+cos-3
 ora1
 
 [test:children]
