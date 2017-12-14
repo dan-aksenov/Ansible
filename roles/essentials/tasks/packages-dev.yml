@@ -1,6 +1,6 @@
 ---
 
-- name: Installing development tools
+- name: Installing development tools.
   yum: name={{ item }}
   with_items:
       - git

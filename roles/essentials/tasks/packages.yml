@@ -1,6 +1,6 @@
 ---
 
-- name: Installing packages
+- name: Installing misc packages.
   yum: name={{ item }}
   with_items:
       - vim
