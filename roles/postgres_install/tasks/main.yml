@@ -3,13 +3,9 @@
 - include_tasks: install.yml
   tags: 2_install
 
-# IIT's legacy. Commented for now
-#- include_tasks: install_langs.yml
-#  tags: pg_install_langs
-
 - include_tasks: pg_wait_sampling.yml
   tags: pg_wait_sampling
-  when: postgresql_version >= '6'
+  #when: postgresql_version >= '6'
 
 - include_tasks: pg_stat_kcache.yml
   tags: pg_stat_kcache
