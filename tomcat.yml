@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  remote_user: "{{ my_ansible_user }}"
+  become: yes 
+
+  roles:
+    #- java # Java and tomcat installation to be separated in future.
+    - tomcat
+
+  environment:
+    http_proxy: "{{ proxy_ip }}"
+    https_proxy: "{{ proxy_ip }}"
+
+...
+
