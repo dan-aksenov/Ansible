@@ -3,7 +3,7 @@ skpdi
 
 [postgres]
 mo-ghkh-dev
-kpdi-test-db
+skpdi-test-db
 
 [ceph]
 ceph01
