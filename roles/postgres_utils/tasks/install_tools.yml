@@ -5,12 +5,14 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
+    # top-like utility for postgresql monitoring
     - pgcenter
     # python-devel requered for pgcli
     - python-devel
 
 - name: "Install pgcli command shell."
   pip:
+    # good replacement for psql
     name: pgcli
    
 ...
