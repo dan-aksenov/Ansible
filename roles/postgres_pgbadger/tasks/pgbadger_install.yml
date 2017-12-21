@@ -9,9 +9,12 @@
     - httpd
 
 - name: Start httpd service.
-  service: name=httpd state=started enabled=yes
+  service:
+    name: httpd
+    state: started
+    enabled: yes
 
-- name: Create apache badger directory. Need to reconfigure with non 777 rights.
+- name: Create apache badger directory.
   file:
     path: /var/www/badger
     owner: postgres
@@ -19,8 +22,12 @@
     state: directory
     mode: 0755
 
-- name: Add firewall exceptioni for http. If firewall is on.
-  firewalld: service=http permanent=true state=enabled immediate=yes
+- name: Add firewall exception for http. Ignore if firewall is off.
+  firewalld:
+    service: http
+    permanent: true
+    state: enabled
+    immediate: yes
   ignore_errors: yes
 
 - name: Place config for badger site.
