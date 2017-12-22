@@ -1,0 +1,6 @@
+---
+
+- include_tasks: postgresql_conf.yml
+  tags: archivelog_conf
+
+...

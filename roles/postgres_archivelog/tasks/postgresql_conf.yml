@@ -1,0 +1,26 @@
+--- 
+
+- name: Create directory to hold archivelogs. 
+  file:
+    path: "{{ pg_arch }}"
+    state: directory
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0755
+
+- name: Modify postgresql.conf archive_mode
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      # Look for archivemode at the beginning of the string "^" wiht 0 or more "#" befoure.
+      regexp: "^#*archive_mode ="
+      line: "archive_mode = on"
+  notify: reload postgres
+
+- name: Modify postgresql.conf archive_command
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#*archive_command ="
+      line: "archive_command = 'cp %p {{ pg_arch }}/%f'"
+  notify: reload postgres
+
+...

@@ -1,0 +1,16 @@
+--- 
+
+# Basic settings
+el_version: 7
+postgresql_version: 9.6
+
+# archivelog directory
+pg_arch: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
+
+# Postgresql distribution postgresql or postgrespro.
+postgresql_distribution: "postgresql"
+
+# PostgreSQL users and roles
+postgresql_admin_user: "postgres"
+
+...
