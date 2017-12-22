@@ -79,7 +79,7 @@ max_connections = 1000			# (change requires restart)
 
 # - Memory -
 
-shared_buffers = 1024MB			# min 128kB
+shared_buffers = {{ (ansible_memory_mb.real.total/4) |round|int }}MB			# min 128kB
 					# (change requires restart)
 #huge_pages = try			# on, off, or try
 					# (change requires restart)
