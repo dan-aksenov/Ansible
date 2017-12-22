@@ -1,0 +1,12 @@
+galaxy_info:
+  author: "Daniil Aksenov"
+  description: Setup archivelog for postgresql.
+  license: as-is
+  platforms:
+    - name: EL
+      versions:
+      - 7
+  categories:
+   - database
+   - database:sql
+   - database:archivelog
