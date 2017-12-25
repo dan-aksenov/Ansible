@@ -1,26 +1,12 @@
 ---
 
-- name: Set source directory name.
-  set_fact:
-    src_dir: "/tmp/pg_stat_kcache"
+- name: "Install pg_stat_kcache package" 
+  yum: 
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
 
-- name: Git clone pg_stat_kcache.
-  git: 
-    repo: https://github.com/dalibo/pg_stat_kcache.git
-    dest: "{{ src_dir }}"
-    update: yes
-
-- name: Make pg_stat_kcache.
-  make:  
-   chdir: "{{ src_dir }}"
-   params:
-    USE_PGX: 1
-
-- name: Install pg_stat_kcache.
-  make:  
-   chdir: "{{ src_dir }}"
-   target: install    
-   params:
-    USE_PGX: 1
+# Add postgresql.conf shared_preload_libraries
 
 ...
