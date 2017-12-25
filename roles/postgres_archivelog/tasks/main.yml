@@ -1,6 +1,29 @@
 ---
 
-- include_tasks: postgresql_conf.yml
+- name: Create directory to hold archivelogs. 
+  file:
+    path: "{{ pg_arch }}"
+    state: directory
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    mode: 0755
+    tags: archivelog_conf
+
+- name: Modify postgresql.conf archive_mode
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      # Look for archive_mode at the beginning of the string "^" wiht 0 or more "#" befoure.
+      regexp: "^#*archive_mode ="
+      line: "archive_mode = on"
+  notify: restart postgres
+  tags: archivelog_conf
+
+- name: Modify postgresql.conf archive_command
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#*archive_command ="
+      line: "archive_command = 'cp %p {{ pg_arch }}/%f'"
+  notify: restart postgres
   tags: archivelog_conf
 
 ...

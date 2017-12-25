@@ -9,4 +9,5 @@
   service: 
      name: "{{ postgresql_distribution }}-{{ postgresql_version }}"
      state: restarted
+
 ...
