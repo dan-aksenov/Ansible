@@ -7,17 +7,21 @@
   with_items:
     - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
 
-# Add postgresql.conf shared_preload_libraries. 
-# todo. check if extension already exists.
+- name: Check whether postgresql.conf contains "pg_stat_kcache"
+  command: grep "pg_stat_kcache" "{{ pg_data }}/postgresql.conf"
+  register: check_shared_libs
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
 
-#- name: Modify postgresql.conf log_line_prefix.
-#  replace:
-#      backup: yes
-#      dest: "{{ pg_data }}/postgresql.conf"
-#      regexp: "^#?(shared_preload_libraries = ')"
-#      replace: '\1pg_stat_kcache,'
-#  notify: restart postgres
-
-#regexp='^(AllowGroups(?!.*\b{{ sftp_group_name }}\b).*)$'
-
+- name: Modify postgresql.conf add pg_stat_kcache shared library.
+  replace:
+      backup: yes
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?(shared_preload_libraries = '.*)(')"
+      replace: '\1,pg_stat_kcache\2'
+  when: check_shared_libs.rc != 0
+  notify: restart postgres
+     
+    
 ...
