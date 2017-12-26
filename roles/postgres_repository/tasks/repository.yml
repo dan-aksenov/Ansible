@@ -8,10 +8,10 @@
     name: /tmp/pgdg{{ postgresql_version | replace('.', '') }}.rpm
     state: present
 
-- name: Update repository.
-  yum: 
-    name: 'pgdg*'
-    state: latest
+#- name: Update repository.
+#  yum: 
+#    name: 'pgdg*'
+#    state: latest
 
 - name: Add postgres pro repository.
   yum_repository:
