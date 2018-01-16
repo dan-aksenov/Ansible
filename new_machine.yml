@@ -19,17 +19,11 @@
    #- add_admin
    #- sshd
 
-   #  Needs to be fixed and revorked to work properly in all(not only iit's) environment.
+   #  Needs to be fixed and revorked.
    #- postfix
 
    # IIT's legacy. No need to setup static address and custom routes now.
    #- network
- 
-   # yum-cron not works properly on CentOS(unable to apply security only updates), thus removed.
-   #- yum-cron
-   
-   # Not shure if its needed.  
-   #- rsyslogd
 
   environment:
     http_proxy: "{{ proxy_ip }}"
