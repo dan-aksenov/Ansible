@@ -1,6 +1,6 @@
 galaxy_info:
   author: "Daniil Aksenov"
-  description: A role to install PostgreSQL 8.4/9.x on RedHat/CentOS/Scientific/Oracle Enterprise Linux.
+  description: A role to install Postgresql wait_sampling extension.
   license: as-is
   platforms:
     - name: EL
@@ -9,6 +9,4 @@ galaxy_info:
   categories:
    - database
    - database:sql
-#dependencies: 
-#   - { role: pgdg }
 
