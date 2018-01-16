@@ -3,13 +3,17 @@
 - include_tasks: configure.yml
   tags: 3_configure
 
-- include_tasks: postgresql_conf.yml
-  tags: postgresql_conf
+# postgresql.conf is now modified by linefile. no need in template.
+#- include_tasks: postgresql_conf.yml
+#  tags: postgresql_conf
 
 - include_tasks: pg_hba_conf.yml
   tags: pg_hba_conf
 
-- include_tasks: extensions.yml
+- include_tasks: pg_buffercache.yml
+  tags: pg_extensions
+
+- include_tasks: pg_stat_statements.yml
   tags: pg_extensions
 
 ...
