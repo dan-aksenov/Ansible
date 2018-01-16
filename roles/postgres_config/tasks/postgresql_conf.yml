@@ -1,15 +1,10 @@
 --- 
 
-- name: Configure postgresql.conf. from template.
-  template:
-    src: "postgresql.conf.{{ postgresql_version }}.j2"
-    dest: "{{ pg_data }}/postgresql.conf"
-    owner: "{{ postgresql_admin_user }}"
-    group: "{{ postgresql_admin_user }}"
-    mode: 0640
-    backup: yes
+- name: Modify postgresql.conf log_line_prefix.
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?shared_buffers ="
+      line: "shared_buffers = {{ (ansible_memory_mb.real.total/4) |round|int }}MB"
   notify: restart postgres
-
-- meta: flush_handlers
 
 ...
