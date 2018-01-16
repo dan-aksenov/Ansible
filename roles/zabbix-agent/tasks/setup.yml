@@ -27,7 +27,7 @@
 - name: Start and enable agent.
   service: name=zabbix-agent state=started enabled=yes 
 
-- name: Add firewall exception. If firewall is on.
+- name: Add firewall exception.
   firewalld: port=10050/tcp permanent=true state=enabled immediate=yes
   ignore_errors: yes
 
