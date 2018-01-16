@@ -1,0 +1,38 @@
+---
+
+- name: Set source directory name.
+  set_fact: 
+    src_location: "/tmp/pg_wait_sampling"
+
+- name: Git clone pg_wait_sampling.
+  git: 
+    repo: https://github.com/postgrespro/pg_wait_sampling.git
+    dest: "{{ src_location }}"
+    update: yes
+
+- name: Make pg_wait_sampling.
+  shell: make USE_PGXS=1 && make USE_PGXS=1 install 
+  args:
+    chdir: "{{ src_location }}"
+
+- name: Check whether postgresql.conf contains "pg_wait_sampling"
+  command: grep "pg_wait_sampling" "{{ pg_data }}/postgresql.conf"
+  register: check_shared_libs
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
+
+- name: Modify postgresql.conf add pg_wait_sampling shared library.
+  replace:
+      backup: yes
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?(shared_preload_libraries = '.*)(')"
+      replace: '\1,pg_wait_sampling\2'
+  when: check_shared_libs.rc != 0
+  notify: restart postgres
+
+- postgresql_ext:
+    name: pg_wait_sampling
+    db: postgres
+ 
+...
