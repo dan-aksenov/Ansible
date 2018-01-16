@@ -7,7 +7,7 @@
     owner: "{{ postgresql_admin_user }}"
     group: "{{ postgresql_admin_user }}"
     mode: 0755
-    tags: archivelog_conf
+  tags: archivelog_conf
 
 - name: Modify postgresql.conf archive_mode
   lineinfile:
