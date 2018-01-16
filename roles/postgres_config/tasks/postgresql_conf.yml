@@ -1,13 +1,5 @@
 --- 
 
-- name: Create directory to hold archivelogs. 
-  file:
-    path: "{{ pg_arch }}"
-    state: directory
-    owner: "{{ postgresql_admin_user }}"
-    group: "{{ postgresql_admin_user }}"
-    mode: 0755
-
 - name: Configure postgresql.conf. from template.
   template:
     src: "postgresql.conf.{{ postgresql_version }}.j2"

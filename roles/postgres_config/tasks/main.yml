@@ -6,9 +6,6 @@
 - include_tasks: postgresql_conf.yml
   tags: postgresql_conf
 
-#- include_tasks: postgresql_log_conf.yml
-#  tags: postgresql_log_conf
-
 - include_tasks: pg_hba_conf.yml
   tags: pg_hba_conf
 

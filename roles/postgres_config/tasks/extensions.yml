@@ -8,13 +8,36 @@
     name: pg_stat_statements
     db: postgres
 
-#- postgresql_ext:
-#    name: pg_stat_kcache
-#    db: postgres
+- name: Check whether postgresql.conf contains "pg_stat_statements"
+  command: grep "pg_wait_sampling" "{{ pg_data }}/postgresql.conf"
+  register: check_shared_libs
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
 
-#- postgresql_ext:
-#    name: pg_wait_sampling
-#    db: postgres
-#  when: postgresql_version >= '9.6'
+- name: Modify postgresql.conf add pg_wait_sampling shared library.
+  replace:
+      backup: yes
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?(shared_preload_libraries = '.*)(')"
+      replace: '\1,pg_stat_statements\2'
+  when: check_shared_libs.rc != 0
+  notify: restart postgres
+
+- name: Check whether postgresql.conf contains "pg_buffercache"
+  command: grep "pg_buffercache" "{{ pg_data }}/postgresql.conf"
+  register: check_shared_libs
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
+
+- name: Modify postgresql.conf add pg_wait_sampling shared library.
+  replace:
+      backup: yes
+      dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?(shared_preload_libraries = '.*)(')"
+      replace: '\1,pg_buffercache\2'
+  when: check_shared_libs.rc != 0
+  notify: restart postgres
 
 ...
