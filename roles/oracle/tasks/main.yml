@@ -1,6 +1,6 @@
 ---
 
-- name: Installing packages
+- name: Installing packages.
   yum: name={{ item }}
   with_items:
       - oracle-rdbms-server-{{ ora_version }}-preinstall
