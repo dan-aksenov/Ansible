@@ -18,6 +18,15 @@
   notify: restart postgres
   tags: archivelog_conf
 
+- name: Modify postgresql.conf wal_level
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
+      # Look for archive_mode at the beginning of the string "^" wiht 0 or more "#" befoure.
+      regexp: "^#*wal_level ="
+      line: "wal_level = replica"
+  notify: restart postgres
+  tags: archivelog_conf
+
 - name: Modify postgresql.conf archive_command
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
