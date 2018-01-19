@@ -12,11 +12,11 @@
   copy: src={{ item }}
         dest=/tmp
   with_items:
-        - ~/localrepo/apache-tomcat-8.5.23.tar.gz
+        - "~/localrepo/apache-tomcat-{{ tomcat_version }}.tar.gz"
         
 - name: Untar tomcat. 
   unarchive:
-    src: "/tmp/apache-tomcat-8.5.23.tar.gz"
+    src: "/tmp/apache-tomcat-{{ tomcat_version }}.tar.gz"
     dest: "{{ root_dir }}"
     remote_src: True
     owner: "{{ tomcat_user }}"
