@@ -1,1 +1,2 @@
 ora_version: 11.2.0.4.0-1
+ora_version_short: "{{ ora_version | truncate(4,True,'') }}"
