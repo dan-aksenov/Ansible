@@ -8,6 +8,7 @@ app ansible_ssh_port=58132 ansible_ssh_host=62.61.18.14
 postgres
 tomcat
 
+[fishery:vars]
 #proxy_ip=http://cache.fors.ru:3128
 postgresql_version=9.6
 tomcat_version=
