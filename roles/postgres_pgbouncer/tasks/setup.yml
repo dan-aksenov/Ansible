@@ -13,7 +13,7 @@
             src=pgbouncer.ini
             dest=/etc/pgbouncer/pgbouncer.ini
   notify:
-    - restart pgbouncer
+    - reload pgbouncer
 
 - name: Start pgbouncer
   service: 
