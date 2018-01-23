@@ -4,13 +4,6 @@ portal-testdb ansible_ssh_port=58142 ansible_ssh_host=62.61.18.14
 [tomcat]
 portal-testapp ansible_ssh_port=58132 ansible_ssh_host=62.61.18.14
 
-[fishery:children]
+[fshr-test:children]
 postgres
 tomcat
-
-[fishery:vars]
-postgresql_version=9.6
-tomcat_version=8.5.8
-my_ansible_user=ansible
-ntp_server=127.0.0.1
-proxy_ip=
