@@ -1,1 +1,6 @@
 ---
+
+server_reset_query_always: "1"
+pool_mode: "transaction"
+
+...
