@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: tomcat
   remote_user: "{{ my_ansible_user }}"
   become: yes 
 
