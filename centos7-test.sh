@@ -10,11 +10,5 @@ ansible-playbook -i test init.yml --ask-pass
 read -p "Setup standart config for new Centos7 machines."
 ansible-playbook -i test new_machine.yml
 
-#read -p "Setup static ip address"
-#ansible-playbook -i test static_ip.yml
-
-read -p "Install and configure postgresql 9.6"
+read -p "Install and configure postgresql $pgver"
 ansible-playbook -i test pg_main.yml --extra-vars "postgresql_version=$pgver"
-
-read -p "Install postgresql's optional extensions"
-ansible-playbook -i test pg_misc.yml --tags oracle_client,oracle_fdw,plpgsql_check --extra-vars "postgresql_version=$pgver"
