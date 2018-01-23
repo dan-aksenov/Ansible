@@ -1,21 +1,15 @@
 [postgres]
-db ansible_ssh_port=58142 ansible_ssh_host=62.61.18.14
+portal-testdb ansible_ssh_port=58142 ansible_ssh_host=62.61.18.14
 
 [tomcat]
-app ansible_ssh_port=58132 ansible_ssh_host=62.61.18.14
+portal-testapp ansible_ssh_port=58132 ansible_ssh_host=62.61.18.14
 
 [fishery:children]
 postgres
 tomcat
 
 [fishery:vars]
-#proxy_ip=http://cache.fors.ru:3128
 postgresql_version=9.6
-tomcat_version=
-               
+tomcat_version=8.5.8
 my_ansible_user=ansible
-
-#zabbix_server="oemcc.fors.ru"
-#zabbix_url="http://{{ zabbix_server }}/zabbix"
-
 ntp_server=127.0.0.1
