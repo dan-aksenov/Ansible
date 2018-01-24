@@ -1,8 +1,13 @@
 ---
 
-- include_tasks: proxy_yum.yml
+- name: Edit yum.conf.
+  lineinfile: 
+      dest: /etc/yum.conf
+      regexp: '^proxy'
+      line: 'proxy={{ proxy_ip }}'
   tags: proxy_yum
 
+# Proxy can be set on play level, thus rest not needed
 #- include_tasks: proxy_git.yml
  
 #- include_tasks: proxy_wget.yml
