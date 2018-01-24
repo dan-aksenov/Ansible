@@ -1,6 +1,8 @@
 ---
 
-server_reset_query_always: "1"
 pool_mode: "transaction"
+
+# to make pool mode transaction work wiht trashcode
+server_reset_query_always: "1"
 
 ...
