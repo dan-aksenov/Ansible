@@ -16,7 +16,7 @@ zabbix_url: "http://{{ zabbix_server }}/zabbix"
 
 #misc configs
 ntp_server: "ntp.fors.ru"
-proxy_ip: "http://cache.fors.ru:3128"
+#proxy_ip: "http://cache.fors.ru:3128"
 
 #posftix configs
 postfix_relayhost: "mail.fors.ru"
