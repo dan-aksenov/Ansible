@@ -4,6 +4,13 @@
 - name: Modify postgresql.conf log_line_prefix.
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
+      regexp: "^#?logging_collector ="
+      line: "logging_collector = on"
+  notify: restart postgres
+
+- name: Modify postgresql.conf log_line_prefix.
+  lineinfile:
+      dest: "{{ pg_data }}/postgresql.conf"
       regexp: "^#?log_line_prefix ="
       line: "log_line_prefix = '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '"
   notify: reload postgres
