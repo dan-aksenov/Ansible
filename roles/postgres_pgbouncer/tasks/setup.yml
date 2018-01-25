@@ -7,13 +7,53 @@
   with_items:
     - pgbouncer
 
-# Or edit with linefile?
-- name: Copy pgbouncer.ini template 
-  template: owner=root group=root mode=644 
-            src=pgbouncer.ini
-            dest=/etc/pgbouncer/pgbouncer.ini
-  notify:
+- name: Modify pgbouncer.ini listen_addr.
+  lineinfile:
+      dest: "/etc/pgbouncer/pgbouncer.ini"
+      regexp: "^;?listen_addr ="
+      line: "listen_addr = *"
+  notify: 
     - reload pgbouncer
+
+- name: Modify pgbouncer.ini auth_type.
+  lineinfile:
+      dest: "/etc/pgbouncer/pgbouncer.ini"
+      regexp: "^;?auth_type ="
+      line: "auth_type = md5"
+  notify: 
+    - reload pgbouncer
+
+- name: Modify pgbouncer.ini pool_mode.
+  lineinfile:
+      dest: "/etc/pgbouncer/pgbouncer.ini"
+      regexp: "^;?pool_mode ="
+      line: "pool_mode = {{ pool_mode }}"
+  notify: 
+    - reload pgbouncer
+
+- name: Modify pgbouncer.ini server_reset_query_always.
+  lineinfile:
+      dest: "/etc/pgbouncer/pgbouncer.ini"
+      regexp: "^;?server_reset_query_always ="
+      line: "server_reset_query_always = {{ server_reset_query_always }}"
+  notify: 
+    - reload pgbouncer
+
+- name: Modify pgbouncer.ini ignore_startup_parameters.
+  lineinfile:
+      dest: "/etc/pgbouncer/pgbouncer.ini"
+      regexp: "^;?ignore_startup_parameter ="
+      line: "ignore_startup_parameters = {{ ignore_startup_parameters }}"
+  notify: 
+    - reload pgbouncer
+
+# Or edit with linefile?
+#- name: Copy pgbouncer.ini template 
+#  template: owner=root group=root mode=644 
+#            src=pgbouncer.ini
+#            dest=/etc/pgbouncer/pgbouncer.ini
+#  notify:
+#    - reload pgbouncer
 
 - name: Start pgbouncer
   service: 
