@@ -1,7 +1,7 @@
 ---
 # postgresql.conf settings as required on http://dalibo.github.io/pgbadger/
 
-- name: Modify postgresql.conf log_line_prefix.
+- name: Modify postgresql.conf logging_collector.
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
       regexp: "^#?logging_collector ="
