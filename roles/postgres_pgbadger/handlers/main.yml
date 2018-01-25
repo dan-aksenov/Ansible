@@ -6,6 +6,13 @@
     state: restarted
 
 - name: reload postgres
-  service: name=postgresql-{{ postgresql_version }} state=reloaded
+  service: 
+    name: postgresql-{{ postgresql_version }} 
+    state: reloaded
+
+- name: restart postgres
+  service: 
+    name: postgresql-{{ postgresql_version }} 
+    state: restarted
 
 ...
