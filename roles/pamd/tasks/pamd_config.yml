@@ -1,11 +1,14 @@
 ---
 
+# redo with lineinfile
+
 - name: Audit tty in system_auth.
   pamd:
-    name: system-auth
-    type: session
-    control: required
-    module_path: pam_tty_audit.so
-    new_control: '[enable=*]'
+    name: sshd
+    new_type: session
+    new_control: required
+    new_module_path: pam_tty_audit.so
+    module_arguments: '[enable=*]'
+    state: after
 
 ...
