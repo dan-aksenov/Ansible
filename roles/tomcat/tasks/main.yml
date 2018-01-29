@@ -9,4 +9,7 @@
 - include_tasks: tomcat_install.yml
   tags: tomcat_install
 
+- include_tasks: postgres_jdbc.yml
+  tags: postgres_jdbc
+
 ...
