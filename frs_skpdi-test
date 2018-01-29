@@ -1,14 +1,17 @@
 [tomcat]
 skpdi
+record
 
 [postgres]
 mo-ghkh-dev
 skpdi-test-db
+record-db
 
 [ceph]
 ceph01
 ceph02
 ceph03
+record	
 
 [skpdi-test:children]
 postgres

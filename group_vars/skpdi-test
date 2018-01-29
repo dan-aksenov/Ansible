@@ -4,11 +4,11 @@
 my_ansible_user: "ansible"
 
 #user env config
-#tmux_status_bar_colour_bg: green
+tmux_status_bar_colour_bg: green
 
 #postgresql configs
-postgresql_version: "9.5"
-pg_data: "/home/postgres/data"
+postgresql_version: "9.6"
+#pg_data: "/home/postgres/data"
 
 #barman configs
 #barman_server: "172.19.1.137/16"
@@ -21,11 +21,6 @@ zabbix_url: "http://{{ zabbix_server }}/zabbix"
 #misc configs
 ntp_server: "ntp.fors.ru"
 proxy_ip: "http://cache.fors.ru:3128"
-
-
-#misc configs
-#ntp_server: "ntp.fors.ru"
-#proxy_ip: "cache.fors.ru:3128"
 
 #posftix configs
 #postfix_relayhost: "mail.fors.ru"

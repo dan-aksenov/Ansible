@@ -1,0 +1,9 @@
+---
+
+- name: Copy tomcat from local repo.
+  copy: src={{ item }}
+        dest={{ tomcat_dir }}/lib
+  with_items:
+        - "~/localrepo/postgresql-42.2.1.jar"
+      
+...
