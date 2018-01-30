@@ -1,6 +1,6 @@
 ---
 
-redo it with install from extras!
+#redo it with install from extras!
 - name: Install repository package. 
   yum: 
     state: present
