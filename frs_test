@@ -15,7 +15,7 @@ ceph
 
 [test:vars]
 proxy_ip=http://cache.fors.ru:3128
-postgresql_version=9.5
+postgresql_version=9.6
 
 my_ansible_user=ansible
 
