@@ -1,6 +1,6 @@
 ---
 
-- name: Download repo file. Vanilla PG repository needed for barman/badger etc. Thus installed everytime.
+- name: Download repo file. Vanilla PG repository needed for barman/badger etc. Thus installed alongside with postgres-pro repo.
   shell: for x in {1..3}; do wget -O /tmp/pgdg{{ postgresql_version | replace('.', '') }}.rpm https://yum.postgresql.org/{{ postgresql_version }}/redhat/rhel-7-x86_64/pgdg-{{ ansible_distribution | lower }}{{ postgresql_version | replace('.','') }}-{{ postgresql_version }}-$x.noarch.rpm && break; done
 
 - name: Add pgdg repository.
@@ -8,12 +8,12 @@
     name: /tmp/pgdg{{ postgresql_version | replace('.', '') }}.rpm
     state: present
 
-#- name: Update repository.
+#- name: Update repository. Sometimes fails. skip of ignore errors
 #  yum: 
 #    name: 'pgdg*'
 #    state: latest
 
-- name: Add postgres pro repository.
+- name: Add postgres-pro repository. Vanilla PG repository needed for barman/badger etc. Thus installed alongside with postgres-pro repo.
   yum_repository:
      name: postgresql-pro
      description: postgresql-pro
