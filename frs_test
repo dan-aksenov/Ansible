@@ -24,6 +24,7 @@ zabbix_url="http://{{ zabbix_server }}/zabbix"
 
 ntp_server=127.0.0.1
 
-#smtp_server=
-#smtp_port=
-#rsyslog_server=
+smtp_server=smtp.gmail.com
+smtp_port=587
+postfix_mailer_user:ods.mailer
+postfix_mailer_user_password:
