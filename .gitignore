@@ -1,3 +1,2 @@
 # Ansible retry files
 *.retry
-frs_*
