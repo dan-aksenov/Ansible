@@ -1,0 +1,13 @@
+# configured by ansible
+
+relayhost = ["{{ postfix_relayhost }}"]:"{{ postfix_relayhost_port }}"
+smtp_use_tls = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = 
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
+inet_protocols = ipv4
+
+mailbox_size_limit=0
+message_size_limit=0
+

@@ -3,7 +3,4 @@
 - include_tasks: configure_postfix.yml
   tags: postfix_setup
 
-- include_tasks: mailer_user.yml
-  tags: postfix_auth_user
-
 ...
