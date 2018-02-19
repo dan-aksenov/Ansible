@@ -43,6 +43,6 @@
     user: postgres
     minute: "50"
     hour: "23"
-    job: "pgbadger -Z '+03' --retention 4 -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log &>/tmp/pgbadger.log"
+    job: "pgbadger -Z '+03' --quiet --retention 4 -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log &>/tmp/pgbadger.log"
 
 ...
