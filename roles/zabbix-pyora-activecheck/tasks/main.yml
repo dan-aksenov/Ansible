@@ -1,0 +1,21 @@
+---
+
+# https://github.com/Lelik13a/Zabbix-PyOra-ActiveCheck
+#
+#1. Create Oracle user for Pyora usage
+#2. Install on the host from which the checks will be performed
+# a. oracle instantclient
+# b. https://pypi.python.org/pypi/cx_Oracle/5.2.1
+# c. https://github.com/blacked/py-zabbix
+# d. zabbix agent
+#3. Copy externalscripts/* to /usr/lib/zabbix/externalscripts/
+#4. Edit /usr/lib/zabbix/externalscripts/pyora_config.py
+#5. Copy zabbix_agentd.d/oracle_pyora.conf to /etc/zabbix/zabbix_agentd.d/ and restart zabbix agent.
+#6. Create directory which will be contains items list for every database
+#7. Import to zabbix "Template Pyora active send".
+#8. Create via zabbix web interface host, from which the checks will be performed.
+#Fill macros:
+#Link "Template Pyora active send" to this host.
+#
+#9. Create cron job with databases parameters, like:
+...
