@@ -4,7 +4,7 @@ if [ -z "$1" ]; then echo "Role name var is unset. Set it as first positional pa
 role=$1
 
 # Create ansible-galaxy stile role.
-ansible-galaxy init $role -p roles
+ansible-galaxy init $role
 
 # Open info file for editing.
-vim meta/main.yml
+vim roles/$role/meta/main.yml
