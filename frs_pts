@@ -4,6 +4,7 @@ pts-tst-log
 pts-tst-zab
 fishery-test-app
 oemcc
+atlassiandb
 
 [tomcat]
 pts-tst-as1
