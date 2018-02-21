@@ -23,7 +23,7 @@ zabbix_server_port: "10053"
 #misc configs
 # gudhskpdi-mon
 ntp_server: "10.139.127.12"
-#proxy_ip:
+proxy_ip: ""
 
 #posftix configs
 #postfix_relayhost: "mail.fors.ru"
