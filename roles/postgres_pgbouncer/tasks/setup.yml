@@ -42,12 +42,19 @@
 - name: Modify pgbouncer.ini ignore_startup_parameters.
   lineinfile:
       dest: "/etc/pgbouncer/pgbouncer.ini"
-      regexp: "^;?ignore_startup_parameter ="
+      regexp: "^;?ignore_startup_parameters ="
       line: "ignore_startup_parameters = {{ ignore_startup_parameters }}"
   notify: 
     - reload pgbouncer
 
-# Or edit with linefile?
+- name: Modify pgbouncer.ini max_client_conn.
+  lineinfile:
+      dest: "/etc/pgbouncer/pgbouncer.ini"
+      regexp: "^;?max_client_conn ="
+      line: "max_client_conn = {{ max_client_conn }}"
+  notify: 
+    - reload pgbouncer
+
 #- name: Copy pgbouncer.ini template 
 #  template: owner=root group=root mode=644 
 #            src=pgbouncer.ini
