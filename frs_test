@@ -1,8 +1,8 @@
 [postgres]
 centos7-test-1
-cos-2
-cos-3
-ora1
+
+[tomcat]
+centos7-test-1
 
 [ceph]
 cos-1
@@ -12,6 +12,7 @@ cos-3
 [test:children]
 postgres
 ceph
+tomcat
 
 [test:vars]
 proxy_ip=http://cache.fors.ru:3128
@@ -26,5 +27,5 @@ ntp_server=127.0.0.1
 
 smtp_server=smtp.gmail.com
 smtp_port=587
-postfix_mailer_user:ods.mailer
-postfix_mailer_user_password:
+#postfix_mailer_user=ods.mailer
+#postfix_mailer_user_password=

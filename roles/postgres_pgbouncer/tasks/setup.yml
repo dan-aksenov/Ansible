@@ -62,6 +62,10 @@
 #  notify:
 #    - reload pgbouncer
 
+- name: Add firewall exception. If firewall is on.
+  firewalld: port=6432/tcp permanent=true state=enabled immediate=yes
+  ignore_errors: yes
+
 - name: Start pgbouncer
   service: 
     name: pgbouncer 
