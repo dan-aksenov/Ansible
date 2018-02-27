@@ -78,7 +78,7 @@
 # Create via zabbix web interface host, from which the checks will be performed. Skip for now
 
 # Fill macros:
-# use ansible zabbix_hostmacro
+# use ansible zabbix_hostmacro.
 
 # Create cron job with databases parameters, like:
 - name: "Create cron job with databases parameters."
