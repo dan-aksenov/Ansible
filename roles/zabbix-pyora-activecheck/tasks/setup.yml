@@ -20,7 +20,7 @@
   pip:
     name: py-zabbix
 
-# zabbix agent - ?
+# zabbix agent - check if already installed 
 
 # Copy externalscripts/* to /usr/lib/zabbix/externalscripts/
 # Is there a way to copy it recursively?
