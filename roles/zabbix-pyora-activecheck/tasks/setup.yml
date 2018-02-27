@@ -20,6 +20,10 @@
   pip:
     name: py-zabbix
 
+- name: "Install argparse"
+  pip:
+    name: argparse
+
 # zabbix agent - check if already installed 
 
 # Copy externalscripts/* to /usr/lib/zabbix/externalscripts/
