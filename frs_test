@@ -1,5 +1,6 @@
 [postgres]
 centos7-test-1
+centos7-test-2
 
 [tomcat]
 centos7-test-1

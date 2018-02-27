@@ -1,0 +1,14 @@
+[spartak-fors]
+dev-spartak
+test-spartak
+iphicles
+junior-spartak
+smcp-cloud
+
+[spartak-prod]
+ak-spartak.mosfile.ru
+smartsport.pro
+
+[spartak:children]
+spartak-prod
+spartak-fors
