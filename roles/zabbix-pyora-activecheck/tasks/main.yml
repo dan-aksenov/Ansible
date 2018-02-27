@@ -1,4 +1,6 @@
 ---
 
-- include_tasks: repository.yml
+- include_tasks: setup.yml
   tags: zabbix-oracle
+
+...

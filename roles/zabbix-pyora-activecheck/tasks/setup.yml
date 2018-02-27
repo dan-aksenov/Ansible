@@ -27,19 +27,17 @@
 
 - name: Create directory for external scripts.
   file:
-    path: /usr/lib/zabbix/externalscripts/
-    owner: zabbix
-    group: zabbix
+    path: /usr/lib/zabbix/externalscripts
     state: directory
 
 - name: "Copy pyora-active.py to /usr/lib/zabbix/externalscripts/"
   copy:
     src: /tmp/Zabbix-PyOra-ActiveCheck/externalscripts/pyora-active.py
-    dest: /usr/lib/zabbix/externalscripts/
+    dest: /usr/lib/zabbix/externalscripts/pyora-active.py
     remote_src: yes
     owner: zabbix
     group: zabbix
-    mode: 0644
+    mode: 0755
 
 - name: "Copy pyora-discovery.py to /usr/lib/zabbix/externalscripts/"
   copy:
@@ -48,7 +46,7 @@
     remote_src: yes
     owner: zabbix
     group: zabbix
-    mode: 0644
+    mode: 0755
 
 - name: "Copy pyora-items-list.py to /usr/lib/zabbix/externalscripts/"
   copy:
@@ -57,7 +55,7 @@
     remote_src: yes
     owner: zabbix
     group: zabbix
-    mode: 0644
+    mode: 0755
 
 
 #4. Edit /usr/lib/zabbix/externalscripts/pyora_config.py
