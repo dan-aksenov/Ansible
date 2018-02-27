@@ -90,7 +90,7 @@
   cron:
     name: "pyora-active every 10 minutes"
     user: zabbix
-    minute: "10"
+    minute: "*/10"
     job: "/usr/lib/zabbix/externalscripts/pyora-active.py  --address {{ ansible_hostname }} --database SID"
 
 ...
