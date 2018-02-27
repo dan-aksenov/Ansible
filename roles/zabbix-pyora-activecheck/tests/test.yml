@@ -1,5 +1,14 @@
 ---
-- hosts: localhost
-  remote_user: root
+
+- hosts: all
+  user: "{{ my_ansible_user }}"
+  become: yes 
+
   roles:
     - zabbix-pyora-activecheck
+
+  environment:
+    http_proxy: "{{ proxy_ip }}"
+    https_proxy: "{{ proxy_ip }}"
+
+...

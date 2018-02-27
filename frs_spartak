@@ -7,7 +7,7 @@ smcp-cloud
 
 [spartak-prod]
 ak-spartak.mosfile.ru
-smartsport.pro
+prod-smartsport
 
 [spartak:children]
 spartak-prod

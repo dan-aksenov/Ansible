@@ -15,6 +15,7 @@
     - journald
     - ntpd
     - oracle
+    - zabbix-pyora-activecheck
 
   environment:
     http_proxy: "{{ proxy_ip }}"
