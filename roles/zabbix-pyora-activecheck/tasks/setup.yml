@@ -20,7 +20,7 @@
   pip:
     name: py-zabbix
 
-# d. zabbix agent - ?
+# zabbix agent - ?
 
 # Copy externalscripts/* to /usr/lib/zabbix/externalscripts/
 # Is there a way to copy it recursively?
@@ -58,7 +58,7 @@
     mode: 0755
 
 
-#4. Edit /usr/lib/zabbix/externalscripts/pyora_config.py
+# Edit /usr/lib/zabbix/externalscripts/pyora_config.py
 
 - name: "Copy zabbix_agentd.d/oracle_pyora.conf to /etc/zabbix/zabbix_agentd.d/ and restart zabbix agent"
   copy:
@@ -74,13 +74,13 @@
     group: zabbix
     state: directory
 
-#7. Import Template Pyora active send to zabbix server. Skip for now
-#8. Create via zabbix web interface host, from which the checks will be performed. Skip for now
+# Import Template Pyora active send to zabbix server. Skip for now
+# Create via zabbix web interface host, from which the checks will be performed. Skip for now
 
-#Fill macros:
+# Fill macros:
 # use ansible zabbix_hostmacro
 
-#9. Create cron job with databases parameters, like:
+# Create cron job with databases parameters, like:
 - name: "Create cron job with databases parameters."
   cron:
     name: "pyora-active every 10 minutes"
