@@ -59,6 +59,7 @@
 
 
 # Edit /usr/lib/zabbix/externalscripts/pyora_config.py
+# add database zabbix user credentials
 
 - name: "Copy zabbix_agentd.d/oracle_pyora.conf to /etc/zabbix/zabbix_agentd.d/ and restart zabbix agent"
   copy:
