@@ -61,9 +61,13 @@
     group: zabbix
     mode: 0755
 
-
-# Edit /usr/lib/zabbix/externalscripts/pyora_config.py
-# add database zabbix user credentials
+- name: Edit /usr/lib/zabbix/externalscripts/pyora_config.py
+  template:
+    src: pyora_config.py.j2
+    dest: /usr/lib/zabbix/externalscripts/pyora_config.py
+    owner: root
+    group: root
+    mode: 0644
 
 - name: "Copy zabbix_agentd.d/oracle_pyora.conf to /etc/zabbix/zabbix_agentd.d/ and restart zabbix agent"
   copy:
@@ -84,6 +88,17 @@
 
 # Fill macros:
 # use ansible zabbix_hostmacro.
+
+#- name: Create a new host macro or update an existing macro's value
+#  local_action:
+#    module: zabbix_hostmacro
+#    server_url: "{{ zabbix_url }}"
+#    login_user: Admin
+#    login_password: zabbix
+#    host_name: {{ agent_name  }}
+#    macro_name: 
+#    macro_value: 
+#    state: present
 
 # Create cron job with databases parameters, like:
 - name: "Create cron job with databases parameters."
