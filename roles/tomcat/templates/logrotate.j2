@@ -1,0 +1,9 @@
+{{ tomcat_dir }}/logs/catalina.out {
+    copytruncate
+    hourly
+    rotate 5
+    compress
+    missingok
+    size 5M
+}
+
