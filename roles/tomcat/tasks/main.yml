@@ -12,4 +12,7 @@
 - include_tasks: postgres_jdbc.yml
   tags: postgres_jdbc
 
+- include_tasks: logrotate.yml
+  tags: logrotate_catalina
+
 ...

@@ -1,0 +1,12 @@
+---
+
+- name: Logrotate rules for catalina.out
+  template:
+    src: logrotate.j2
+    dest: "/etc/logrotate.d/tomcat"
+    owner: root
+    group: root
+    force: yes
+    mode: 0644
+
+...
