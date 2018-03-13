@@ -1,7 +1,0 @@
-#file: group_var/fshr-test
-
-postgresql_version: "9.6"
-tomcat_version: "8.5.8"
-my_ansible_user: "ansible"
-ntp_server: "127.0.0.1"
-proxy_ip: ""
