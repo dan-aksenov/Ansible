@@ -31,6 +31,17 @@
     group: root
     force: yes
     mode: 0644
+  when: ansible_service_mgr == 'systemd'
+
+- name: Create init file for tomcat.
+  template:
+    src: tomcat.initd.j2
+    dest: "/etc/init.d/tomcat"
+    owner: root
+    group: root
+    force: yes
+    mode: 0755
+  when: ansible_service_mgr == 'sysvinit'
 
 - name: Setup tomcat manager interface (tomcat_users).
   template:
