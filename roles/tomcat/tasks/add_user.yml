@@ -1,10 +1,16 @@
 ---
-
 - name: Add tomcat user.
   user: name="{{ tomcat_user }}"
         createhome=yes
         home="/home/{{ tomcat_user }}"
         shell="/sbin/nologin"
         state=present
+  when: ansible_service_mgr == 'systemd'
 
-...
+- name: Add tomcat user if sysinit(ain't woking with nologin).
+  user: name="{{ tomcat_user }}"
+        createhome=yes
+        home="/home/{{ tomcat_user }}"
+        shell="/bin/bash"
+        state=present
+  when: ansible_service_mgr == 'sysvinit'
