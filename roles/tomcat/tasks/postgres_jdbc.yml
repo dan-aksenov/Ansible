@@ -2,13 +2,13 @@
 
 - name: Copy tomcat from local repo.
   copy: 
-   src: "{{ item }}:
-   destr: "{{ tomcat_dir }}/lib"
+   src: "{{ item }}"
+   dest: "{{ tomcat_dir }}/lib"
    owner: "{{ tomcat_user }}"
    group: "{{ tomcat_user }}"
    mode: 0755
 
   with_items:
-        - "~/localrepo/postgresql-42.2.1.jar"
+        - ~/localrepo/postgresql-42.2.1.jar
       
 ...

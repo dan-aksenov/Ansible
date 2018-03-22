@@ -1,10 +1,10 @@
 ---
 
 - name: Copy jdk from local repo.
-  copy: src={{ item }}
+  copy: src="{{ item }}"
         dest=/tmp
   with_items:
-        - ~/localrepo/jdk-{{ java_major_v }}u{{ java_minor_v }}-linux-x64.tar.gz
+        - "~/localrepo/jdk-{{ java_major_v }}u{{ java_minor_v }}-linux-x64.tar.gz"
 
 - name: Create directory for jdk stuff.
   file:
