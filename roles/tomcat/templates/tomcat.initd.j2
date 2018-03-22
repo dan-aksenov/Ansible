@@ -21,8 +21,7 @@ TOMCAT_USAGE="Usage: $0 {\e[00;32mstart\e[00m|\e[00;31mstop\e[00m|\e[00;31mkill\
 
 #SHUTDOWN_WAIT is wait time in seconds for java proccess to stop
 SHUTDOWN_WAIT=5
-export CATALINA_OPTS="-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Dwicket.configuration=deployment -Djava.awt.headless=true -Xmx100G -Xms100G -Dperson.personal.enable=false -Dpassport.owner.enable=true -Dintegration.billing.disable=true -Dintegration.signVerification.disable=true  "
-
+export CATALINA_OPTS="-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Dwicket.configuration=deployment -Djava.awt.headless=true -Xmx{{ (ansible_memory_mb.real.total/2) |round|int }}M -Xms{{ (ansible_memory_mb.real.total/2) |round|int }}M -Dperson.personal.enable=false -Dpassport.owner.enable=true -Dintegration.billing.disable=true -Dintegration.signVerification.disable=true"
 
 tomcat_pid() {
         echo `ps -fe | grep $CATALINA_BASE | grep -v grep | tr -s " "|cut -d" " -f2`

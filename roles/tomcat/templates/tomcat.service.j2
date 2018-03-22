@@ -11,7 +11,7 @@ Environment=JAVA_HOME={{ root_dir }}/jdk{{ java_version }}/jre
 Environment=CATALINA_PID={{ tomcat_dir }}/temp/tomcat.pid
 Environment=CATALINA_HOME={{ tomcat_dir }}
 Environment=CATALINA_BASE={{ tomcat_dir }}
-Environment='CATALINA_OPTS=-Xms2048M -Xmx2048M -server -XX:+UseParallelGC -Djava.net.preferIPv4Addresses=true'
+Environment='CATALINA_OPTS=-Xms{{ (ansible_memory_mb.real.total/2) |round|int }}M -Xmx{{ (ansible_memory_mb.real.total/2) |round|int }}M -server -XX:+UseParallelGC -Djava.net.preferIPv4Addresses=true'
 Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom -Djava.net.preferIPv4Addresses=true -Djava.rmi.server.hostname={{ ansible_default_ipv4.address }} -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12345 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false'
 
 ExecStart={{ tomcat_dir }}/bin/startup.sh
