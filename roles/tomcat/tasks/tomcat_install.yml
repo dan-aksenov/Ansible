@@ -1,5 +1,4 @@
 ---
-
 - name: Create directory for tomcat stuff.
   file:
     path: "{{ tomcat_dir }}/logs" 
@@ -65,11 +64,15 @@
   firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
   ignore_errors: yes
     
-- name: Start and enable tomcat.
+- name: Start and enable tomcat for systemd.
   systemd:
     state: started
-    name: "tomcat"
+    name: tomcat
     daemon_reload: yes
     enabled: yes
+  when: ansible_service_mgr == 'systemd'
 
-...
+#Currently bug sort of https://github.com/ansible/ansible/issues/30192
+- name: Start and enable tomcat for sysvinit.
+  command: service tomcat start && checkonfig tomcat on
+  when: ansible_service_mgr == 'sysvinit'
