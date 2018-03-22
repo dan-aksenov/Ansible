@@ -1,6 +1,6 @@
 ---
 
-- name: Enable zabbix repository.
+- name: Enable zabbix yum repository.
   yum_repository:
     name: zabbix
     description: Zabbix Official Repository - $basearch
@@ -8,13 +8,23 @@
     gpgkey: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591
     gpgcheck: yes
     enabled: yes
+  when: ansible_pkg_mgr == 'yum'
 
-- name: Install zabbix-agent.
+- name: Yum install zabbix-agent.
   yum: 
     state: latest
     pkg: "{{ item }}"
   with_items:
     - zabbix-agent
+  when: ansible_pkg_mgr == 'yum'
+
+- name: Apt install zabbix-agent.
+  apt:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - zabbix-agent
+  when: ansible_pkg_mgr == 'apt'
 
 - name: Edit agent.conf file.
   lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server={{ zabbix_server }}'
@@ -24,10 +34,10 @@
   lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=*' line='Hostname={{ ansible_hostname }}'
   notify: restart agent
 
-- name: Start and enable agent.
+- name: Start and enable agenat.
   service: name=zabbix-agent state=started enabled=yes 
 
-- name: Add firewall exception.
+- name: Add firewall exception. Ignore if errors.
   firewalld: port=10050/tcp permanent=true state=enabled immediate=yes
   ignore_errors: yes
 
