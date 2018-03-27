@@ -31,11 +31,11 @@
 
 - name: start and enable agent.
   service: name=zabbix-agent state=started enabled=yes 
-  when: ansible_distribution == 'Centos'  
+ #when: ansible_distribution == 'Centos'  
 
-- name: Start and enable agent. altlinux.
-  service: name=zabbix_agentd state=started enabled=yes 
-  when: ansible_distribution == 'ALT'
+#- name: Start and enable agent. altlinux.
+#  service: name=zabbix_agentd state=started enabled=yes 
+#  when: ansible_distribution == 'ALT'
 
 - name: Add firewall exception. Ignore if errors.
   firewalld: port=10050/tcp permanent=true state=enabled immediate=yes
