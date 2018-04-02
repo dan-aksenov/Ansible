@@ -1,0 +1,16 @@
+---
+- name: Add activemq user.
+  user: name="{{ activemq_user }}"
+        createhome=yes
+        home="/home/{{ activemq_user }}"
+        shell="/sbin/nologin"
+        state=present
+  when: ansible_service_mgr == 'systemd'
+
+- name: Add activemq user if sysinit(ain't woking with nologin).
+  user: name="{{ activemq_user }}"
+        createhome=yes
+        home="/home/{{ activemq_user }}"
+        shell="/bin/bash"
+        state=present
+  when: ansible_service_mgr == 'sysvinit'
