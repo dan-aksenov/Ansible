@@ -1,0 +1,17 @@
+[Unit]
+Description=ActiveMQ service
+After=network.target
+
+[Service]
+Type=forking
+Environment=JAVA_HOME=/opt/jdk1.8.0_101
+PIDFile=/opt/apache-activemq-5.15.3/data/activemq.pid
+ExecStart=/opt/apache-activemq-5.15.3/bin/activemq start
+ExecStop=/opt/apache-activemq-5.15.3/bin/activemq stop
+User=activemq
+Group=activemq
+
+
+[Install]
+WantedBy=multi-user.target
+

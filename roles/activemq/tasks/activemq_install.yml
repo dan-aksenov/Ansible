@@ -1,0 +1,78 @@
+---
+- name: Create directory for activemq stuff.
+  file:
+    path: "{{ activemq_dir }}/logs" 
+    state: directory
+    owner: "{{ activemq_user }}"
+    group: "{{ activemq_user }}"
+    mode: 0755
+
+- name: Copy activemq from local repo.
+  copy: src={{ item }}
+        dest=/tmp
+  with_items:
+        - "~/localrepo/apache-activemq-{{ activemq_version }}.tar.gz"
+        
+- name: Untar activemq. 
+  unarchive:
+    src: "/tmp/apache-activemq-{{ activemq_version }}.tar.gz"
+    dest: "{{ root_dir }}"
+    remote_src: True
+    owner: "{{ activemq_user }}"
+    group: "{{ activemq_user }}"
+    mode: 0755
+
+- name: Create systemd file for activemq.
+  template:
+    src: activemq.service.j2
+    dest: "/etc/systemd/system/activemq.service"
+    owner: root
+    group: root
+    force: yes
+    mode: 0644
+  when: ansible_service_mgr == 'systemd'
+
+- name: Create init file for activemq.
+  template:
+    src: activemq.initd.j2
+    dest: "/etc/init.d/activemq"
+    owner: root
+    group: root
+    force: yes
+    mode: 0755
+  when: ansible_service_mgr == 'sysvinit'
+
+- name: Setup activemq manager interface (activemq_users).
+  template:
+    src: activemq_users.j2
+    dest: "{{ activemq_dir }}/conf/activemq-users.xml"
+    owner: "{{ activemq_user }}"
+    group: "{{ activemq_user }}"
+    force: yes
+    mode: 0644
+
+- name: Setup activemq manager interface (manager context).
+  template:
+    src: manager_context.j2
+    dest: "{{ activemq_dir }}/webapps/manager/META-INF/context.xml"
+    owner: "{{ activemq_user }}"
+    group: "{{ activemq_user }}"
+    force: yes
+    mode: 0644
+
+- name: Add firewall exception. If firewall is on.
+  firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
+  ignore_errors: yes
+    
+- name: Start and enable activemq for systemd.
+  systemd:
+    state: started
+    name: activemq
+    daemon_reload: yes
+    enabled: yes
+  when: ansible_service_mgr == 'systemd'
+
+#Currently bug sort of https://github.com/ansible/ansible/issues/30192
+- name: Start and enable activemq for sysvinit.
+  command: service activemq start && checkonfig activemq on
+  when: ansible_service_mgr == 'sysvinit'
