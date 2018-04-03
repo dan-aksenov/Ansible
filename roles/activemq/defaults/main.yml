@@ -3,4 +3,4 @@
 activemq_user: activemq
 activemq_version: 5.15.3
 root_dir: /u01
-activemq_dir: /u01/apache-activemq-{{ activemq_version }}
+activemq_dir: {{root_dir}}/apache-activemq-{{ activemq_version }}
