@@ -1,15 +1,14 @@
 ---
-
-- name: Installing misc packages.
+- name: Installing misc packages
   yum: name={{ item }}
   with_items:
       - vim
-      # Database for local files
+      # Database for local files indexing and search
       - mlocate
       - rsync
       - zip
       - unzip
       - tree
       - mc
-        
-...
+      # gnu parallel
+      - parallel
