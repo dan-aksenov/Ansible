@@ -18,12 +18,6 @@
   vars:
      local_path: "{{ lookup('env','PATH') }}"
      postgresql_distribution: "postgrespro"
-     pg_data: "/var/lib/pgpro/{{ postgresql_version }}/data"
-
-#  vars_prompt:
-#    - name: "postgresql_version"
-#      prompt: "Postgresql version number (i.e 9.6): "
-#      private: no
 
   environment:
      PATH: "{{ local_path }}:/usr/pgpro-{{ postgresql_version }}/bin"
