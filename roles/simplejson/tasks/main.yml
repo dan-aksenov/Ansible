@@ -3,5 +3,3 @@
 - name: Install simplejson
   raw: apt-get update && apt-get -y install python-module-simplejson
   tags: bootstrap
-
-...
