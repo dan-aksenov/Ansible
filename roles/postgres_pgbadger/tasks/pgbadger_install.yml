@@ -34,8 +34,7 @@
   template:
     src: http.conf
     dest: /etc/httpd/conf.d/badger.conf
-  notify:
-    - restart httpd 
+  notify: restart httpd 
 
 - name: Badger script for daily cron.
   template:
