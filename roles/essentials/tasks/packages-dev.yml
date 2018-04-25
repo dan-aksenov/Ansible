@@ -1,5 +1,4 @@
 ---
-
 - name: Installing development tools.
   yum: name={{ item }}
   with_items:
@@ -8,5 +7,3 @@
       - make
       - rpm-build
       - gdb 
-      
-...

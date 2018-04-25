@@ -12,3 +12,5 @@
       - mc
       # gnu parallel
       - parallel
+      # Used by many apps
+      - java
