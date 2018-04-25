@@ -1,25 +1,8 @@
 ---
-
-- name: Copy jdk from local repo.
-  copy: src="{{ item }}"
-        dest=/tmp
+- name: Yum install java
+  yum:
+    state: latest
+    pkg: "{{ item }}"
   with_items:
-        - "~/localrepo/jdk-{{ java_major_v }}u{{ java_minor_v }}-linux-x64.tar.gz"
-
-- name: Create directory for jdk stuff.
-  file:
-    path: "{{ root_dir }}" 
-    state: directory
-    group: "{{ tomcat_user }}"
-    owner: "{{ tomcat_user }}"
-    mode: 0755
-        
-- name: Untar JDK. 
-  unarchive:
-    src: "/tmp/jdk-{{ java_major_v }}u{{ java_minor_v }}-linux-x64.tar.gz"
-    dest: "{{ root_dir }}" 
-    remote_src: True
-    group: "{{ tomcat_user }}"
-    owner: "{{ tomcat_user }}"
-
-...
+    - java
+  when: ansible_pkg_mgr == 'yum'

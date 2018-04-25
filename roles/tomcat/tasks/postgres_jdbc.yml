@@ -1,6 +1,6 @@
 ---
 
-- name: Copy tomcat from local repo.
+- name: Copy postgresql jdbc driver from local repo.
   copy: 
    src: "{{ item }}"
    dest: "{{ tomcat_dir }}/lib"
