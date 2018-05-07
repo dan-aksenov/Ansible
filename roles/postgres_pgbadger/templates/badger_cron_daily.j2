@@ -1,4 +1,7 @@
 #!/bin/bash
-pgbadger -Z '+03' --retention 4 -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log
-find {{ pg_data }}/pg_log/ -name 'postgresql*.log' -mtime +1 -delete
+echo running pgbadger parser...
+pgbadger -Z '+03' -q --retention 4 -I -O /var/www/badger/ {{ pg_data }}/pg_log/postgresql*.log
+echo deleting older logs...
+find {{ pg_data }}/pg_log/ -name 'postgresql*.log' -mtime +1 -print -delete
+
 
