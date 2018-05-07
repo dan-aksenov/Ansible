@@ -36,7 +36,7 @@
     dest: /etc/httpd/conf.d/badger.conf
   notify: restart httpd 
 
-- name: Badger script for daily cron.
+- name: Put badger script for daily cron.
   template:
     src: badger_cron_daily.j2
     dest: ~/badger_cron_daily.sh
@@ -53,5 +53,3 @@
     minute: "50"
     hour: "23"
     job: "~/badger_cron_daily.sh &>/tmp/pgbadger.log"
-
-...
