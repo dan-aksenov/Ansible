@@ -7,6 +7,7 @@
   roles:
     - proxy_settings
     - essentials
+   #- hostname
     - openvmtools
     - selinux
     - yum-update
@@ -21,9 +22,6 @@
 
    #  Needs to be fixed and revorked.
    #- postfix
-
-   # IIT's legacy. No need to setup static address and custom routes now.
-   #- network
 
   environment:
     http_proxy: "{{ proxy_ip }}"
