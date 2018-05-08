@@ -15,8 +15,8 @@
 
 - name: Add postgres-pro repository. Vanilla PG repository needed for barman/badger etc. Thus installed alongside with postgres-pro repo.
   yum_repository:
-     name: postgresql-pro
-     description: postgresql-pro
+     name: "postgrespro-{{ postgresql_version }}"
+     description: "postgrespro-{{ postgresql_version }}"
      # Here need to check what is 2.2 in pro.yum-9.5-2.2.noarch.rpm!
      baseurl: http://repo.postgrespro.ru/pgpro-{{ postgresql_version }}/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/os/x86_64/rpms
      #baseurl: http://repo.postgrespro.ru/pgpro-{{ postgresql_version }}/keys/postgrespro-{{ postgresql_version }}.rhel.pro.yum-1.0-1.noarch.rpm

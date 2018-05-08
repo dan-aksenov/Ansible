@@ -4,6 +4,14 @@
   set_fact:
     pcg_name: "{{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}"
 
+# Because of pgpro-10 stupid naming
+#- name: Set postgrespro 10 package name.
+#  set_fact:
+#    pcg_name: "{{ postgresql_distribution }}-std-{{ postgresql_version | replace('.', '') }}"
+#  when: 
+#    - postgresql_version >= 10
+#    - postgresql_distribution == "postgrespro"
+
 - name: "Install {{ postgresql_distribution }} packages."
   yum: 
     state: latest
@@ -15,5 +23,3 @@
     - "{{ pcg_name }}-libs"
     - "{{ pcg_name }}-devel"
     - python-psycopg2
-
-...
