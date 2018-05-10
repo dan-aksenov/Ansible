@@ -1,5 +1,4 @@
 ---
-
 - postgresql_ext:
     name: pg_buffercache
     db: postgres
@@ -19,5 +18,3 @@
       replace: '\1,pg_buffercache\2'
   when: check_shared_libs.rc != 0
   notify: restart postgres
-
-...

@@ -1,10 +1,7 @@
 --- 
-
 - name: Modify postgresql.conf log_line_prefix.
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
       regexp: "^#?shared_buffers ="
       line: "shared_buffers = {{ (ansible_memory_mb.real.total/4) |round|int }}MB"
   notify: restart postgres
-
-...

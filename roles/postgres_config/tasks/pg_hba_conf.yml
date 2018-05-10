@@ -1,5 +1,4 @@
 --- 
-
 - name: Configure pg_hba.conf.
   template:
     src: pg_hba.conf.j2
@@ -12,5 +11,3 @@
   tags: pg_hba_conf
 
 - meta: flush_handlers
-
-...

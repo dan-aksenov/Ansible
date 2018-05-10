@@ -1,5 +1,4 @@
 ---
-
 - postgresql_ext:
     name: pg_stat_statements
     db: postgres
@@ -11,7 +10,7 @@
   ignore_errors: yes
   changed_when: no
 
-- name: Modify postgresql.conf add pg_wait_sampling shared library.
+- name: Modify postgresql.conf add pg_stat_statements shared library.
   replace:
       backup: yes
       dest: "{{ pg_data }}/postgresql.conf"
@@ -25,5 +24,3 @@
       dest: "{{ pg_data }}/postgresql.conf"
       line: "pg_stat_statements.track = all"
   notify: restart postgres
-
-...
