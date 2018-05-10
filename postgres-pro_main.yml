@@ -1,5 +1,4 @@
 ---
-
 - hosts: postgres 
   remote_user: "{{ my_ansible_user }}"
   become: yes
@@ -9,7 +8,7 @@
       - postgres_install 
       - postgres_config
       - postgres_archivelog
-      - postgres_pg_wait_sampling
+     # - postgres_pg_wait_sampling
       - postgres_mamonsu
       - postgres_pgbouncer
       - postgres_pgbadger
@@ -23,6 +22,3 @@
      PATH: "{{ local_path }}:/usr/pgpro-{{ postgresql_version }}/bin"
      http_proxy: "{{ proxy_ip }}"
      https_proxy: "{{ proxy_ip }}"
-
-
-...
