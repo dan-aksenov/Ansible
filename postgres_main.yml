@@ -9,7 +9,7 @@
       - postgres_install 
       - postgres_config
       - postgres_archivelog
-      - postgres_pg_wait_sampling
+#      - postgres_pg_wait_sampling
       - postgres_mamonsu
       - postgres_pgbouncer
       - postgres_pgbadger
