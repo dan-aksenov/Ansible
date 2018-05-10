@@ -1,5 +1,4 @@
 ---
-
 - name: "Install additional postgresql languages."
   yum: 
     state: latest
@@ -12,5 +11,3 @@
     - postgresql{{ postgresql_version | replace('.', '') }}-pltcl
     #- postgresql{{ postgresql_version | replace('.', '') }}-python
     # not always works? more research needed...
-   
-...

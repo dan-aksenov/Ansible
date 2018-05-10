@@ -1,11 +1,3 @@
 ---
-
 - include_tasks: install.yml
   tags: 2_install
-
-# to be moved to another role?
-#- include_tasks: pg_stat_kcache.yml
-#  tags: pg_stat_kcache
-
-...
-
