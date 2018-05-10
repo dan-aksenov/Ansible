@@ -1,6 +1,5 @@
 --- 
-
-- name: Configure firewall. Ingnore if service is not running. Or turn in on?
+- name: Configure firewall. Ingnore if service is not running. 
   firewalld: service=postgresql permanent=true state=enabled
   ignore_errors: yes
 
@@ -12,7 +11,6 @@
   become: yes
   become_user: "{{ postgresql_admin_user }}"
   command: initdb -D {{ pg_data }}
-# command: "/usr/pgsql-{{ postgresql_version }}/bin/initdb -D {{ pg_data }}"
   when: pg_dir.matched|int == 0
 
 - name: Start and enable postgresql service.
@@ -20,5 +18,3 @@
     name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
     state: started 
     enabled: yes
-
-...
