@@ -1,5 +1,4 @@
 ---
-
 - name: "Install pg_stat_kcache package" 
   yum: 
     state: latest
@@ -22,6 +21,3 @@
       replace: '\1,pg_stat_kcache\2'
   when: check_shared_libs.rc != 0
   notify: restart postgres
-     
-    
-...
