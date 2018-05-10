@@ -1,5 +1,4 @@
 ---
-
 - name: "Install additional postgresql tools."
   yum: 
     state: latest
@@ -14,5 +13,3 @@
   pip:
     # good replacement for psql
     name: pgcli
-   
-...
