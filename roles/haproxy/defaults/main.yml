@@ -1,7 +1,7 @@
 ---
 # defaults file for haproxy
 haproxy:
-  frontend_ip: {{ansible_default_ipv4.address}}
+  frontend_ip: "{{ansible_default_ipv4.address}}"
   maxconns: 4096
   backlog: 2
   timeout_q: 400ms
