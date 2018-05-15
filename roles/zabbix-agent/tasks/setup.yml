@@ -22,11 +22,11 @@
   when: ansible_distribution == 'ALT'
 
 - name: Edit agent.conf file.
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=*' line='Server={{ zabbix_server }}'
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=.*' line='Server={{ zabbix_server }}'
   notify: restart agent
   
 - name: Edit agent.conf file.
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=*' line='Hostname={{ ansible_hostname }}'
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=.*' line='Hostname={{ ansible_hostname }}'
   notify: restart agent
 
 - name: start and enable agent.
