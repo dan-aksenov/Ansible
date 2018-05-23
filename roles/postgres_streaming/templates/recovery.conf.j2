@@ -1,0 +1,5 @@
+standby_mode          = 'on'
+recovery_target_timeline = 'latest'
+primary_conninfo      = "host={{ streaming_master }} port=5432 user=postgres"
+trigger_file = '/tmp/std_promote.trg' 
+primary_slot_name = 'standby_slot'
