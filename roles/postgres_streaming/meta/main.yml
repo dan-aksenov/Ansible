@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniil Aksenov
-  description: PostgreSQL streaming replication add slave
+  description: PostgreSQL setup streaming replication with repmgr
   company: 
 
   # If the issue tracker for your role is not on github, uncomment the
