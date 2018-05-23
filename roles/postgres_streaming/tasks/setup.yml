@@ -1,9 +1,24 @@
 # with repmgr
-#       1. Instal repmgr from repo.
+
+- name: Install repmgr software.
+  yum:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - repmgr
 
 #       2. Edit postgresql.conf
 
 #       3. Создать пользователя и базу.
+- name: Create repmgr database user.
+  postgresql_user:
+    name: repmgr
+    role_attr_flags: SUPERUSER
+
+- name: Create repmgr database.
+  postgresql_db:
+    name: repmgr
+    owner: repmgr
 
 #       4. Правка pg_hba.conf
        
@@ -11,11 +26,17 @@
 
 #       6. Create a repmgr.conf file on the primary server.
 
+- name: Create repmgr config file from template.
+  template:
+    src: repmgr.conf.j2
+    dest: "/etc/repmgr/{{ postgresql_version }}/repmgr.conf"
+    owner: root
+    group: root
+    mode: 0644
+
 #       7. Register the primary server
 
 #       8. Clone the standby server
-
-#       9. Verify replication is functioning
 
 #       10. Register the standby
 
@@ -23,4 +44,8 @@
 
 #       11. disable postgresql systemd service
        
-#SELECT pg_create_physical_replication_slot('standby_slot');
+- name: Disable postgresql systemd service. Databases will be managed with pg_ctl by repmgr.
+  service: 
+    name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
+    state: started 
+    enabled: no
