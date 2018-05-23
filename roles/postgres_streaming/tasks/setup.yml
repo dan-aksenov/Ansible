@@ -1,23 +1,26 @@
-#edit pg_hba.conf на мастере
+# with repmgr
+#       1. Instal repmgr from repo.
 
+#       2. Edit postgresql.conf
+
+#       3. Создать пользователя и базу.
+
+#       4. Правка pg_hba.conf
+       
+#       5. On the standby, ensure the destination data directory exist and are owned by the postgres system user. 
+
+#       6. Create a repmgr.conf file on the primary server.
+
+#       7. Register the primary server
+
+#       8. Clone the standby server
+
+#       9. Verify replication is functioning
+
+#       10. Register the standby
+
+#       SLOT?
+
+#       11. disable postgresql systemd service
+       
 #SELECT pg_create_physical_replication_slot('standby_slot');
-
-#clone master to slave:
-# command: pg_basebackup
-
-#slavedb в директории с данными PostgreSQL создадим файл recovery.conf с таким содержимым:
-
-- name: Configure recovery.conf
-  template:
-    src: recovery.conf.j2
-    dest: "{{ pg_data }}/recovery.conf
-    owner: "{{ postgresql_user }}"
-    group: "{{ postgresql_user }}" 
-    mode: 0664
-
-#start slave
-- name: Start and enable postgresql service on slave.
-  service: 
-    name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
-    state: started 
-    enabled: yes
