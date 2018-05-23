@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: install.yml
+- import_tasks: install.yml
   tags: oracle_client
 
 ...

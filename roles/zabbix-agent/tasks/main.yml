@@ -1,9 +1,9 @@
 ---
 
-- include_tasks: setup.yml
+- import_tasks: setup.yml
   tags: zabbix-agent
 
-- include_tasks: zabbix_register.yml
+- import_tasks: zabbix_register.yml
   tags: zabbix-agent-register
   
 ...

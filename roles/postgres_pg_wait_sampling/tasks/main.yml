@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: pg_wait_sampling.yml
+- import_tasks: pg_wait_sampling.yml
   tags: pg_wait_sampling
   #when: postgresql_version >= '9.6'
   # when not working right now ( 

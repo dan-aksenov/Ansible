@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: configure_postfix.yml
+- import_tasks: configure_postfix.yml
   tags: postfix_setup
 
 ...
