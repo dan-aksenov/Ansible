@@ -1,0 +1,8 @@
+#setup passwordless ssh for dabatase user
+#edit pg_hba.conf на мастере
+#archive_command = 'cp %p /path_to/archive/%f'
+#SELECT pg_create_physical_replication_slot('standby_slot');
+#clone master to slave:
+#slavedb в директории с данными PostgreSQL создадим файл recovery.conf с таким содержимым:
+#start slave
+
