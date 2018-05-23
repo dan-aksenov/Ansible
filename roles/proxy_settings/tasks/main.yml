@@ -8,10 +8,10 @@
   tags: proxy_yum
 
 # Proxy can be set on play level, thus rest not needed
-#- include_tasks: proxy_git.yml
+#- import_tasks: proxy_git.yml
  
-#- include_tasks: proxy_wget.yml
+#- import_tasks: proxy_wget.yml
 
-#- include_tasks: proxy_bash_profile.yml
+#- import_tasks: proxy_bash_profile.yml
 
 ...

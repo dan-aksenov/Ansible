@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: install_tools.yml
+- import_tasks: install_tools.yml
   tags: pg_install_tools
 
 ...

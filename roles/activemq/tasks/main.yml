@@ -1,9 +1,9 @@
 ---
 
-- include_tasks: add_user.yml
+- import_tasks: add_user.yml
   tags: activemq_user
 
-- include_tasks: activemq_install.yml
+- import_tasks: activemq_install.yml
   tags: activemq_install
 
 ...

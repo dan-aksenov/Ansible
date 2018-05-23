@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: pamd_config.yml
+- import_tasks: pamd_config.yml
   tags: pamd
 
 ...

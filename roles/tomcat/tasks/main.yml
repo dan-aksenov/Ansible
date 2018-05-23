@@ -1,18 +1,18 @@
 ---
 
-- include_tasks: add_user.yml
+- import_tasks: add_user.yml
   tags: tomcat_user
 
-- include_tasks: java_install.yml
+- import_tasks: java_install.yml
   tags: java_install
 
-- include_tasks: tomcat_install.yml
+- import_tasks: tomcat_install.yml
   tags: tomcat_install
 
-- include_tasks: postgres_jdbc.yml
+- import_tasks: postgres_jdbc.yml
   tags: postgres_jdbc
 
-- include_tasks: logrotate.yml
+- import_tasks: logrotate.yml
   tags: logrotate_catalina
 
 ...

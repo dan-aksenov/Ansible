@@ -1,14 +1,14 @@
 ---
 
-- include_tasks: barman_server_conf.yml
+- import_tasks: barman_server_conf.yml
   tags: barman
   delegate_to: "{{ barman_server }}"
 
-- include_tasks: db_server_conf.yml
+- import_tasks: db_server_conf.yml
   tags: barman
 
 # Create need to be run after database configured. Barman and streaming_barman users created.
-- include_tasks: create_slot.yml
+- import_tasks: create_slot.yml
   tags: barman
   delegate_to: "{{ barman_server }}"
 

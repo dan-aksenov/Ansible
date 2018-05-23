@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: client_setup.yml
+- import_tasks: client_setup.yml
   tags: rsyslog_client
 
 ...

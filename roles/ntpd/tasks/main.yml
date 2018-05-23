@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: ntpd.yml
+- import_tasks: ntpd.yml
   tags: ntpd
 
 ...
