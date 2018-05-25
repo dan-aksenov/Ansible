@@ -1,0 +1,9 @@
+# Configuration file create by andible.
+
+# todo: redo it with sequence?
+node_id="{{ 100 | random }}"
+node_name="{{ ansible_hostname }}"
+conninfo="host={{ ansible_hostname }} user=repmgr dbname=repmgr connect_timeout=2"
+data_directory="{{ pg_data }}"
+pg_bindir="/usr/pgsql-{{ postgresql_version }}/bin"
+
