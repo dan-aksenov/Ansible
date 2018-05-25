@@ -46,5 +46,4 @@
 - name: Disable postgresql systemd service. Databases will be managed with pg_ctl by repmgr.
   service: 
     name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
-    state: started 
     enabled: no
