@@ -5,7 +5,7 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - repmgr
+    - "repmgr{{ postgresql_version }}"
 
 # 2. Edit postgresql.conf
 # 3. Создать пользователя и базу.
@@ -33,16 +33,16 @@
     group: root
     mode: 0644
 
-#       7. Register the primary server
+# 7. Register the primary server
 
-#       8. Clone the standby server
+# 8. Clone the standby server
+# if not already cloned
 
-#       10. Register the standby
+# 10. Register the standby
 
-#       SLOT?
+# SLOT?
 
-#       11. disable postgresql systemd service
-       
+# 11. disable postgresql systemd service
 - name: Disable postgresql systemd service. Databases will be managed with pg_ctl by repmgr.
   service: 
     name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
