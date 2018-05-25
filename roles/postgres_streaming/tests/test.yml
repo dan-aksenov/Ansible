@@ -1,8 +1,9 @@
 ---
 - hosts: all
   remote_user: "{{ my_ansible_user }}"
+  become: yes
   roles:
     - postgres_streaming
   vars:
     pg_data: "/lib/pgsql/{{ postgresql_version }}/data"
-    postgresql_distribution: postgres
+    postgresql_distribution: postgresql
