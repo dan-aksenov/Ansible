@@ -7,9 +7,9 @@
   with_items:
     - repmgr
 
-#       2. Edit postgresql.conf
+# 2. Edit postgresql.conf
+# 3. Создать пользователя и базу.
 
-#       3. Создать пользователя и базу.
 - name: Create repmgr database user.
   postgresql_user:
     name: repmgr
@@ -20,11 +20,10 @@
     name: repmgr
     owner: repmgr
 
-#       4. Правка pg_hba.conf
-       
-#       5. On the standby, ensure the destination data directory exist and are owned by the postgres system user. 
-
-#       6. Create a repmgr.conf file on the primary server.
+# 4. Правка pg_hba.conf     
+# 5. On the standby, ensure the destination data directory exist and are owned by the postgres system user. 
+# not needed right now. should present if pg binaries installed on previous step.
+# 6. Create a repmgr.conf file on the primary server.
 
 - name: Create repmgr config file from template.
   template:
