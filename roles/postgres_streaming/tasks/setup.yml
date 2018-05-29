@@ -5,7 +5,7 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - "repmgr{{ postgresql_version }}"
+    - "repmgr{{ postgresql_version | replace('.', '')  }}"
 
 # 2. Edit postgresql.conf
 

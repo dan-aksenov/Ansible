@@ -1,2 +1,1 @@
 ---
-pcg_name: "{{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}"
