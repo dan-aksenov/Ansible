@@ -3,8 +3,8 @@
 # https://ansibledaily.com/idempotent-random-number/
 # 60 is arbitrary number to generate seed from.
 node_id={{ 60 | random(seed=inventory_hostname) }}
-node_name="{{ ansible_hostname }}"
-conninfo="host={{ ansible_hostname }} user=repmgr dbname=repmgr connect_timeout=2"
-data_directory="{{ pg_data }}"
-pg_bindir="/usr/pgsql-{{ postgresql_version }}/bin"
+node_name={{ ansible_hostname }}
+conninfo='host={{ ansible_hostname }} user=repmgr dbname=repmgr connect_timeout=2'
+data_directory={{ pg_data }}
+pg_bindir=/usr/pgsql-{{ postgresql_version }}/bin
 
