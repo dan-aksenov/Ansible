@@ -1,10 +1,8 @@
 ---
-
 # Basic settings
 el_version: 7
 postgresql_version: 9.6
+pcg_name: "{{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}"
 
 # Postgresql distribution postgresql or postgrespro.
 postgresql_distribution: "postgresql"
-
-...

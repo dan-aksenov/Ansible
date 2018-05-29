@@ -1,5 +1,5 @@
-# with repmgr
-
+---
+# 1 install repmgr from current repo.
 - name: Install repmgr software.
   yum:
     state: latest
@@ -8,7 +8,8 @@
     - "repmgr{{ postgresql_version }}"
 
 # 2. Edit postgresql.conf
-# 3. Создать пользователя и базу.
+
+# 3. Create user and databaes for repmgr
 
 - name: Create repmgr database user.
   postgresql_user:
@@ -23,6 +24,7 @@
 # 4. Правка pg_hba.conf     
 # 5. On the standby, ensure the destination data directory exist and are owned by the postgres system user. 
 # not needed right now. should present if pg binaries installed on previous step.
+
 # 6. Create a repmgr.conf file on the primary server.
 
 - name: Create repmgr config file from template.
