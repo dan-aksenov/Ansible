@@ -2,6 +2,6 @@
 
 # Basic settings
 el_version: 7
-postgresql_version: 9.6
+postgresql_version: 10
 
 ...
