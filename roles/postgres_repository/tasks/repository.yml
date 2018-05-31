@@ -5,8 +5,8 @@
     description: "Postgresql{{ postgresql_version }} repository."
     baseurl: https://download.postgresql.org/pub/repos/yum/{{ postgresql_version }}/redhat/rhel-$releasever-$basearch
     enabled: yes
-    gpgcheck: no
-    #gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG-{{ postgresql_version }}
+    gpgcheck: yes 
+    gpgkey: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_version }}
 
 # to be removed?
 - name: Add postgres-pro repository.
