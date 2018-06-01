@@ -1,4 +1,9 @@
 ---
+- name: Add repository gpg key. 
+  rpm_key:
+    state: present
+    key: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_version }}
+
 - name: Download repo file. 
   yum_repository:
     name: "pgdg{{ postgresql_version }}"
@@ -6,14 +11,12 @@
     baseurl: https://download.postgresql.org/pub/repos/yum/{{ postgresql_version }}/redhat/rhel-$releasever-$basearch
     enabled: yes
     gpgcheck: yes 
-    gpgkey: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_version }}
 
 # to be removed?
 - name: Add postgres-pro repository.
   yum_repository:
      name: "postgrespro-{{ postgresql_version }}"
      description: "postgrespro-{{ postgresql_version }}"
-     # Here need to check what is 2.2 in pro.yum-9.5-2.2.noarch.rpm!
      baseurl: http://repo.postgrespro.ru/pgpro-{{ postgresql_version }}/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/os/x86_64/rpms
      #baseurl: http://repo.postgrespro.ru/pgpro-{{ postgresql_version }}/keys/postgrespro-{{ postgresql_version }}.rhel.pro.yum-1.0-1.noarch.rpm
      #gpgkey: https://packagecloud.io/postgrespro/mamonsu/gpgkey
