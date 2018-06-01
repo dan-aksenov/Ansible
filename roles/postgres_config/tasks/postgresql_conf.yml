@@ -1,5 +1,5 @@
 --- 
-#as template
+#as separate role and parameters as dict to be included as shown at https://github.com/galaxyproject/ansible-postgresql
 - name: Modify postgresql.conf shared fuffers 
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
