@@ -4,7 +4,7 @@ el_version: 7
 postgresql_version:
 postgresql_contrib: yes
 
-# archivelog data
+# archivelog data. where to?
 pg_arch: /var/lib/pgsql/{{ postgresql_version }}/backups/arch
 
 # Postgresql distribution postgresql or postgrespro.
