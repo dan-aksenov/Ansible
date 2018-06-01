@@ -22,4 +22,4 @@
     - "{{ pcg_name }}-libs"
     - "{{ pcg_name }}-devel"
     - python-psycopg2
-    #- pg_stat_kcache{{ postgresql_version | replace('.', '') }}
+    - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
