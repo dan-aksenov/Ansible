@@ -1,4 +1,5 @@
 ---
+# to default template
 - postgresql_ext:
     name: pg_stat_statements
     db: postgres

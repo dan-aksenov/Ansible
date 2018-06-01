@@ -1,4 +1,5 @@
 --- 
+#as template
 - name: Modify postgresql.conf log_line_prefix.
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
