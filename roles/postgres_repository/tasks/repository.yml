@@ -4,7 +4,7 @@
     state: present
     key: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_version }}
 
-- name: Download repo file. 
+- name: Add PostgreSQL repository. 
   yum_repository:
     name: "pgdg{{ postgresql_version }}"
     description: "Postgresql{{ postgresql_version }} repository."
