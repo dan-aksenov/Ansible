@@ -1,9 +1,6 @@
 ---
-
 - import_tasks: install.yml
   tags: mamonsu
 
 - import_tasks: zabbix_register.yml
   tags: mamonsu-register
-
-...
