@@ -1,6 +1,6 @@
 --- 
 #as template
-- name: Modify postgresql.conf log_line_prefix.
+- name: Modify postgresql.conf shared fuffers 
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
       regexp: "^#?shared_buffers ="
