@@ -9,6 +9,5 @@ galaxy_info:
   categories:
    - database
    - database:sql
-#dependencies: 
-#   - { role: pgdg }
-
+  dependencies: 
+   - { role: postgresql_repository }
