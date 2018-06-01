@@ -1,10 +1,9 @@
 ---
-
 - name: Set postgresql package name.
   set_fact:
     pcg_name: "{{ postgresql_distribution }}{{ postgresql_version | replace('.', '') }}"
 
-# Because of pgpro-10 stupid naming
+# Because of pgpro-10 stupid naming. to be removed?
 #- name: Set postgrespro 10 package name.
 #  set_fact:
 #    pcg_name: "{{ postgresql_distribution }}-std-{{ postgresql_version | replace('.', '') }}"
@@ -23,3 +22,4 @@
     - "{{ pcg_name }}-libs"
     - "{{ pcg_name }}-devel"
     - python-psycopg2
+    #- pg_stat_kcache{{ postgresql_version | replace('.', '') }}
