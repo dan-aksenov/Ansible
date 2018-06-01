@@ -1,6 +1,6 @@
 ---
 # postgresql.conf settings as required on http://dalibo.github.io/pgbadger/
-
+# modify as include? of in global template
 - name: Modify postgresql.conf logging_collector.
   lineinfile:
       dest: "{{ pg_data }}/postgresql.conf"
