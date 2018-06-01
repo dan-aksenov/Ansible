@@ -1,5 +1,4 @@
 ---
-
 - name: Reminder.
   debug:
      msg: Dependencies in playbook not working correctly(ansible issue 13406). Need to install oracle clent by hands!
@@ -19,5 +18,3 @@
     name: oracle_fdw
     db: postgres
   become_user: postgres
-
-...
