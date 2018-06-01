@@ -1,5 +1,4 @@
 ---
- 
 - name: Install pgbadger and httpd.
   yum:
     state: latest

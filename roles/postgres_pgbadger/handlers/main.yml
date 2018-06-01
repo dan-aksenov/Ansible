@@ -1,5 +1,4 @@
 ---
-
 - name: restart httpd
   service:
     name: httpd
@@ -14,5 +13,3 @@
   service: 
     name: postgresql-{{ postgresql_version }} 
     state: restarted
-
-...
