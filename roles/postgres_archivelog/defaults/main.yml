@@ -2,7 +2,7 @@
 
 # Basic settings
 el_version: 7
-postgresql_version: 9.6
+postgresql_version:
 
 # archivelog directory
 pg_arch: /var/lib/pgsql/{{ postgresql_version }}/backups/arch

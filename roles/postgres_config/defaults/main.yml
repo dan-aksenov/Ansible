@@ -1,7 +1,7 @@
 --- 
 # Basic settings
 el_version: 7
-postgresql_version: 9.5
+postgresql_version:
 postgresql_contrib: yes
 
 # archivelog data
