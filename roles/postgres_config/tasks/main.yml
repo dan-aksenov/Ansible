@@ -1,5 +1,4 @@
 ---
-
 - import_tasks: configure.yml
   tags: 3_configure
 
@@ -14,5 +13,3 @@
 
 - import_tasks: pg_stat_statements.yml
   tags: pg_extensions
-
-...

@@ -3,6 +3,7 @@
   firewalld: service=postgresql permanent=true state=enabled
   ignore_errors: yes
 
+# Rework?
 - name: Find if pg cluster already exists.
   find: paths="{{ pg_data }}" file_type=file patterns="PG_VERSION"
   register: pg_dir

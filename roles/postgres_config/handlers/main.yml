@@ -1,5 +1,4 @@
 ---
-
 - name: reload postgres
   service: 
      name: "{{ postgresql_distribution }}-{{ postgresql_version }}" 
@@ -9,4 +8,3 @@
   service: 
      name: "{{ postgresql_distribution }}-{{ postgresql_version }}"
      state: restarted
-...
