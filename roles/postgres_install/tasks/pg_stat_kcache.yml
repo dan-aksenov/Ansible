@@ -1,4 +1,5 @@
 ---
+#move to main installer?
 - name: "Install pg_stat_kcache package" 
   yum: 
     state: latest
