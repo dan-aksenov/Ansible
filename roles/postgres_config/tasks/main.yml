@@ -2,6 +2,7 @@
 - import_tasks: configure.yml
   tags: 3_configure
 
+# to separate role
 - import_tasks: postgresql_conf.yml
   tags: postgresql_conf
 
