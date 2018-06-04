@@ -4,9 +4,22 @@
   file: path={{ postgresql_conf_dir }}/conf.d state=directory owner=postgres group=postgres
 
 - name: Set conf.d include in postgresql.conf
-  lineinfile: line="include_dir 'conf.d'" dest={{ postgresql_conf_dir }}/postgresql.conf backup=yes
-  notify: Reload PostgreSQL
+  lineinfile: 
+      regexp: "^#?include_dir" 
+      line: "include_dir = 'conf.d'"
+      dest: "{{ postgresql_conf_dir }}/postgresql.conf"
+      backup: yes
+  notify: reload postgres
 #  when: "{{ postgresql_version | version_compare('9.3', '>=') }}"
+
+- name: Set config options.
+  template: 
+      src: 25ansible_postgresql.conf.j2
+      dest: "{{ postgresql_conf_dir }}/conf.d/25ansible_postgresql.conf"
+      owner: postgres
+      group: postgres 
+      backup: yes
+  notify: reload postgres
 
 #- name: Modify postgresql.conf shared fuffers 
 #  lineinfile:
