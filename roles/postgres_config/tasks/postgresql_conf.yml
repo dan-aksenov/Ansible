@@ -1,8 +1,16 @@
 --- 
 #as separate role and parameters as dict to be included as shown at https://github.com/galaxyproject/ansible-postgresql
-- name: Modify postgresql.conf shared fuffers 
-  lineinfile:
-      dest: "{{ pg_data }}/postgresql.conf"
-      regexp: "^#?shared_buffers ="
-      line: "shared_buffers = {{ (ansible_memory_mb.real.total/4) |round|int }}MB"
-  notify: restart postgres
+- name: Create conf.d
+  file: path={{ postgresql_conf_dir }}/conf.d state=directory owner=postgres group=postgres
+
+- name: Set conf.d include in postgresql.conf
+  lineinfile: line="include_dir 'conf.d'" dest={{ postgresql_conf_dir }}/postgresql.conf backup=yes
+  notify: Reload PostgreSQL
+#  when: "{{ postgresql_version | version_compare('9.3', '>=') }}"
+
+#- name: Modify postgresql.conf shared fuffers 
+#  lineinfile:
+#      dest: "{{ pg_data }}/postgresql.conf"
+#      regexp: "^#?shared_buffers ="
+#      line: "shared_buffers = {{ (ansible_memory_mb.real.total/4) |round|int }}MB"
+#  notify: restart postgres
