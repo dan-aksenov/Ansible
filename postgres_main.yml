@@ -2,23 +2,9 @@
 - hosts: postgres 
   remote_user: "{{ my_ansible_user }}"
   become: yes
-
   roles:
-      - postgres_repository
-      - postgres_install 
-      - postgres_config
-      - postgres_archivelog
-#      - postgres_pg_wait_sampling
-      - postgres_mamonsu
-      - postgres_pgbouncer
-      - postgres_pgbadger
-      - postgres_utils
-
-  vars:
-     local_path: "{{ lookup('env','PATH') }}"
-     postgresql_distribution: "postgresql"
+   - postgresql 
 
   environment:
-    PATH: "{{ local_path }}:/usr/pgsql-{{ postgresql_version }}/bin"
     http_proxy: "{{ proxy_ip }}"
     https_proxy: "{{ proxy_ip }}"
