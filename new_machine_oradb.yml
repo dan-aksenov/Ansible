@@ -15,7 +15,7 @@
     - journald
     - ntpd
     - oracle
-    - oracleclient
+    # - oracleclient
     - zabbix-pyora-activecheck
 
   environment:
