@@ -1,6 +1,5 @@
 ---
-
-- name: Edit yum.conf.
+- name: Edit yum.conf. Add proxy setting.
   lineinfile: 
       dest: /etc/yum.conf
       regexp: '^proxy'
@@ -8,11 +7,10 @@
   tags: proxy_yum
   when: proxy_ip is defined
 
-# Proxy can be set on play level, thus rest not needed
-#- import_tasks: proxy_git.yml
- 
-#- import_tasks: proxy_wget.yml
-
-#- import_tasks: proxy_bash_profile.yml
-
-...
+- name: Edit yum.conf. Remove proxy setting.
+  lineinfile: 
+      dest: /etc/yum.conf
+      regexp: '^proxy'
+      state: absent
+  tags: proxy_yum
+  when: proxy_ip is not defined
