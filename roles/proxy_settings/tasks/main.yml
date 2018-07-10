@@ -6,6 +6,7 @@
       regexp: '^proxy'
       line: 'proxy={{ proxy_ip }}'
   tags: proxy_yum
+  when: proxy_ip is defined
 
 # Proxy can be set on play level, thus rest not needed
 #- import_tasks: proxy_git.yml
