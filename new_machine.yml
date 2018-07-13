@@ -6,7 +6,7 @@
   roles:
     - proxy_settings
     - essentials
-   #- hostname
+    - hostname
     - openvmtools
     - selinux
     - yum-update
