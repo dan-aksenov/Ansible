@@ -4,7 +4,6 @@
   become: yes 
 
   roles:
-    #- java # Java and tomcat installation to be separated in future.
     - tomcat
 
   environment:
