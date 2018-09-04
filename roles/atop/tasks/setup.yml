@@ -15,7 +15,7 @@
   lineinfile:
       dest: /etc/sysconfig/atop
       regexp: '^INTERVAL='
-      line: 'INTERVAL=60'
+      line: 'INTERVAL={{ atop_interval }}'
   notify: restart atop
 
 ...
