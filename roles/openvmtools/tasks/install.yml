@@ -1,15 +1,14 @@
 ---
-
 - name: Install open VM tools for VMWARE.
   yum: 
      name={{ item }} state=latest
   with_items:
    - open-vm-tools
+  when: ansible_virtualization_role == 'guest'
 
 - name: VmWare service start and enabling.
   service: 
      name: vmtoolsd.service 
      state: started 
      enabled: yes
-
-...
+  when: ansible_virtualization_role == 'guest'
