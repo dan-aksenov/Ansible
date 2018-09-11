@@ -1,2 +1,4 @@
 ---
 tmux_status_bar_colour_bg: green
+
+atop_interval: 30

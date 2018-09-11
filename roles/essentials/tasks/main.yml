@@ -11,6 +11,9 @@
 - import_tasks: packages-mon.yml
   tags: packages-mon
 
+- import_tasks: atop.yml
+  tags: atop
+
 - import_tasks: packages-net.yml
   tags: packages-net
 
