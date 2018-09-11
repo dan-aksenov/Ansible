@@ -10,7 +10,6 @@
     - selinux
     - yum-update
     - zabbix-agent
-    - journald
     - ntpd
 
    # Fix, tune and add this to into play.
