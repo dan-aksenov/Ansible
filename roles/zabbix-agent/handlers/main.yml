@@ -1,6 +1,6 @@
 ---
 
 - name: restart agent
-  service: name=zabbix-agent state=restarted
-
-...
+  service:
+    name: zabbix-agent
+    state: restarted
