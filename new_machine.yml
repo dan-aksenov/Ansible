@@ -7,7 +7,6 @@
     - proxy_settings
     - essentials
     - hostname
-    - openvmtools
     - selinux
     - yum-update
     - zabbix-agent
