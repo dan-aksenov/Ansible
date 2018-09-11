@@ -14,3 +14,17 @@
       - parallel
       # Used by many apps
       - java
+
+- name: Install open-vm-tools for virtual machines.
+  yum:
+     name={{ item }} state=latest
+  with_items:
+   - open-vm-tools
+  when: ansible_virtualization_role == 'guest'
+
+- name: Start and enable open-vm-tools service.
+  service:
+     name: vmtoolsd.service
+     state: started
+     enabled: yes
+  when: ansible_virtualization_role == 'guest'
