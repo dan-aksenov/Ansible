@@ -26,5 +26,8 @@
 - import_tasks: tmux.yml
   tags: tmux
 
+- import_tasks: journald.yml
+  tags: journald
+
 #- import_tasks: targets.yml
 #  tags: runlevels

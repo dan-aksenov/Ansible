@@ -1,0 +1,16 @@
+---
+- name: restart journald
+  service:
+     name: systemd-journald
+     state: restarted
+
+- name: restart rsyslog
+  service:
+     name: rsyslog
+     state: restarted
+
+- name: restart atop
+  service:
+     name: atop
+     state: restarted
+
