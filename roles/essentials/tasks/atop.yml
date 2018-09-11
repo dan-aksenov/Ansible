@@ -1,5 +1,4 @@
 ---
-
 - name: Installing package.
   yum: name={{ item }}
   with_items:
@@ -17,5 +16,3 @@
       regexp: '^INTERVAL='
       line: 'INTERVAL={{ atop_interval }}'
   notify: restart atop
-
-...
