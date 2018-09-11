@@ -17,26 +17,30 @@
     - zabbix-agent
   when: ansible_pkg_mgr == 'yum'
 
-- name: Install zabbix-agent altlinux.
-  command: "apt-get install zabbix-agent -y"
-  when: ansible_distribution == 'ALT'
-
-- name: Edit agent.conf file.
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Server=.*' line='Server={{ zabbix_server }}'
+- name: Edit agent.conf file. Add Zabbix server name. 
+  lineinfile: 
+    dest: /etc/zabbix/zabbix_agentd.conf 
+    regexp: '^Server=.*' 
+    line: "Server={{ zabbix_server }}"
   notify: restart agent
-  
-- name: Edit agent.conf file.
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf regexp='^Hostname=.*' line='Hostname={{ ansible_hostname }}'
+ 
+- name: Edit agent.conf file. Add agents hostname. 
+  lineinfile:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    regexp: '^Hostname=.*'
+    line: "Hostname={{ ansible_hostname }}"
   notify: restart agent
 
 - name: start and enable agent.
-  service: name=zabbix-agent state=started enabled=yes 
- #when: ansible_distribution == 'Centos'  
+  service: 
+    name: zabbix-agent
+    state: started
+    enabled: yes 
 
-#- name: Start and enable agent. altlinux.
-#  service: name=zabbix_agentd state=started enabled=yes 
-#  when: ansible_distribution == 'ALT'
-
-- name: Add firewall exception. Ignore if errors.
-  firewalld: port=10050/tcp permanent=true state=enabled immediate=yes
+- name: Add firewall exception. Ignore on errorsi(ie if firewall is disabled).
+  firewalld:
+    port: 10050/tcp
+    permanent: true
+    state: enabled
+    immediate: yes
   ignore_errors: yes
