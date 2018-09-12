@@ -1,9 +1,6 @@
 ---
-
 - import_tasks: setup_static_ip.yml
   tags: static_ip
 
 - import_tasks: setup_routes.yml
   tags: routes
-
-...
