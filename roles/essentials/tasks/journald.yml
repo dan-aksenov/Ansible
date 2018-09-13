@@ -1,10 +1,7 @@
 ---
-
 - name: Create directory.
   file: path=/var/log/journal state=directory
   notify:
     - restart journald
     - restart rsyslog
   when: ansible_distribution_major_version|int >= 7
-
-...
