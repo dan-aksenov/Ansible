@@ -10,6 +10,7 @@
     - selinux
     - zabbix-agent
     - ntpd
+    - yum-cron
 
    # Fix, tune and add this to into play.
    #- add_admin
