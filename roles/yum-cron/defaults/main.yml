@@ -1,6 +1,6 @@
 ---
 # Centos 7.
-yum_cron_update_cmd: 'yum --security update-minimal'
+yum_cron_update_cmd: 'minimal-security'
 yum_cron_update_messages: 'yes'
 yum_cron_download_updates: 'yes'
 yum_cron_apply_updates: 'no'
