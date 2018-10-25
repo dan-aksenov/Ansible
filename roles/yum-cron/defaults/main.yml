@@ -3,7 +3,7 @@
 yum_cron_update_cmd: 'minimal-security'
 yum_cron_update_messages: 'yes'
 yum_cron_download_updates: 'yes'
-yum_cron_apply_updates: 'no'
+yum_cron_apply_updates: 'yes'
 yum_cron_random_sleep: 360
 yum_cron_system_name: None
 yum_cron_output_width: 80
