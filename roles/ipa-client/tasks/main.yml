@@ -1,2 +1,4 @@
 ---
-# tasks file for ipa-client
+- import_tasks: register.yml
+  tags: ipa_register
+
