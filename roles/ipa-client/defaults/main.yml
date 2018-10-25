@@ -1,2 +1,4 @@
 ---
-# defaults file for ipa-client
+ipa_host: ipa.example.com
+ipa_user: admin
+ipa_pass: secret12
