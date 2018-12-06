@@ -1,0 +1,6 @@
+---
+#- import_tasks: server.yml
+#  tags: toomai-server
+
+- import_tasks: agent.yml
+  tags: toomai-agent
