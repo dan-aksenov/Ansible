@@ -1,8 +1,8 @@
 ---
 - name: "Copy server's binary"
   copy:
-    src: /sunny/work/toomai/server/var/toomai/toomai.jar
-    dest: /var/toomai/toomai-agent.jar
+    src: /sunny/work/toomai/server/var/toomai/toomai-server.jar
+    dest: /var/toomai/toomai-server.jar
   notify: restart toomai
   
 - name: "Start server"
