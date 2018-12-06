@@ -1,6 +1,7 @@
 ---
-#- import_tasks: server.yml
-#  tags: toomai-server
+- import_tasks: server.yml
+  tags: toomai-server
+  when: inventory_hostname == "toomai-pg"
 
 - import_tasks: agent.yml
   tags: toomai-agent
