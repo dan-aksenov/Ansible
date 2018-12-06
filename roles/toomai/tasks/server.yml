@@ -1,0 +1,11 @@
+---
+- name: "Copy server's binary"
+  copy:
+    src: /sunny/work/toomai/server/var/toomai/toomai.jar
+    dest: /var/toomai/toomai-agent.jar
+  notify: restart toomai
+  
+- name: "Start server"
+  service:
+    name: toomai
+    state: started

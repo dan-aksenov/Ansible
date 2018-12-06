@@ -1,0 +1,6 @@
+---
+- name: restart toomai-agent
+  service:
+    name: toomai-agent
+    state: restarted
+
