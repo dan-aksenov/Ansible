@@ -1,5 +1,5 @@
 ---
-- name: Installing package.
+- name: Installing atop.
   yum: name={{ item }}
   with_items:
       - atop
@@ -10,7 +10,7 @@
       state: started
       enabled: yes
 
-- name: Minutely schedule.
+- name: Atop schedule.
   lineinfile:
       dest: /etc/sysconfig/atop
       regexp: '^INTERVAL='
