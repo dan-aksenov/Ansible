@@ -15,6 +15,5 @@
       - ngrep
       - bind-utils
       - traceroute
-      - nload  
-
-...
+      - nload
+      - fping  
