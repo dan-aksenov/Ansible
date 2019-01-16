@@ -1,6 +1,8 @@
 ---
 - hosts: all
   any_errors_fatal: true
+  remote_user: "{{ my_ansible_user }}"
+  become: yes
   roles:
     - ansible-minio
   vars:
