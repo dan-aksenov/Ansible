@@ -1,5 +1,4 @@
 ---
-
 - name: Install zabbix-api pythons package on ansible host.
   local_action:
     module: pip
@@ -52,5 +51,3 @@
         ip: "{{ ansible_default_ipv4.address }}"
         dns: "{{ agent_name }}"
         port: 10050
-
-...
