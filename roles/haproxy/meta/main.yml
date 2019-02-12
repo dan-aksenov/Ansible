@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniil Aksenov
-  description: haproxy installat and config
+  description: haproxy install and config
   company: your company (optional)
 
   # If the issue tracker for your role is not on github, uncomment the
