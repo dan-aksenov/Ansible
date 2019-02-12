@@ -1,0 +1,11 @@
+---
+- hosts: tomcat
+  remote_user: "{{ my_ansible_user }}"
+  become: yes 
+
+  roles:
+    - haproxy
+
+  environment:
+    http_proxy: "{{ proxy_ip }}"
+    https_proxy: "{{ proxy_ip }}"

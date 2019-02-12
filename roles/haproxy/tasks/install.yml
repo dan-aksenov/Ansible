@@ -9,3 +9,15 @@
     src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
   notify: restart haproxy
+
+# Add logging:
+
+# /etc/haproxy/haproxy.cfg
+# global    log         127.0.0.1 local2
+
+# /etc/rsyslog.conf
+# $ModLoad imudp
+# $UDPServerRun 514
+
+# /etc/rsyslog.d/haproxy.conf
+# local2.* /var/log/haproxy.log
