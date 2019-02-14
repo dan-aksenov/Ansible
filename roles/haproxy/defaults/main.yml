@@ -10,4 +10,4 @@ haproxy:
   timoutserver: 5000ms
   http_timeout: 15s
   balance: leastconn
-  frontend_port: 83
+  frontend_port: 80
