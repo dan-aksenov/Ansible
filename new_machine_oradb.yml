@@ -6,11 +6,9 @@
   roles:
     - proxy_settings
     - essentials
+    - hostname
     - selinux
-    - yum-update
     - zabbix-agent
-    - atop
-    - journald
     - ntpd
     - oracle
     # - oracleclient
