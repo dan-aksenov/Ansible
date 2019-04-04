@@ -6,7 +6,6 @@
   roles:
     - proxy_settings
     - essentials
-    - openvmtools
     - selinux
     - yum-update
     - zabbix-agent
