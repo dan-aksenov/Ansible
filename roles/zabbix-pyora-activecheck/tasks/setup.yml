@@ -1,8 +1,7 @@
 ---
-
 # https://github.com/Lelik13a/Zabbix-PyOra-ActiveCheck
 
-- name: git clone plpgsql_check  
+- name: git clone Zabbix-PyOra-ActiveCheck  
   git:
     repo: https://github.com/Lelik13a/Zabbix-PyOra-ActiveCheck.git
     dest: /tmp/Zabbix-PyOra-ActiveCheck
@@ -107,5 +106,3 @@
     user: zabbix
     minute: "*/10"
     job: "/usr/lib/zabbix/externalscripts/pyora-active.py  --address {{ ansible_hostname }} --database SID"
-
-...
