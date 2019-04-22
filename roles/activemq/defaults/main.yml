@@ -2,5 +2,5 @@
 # This is defaults! For real variables look group var level.
 activemq_user: activemq
 activemq_version: 5.15.3
-root_dir: /u01
-activemq_dir: {{root_dir}}/apache-activemq-{{ activemq_version }}
+root_dir: /opt
+activemq_dir: "{{root_dir}}/apache-activemq-{{ activemq_version }}"
