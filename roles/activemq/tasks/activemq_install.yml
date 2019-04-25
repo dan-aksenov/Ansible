@@ -14,7 +14,7 @@
     group: "{{ activemq_user }}"
     mode: 0755
 
-- name: Check if tomcat is already installed.
+- name: Check if activemq is already installed.
   stat:
     path: "{{ root_dir }}/{{ activemq_name }}"
   register: activemq_dir
@@ -45,8 +45,12 @@
     mode: 0644
   when: ansible_service_mgr == 'systemd'
 
-- name: Add firewall exception. If firewall is on.
-  firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
+- name: Add firewall exception for manager interface. If firewall is on.
+  firewalld: 
+    port: 8161/tcp
+    permanent: true 
+    state: enabled 
+    immediate: yes
   ignore_errors: yes
     
 - name: Start and enable activemq for systemd.
