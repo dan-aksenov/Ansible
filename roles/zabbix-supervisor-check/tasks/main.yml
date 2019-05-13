@@ -1,0 +1,81 @@
+---
+- name: Install perl-Switch and zabbix-sender
+  yum:
+    name: perl-Switch
+    state: latest
+
+- name: git clone Zabbix-Supervisor-Check.
+  git: 
+    repo: https://github.com/Lelik13a/Zabbix-Supervisor-Check.git
+    dest: /tmp/Zabbix-Supervisor-Check
+    update: yes
+
+- name: "Copy supervisor_check.pl to /etc/zabbix/"
+  copy:
+    src: /tmp/Zabbix-Supervisor-Check/supervisor_check.pl
+    dest: /etc/zabbix
+    remote_src: yes
+#    owner: zabbix
+#    group: zabbix
+    mode: 0755
+
+- name: "Copy zabbix_agentd.d/supervisor.conf to /etc/zabbix/zabbix_agentd.d/"
+  copy:
+    src: /tmp/Zabbix-Supervisor-Check/zabbix_agentd.d/supervisor.conf
+    dest: /etc/zabbix/zabbix_agentd.d/
+    remote_src: yes
+#    owner: zabbix
+#    group: zabbix
+#    mode: 0755
+        
+- name: "Copy sudoers.d/zabbix (or its content) to /etc/sudoers.d/"
+  copy:
+    src: /tmp/Zabbix-Supervisor-Check/sudoers.d/zabbix
+    dest: /etc/sudoers.d/
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0440
+
+#edit supervisor_check.pl and set yours $ZabbixServer and $HostName for zabbix_sender.
+- name: "supervisor_check.pl and set yours $ZabbixServer and $HostName for zabbix_sender"
+  lineinfile:
+    dest=/etc/zabbix/supervisor_check.pl
+    regexp="my \\$ZabbixServer = "
+    line="my $ZabbixServer = '{{ zabbix_server }}';"
+
+- name: Set zabbix-agent name.
+  set_fact:
+     agent_name: "{{ inventory_hostname }}"
+     when: ansible_dns.search[0] is undefined
+
+- name: Set zabbix-agent name.
+  set_fact:
+     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"
+     when: ansible_dns.search[0] is defined
+  ignore_errors: True
+
+- name: "supervisor_check.pl and set yours $ZabbixServer and $HostName for zabbix_sender"
+  lineinfile:
+    dest: /etc/zabbix/supervisor_check.pl
+    regexp: "my \\$HostName = "
+    line: "my $HostName = '{{ agent_name }}';"
+  notify: 
+    - restart zabbix-agent
+
+#import "zbx_templates/Template App Supervisor check.xml" into your templates.
+
+#apply template "Template App Supervisor" host.
+
+#copy cron.d/zabbix_supervisor_check to /etc/cron.d/ and reload crond.
+- name: "copy cron.d/zabbix_supervisor_check to /etc/cron.d/ and reload crond"
+  copy:
+    src: /tmp/Zabbix-Supervisor-Check/cron.d/zabbix_supervisor_check
+    dest: /etc/cron.d/
+    remote_src: yes
+#    owner: root
+#    group: root
+#    mode: 0440
+  notify:
+    - reload crond 
+
