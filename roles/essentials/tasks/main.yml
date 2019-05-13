@@ -32,5 +32,8 @@
 - import_tasks: yum-update.yml
   tags: yum-update
 
+- import_tasks: cronie-noanacron.yml
+  tags: cronie-noanacron
+
 #- import_tasks: targets.yml
 #  tags: runlevels
