@@ -3,7 +3,7 @@
   become: yes
   yum:
     name: yum-cron
-    state: present
+    state: latest
 
 - name: Copy the configuration file (CentOS 7).
   become: yes
