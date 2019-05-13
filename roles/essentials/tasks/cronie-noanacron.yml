@@ -1,5 +1,5 @@
 ---
-- name: Install cronie-anacron.
+- name: Install cronie-noanacron.
   yum:
     name: cronie-noanacron
     state: latest
