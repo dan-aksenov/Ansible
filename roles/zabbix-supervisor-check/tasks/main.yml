@@ -1,9 +1,12 @@
 ---
 - name: Install perl-Switch and zabbix-sender
   yum:
-    name: perl-Switch
+    name: "{{ item }}"
     state: latest
-
+  with_items:
+   - perl-Switch
+   - zabbix-sender
+  
 - name: git clone Zabbix-Supervisor-Check.
   git: 
     repo: https://github.com/Lelik13a/Zabbix-Supervisor-Check.git
