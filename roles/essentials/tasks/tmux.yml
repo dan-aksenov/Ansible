@@ -1,5 +1,4 @@
 ---
-
 - name: Installing tmux.
   yum: name={{ item }}
   with_items:
@@ -12,5 +11,3 @@
     owner: "{{ my_ansible_user }}"
     group: "{{ my_ansible_user }}"
     mode: 0700
-
-...

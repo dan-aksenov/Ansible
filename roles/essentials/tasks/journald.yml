@@ -1,5 +1,5 @@
 ---
-- name: Create directory.
+- name: Create directory for journald persistent storage
   file: path=/var/log/journal state=directory
   notify:
     - restart journald
