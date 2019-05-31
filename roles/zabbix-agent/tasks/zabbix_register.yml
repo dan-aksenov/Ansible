@@ -51,3 +51,4 @@
         ip: "{{ ansible_default_ipv4.address }}"
         dns: "{{ agent_name }}"
         port: 10050
+    proxy: "{{ zabbix_proxy }}"
