@@ -9,7 +9,7 @@
       - zip
       - unzip
       - tree
-      - nfs-tools
+      - nfs-utils
       # gnu parallel
       - parallel
       # Used by many apps
