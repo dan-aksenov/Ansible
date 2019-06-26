@@ -5,18 +5,6 @@
     name: zabbix-api
   run_once: true
 
-- name: Set zabbix-agent name.
-  set_fact:
-     agent_name: "{{ inventory_hostname }}"   
-     when: ansible_dns.search[0] is undefined
-
-- name: Set zabbix-agent name.
-  set_fact:
-     agent_name: "{{ inventory_hostname }}.{{ ansible_dns.search[0] }}"   
-     when: ansible_dns.search[0] is defined
-  ignore_errors: True
-  # find nicer way to escape it.
-
 - name: Create zabbix host group.
   local_action:
     module: zabbix_group
@@ -34,8 +22,8 @@
     server_url: "{{ zabbix_url }}"
     login_user: Admin
     login_password: zabbix
-    host_name: "{{ agent_name }}"
-    visible_name: "{{ agent_name }}"
+    host_name: "{{ ansible_hostname }}"
+    visible_name: "{{ ansible_hostname }}"
     host_groups:
       - Linux servers
       - "{{ zabbix_group }}"
@@ -49,6 +37,6 @@
         main: 1
         useip: 1
         ip: "{{ ansible_default_ipv4.address }}"
-        dns: "{{ agent_name }}"
+        dns: "{{ ansible_hostname }}"
         port: 10050
     proxy: "{{ zabbix_proxy }}"
