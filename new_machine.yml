@@ -19,6 +19,6 @@
    #  Needs to be fixed and revorked.
    #- postfix
 
-  environment:
-    http_proxy: "{{ proxy_ip }}"
-    https_proxy: "{{ proxy_ip }}"
+#  environment:
+#    http_proxy: "{{ proxy_ip }}"
+#    https_proxy: "{{ proxy_ip }}"
