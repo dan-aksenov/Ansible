@@ -6,6 +6,6 @@
   roles:
     - haproxy
 
-  environment:
-    http_proxy: "{{ proxy_ip }}"
-    https_proxy: "{{ proxy_ip }}"
+#  environment:
+#    http_proxy: "{{ proxy_ip }}"
+#    https_proxy: "{{ proxy_ip }}"
