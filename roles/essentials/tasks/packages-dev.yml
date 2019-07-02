@@ -1,7 +1,7 @@
 ---
 - name: Installing development tools.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - git
       - gcc
       - make

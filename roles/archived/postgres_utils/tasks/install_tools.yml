@@ -2,8 +2,8 @@
 - name: "Install additional postgresql tools."
   yum: 
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     # top-like utility for postgresql monitoring
     - pgcenter
     # python-devel requered for pgcli

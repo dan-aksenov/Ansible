@@ -3,8 +3,8 @@
 - name: "Install pg_stat_kcache package" 
   yum: 
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
 
 - name: Check whether postgresql.conf contains "pg_stat_kcache"

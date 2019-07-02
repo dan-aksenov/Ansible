@@ -2,8 +2,8 @@
 - name: Yum install java
   yum:
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - freeipa-client
   when: ansible_pkg_mgr == 'yum'
 

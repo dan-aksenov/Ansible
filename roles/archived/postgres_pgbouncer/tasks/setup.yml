@@ -3,8 +3,8 @@
 - name: Install pgbouncer
   yum:
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - pgbouncer
 
 - name: Modify pgbouncer.ini listen_addr.

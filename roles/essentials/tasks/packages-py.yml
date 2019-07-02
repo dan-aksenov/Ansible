@@ -1,7 +1,7 @@
 ---
 - name: Installing python packages.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - python-pip 
       - python-devel
       - python-setuptools

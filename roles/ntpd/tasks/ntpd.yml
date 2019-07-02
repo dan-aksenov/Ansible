@@ -1,8 +1,8 @@
 ---
 
 - name: Ensure ntpd installed.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - ntpdate
       - ntp
 
