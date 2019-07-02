@@ -3,8 +3,8 @@
 - name: Install repmgr software.
   yum:
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - "repmgr{{ postgresql_version | replace('.', '')  }}"
 
 # 2. Edit postgresql.conf

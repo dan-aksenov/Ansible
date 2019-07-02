@@ -4,8 +4,8 @@
     state: latest
    #enablerepo: "pgdg{{ postgresql_version | replace('.', '') }}"
    #disablerepo: '*' 
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - postgresql{{ postgresql_version | replace('.', '') }}-plperl
     - postgresql{{ postgresql_version | replace('.', '') }}-plpython
     - postgresql{{ postgresql_version | replace('.', '') }}-pltcl

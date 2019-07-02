@@ -1,7 +1,7 @@
 ---
 - name: Installing atop.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - atop
 
 - name: Start atop service.

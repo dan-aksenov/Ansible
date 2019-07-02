@@ -2,18 +2,23 @@
 - name: Install EPEL Centos
   yum:
     state: latest
-    pkg: "{{ item }}"
-  with_items:
-    - epel-release
+    name:
+      - epel-release
   when: ansible_distribution == 'CentOS'
 
 - name: Install EPEL OL
   yum:
-    state: present 
-    pkg: "{{ item }}"
-  with_items:
-    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+    state: latest 
+    name:
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
   when: ansible_distribution == 'OracleLinux'
+
+- name: Install EPEL RH
+  yum:
+    state: latest 
+    name:
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+  when: ansible_distribution == 'RedHat'
 
 - name: Enable Optional repo on OL7
   yum_repository:

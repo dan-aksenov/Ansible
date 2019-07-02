@@ -1,8 +1,8 @@
 ---
 
 - name: Ensure rsyslog package is installed.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - rsyslog
 
 - name: Forward logs to syslog servers.

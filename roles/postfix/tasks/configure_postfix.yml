@@ -1,8 +1,8 @@
 ---
 
 - name: Installing packages.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - mailx
       - postfix
       - cyrus-sasl

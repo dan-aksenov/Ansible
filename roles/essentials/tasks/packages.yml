@@ -1,7 +1,8 @@
 ---
 - name: Installing misc packages
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    state: latest
+    name:
       - vim
       # Database for local files indexing and search
       - mlocate
@@ -19,9 +20,9 @@
 
 - name: Install open-vm-tools for virtual machines.
   yum:
-     name={{ item }} state=latest
-  with_items:
-   - open-vm-tools
+    state: latest
+    name:
+      - open-vm-tools
   when: ansible_virtualization_role == 'guest'
 
 - name: Start and enable open-vm-tools service.

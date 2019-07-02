@@ -8,7 +8,7 @@
 #- name: Update web app.
 #  copy: src={{ item }}
 #        dest=/tomcat/webapps/skpdi.war
-#  with_items:
+#    name:
 #        - ~/localrepo/skpdi/
 
 #- name: start tomcat async.
