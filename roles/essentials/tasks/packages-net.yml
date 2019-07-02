@@ -1,8 +1,8 @@
 ---
 
 - name: Installing network tools.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - net-tools
       - iptraf    
       - nethogs

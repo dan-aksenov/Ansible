@@ -12,9 +12,8 @@
 - name: Yum install zabbix-agent.
   yum: 
     state: latest
-    pkg: "{{ item }}"
-  with_items:
-    - zabbix-agent
+    name:
+      - zabbix-agent
   when: ansible_pkg_mgr == 'yum'
 
 - name: Edit agent.conf file. Add Zabbix server name. 

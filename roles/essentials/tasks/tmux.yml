@@ -1,7 +1,7 @@
 ---
 - name: Installing tmux.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - tmux
 
 - name: Setup tmux.conf as template.

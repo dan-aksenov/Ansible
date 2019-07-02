@@ -3,8 +3,8 @@
 - name: install pgagent
   yum:
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - pgagent_{{ postgresql_version | replace('.', '') }}
 
 - name: add pgagent user

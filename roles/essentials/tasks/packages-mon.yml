@@ -1,8 +1,8 @@
 ---
 
 - name: Installing monitoring tools.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - hdparm
       - iotop
       - sysstat
