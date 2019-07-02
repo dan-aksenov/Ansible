@@ -5,8 +5,8 @@
   when: pacemaker_ansible_group is not iterable
 
 - name: Installing packages.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       - pacemaker
       #- resource-agents
       - pcs

@@ -24,8 +24,8 @@
 - name: Install mamonsu.
   yum: 
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - mamonsu
 
 - name: Copy agent.conf template 

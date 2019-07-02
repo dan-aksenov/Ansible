@@ -1,7 +1,7 @@
 ---
 - name: Installing packages.
-  yum: name={{ item }}
-  with_items:
+  yum: 
+    name:
       # Oracle preinstall 18 looks different. Need to deal with it also
       - oracle-rdbms-server-{{ ora_version }}-preinstall
       - xorg-x11-xauth

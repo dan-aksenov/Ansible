@@ -14,8 +14,8 @@
 - name: "Install {{ postgresql_distribution }} packages."
   yum: 
     state: latest
-    pkg: "{{ item }}"
-  with_items:
+    
+    name:
     - "{{ pcg_name }}"
     - "{{ pcg_name }}-server"
     - "{{ pcg_name }}-contrib"
