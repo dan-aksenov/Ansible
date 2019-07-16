@@ -1,7 +1,12 @@
 ---
-
-- name: Setup selinux.
-  selinux: policy="{{ se_policy }}" state="{{ se_state }}"
+- name: Install SELinus packages.
+  yum:
+    state: latest
+    name:
+      - setools-console
+      - policycoreutils-python
   tags: selinux
 
-...
+- name: Set policy "{{ se_policy }}"  to "{{ se_state }}".
+  selinux: policy="{{ se_policy }}" state="{{ se_state }}"
+  tags: selinux
