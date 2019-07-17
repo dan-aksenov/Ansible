@@ -1,7 +1,6 @@
 ---
 - name: Add my ansible user.
   user: name="{{ my_ansible_user }}"
-        groups=wheel
         createhome=yes
         home="/home/{{ my_ansible_user }}"
         state=present
