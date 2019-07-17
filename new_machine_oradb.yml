@@ -11,9 +11,6 @@
     - zabbix-agent
     - ntpd
     - oracle
-    # - oracleclient
+    - oracleclient
     - zabbix-pyora-activecheck
 
-  environment:
-    http_proxy: "{{ proxy_ip }}"
-    https_proxy: "{{ proxy_ip }}"
