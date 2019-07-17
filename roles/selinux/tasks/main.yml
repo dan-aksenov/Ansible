@@ -1,5 +1,5 @@
 ---
-- name: Install SELinus packages.
+- name: Install SELinux packages.
   yum:
     state: latest
     name:
