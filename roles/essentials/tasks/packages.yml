@@ -17,6 +17,7 @@
       - java
       # bash json querying tool
       - jq
+      - mc
 
 - name: Install open-vm-tools for virtual machines.
   yum:
