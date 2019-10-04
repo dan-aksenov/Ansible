@@ -9,7 +9,7 @@
 - name: add my ansible user pub_key
   authorized_key:
     user: "{{ my_ansible_user }}"
-    key: "{{ lookup('file', '/home/{{ my_ansible_user }}/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
   tags: linux_key
 
 - name: add my ansible user pub_key from Windows
