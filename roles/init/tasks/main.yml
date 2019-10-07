@@ -15,7 +15,7 @@
 - name: add my ansible user pub_key from Windows
   authorized_key:
     user: "{{ my_ansible_user }}"
-    key: "{{ lookup('file', '/home/{{ my_ansible_user }}/localrepo/my_key_win') }}"
+    key: "{{ lookup('file', lookup('env','HOME') + '/localrepo/my_key_win') }}"
   tags: windows_key
 
 - name: configure sudoers
@@ -27,4 +27,3 @@
     mode: 0400
     validate: 'visudo -cf %s'
   tags: sudoers
-
