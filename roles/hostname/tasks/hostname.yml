@@ -1,5 +1,4 @@
 ---
-
 - name: Set hostname to match ansible's inventory_hostname.
   hostname:
      name: "{{ inventory_hostname }}"

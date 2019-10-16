@@ -1,0 +1,3 @@
+---
+- import_tasks: filebeat_install.yml
+  tags: filebeat
