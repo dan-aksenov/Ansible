@@ -1,0 +1,29 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /opt/tomcat/logs/logback*.log
+  document_type: "{{ ansible_hostname }}" 
+  scan_frequency: 30s
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+setup.template.settings:
+  index.number_of_shards: 1
+setup.ilm.enabled: false
+
+setup.kibana:
+  host: "{{ kibana_host }}:{{ kibana_port }}"
+
+output.elasticsearch:
+  hosts: ["{{ elasticsearch_host }}:{{ elasticsearch_port }}"]
+  protocol: "https"
+  username: "admin"
+  password: "admin"
+  ssl.verification_mode: none
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+

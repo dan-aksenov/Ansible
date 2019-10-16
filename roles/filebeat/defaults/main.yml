@@ -1,0 +1,7 @@
+---
+kibana_host: localhost
+kibana_port: 5601
+
+# redo it as an array in future
+elasticsearch_host: localhost
+elasticsearch_port: 9200
