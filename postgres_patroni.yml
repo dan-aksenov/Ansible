@@ -1,0 +1,6 @@
+---
+- hosts: postgres
+  remote_user: "{{ my_ansible_user }}"
+  become: yes
+  roles:
+   - postgres-patroni
