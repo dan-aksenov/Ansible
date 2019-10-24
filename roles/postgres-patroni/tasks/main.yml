@@ -1,0 +1,6 @@
+---
+- import_tasks: repository.yml
+  tags: repository
+
+- import_tasks: install.yml
+  tags: install
