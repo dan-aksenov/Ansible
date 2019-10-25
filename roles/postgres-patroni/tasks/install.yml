@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 - name: "Install PostgreSQL packages."
   yum: 
     state: latest
@@ -25,3 +26,8 @@
     name: 
       - "patroni[etcd]"
     state: latest    
+=======
+- name: Install pgdg repository package.
+  yum: 
+    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}/pgdg-redhat-repo-latest.noarch.rpm
+>>>>>>> afa79ad7a3fcd195bd6e8b42fe93fb2107c5ec11
