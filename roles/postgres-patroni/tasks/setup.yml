@@ -4,12 +4,6 @@
     state: directory
     dest: /etc/patroni
 
-- name: Create patroni config file from template.
-  template:
-    src: patroni.yml.j2
-    dest: /etc/patroni/patroni.yml
-    backup: yes
-
 - name: Create patroni systemd service.
   template:
     src: patroni.service.j2
@@ -19,6 +13,14 @@
     backup: yes
     force: yes
     mode: 0644
+
+- name: Create patroni config file from template.
+  template:
+    src: patroni.yml.j2
+    dest: /etc/patroni/patroni.yml
+    backup: yes
+  notify:
+    - restart patroni
 
 - name: Start and enable patroni
   service:

@@ -1,0 +1,19 @@
+- name: Create etcd config file from template.
+  template:
+    src: etcd.conf.j2
+    dest: /etc/etcd/etcd.conf
+    backup: yes
+
+- name: Add firewall exception. If firewall is on.
+  firewalld: 
+    port: 2379-2380/tcp
+    permanent: true
+    state: enabled
+    immediate: yes
+  ignore_errors: yes
+
+- name: Start and enable etcd
+  service:
+    name: etcd
+    state: started
+    enabled: yes
