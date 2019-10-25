@@ -1,2 +1,5 @@
 ---
-# handlers file for postgres-patroni
+- name: restart patroni
+  service:
+     name: patroni
+     state: restarted

@@ -1,0 +1,5 @@
+---
+- name: "Install etcd."
+  yum: 
+    state: latest
+    name: etcd
