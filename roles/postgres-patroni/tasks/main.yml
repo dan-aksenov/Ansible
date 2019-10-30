@@ -3,11 +3,7 @@
   tags: repository
 
 - import_tasks: install.yml
-<<<<<<< HEAD
   tags: install
 
 - import_tasks: setup.yml
   tags: setup
-=======
-  tags: install
->>>>>>> afa79ad7a3fcd195bd6e8b42fe93fb2107c5ec11
