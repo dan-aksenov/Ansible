@@ -1,2 +1,6 @@
 ---
-# handlers file for etcd
+---
+- name: restart patroni
+  service:
+     name: etcd
+     state: restarted
