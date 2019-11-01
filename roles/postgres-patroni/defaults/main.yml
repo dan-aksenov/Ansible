@@ -1,2 +1,2 @@
 ---
-# defaults file for postgres-patroni
+etcd_hosts: "ceph01:2379,ceph02:2379,ceph03:2379"
