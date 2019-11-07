@@ -5,5 +5,8 @@
 - import_tasks: install.yml
   tags: install
 
+- import_tasks: security.yml
+  tags: security
+
 - import_tasks: setup.yml
   tags: setup
