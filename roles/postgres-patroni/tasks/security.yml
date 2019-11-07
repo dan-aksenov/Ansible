@@ -1,0 +1,8 @@
+---
+- name: Configure firewall(Ingnore if service is not running)
+  firewalld:
+    service: postgresql
+    permanent: true
+    state: enabled
+    immediate: true
+  ignore_errors: yes
