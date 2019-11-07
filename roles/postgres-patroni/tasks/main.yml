@@ -10,3 +10,6 @@
 
 - import_tasks: setup.yml
   tags: setup
+
+- import_tasks: check.yml
+  tags: check

@@ -1,0 +1,10 @@
+- name: Check patroni api responce
+  uri:
+    url: http://localhost:8008
+    body_format: json
+    status_code: [200,503]
+  register: output
+
+- name: Output
+  debug:
+    msg: Patroni cluster is {{ output.json.state }} and {{ output.json.role }}
