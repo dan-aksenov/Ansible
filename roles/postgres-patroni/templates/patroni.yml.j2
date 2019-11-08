@@ -77,9 +77,9 @@ bootstrap:
 postgresql:
   listen: {{ ansible_hostname }}:5432
   connect_address: {{ ansible_hostname }}:5432
-  data_dir: /var/lib/pgsql/11/data/
+  data_dir: /var/lib/pgsql/{{ postgresql_version }}/data/
   bin_dir: /usr/pgsql-{{ postgresql_version }}/bin
-#  config_dir:
+  config_dir: /var/lib/pgsql/{{ postgresql_version }}/data/
   pgpass: /tmp/pgpass0
   authentication:
     replication:
@@ -94,6 +94,7 @@ postgresql:
   # Server side kerberos spn
 #  krbsrvname: postgres
   parameters:
+    # shared_buffers: "{{ (ansible_memory_mb.real.total/4) |round|int }}MB"
     # Fully qualified kerberos ticket file for the running user
     # same as KRB5CCNAME used by the GSS
 #   krb_server_keyfile: /var/spool/keytabs/postgres
