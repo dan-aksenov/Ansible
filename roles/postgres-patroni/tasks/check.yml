@@ -1,3 +1,4 @@
+---
 - name: Check patroni api responce
   # Do it via api, patronictl, or some other way?
   uri:
