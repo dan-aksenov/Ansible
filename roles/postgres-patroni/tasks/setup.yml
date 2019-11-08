@@ -20,7 +20,7 @@
     dest: /etc/patroni/patroni.yml
     backup: yes
   notify:
-    - restart patroni
+    - reload patroni
 
 - name: Start and enable patroni
   service:

@@ -1,5 +1,5 @@
 ---
-- name: restart patroni
+- name: reload patroni
   service:
      name: patroni
-     state: restarted
+     state: reloaded

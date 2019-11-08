@@ -1,10 +1,16 @@
 - name: Check patroni api responce
+  # Do it via api, patronictl, or some other way?
   uri:
     url: http://localhost:8008
     body_format: json
     status_code: [200,503]
   register: output
 
-- name: Output
+- name: Cluster check results
   debug:
-    msg: Patroni cluster is {{ output.json.state }} and {{ output.json.role }}
+    msg:  "{{ output.json.role }} {{ output.json.state }}"
+
+#- name: check if restart pending
+#  debug:
+#    msg:  "{{ output.json.role }} {{ output.json.state }}"
+#  when:  
