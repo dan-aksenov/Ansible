@@ -1,6 +1,3 @@
 [submodule "roles/tomcat"]
 	path = roles/tomcat
 	url = git@github.com:dan-aksenov/ansible-tomcat.git
-[submodule "roles/postgresql"]
-	path = roles/postgresql
-	url = git@github.com:dan-aksenov/ansible-postgresql.git
