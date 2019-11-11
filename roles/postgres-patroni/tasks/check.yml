@@ -9,9 +9,9 @@
 
 - name: Cluster check results
   debug:
-    msg:  "{{ output.json.role }} {{ output.json.state }}"
+    msg:  "role: {{ output.json.role }} state: {{ output.json.state }}"
 
-#- name: check if restart pending
-#  debug:
-#    msg:  "{{ output.json.role }} {{ output.json.state }}"
-#  when:  
+- name: check if restart pending
+  debug:
+    msg:  "pending_restart: {{ output.json.pending_restart }}"
+  when: "'pending_restart' in output.json"
