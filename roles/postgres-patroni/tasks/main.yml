@@ -13,3 +13,8 @@
 
 - import_tasks: check.yml
   tags: check
+
+#  getting output.json from check task, thus neet to run in first
+- import_tasks: powa.yml
+  when: "output.json.role == 'master'"
+  tags: powa

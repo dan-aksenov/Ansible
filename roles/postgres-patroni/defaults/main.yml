@@ -1,2 +1,45 @@
 ---
 etcd_hosts: "ceph01:2379,ceph02:2379,ceph03:2379"
+
+# Basic settings
+el_version: 7
+postgresql_version: 11
+
+#pg_data mast be real directory not symlink, or pgbackrest won't work.
+pg_data: /var/lib/pgsql/{{ postgresql_version }}/data
+pg_conf: "{{ pg_data }}"
+#pgbackrest_dir is disabled by default
+#pgbackrest_dir: /var/lib/pgbackrest
+postgresql_admin_user: postgres
+postgresql_port: 5432 
+pgbackrest_stanza: "{{ ansible_hostname }}" 
+
+# List of databases to be precreated.
+# List of precreated users. 
+# to be handled by patroni
+
+postgresql_extensions: [ "pg_stat_statements", "powa", "pg_stat_kcache", "pg_qualstats" ]
+
+# Postgresql.conf defaults
+postgresql_conf:
+  #listen_addresses: "'*'" # managed by patroni
+  #port: "{{ postgresql_port }}" # managed by patroni
+  max_connections: 250
+  shared_buffers: "{{ (ansible_memory_mb.real.total/4) |round|int }}MB"
+  effective_cache_size: "{{ (ansible_memory_mb.real.total -ansible_memory_mb.real.total/4)|round|int }}MB"
+  shared_preload_libraries: "\'{{ postgresql_extensions|join(',') }}\'"
+  pg_stat_statements.track: "all"
+  max_wal_senders: "10"
+  # hot_standby: "on" # managed by patroni
+  # wal_keep_segments: "5000"
+  # wal_log_hints: "on"
+  #max_parallel_workers_per_gather: "0"    
+  #max_parallel_workers: "0"              
+  checkpoint_timeout: "30min"
+  track_activity_query_size: "10240"
+
+# Defaults for mamonsu
+zabbix_server:
+zabbix_server_port: 10051
+# moved to template
+agent_name: "{% if ansible_dns.search is defined %}{{ inventory_hostname }}.{{ ansible_dns.search[0] }}{% else %}{{ inventory_hostname }}{% endif %}"
