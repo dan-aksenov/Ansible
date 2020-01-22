@@ -1,0 +1,13 @@
+---
+- name: copy oracle client from local repo
+  copy: src={{ item }} 
+        dest=/tmp
+  with_items:
+        - ~/localrepo/filebeati{{ filebeat_version }}.x86_64.rpm
+
+- name: install client packages
+  yum: 
+    name: 
+        - /tmp/filebeati{{ filebeat_version }}.x86_64.rpm
+
+...
