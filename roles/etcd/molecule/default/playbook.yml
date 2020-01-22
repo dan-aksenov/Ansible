@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: etcd
+
+  environment:
+    http_proxy: "http://prx-srv.***REMOVED***.ru:3128"
+    https_proxy: "http://prx-srv.***REMOVED***.ru:3128"
