@@ -1,6 +1,5 @@
 ---
----
-- name: restart patroni
+- name: restart etcd
   service:
      name: etcd
      state: restarted
