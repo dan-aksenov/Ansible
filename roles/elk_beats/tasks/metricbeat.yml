@@ -1,13 +1,26 @@
 ---
-- name: copy oracle client from local repo
+- name: Copy oracle client from local repo
   copy: src={{ item }} 
         dest=/tmp
   with_items:
-        - ~/localrepo/filebeati{{ filebeat_version }}.x86_64.rpm
+        - ~/localrepo/metricbeat-{{ metricbeat_version }}-x86_64.rpm
 
-- name: install client packages
+- name: Install client packages
   yum: 
     name: 
-        - /tmp/filebeati{{ filebeat_version }}.x86_64.rpm
+        - /tmp/metricbeat-{{ metricbeat_version }}-x86_64.rpm
 
-...
+- name: Create metricteat config from template
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/metricbeat/metricteat.yml
+    owner: root
+    group: root
+    force: yes
+    mode: 0644
+    
+- name: Start and enable metricteat
+  service:
+     name: metricteat
+     state: started
+     enabled: yes
