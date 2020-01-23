@@ -5,5 +5,5 @@
     - role: etcd
 
   environment:
-    http_proxy: "http://prx-srv.***REMOVED***.ru:3128"
-    https_proxy: "http://prx-srv.***REMOVED***.ru:3128"
+    http_proxy: {{ lookup('env','$http_proxy') }}
+    https_proxy: {{ lookup('env','$http_proxy') }}
