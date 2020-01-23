@@ -1,32 +1,38 @@
 ---
 - name: Install EPEL Centos
   yum:
-    state: latest
+    state: present
     name:
       - epel-release
   when: ansible_distribution == 'CentOS'
 
 - name: Install EPEL OL
   yum:
-    state: latest 
-    name:
-      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+    state: present
+    name: >
+       https://dl.fedoraproject.org/pub/epel/
+       epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
   when: ansible_distribution == 'OracleLinux'
 
 - name: Install EPEL RH
   yum:
-    state: latest 
-    name:
-      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+    state: present
+    name: >
+       https://dl.fedoraproject.org/pub/epel/
+       epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
   when: ansible_distribution == 'RedHat'
 
 - name: Enable Optional repo on OL7
   yum_repository:
-    name: ol{{ ansible_distribution_major_version }}_optional_latest 
+    name: ol{{ ansible_distribution_major_version }}_optional_latest
     description: Oracle Linux $releasever Optional Latest ($basearch)
-    file: public-yum-ol{{ ansible_distribution_major_version }} 
-    baseurl: http://public-yum.oracle.com/repo/OracleLinux/OL{{ ansible_distribution_major_version }}/optional/latest/$basearch/ 
+    file: public-yum-ol{{ ansible_distribution_major_version }}
+    baseurl: >
+      http://public-yum.oracle.com/repo/OracleLinux/
+      OL{{ ansible_distribution_major_version }}/optional/latest/$basearch/
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
-    gpgcheck: yes
-    enabled: yes
-  when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version|int >= 7
+    gpgcheck: true
+    enabled: true
+  when: >
+    ansible_distribution == 'OracleLinux'
+    and ansible_distribution_major_version|int >= 7

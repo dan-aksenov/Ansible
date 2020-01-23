@@ -1,18 +1,18 @@
 ---
 - name: Installing atop.
-  yum: 
+  yum:
     name:
       - atop
 
 - name: Start atop service.
-  service: 
-      name: atop
-      state: started
-      enabled: yes
+  service:
+    name: atop
+    state: started
+    enabled: true
 
 - name: Atop schedule.
   lineinfile:
-      dest: /etc/sysconfig/atop
-      regexp: '^INTERVAL='
-      line: 'INTERVAL={{ atop_interval }}'
+    dest: /etc/sysconfig/atop
+    regexp: '^INTERVAL='
+    line: 'INTERVAL={{ atop_interval }}'
   notify: restart atop

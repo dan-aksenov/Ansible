@@ -2,8 +2,8 @@
 - import_tasks: repos.yml
   tags: repos
 
-#- import_tasks: hosts.yml
-#  tags: hosts
+# - import_tasks: hosts.yml
+#   tags: hosts
 
 - import_tasks: packages.yml
   tags: packages-misc
@@ -22,7 +22,7 @@
 
 - import_tasks: packages-py.yml
   tags: packages-py
-  
+
 - import_tasks: tmux.yml
   tags: tmux
 
@@ -35,5 +35,5 @@
 - import_tasks: cronie-noanacron.yml
   tags: cronie-noanacron
 
-#- import_tasks: targets.yml
-#  tags: runlevels
+# - import_tasks: targets.yml
+#   tags: runlevels

@@ -1,7 +1,7 @@
 ---
 - name: Installing misc packages
-  yum: 
-    state: latest
+  yum:
+    state: present
     name:
       - vim
       # Database for local files indexing and search
@@ -21,14 +21,14 @@
 
 - name: Install open-vm-tools for virtual machines.
   yum:
-    state: latest
+    state: present
     name:
       - open-vm-tools
   when: ansible_virtualization_role == 'guest'
 
 - name: Start and enable open-vm-tools service.
   service:
-     name: vmtoolsd.service
-     state: started
-     enabled: yes
+    name: vmtoolsd.service
+    state: started
+    enabled: true
   when: ansible_virtualization_role == 'guest'

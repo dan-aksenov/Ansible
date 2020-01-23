@@ -1,4 +1,10 @@
 ---
+- name: Ensure rsyslog is installed
+  yum:
+    state: present
+    name:
+      - rsyslog
+
 - name: Create directory for journald persistent storage
   file: path=/var/log/journal state=directory
   notify:
