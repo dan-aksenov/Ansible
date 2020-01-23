@@ -1,19 +1,19 @@
 ---
 
 - name: Installing network tools.
-  yum: 
+  yum:
     name:
       - net-tools
-      - iptraf    
+      - iptraf
       - nethogs
       - tcpdump
       - iperf
       - mtr
       - iftop
       - wget
-      - ntpdate      
+      - ntpdate
       - ngrep
       - bind-utils
       - traceroute
       - nload
-      - fping  
+      - fping

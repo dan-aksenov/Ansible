@@ -1,7 +1,7 @@
 ---
 
 - name: Installing monitoring tools.
-  yum: 
+  yum:
     name:
       - hdparm
       - iotop
@@ -13,9 +13,7 @@
       - strace
       - glances
       - lsof
-      # A set of utilities that use the proc filesystem (fuser, killall, pidof, pstree).
+      # Uilities for the proc filesystem fuser, killall, pidof, pstree
       - psmisc
-      # tools and drivers for monitoring temperatures, voltage, and fans.
+      # tools and drivers for monitoring temperatures, voltage, and fans
       - lm_sensors
-
-...

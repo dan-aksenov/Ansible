@@ -1,8 +1,8 @@
 ---
 - name: Installing python packages.
-  yum: 
+  yum:
     name:
-      - python-pip 
+      - python-pip
       - python-devel
       - python-setuptools
       - libselinux-python

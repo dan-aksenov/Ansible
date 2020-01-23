@@ -2,7 +2,7 @@
 - name: Install cronie-noanacron.
   yum:
     name: cronie-noanacron
-    state: latest
+    state: present
 
 - name: Uninstall cronie-anacron.
   yum:

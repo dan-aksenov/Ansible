@@ -1,9 +1,9 @@
 ---
 - name: Installing development tools.
-  yum: 
+  yum:
     name:
       - git
       - gcc
       - make
       - rpm-build
-      - gdb 
+      - gdb
