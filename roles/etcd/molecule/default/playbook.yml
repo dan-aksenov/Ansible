@@ -4,6 +4,6 @@
   roles:
     - role: etcd
 
-  environment:
-    http_proxy: {{ lookup('env','$http_proxy') }}
-    https_proxy: {{ lookup('env','$http_proxy') }}
+#  environment:
+#    http_proxy: {{lookup('env','http_proxy')}}
+#    https_proxy: {{lookup('env','http_proxy')}}
