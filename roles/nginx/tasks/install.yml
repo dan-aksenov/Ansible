@@ -1,11 +1,11 @@
 ---
-- name: "Install Nginx packages"
+- name: Install Nginx packages
   yum:
      name: nginx
      state: present
 
-- name: "Start and enable Nginx"
+- name: Start and enable Nginx
   service:
-     name: nginx 
+     name: nginx
      state: started
-     enabled: yes
+     enabled: true
