@@ -1,14 +1,15 @@
 ---
-
 galaxy_info:
   author: Daniil Aksenov (dbax)
-  description: Ansible role for administrative sudo user, who will run all subsequent ansible scripts. Must be executed with --ask-pass.
+  description: >
+    Ansible role for administrative sudo user,
+    to run all subsequent ansible scripts.
+    Must be executed with --ask-pass.
   license: as-is
+  min_ansible_version: 2.9
   platforms:
-    - name: EL
-    - versions: 7
-  categories:
-   - security
-   - security:sudo 
-
-...
+    - name: centos
+      versions:
+        - 7
+  tags:
+    - security
