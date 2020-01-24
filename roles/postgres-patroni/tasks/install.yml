@@ -1,27 +1,32 @@
 ---
 - name: "Install PostgreSQL packages."
-  yum: 
-    state: latest
+  yum:
+    state: present
     name:
       - "postgresql{{ postgresql_version | replace('.', '') }}"
       - "postgresql{{ postgresql_version | replace('.', '') }}-server"
       - "postgresql{{ postgresql_version | replace('.', '') }}-contrib"
       - "postgresql{{ postgresql_version | replace('.', '') }}-libs"
       - python-psycopg2
+      - python3-psycopg2
       - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
       - powa_{{ postgresql_version | replace('.', '') }}
       - powa_{{ postgresql_version | replace('.', '') }}-web
       - pg_qualstats{{ postgresql_version | replace('.', '') }}
       - hypopg_{{ postgresql_version | replace('.', '') }}
+      - gcc
+      - python3-devel
 
 - name: "Ensure setuptools is updated to latest version."
-  pip: 
-    name: 
+  pip:
+    name:
       - setuptools
-    state: latest
+    state: present
+    virtualenv_python: 3.5
 
 - name: "Install Patroni with dependencies."
-  pip: 
-    name: 
-      - "patroni[etcd]"
-    state: latest    
+  pip:
+    name:
+      - "patroni[consul]"
+    state: present
+    virtualenv_python: 3.5
