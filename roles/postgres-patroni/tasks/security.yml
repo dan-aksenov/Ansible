@@ -5,4 +5,4 @@
     permanent: true
     state: enabled
     immediate: true
-  ignore_errors: yes
+  ignore_errors: true

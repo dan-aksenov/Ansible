@@ -4,32 +4,37 @@
     name: 'powa'
     state: 'present'
     login_host: 'localhost'
-    #port: '5432'
-    #login_password: 'zalando'
-    #login_user: 'postgres'
+    # port: '5432'
+    # login_password: 'zalando'
+    # login_user: 'postgres'
   become_user: 'postgres'
+  become: true
 
 - name: Create extensions.
   postgresql_ext:
     name: "{{ item[1] }}"
     db: "{{ item[0] }}"
     login_host: 'localhost'
-    #port: "{{ postgresql_port }}"
+    # port: "{{ postgresql_port }}"
   become_user: postgres
+  become: true
   with_nested:
-    - [ postgres, powa ]
-    - [ pg_stat_statements, btree_gist, powa, pg_qualstats, pg_stat_kcache, pg_buffercache ]
+    - [postgres, powa]
+    - >
+      [pg_stat_statements, btree_gist, powa,
+      pg_qualstats, pg_stat_kcache, pg_buffercache]
 
-#- name: Get databases list.
-#  command: psql -p "{{ postgresql_port }}" -t -c "select datname from pg_database where datname <> 'template0';"
+# - name: Get databases list.
+#  command: psql -p "{{ postgresql_port }}" -t -c
+#  "select datname from pg_database where datname <> 'template0';"
 #  become: true
 #  become_user: postgres
 #  register: database_list
 #  check_mode: no
 
-#- name: Create extension powa in databases.
+# - name: Create extension powa in databases.
 #  postgresql_ext:
-#    name: hypopg 
+#    name: hypopg
 #    db: "{{ item[0] }}"
 #    port: "{{ postgresql_port }}"
 #  become_user: postgres
@@ -40,11 +45,12 @@
     name: powa
     login_host: 'localhost'
     role_attr_flags: SUPERUSER
-    #port: "{{ postgresql_port }}"
+    # port: "{{ postgresql_port }}"
   become_user: postgres
+  become: true
 
-#- name: Set powa-web config.
-#  template: 
+# - name: Set powa-web config.
+#  template:
 #      src: powa-web.conf.j2
 #      dest: "/etc/powa-web.conf"
 #      owner: "{{ postgresql_admin_user }}"
