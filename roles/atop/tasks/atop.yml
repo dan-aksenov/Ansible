@@ -13,6 +13,6 @@
 - name: Atop schedule.
   lineinfile:
     dest: /etc/sysconfig/atop
-    regexp: '^INTERVAL='
-    line: 'INTERVAL={{ atop_interval }}'
+    regexp: 'LOGINTERVAL='
+    line: 'LOGINTERVAL={{ atop_interval }}'
   notify: restart atop
