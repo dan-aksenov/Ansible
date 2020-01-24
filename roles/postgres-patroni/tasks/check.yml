@@ -4,14 +4,14 @@
   uri:
     url: http://localhost:8008
     body_format: json
-    status_code: [200,503]
+    status_code: [200, 503]
   register: output
 
 - name: Cluster check results
   debug:
-    msg:  "role: {{ output.json.role }} state: {{ output.json.state }}"
+    msg: "role: {{ output.json.role }} state: {{ output.json.state }}"
 
 - name: check if restart pending
   debug:
-    msg:  "pending_restart: {{ output.json.pending_restart }}"
+    msg: "pending_restart: {{ output.json.pending_restart }}"
   when: "'pending_restart' in output.json"
