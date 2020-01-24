@@ -10,6 +10,7 @@
     - selinux
     - zabbix-agent
     - ntpd
+    - atop
     - yum-cron
 
    # Fix, tune and add this to into play.
