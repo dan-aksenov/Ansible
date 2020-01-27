@@ -23,7 +23,7 @@ WorkingDirectory=~
 #ExecStartPre=-/usr/bin/sudo /bin/chown postgres /dev/watchdog
 
 # Start the patroni process
-ExecStart=/bin/patroni /etc/patroni/patroni.yml
+ExecStart=/usr/local/bin/patroni /etc/patroni/patroni.yml
 
 # Send HUP to reload from patroni.yml
 ExecReload=/bin/kill -s HUP $MAINPID

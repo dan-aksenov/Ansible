@@ -1,6 +1,11 @@
 ---
-etcd_hosts: "ceph01:2379,ceph02:2379,ceph03:2379"
-consul_address: "localhost:8500"
+patroni_cluster_name: "patroni_cluster"
+patroni_namespace: "/service"
+etcd_hosts: "localhost:2379"
+# Consul settings
+consul_host: "localhost:8500"
+consul_token: ""
+consul_url: "localhost:8500"
 
 # Basic settings
 el_version: 7
@@ -19,7 +24,7 @@ pgbackrest_stanza: "{{ ansible_hostname }}"
 # List of precreated users.
 # to be handled by patroni
 
-postgresql_extensions: >
+postgresql_extensions:
   ["pg_stat_statements", "powa", "pg_stat_kcache", "pg_qualstats"]
 
 # Postgresql.conf defaults

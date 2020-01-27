@@ -1,5 +1,4 @@
 ---
-
 - name: Installing network tools.
   yum:
     name:
