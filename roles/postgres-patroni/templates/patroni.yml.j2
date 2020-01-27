@@ -1,6 +1,6 @@
-scope: batman
-#namespace: /service/
-name: {{ ansible_hostname }}
+scope: "{{ patroni_cluster_name }}"
+namespace: "{{ patroni_namespace }}"
+name: "{{ ansible_hostname }}"
 
 restapi:
   listen: 127.0.0.1:8008
@@ -20,7 +20,9 @@ restapi:
 #  hosts: {{ etcd_hosts }}
 
 consul:
-  host: "{{ consul_address }}"
+  host: "{{ consul_host }}"
+  token: "{{ consul_token }}"
+  url: "{{ consul_url }}"
 
 bootstrap:
   # this section will be written into Etcd:/<namespace>/<scope>/config after initializing new cluster
@@ -38,7 +40,7 @@ bootstrap:
       #primary_slot_name: patroni
     postgresql:
       use_pg_rewind: true
-#      use_slots: true
+      use_slots: true
       parameters:
 #        wal_level: hot_standby
 #        hot_standby: "on"

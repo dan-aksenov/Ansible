@@ -23,7 +23,8 @@
     - reload patroni
 
 - name: Start and enable patroni
-  service:
+  systemd:
     name: patroni
     state: started
     enabled: true
+    daemon_reload: true
