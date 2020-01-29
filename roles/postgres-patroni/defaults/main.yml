@@ -66,12 +66,12 @@ postgresql_conf:
   log_timezone: 'W-SU'
 
 postgresql_hba:
- - local all all peer
- - host all all 127.0.0.1/32 trust
- - host all all ::1/128 trust 
- - local replication all trust
- - host replication all 127.0.0.1/32 trust
- - host replication all ::1/128 trust
+  - local all all peer
+  - host all all 127.0.0.1/32 trust
+  - host all all ::1/128 trust
+  - local replication all trust
+  - host replication all 127.0.0.1/32 trust
+  - host replication all ::1/128 trust
 
 # Defaults for mamonsu
 zabbix_server:
