@@ -50,6 +50,20 @@ postgresql_conf:
   # autovacuum_vacuum_cost_limit: "2000"
   # checkpoint_timeout: "30min"
   # checkpoint_completion_target: "0.9"
+  # Logging Options from pgbadger
+  logging_collector: "on"
+  log_line_prefix: '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '
+  # Below setting cause excessive postgresql.log generatino! User with caution.
+  log_min_duration_statement: 0
+  log_checkpoints: "on"
+  log_connections: "on"
+  log_disconnections: "on"
+  log_lock_waits: "on"
+  log_temp_files: 0
+  log_autovacuum_min_duration: 0
+  log_error_verbosity: "default"
+  lc_messages: 'C'
+  log_timezone: 'W-SU'
 
 postgresql_hba:
  - local all all peer
