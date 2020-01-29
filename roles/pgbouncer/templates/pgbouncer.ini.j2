@@ -1,0 +1,19 @@
+;;
+;; This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
+;;
+;; After changing this file restart handler will be notified!
+;; 
+
+{% if pgbouncer_databases is defined %}
+[databases]
+{% for database in pgbouncer_databases %}
+{{ database }} = host=127.0.0.1 port={{ postgresql_port }} dbname={{ database }}
+{% endfor %}
+{% endif %}
+
+{% if pgbouncer_conf is defined %}
+[pgbouncer]
+{% for opt in pgbouncer_conf %}
+{{ opt }} = {{ pgbouncer_conf[opt] }}
+{% endfor %}
+{% endif %}
