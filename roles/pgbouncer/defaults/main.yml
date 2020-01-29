@@ -1,0 +1,93 @@
+---
+# Basic settings
+el_version: 7
+postgresql_version: 11
+
+# Manage cluster with systemd or pg_ctl
+postgresql_service: systemd
+
+#pg_data mast be real directory not symlink, or pgbackrest won't work.
+pg_data: /var/lib/pgsql/{{ postgresql_version }}/data
+pg_conf: "{{ pg_data }}"
+#pgbackrest_dir is disabled by default
+#pgbackrest_dir: /var/lib/pgbackrest
+postgresql_admin_user: postgres
+postgresql_port: 5432 
+pgbackrest_stanza: "{{ ansible_hostname }}" 
+
+# List of databases to be precreated.
+databases:
+  - postgres
+  - powa
+  - mamonsu #ownership?
+  - repmgr  #ownership?
+
+# List of databases to set in pgbouncer.ini
+pgbouncer_databases:
+  - postgres
+
+# List of precreated users.
+db_users:
+  - username: postgres
+    password: invalid
+    superuser: true
+    replication: true
+  - username: mamonsu
+    password:
+    superuser: false
+    replication: false
+  - username: powa
+    password:
+    superuser: true
+    replication: false
+  - username: repmgr
+    password:
+    superuser: true
+    replication: true
+
+postgresql_extensions: [ "pg_stat_statements", "powa", "pg_stat_kcache", "pg_qualstats", "repmgr" ]
+
+# Postgresql.conf 'reasonable' defaults
+postgresql_conf:
+  listen_addresses: "'*'"
+  port: "{{ postgresql_port }}"
+  max_connections: 250
+  shared_buffers: "{{ (ansible_memory_mb.real.total/4) |round|int }}MB"
+  effective_cache_size: "{{ ansible_memory_mb.real.total }}MB"
+  shared_preload_libraries: "{{ postgresql_extensions|join(',') }}"
+  pg_stat_statements.track: "all"
+  max_wal_senders: "10"
+  hot_standby: "on"
+  wal_level: "logical"
+  wal_keep_segments: "5000"
+  wal_log_hints: "on"
+  max_parallel_workers_per_gather: "0"    
+  max_parallel_workers: "0"              
+  checkpoint_timeout: "30min"
+  track_activity_query_size: "10240"
+
+# Defaults for mamonsu
+zabbix_server:
+zabbix_server_port: 10051
+# moved to template
+agent_name: "{% if ansible_dns.search is defined %}{{ inventory_hostname }}.{{ ansible_dns.search[0] }}{% else %}{{ inventory_hostname }}{% endif %}"
+
+# Defaults for pgbouncer.
+pgbouncer_port: 6432
+
+# Need to include all to custom config since bouncer skips main file if include provided.
+pgbouncer_conf:
+  listen_addr: 0.0.0.0
+  listen_port: 6432
+  max_client_conn: 300
+  default_pool_size: 20
+  pool_mode: transaction
+  ignore_startup_parameters: "extra_float_digits"
+  server_reset_query: DISCARD ALL
+  server_reset_query_always: 1
+  pidfile: /var/run/pgbouncer/pgbouncer.pid
+  logfile: /var/log/pgbouncer/pgbouncer.log
+  auth_type: trust
+  auth_file: /etc/pgbouncer/userlist.txt
+  admin_users:  postgres
+  stats_users:  stats, postgres
