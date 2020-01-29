@@ -44,8 +44,20 @@ postgresql_conf:
   # wal_log_hints: "on"
   # max_parallel_workers_per_gather: "0"
   # max_parallel_workers: "0"
-  checkpoint_timeout: "30min"
-  track_activity_query_size: "10240"
+  # track_activity_query_size: "10240"
+  # autovacuum_vacuum_scale_factor: "0.05"
+  # autovacuum_analyze_scale_factor: "0.02"
+  # autovacuum_vacuum_cost_limit: "2000"
+  # checkpoint_timeout: "30min"
+  # checkpoint_completion_target: "0.9"
+
+postgresql_hba:
+ - local all all peer
+ - host all all 127.0.0.1/32 trust
+ - host all all ::1/128 trust 
+ - local replication all trust
+ - host replication all 127.0.0.1/32 trust
+ - host replication all ::1/128 trust
 
 # Defaults for mamonsu
 zabbix_server:
