@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: zabbix-agent
+
+  environment:
+    http_proxy: "${proxy_ip}"
+    https_proxy: "{proxy_ip}"
