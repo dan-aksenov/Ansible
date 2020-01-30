@@ -9,7 +9,8 @@ pgbouncer_databases:
 # Defaults for pgbouncer.
 pgbouncer_port: 6432
 
-# Need to include all to custom config since bouncer skips main file if include provided.
+# Need to include to custom config
+# because bouncer skips main file if include provided
 pgbouncer_conf:
   listen_addr: 0.0.0.0
   listen_port: 6432
@@ -23,5 +24,5 @@ pgbouncer_conf:
   logfile: /var/log/pgbouncer/pgbouncer.log
   auth_type: trust
   auth_file: /etc/pgbouncer/userlist.txt
-  admin_users:  postgres
-  stats_users:  stats, postgres
+  admin_users: postgres
+  stats_users: stats, postgres
