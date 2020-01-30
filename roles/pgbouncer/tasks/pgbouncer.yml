@@ -1,47 +1,50 @@
 ---
 - name: Install pgbouncer
   yum:
-    state: latest
+    state: present
     name:
       - pgbouncer
 
 - name: Set include additional file in pgbouncer.ini.
-  lineinfile: 
-      line: "%include /etc/pgbouncer/pgbouncer-ansible.ini"
-      dest: "/etc/pgbouncer/pgbouncer.ini"
-      backup: yes
+  lineinfile:
+    line: "%include /etc/pgbouncer/pgbouncer-ansible.ini"
+    dest: "/etc/pgbouncer/pgbouncer.ini"
+    backup: true
   notify: reload pgbouncer
 
 - name: Insert reminder to pgbouncer.ini.
-  blockinfile  :
+  blockinfile:
     dest: "/etc/pgbouncer/pgbouncer.ini"
     insertbefore: BOF
     marker: ;;
     block: |
       ;; pbouncer configuration is manager by ansible
-      ;; included /etc/pgbouncer/pgbouncer-ansible.ini takes presidence over this file!
+      ;; included /etc/pgbouncer/pgbouncer-ansible.ini overrides this file!
 
-- name: Copy pgbouncer.ini template. 
-  template: owner=root group=root mode=644 
+- name: Copy pgbouncer.ini template.
+  template: owner=root group=root mode=644
             src=pgbouncer.ini.j2
             dest=/etc/pgbouncer/pgbouncer-ansible.ini
   notify:
     - reload pgbouncer
 
-- name: Copy userlist template. 
-  template: owner=root group=root mode=644 
+- name: Copy userlist templat
+  template: owner=root group=root mode=644
             src=userlist.txt.j2
             dest=/etc/pgbouncer/userlist.txt
   notify:
     - reload pgbouncer
 
 - name: Add firewall exception. If firewall is on.
-  firewalld: port={{ pgbouncer_conf.listen_port }}/tcp permanent=true state=enabled immediate=yes
-  ignore_errors: yes
+  firewalld:
+    port: "{{ pgbouncer_conf.listen_port }}/tcp"
+    permanent: true
+    state: enabled
+    immediate: true
+  ignore_errors: true
 
 - name: Start pgbouncer
-  service: 
-    name: pgbouncer 
+  service:
+    name: pgbouncer
     state: started
-    enabled: yes 
-
+    enabled: true
