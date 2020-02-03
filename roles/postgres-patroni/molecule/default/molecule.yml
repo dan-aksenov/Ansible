@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: patrony_1
     image: centos:7
     env:
       http_proxy: ${http_proxy}
