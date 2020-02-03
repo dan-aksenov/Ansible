@@ -4,6 +4,7 @@
   become: yes
   roles:
    - postgresql
+   - pgbouncer
 
   environment:
     http_proxy: ${http_proxy}
