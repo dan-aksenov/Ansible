@@ -27,6 +27,7 @@ consul:
 bootstrap:
   # this section will be written into Etcd:/<namespace>/<scope>/config after initializing new cluster
   # and all other cluster members will use it as a `global configuration`
+  # max_connections and max_worker_processes can be set only here!
   dcs:
     ttl: 30
     loop_wait: 10
@@ -42,6 +43,8 @@ bootstrap:
       use_pg_rewind: true
       use_slots: true
       parameters:
+#        max_connections: 100
+#        max_worker_processes: 8
 #        wal_level: hot_standby
 #        hot_standby: "on"
 #        wal_keep_segments: 8
@@ -65,7 +68,6 @@ bootstrap:
   - {{ opt }}
   {% endfor %}
   {% endif %}
-
 
   # Additional script to be launched after initial cluster creation (will be passed the connection URL as parameter)
 # post_init: /usr/local/bin/setup_cluster.sh
