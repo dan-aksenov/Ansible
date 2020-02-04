@@ -22,16 +22,24 @@
       ;; included /etc/pgbouncer/pgbouncer-ansible.ini overrides this file!
 
 - name: Copy pgbouncer.ini template.
-  template: owner=root group=root mode=644
-            src=pgbouncer.ini.j2
-            dest=/etc/pgbouncer/pgbouncer-ansible.ini
+  template:
+    owner: root
+    group: root
+    mode: 644
+    backup: true
+    src: pgbouncer.ini.j2
+    dest: /etc/pgbouncer/pgbouncer-ansible.ini
   notify:
     - reload pgbouncer
 
-- name: Copy userlist templat
-  template: owner=root group=root mode=644
-            src=userlist.txt.j2
-            dest=/etc/pgbouncer/userlist.txt
+- name: Copy userlist template
+  template:
+    owner: root
+    group: root
+    mode: 644
+    src: userlist.txt.j2
+    dest: /etc/pgbouncer/userlist.txt
+    backup: true
   notify:
     - reload pgbouncer
 

@@ -26,3 +26,8 @@ pgbouncer_conf:
   auth_file: /etc/pgbouncer/userlist.txt
   admin_users: postgres
   stats_users: stats, postgres
+
+db_users:
+  - postgres:
+    username: "postgres"
+    password: "invalid"
