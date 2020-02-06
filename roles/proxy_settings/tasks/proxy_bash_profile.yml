@@ -1,15 +1,16 @@
 ---
+# - name: http_proxy for root bash_profile
+#   lineinfile: dest=/root/.bash_profile
+# regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
 
-- name: http_proxy for root bash_profile
-  lineinfile: dest=/root/.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
+# - name: https_proxy for root bash_profile
+#   lineinfile: dest=/root/.bash_profile
+# regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
 
-- name: https_proxy for root bash_profile
-  lineinfile: dest=/root/.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
+# - name: http_proxy for ansible bash_profile
+#   lineinfile: dest=.bash_profile
+# regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
 
-- name: http_proxy for ansible bash_profile
-  lineinfile: dest=.bash_profile regexp='http_proxy' line='export http_proxy={{ proxy_ip }}'
-
-- name: https_proxy for ansible bash_profile
-  lineinfile: dest=.bash_profile regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'
-
-...
+# - name: https_proxy for ansible bash_profile
+#   lineinfile: dest=.bash_profile
+# regexp='https_proxy' line='export https_proxy={{ proxy_ip }}'

@@ -1,2 +1,2 @@
 ---
-#proxy_ip: 
+http_proxy: "{{ lookup('env', 'http_proxy') }}"
