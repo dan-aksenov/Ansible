@@ -25,6 +25,3 @@
       - "patroni[consul]"
     state: present
     executable: pip3
-  environment:
-    HTTP_PROXY: "{{ lookup('env', 'http_proxy') }}"
-    HTTPS_PROXY: "{{ lookup('env', 'http_proxy') }}"
