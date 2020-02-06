@@ -19,6 +19,8 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
+  playbooks:
+    prepare: prepare.yml
   lint:
     name: ansible-lint
 verifier:
