@@ -1,9 +1,10 @@
 ---
+- name: Prepare
+  hosts: all
+  roles:
+    - role: proxy_settings
+
 - name: Converge
   hosts: all
   roles:
     - role: pgbouncer
-
-  environment:
-    http_proxy: "${proxy_ip}"
-    https_proxy: "{proxy_ip}"
