@@ -1,9 +1,4 @@
 ---
-- name: Prepare
-  hosts: all
-  roles:
-    - role: proxy_settings
-
 - name: Converge
   hosts: all
   roles:
