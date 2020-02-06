@@ -19,17 +19,12 @@
       - python3-pip
       - python3-setuptools
 
-- name: Ensure setuptools is updated to latest version
-  # Do we need it? cos python3-setuptools installed via yum.
-  pip:
-    name:
-      - setuptools
-    state: present
-    executable: pip3
-
 - name: Install Patroni with dependencies
   pip:
     name:
       - "patroni[consul]"
     state: present
     executable: pip3
+  environment:
+    HTTP_PROXY: "{{ lookup('env', 'http_proxy') }}"
+    HTTPS_PROXY: "{{ lookup('env', 'http_proxy') }}"

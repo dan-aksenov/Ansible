@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: patrony_1
+  - name: patrony
     image: centos:7
     env:
       http_proxy: ${http_proxy}
@@ -19,6 +19,8 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
+  playbooks:
+    prepare: prepare.yml
   lint:
     name: ansible-lint
 verifier:
