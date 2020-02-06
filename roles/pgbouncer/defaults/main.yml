@@ -2,6 +2,7 @@
 # Basic settings
 el_version: 7
 postgresql_version: 11
+postgresql_port: 5432
 
 # List of databases to set in pgbouncer.ini
 pgbouncer_databases:
