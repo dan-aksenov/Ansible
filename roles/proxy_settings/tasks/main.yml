@@ -1,16 +1,19 @@
 ---
+- debug:
+    msg: "{{ lookup('env', 'http_proxy') }}"
+
 - name: Edit yum.conf. Add proxy setting.
-  lineinfile: 
-      dest: /etc/yum.conf
-      regexp: '^proxy'
-      line: 'proxy={{ proxy_ip }}'
+  lineinfile:
+    dest: /etc/yum.conf
+    regexp: '^proxy'
+    line: 'proxy=${http_proxy}'
   tags: proxy_yum
-  when: proxy_ip is defined
+   when: http_proxy is defined
 
 - name: Edit yum.conf. Remove proxy setting.
-  lineinfile: 
-      dest: /etc/yum.conf
-      regexp: '^proxy'
-      state: absent
+  lineinfile:
+    dest: /etc/yum.conf
+    regexp: '^proxy'
+    state: absent
   tags: proxy_yum
-  when: proxy_ip is not defined
+  when: http_proxy is not defined
