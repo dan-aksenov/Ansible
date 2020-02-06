@@ -25,7 +25,7 @@
   template:
     owner: root
     group: root
-    mode: 644
+    mode: 0644
     backup: true
     src: pgbouncer.ini.j2
     dest: /etc/pgbouncer/pgbouncer-ansible.ini
@@ -36,7 +36,7 @@
   template:
     owner: root
     group: root
-    mode: 644
+    mode: 0644
     src: userlist.txt.j2
     dest: /etc/pgbouncer/userlist.txt
     backup: true
