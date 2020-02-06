@@ -1,5 +1,4 @@
 ---
-
 - name: wget proxy
   template:
     src: wgetrc.j2
@@ -7,5 +6,3 @@
     owner: root
     group: root
     mode: 0644
-
-...
