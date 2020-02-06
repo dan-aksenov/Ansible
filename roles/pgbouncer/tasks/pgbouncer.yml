@@ -20,13 +20,10 @@
   notify: reload pgbouncer
 
 - name: Insert reminder to pgbouncer.ini.
-  blockinfile:
+  lineinfile:
     dest: "/etc/pgbouncer/pgbouncer.ini"
     insertbefore: BOF
-    marker: ;;
-    block: |
-      ;; pbouncer configuration is manager by ansible
-      ;; included /etc/pgbouncer/pgbouncer-ansible.ini overrides this file!
+    line: ;; Ansible managed ansible.ini overrides this file!
 
 - name: Copy pgbouncer.ini template.
   template:
