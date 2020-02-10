@@ -1,0 +1,3 @@
+---
+- import_tasks: anacron.yml
+  tags: anacron
