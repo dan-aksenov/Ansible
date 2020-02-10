@@ -23,9 +23,6 @@
 - import_tasks: tmux.yml
   tags: tmux
 
-- import_tasks: journald.yml
-  tags: journald
-
 - import_tasks: yum-update.yml
   tags: yum-update
 
