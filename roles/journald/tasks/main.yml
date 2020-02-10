@@ -1,0 +1,3 @@
+---
+- import_tasks: journald.yml
+  tags: journald
