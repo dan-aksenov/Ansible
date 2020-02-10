@@ -11,6 +11,7 @@
     - zabbix-agent
     - ntpd
     - atop
+    - anacron
     - yum-cron
 
    # Fix, tune and add this to into play.
