@@ -12,6 +12,7 @@
     - ntpd
     - atop
     - anacron
+    - journald
     - yum-cron
 
    # Fix, tune and add this to into play.
