@@ -11,6 +11,7 @@
     - zabbix-agent
     - ntpd
     - atop
+    - tmux
     - anacron
     - journald
     - yum-cron

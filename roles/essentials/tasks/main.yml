@@ -20,9 +20,6 @@
 - import_tasks: packages-py.yml
   tags: packages-py
 
-- import_tasks: tmux.yml
-  tags: tmux
-
 - import_tasks: yum-update.yml
   tags: yum-update
 
