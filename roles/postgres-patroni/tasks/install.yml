@@ -17,6 +17,7 @@
       - gcc
       - python3-devel
       - python3-pip
+      - python-setuptools
       - python3-setuptools
 
 - name: Install Patroni with dependencies
