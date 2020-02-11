@@ -1,7 +1,7 @@
 ---
 patroni_cluster_name: "patroni_cluster"
 patroni_namespace: "/service"
-etcd_hosts: "localhost:2379"
+etcd_hosts: "{{ ansible_hostname }}:2379"
 # Consul settings
 # consul_host: "localhost:8500"
 # consul_token: ""
