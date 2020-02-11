@@ -7,4 +7,4 @@ ETCD_ADVERTISE_CLIENT_URLS="http://{{ansible_hostname}}:2380"
 ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"
 ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
 
-ETCD_INITIAL_CLUSTER="ceph01=http://ceph01:2380,ceph02=http://ceph02:2380,ceph03=http://ceph03:2380"
+ETCD_INITIAL_CLUSTER="{{ansible_hostname}}=http://{{ansible_hostname}}:2380"

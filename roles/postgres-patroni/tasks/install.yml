@@ -23,6 +23,15 @@
 - name: Install Patroni with dependencies
   pip:
     name:
+      - "patroni[etcd]"
+    state: present
+    executable: pip3
+  when: etcd_hosts is defined
+
+- name: Install Patroni with dependencies
+  pip:
+    name:
       - "patroni[consul]"
     state: present
     executable: pip3
+  when: consul_host is defined
