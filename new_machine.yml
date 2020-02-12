@@ -5,6 +5,7 @@
 
   roles:
     - proxy_settings
+    - epel
     - essentials
     - hostname
     - selinux
