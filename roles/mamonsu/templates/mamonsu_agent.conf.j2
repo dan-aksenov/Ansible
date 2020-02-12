@@ -1,0 +1,23 @@
+# configured by ansible
+[zabbix]
+; zabbix server address
+address = {{ zabbix_server }} 
+port = {{ zabbix_server_port  }}
+; configured 'Host name' of client in zabbix
+client = {{ ansible_fqdn }}
+
+[postgres]
+enabled = True
+host = auto
+user = mamonsu
+database = mamonsu
+port = 5432
+query_timeout = 10
+
+[system]
+enabled = True
+
+[log]
+file = /var/log/mamonsu/agent.log
+level = INFO
+
