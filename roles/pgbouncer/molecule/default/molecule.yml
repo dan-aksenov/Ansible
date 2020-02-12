@@ -9,8 +9,8 @@ platforms:
   - name: pgbouncer
     image: centos:7
     env:
-      http_proxy: ${http_proxy}
-      https_proxy: ${http_proxy}
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
     command: /sbin/init
     tmpfs:
       - /run
