@@ -20,7 +20,7 @@
       - python-setuptools
       - python3-setuptools
 
-- name: Install Patroni with dependencies
+- name: Install Patroni with etcd
   pip:
     name:
       - "patroni[etcd]"
@@ -28,7 +28,7 @@
     executable: pip3
   when: etcd_hosts is defined
 
-- name: Install Patroni with dependencies
+- name: Install Patroni with consul
   pip:
     name:
       - "patroni[consul]"
