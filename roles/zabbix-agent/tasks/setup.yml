@@ -25,6 +25,13 @@
     line: "Server={{ zabbix_server }}"
   notify: restart agent
 
+- name: Edit agent.conf file. Add Zabbix serveractive name
+  lineinfile:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    regexp: '^ServerActive=.*'
+    line: "ServerActive={{ zabbix_server }}"
+  notify: restart agent
+
 - name: Edit agent.conf file. Add agents hostname
   lineinfile:
     dest: /etc/zabbix/zabbix_agentd.conf
