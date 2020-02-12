@@ -36,7 +36,7 @@
   lineinfile:
     dest: /etc/zabbix/zabbix_agentd.conf
     regexp: '^Hostname=.*'
-    line: "Hostname={{ ansible_hostname }}"
+    line: "Hostname={{ ansible_fqdn }}"
   notify: restart agent
 
 - name: start and enable agent
