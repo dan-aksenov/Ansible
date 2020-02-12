@@ -1,10 +1,4 @@
 ---
-- import_tasks: repos.yml
-  tags: repos
-
-# - import_tasks: hosts.yml
-#   tags: hosts
-
 - import_tasks: packages.yml
   tags: packages-misc
 
