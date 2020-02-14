@@ -1,6 +1,6 @@
 scope: "{{ patroni_cluster_name }}"
 namespace: "{{ patroni_namespace }}"
-name: "{{ ansible_hostname }}"
+name: "{{ patroni_host_name }}"
 
 restapi:
   listen: 127.0.0.1:8008
