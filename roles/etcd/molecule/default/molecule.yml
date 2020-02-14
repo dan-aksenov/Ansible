@@ -6,11 +6,12 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: etcd
     image: centos:7
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
+      noproxy_proxy: "${noproxy_proxy}"
     command: /sbin/init
     tmpfs:
       - /run
