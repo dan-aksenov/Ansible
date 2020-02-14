@@ -6,11 +6,12 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: patrony
+  - name: patroni
     image: centos:7
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
+      no_proxy: "${no_proxy}"
     command: /sbin/init
     tmpfs:
       - /run

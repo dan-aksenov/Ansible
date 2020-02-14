@@ -2,7 +2,7 @@
 patroni_cluster_name: "batman"
 patroni_namespace: "/service"
 patroni_host_name: "{{ ansible_hostname }}"
-etcd_hosts: "{{ ansible_hostname }}:2379"
+etcd_hosts: "localhost:2379"
 
 # Consul settings
 # consul_host: "localhost:8500"
@@ -28,7 +28,7 @@ pgbackrest_stanza: "{{ ansible_hostname }}"
 
 postgresql_extensions:
   ["pg_stat_statements", "powa", "pg_stat_kcache",
-   "pg_qualstats", "repmgr", "auto_explain"]
+   "pg_qualstats", "auto_explain"]
 
 # Postgresql.conf defaults
 postgresql_conf:
