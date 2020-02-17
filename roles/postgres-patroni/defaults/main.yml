@@ -34,25 +34,34 @@ postgresql_extensions:
 postgresql_conf:
   # listen_addresses: "'*'" # managed by patroni
   # port: "{{ postgresql_port }}" # managed by patroni
-  max_connections: 250
-  shared_buffers: "{{ (ansible_memory_mb.real.total/4) |round|int }}MB"
-  effective_cache_size: >
-    "{{ (ansible_memory_mb.real.total -ansible_memory_mb.real.total/4)|
-    round|int }}MB"
-  shared_preload_libraries: "{{ postgresql_extensions|join(',') }}"
-  max_wal_senders: "10"
   # hot_standby: "on" # managed by patroni
   # wal_keep_segments: "5000"
   # wal_log_hints: "on"
   # max_parallel_workers_per_gather: "0"
   # max_parallel_workers: "0"
-  # track_activity_query_size: "10240"
-  # autovacuum_vacuum_scale_factor: "0.05"
-  # autovacuum_analyze_scale_factor: "0.02"
-  # autovacuum_vacuum_cost_limit: "2000"
-  # checkpoint_timeout: "30min"
-  # checkpoint_completion_target: "0.9"
+  max_connections: 150  # PGPro: PG is unstable if max_connections>nproc*3
+  shared_buffers: "{{ (ansible_memory_mb.real.total/4) |round|int }}MB"
+  effective_cache_size: >
+    "{{ (ansible_memory_mb.real.total -ansible_memory_mb.real.total/4)|
+    round|int }}MB"
+  maintenance_work_mem: "1GB"  # PGPro: no sence in more then 1GB. Why?
+  shared_preload_libraries: "{{ postgresql_extensions|join(',') }}"
+  max_wal_senders: "10"
+  # Autovacuum settings.
+  # For details https://blog.2ndquadrant.com/autovacuum-tuning-basics/
+  autovacuum_vacuum_scale_factor: "0.01"
+  autovacuum_analyze_scale_factor: "0.02"
+  autovacuum_vacuum_cost_limit: "1000"
+  # Checkpoint settings.
+  # For details https://blog.2ndquadrant.com/basics-of-tuning-checkpoints/
+  checkpoint_timeout: "30min"
+  checkpoint_completion_target: "0.9"
+  # BGwriter settings. Some reasonable defaults from PGPro.
+  bgwriter_delay: "20ms"
+  bgwriter_lru_multiplier: "4"
+  bgwriter_lru_maxpages: "400"
   # Logging Options from pgbadger
+  track_activity_query_size: "10240"
   logging_collector: "on"
   log_line_prefix: '"%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h"'
   # Below setting cause excessive postgresql.log writing! User with caution.
