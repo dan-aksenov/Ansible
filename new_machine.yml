@@ -4,13 +4,13 @@
   become: yes
 
   roles:
-    - proxy_settings
+    #- proxy_settings
     - epel
     - essentials
-    - hostname
-    - selinux
+    #- hostname
+    #- selinux
     - zabbix-agent
-    - ntpd
+    #- ntpd
     - atop
     - tmux
     - anacron
