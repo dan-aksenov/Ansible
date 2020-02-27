@@ -6,7 +6,31 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: etcd
+  - name: etcd1
+    image: centos:7
+    env:
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
+      noproxy_proxy: "${noproxy_proxy}"
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: etcd2
+    image: centos:7
+    env:
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
+      noproxy_proxy: "${noproxy_proxy}"
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: etcd3
     image: centos:7
     env:
       http_proxy: "${http_proxy}"
