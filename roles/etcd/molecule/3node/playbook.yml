@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://{{ ansible_hostname }}:2380"
+    ETCD_ADVERTISE_CLIENT_URLS: "http://{{ ansible_hostname }}:2379"
+    ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+    ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
+    ETCD_INITIAL_CLUSTER:
+      "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380"
+  roles:
+    - role: etcd

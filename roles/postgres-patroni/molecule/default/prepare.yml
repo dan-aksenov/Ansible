@@ -1,15 +1,6 @@
 ---
 - name: prepare
   hosts: all
-  vars:
-    ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://{{ ansible_hostname }}:2380"
-    ETCD_ADVERTISE_CLIENT_URLS: "http://{{ ansible_hostname }}:2379"
-    ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
-    ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
-    ETCD_INITIAL_CLUSTER:
-      "patroni1=http://patroni1:2380,
-      patroni2=http://patroni2:2380,
-      patroni3=http://patroni3:2380"
   roles:
     - role: proxy_settings
     - role: etcd

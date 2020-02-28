@@ -16,9 +16,11 @@ def test_etcd_service(host):
     assert etcd.is_enabled
 
 
-def test_patroni_health(host):
-    cmd = host.run(
-        "curl -L http://localhost:8008")
+def test_etcd_health(host):
+    cmd = host.run("etcdctl cluster-health")
 
     assert cmd.succeeded
-    assert 'running' in cmd.stdout
+    assert 'patroni1' in cmd.stdout
+    assert 'patroni1' in cmd.stdout
+    assert 'patroni1' in cmd.stdout
+    assert 'cluster is healthy' in cmd.stdout
