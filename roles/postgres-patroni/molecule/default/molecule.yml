@@ -6,48 +6,18 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: patroni1
+  - name: patroni
     image: centos:7
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
-      no_proxy: "${no_proxy}"
+      no_proxy: "${no_proxy},patroni"
     command: /sbin/init
     tmpfs:
       - /run
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    networks:
-      - name: patroninet
-  - name: patroni2
-    image: centos:7
-    env:
-      http_proxy: "${http_proxy}"
-      https_proxy: "${http_proxy}"
-      no_proxy: "${no_proxy}"
-    command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    networks:
-      - name: patroninet
-  - name: patroni3
-    image: centos:7
-    env:
-      http_proxy: "${http_proxy}"
-      https_proxy: "${http_proxy}"
-      no_proxy: "${no_proxy}"
-    command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    networks:
-      - name: patroninet
 provisioner:
   name: ansible
   playbooks:

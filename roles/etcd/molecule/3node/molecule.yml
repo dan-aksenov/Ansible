@@ -1,0 +1,58 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: etcd1
+    image: centos:7
+    env:
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
+      no_proxy: "${no_proxy},etcd1,etcd2,etcd3"
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - name: etcdnet
+  - name: etcd2
+    image: centos:7
+    env:
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
+      no_proxy: "${no_proxy},etcd1,etcd2,etcd3"
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - name: etcdnet
+  - name: etcd3
+    image: centos:7
+    env:
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
+      no_proxy: "${no_proxy},etcd1,etcd2,etcd3"
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - name: etcdnet
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
