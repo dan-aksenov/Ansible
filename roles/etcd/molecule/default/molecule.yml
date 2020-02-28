@@ -20,8 +20,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - name: etcdnet
-    network_mode: host
-    purge_networks: true
   - name: etcd2
     image: centos:7
     env:
@@ -36,8 +34,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - name: etcdnet
-    network_mode: host
-    purge_networks: true
   - name: etcd3
     image: centos:7
     env:
@@ -52,8 +48,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - name: etcdnet
-    network_mode: host
-    purge_networks: true
 provisioner:
   name: ansible
   lint:
