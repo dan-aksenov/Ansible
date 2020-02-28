@@ -11,7 +11,7 @@ platforms:
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
-      noproxy_proxy: "${noproxy_proxy}"
+      no_proxy: "${no_proxy},etcd1,etcd2,etcd3"
     command: /sbin/init
     tmpfs:
       - /run
@@ -25,7 +25,7 @@ platforms:
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
-      noproxy_proxy: "${noproxy_proxy}"
+      no_proxy: "${no_proxy},etcd1,etcd2,etcd3"
     command: /sbin/init
     tmpfs:
       - /run
@@ -39,7 +39,7 @@ platforms:
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
-      noproxy_proxy: "${noproxy_proxy}"
+      no_proxy: "${no_proxy},etcd1,etcd2,etcd3"
     command: /sbin/init
     tmpfs:
       - /run
