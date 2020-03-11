@@ -7,6 +7,7 @@
     #- proxy_settings
     - epel
     - essentials
+    - vim
     #- hostname
     #- selinux
     - zabbix-agent
