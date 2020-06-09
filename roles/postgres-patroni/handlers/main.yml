@@ -1,5 +1,0 @@
----
-- name: reload patroni
-  service:
-     name: patroni
-     state: reloaded

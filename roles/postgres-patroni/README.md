@@ -1,1 +1,0 @@
-This role is to be merged with postgresql!
