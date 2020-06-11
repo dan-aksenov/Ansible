@@ -1,5 +1,4 @@
 ---
-# Run first role. Create and configure ansible user.
 - hosts: all
   remote_user: daksenov  
   become: true
