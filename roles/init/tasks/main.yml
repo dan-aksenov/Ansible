@@ -1,4 +1,10 @@
 ---
+- name: Ensure sudo is installed
+  package:
+    state: present
+    name:
+      - sudo
+
 - name: Add my ansible user.
   user: name="{{ my_ansible_user }}"
         createhome=yes
