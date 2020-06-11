@@ -1,0 +1,11 @@
+---
+- name: prepare
+  hosts: all
+  roles:
+    - role: init
+    - role: proxy_settings
+  tasks:
+    - name: Install sudo(is absent in centos 8 docker image by default)
+      dnf:
+        name: sudo
+        state: present
