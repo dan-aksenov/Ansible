@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
+  - name: essentials
     image: centos:7
     env:
       http_proxy: "${http_proxy}"
