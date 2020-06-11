@@ -4,19 +4,19 @@
   become: yes
 
   roles:
-    #- proxy_settings
+    # - proxy_settings
     - epel
-    - essentials
+    # - essentials
     - vim
-    #- hostname
-    #- selinux
+    # - hostname
+    # - selinux
     - zabbix-agent
-    #- ntpd
+    # - ntpd
     - atop
     - tmux
     - anacron
     - journald
-    - yum-cron
+    # - yum-cron
 
    # Fix, tune and add this to into play.
    #- add_admin
