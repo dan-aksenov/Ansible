@@ -7,8 +7,6 @@
       - iotop
       - sysstat
       - htop
-      # Logfile browser
-      - lnav
       - lshw
       - strace
       - glances
@@ -17,3 +15,11 @@
       - psmisc
       # tools and drivers for monitoring temperatures, voltage, and fans
       - lm_sensors
+
+- name: Installing lnav logfile broweer for Centos 7
+  # Unable to find it on Centos 8
+  yum:
+    name:
+      - lnav
+  when: ansible_distribution_major_version|int == 7
+
