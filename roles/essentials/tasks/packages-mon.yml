@@ -9,7 +9,6 @@
       - htop
       - lshw
       - strace
-      - glances
       - lsof
       # Uilities for the proc filesystem fuser, killall, pidof, pstree
       - psmisc
