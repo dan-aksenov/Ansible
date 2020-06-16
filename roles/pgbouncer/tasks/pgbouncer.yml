@@ -23,7 +23,7 @@
   lineinfile:
     dest: "/etc/pgbouncer/pgbouncer.ini"
     insertbefore: BOF
-    line: ;; Ansible managed ansible.ini overrides this file!
+    line: ;; Ansible managed pgbouncer-ansible.ini overrides this file!
 
 - name: Copy pgbouncer.ini template.
   template:
