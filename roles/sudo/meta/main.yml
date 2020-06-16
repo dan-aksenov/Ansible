@@ -1,0 +1,11 @@
+galaxy_info:
+  author: Daniil Aksenov
+  description: Install sudo
+  license: license (free)
+
+  min_ansible_version: 2.9
+
+  galaxy_tags: [pgbouncer]
+
+dependencies: []
+  
