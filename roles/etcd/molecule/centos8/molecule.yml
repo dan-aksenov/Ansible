@@ -5,11 +5,10 @@ driver:
   name: docker
 platforms:
   - name: etcd
-    image: centos:7
+    image: centos:8
     env:
       http_proxy: "${http_proxy}"
       https_proxy: "${http_proxy}"
-      no_proxy: "${no_proxy},etcd"
     command: /sbin/init
     tmpfs:
       - /run
@@ -18,8 +17,12 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
+  playbooks:
+    prepare: prepare.yml
   lint:
     name: ansible-lint
+  options:
+    skip-tags: pgbadger
 verifier:
   name: testinfra
   lint:
