@@ -21,6 +21,8 @@ provisioner:
     prepare: prepare.yml
   lint:
     name: ansible-lint
+  options:
+    skip-tags: pgbadger
 verifier:
   name: testinfra
   lint:
