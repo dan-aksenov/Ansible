@@ -7,9 +7,10 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts('all')
 
 
-def test_hosts_file(host):
-    f = host.file('/etc/hosts')
+def test_pgbouncer_service(host):
 
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+
+    pgbouncer_service = host.service('pgbouncer')
+
+    assert pgbouncer_service.is_running
+    assert pgbouncer_service.is_enabled
