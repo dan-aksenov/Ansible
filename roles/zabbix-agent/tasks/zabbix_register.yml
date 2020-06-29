@@ -1,5 +1,5 @@
 ---
-- name: Install zabbix-api pythons package on ansible host
+- name: Install zabbix-api python package on ansible host
   pip:
     name: zabbix-api
   run_once: true
