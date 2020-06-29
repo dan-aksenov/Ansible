@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: "Daniil Aksenov"
-  description: Setup basic PostgreSQL 9+ configurations on CentOS Linux.
+  description: Setup mamonsu Postgresql monitoring on CentOS Linux.
   license: as-is
   min_ansible_version: 2.9
   platforms:
