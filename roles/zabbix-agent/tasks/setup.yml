@@ -18,34 +18,22 @@
       - zabbix-sender
   when: ansible_pkg_mgr == 'yum'
 
-- name: Edit agent.conf file. Add Zabbix server name
-  lineinfile:
-    dest: /etc/zabbix/zabbix_agentd.conf
-    regexp: '^Server=.*'
-    line: "Server={{ zabbix_server }}"
+- name: Template configs
+  template:
+      src: zabbix_agentd.conf.j2
+      dest: "/etc/zabbix/zabbix_agentd.conf"
+      owner: "zabbix"
+      group: "zabbix"
+      backup: true
   notify: restart agent
 
-- name: Edit agent.conf file. Add Zabbix serveractive name
-  lineinfile:
-    dest: /etc/zabbix/zabbix_agentd.conf
-    regexp: '^ServerActive=.*'
-    line: "ServerActive={{ zabbix_server }}"
-  notify: restart agent
-
-- name: Edit agent.conf file. Add agents hostname
-  lineinfile:
-    dest: /etc/zabbix/zabbix_agentd.conf
-    regexp: '^Hostname=.*'
-    line: "Hostname={{ ansible_fqdn }}"
-  notify: restart agent
-
-- name: start and enable agent
+- name: Start and enable agent
   service:
     name: zabbix-agent
     state: started
     enabled: true
 
-- name: Add firewall exception. Ignore on errorsi(ie if firewall is disabled)
+- name: Add firewall exception. Ignore on errors(if firewall is disabled)
   firewalld:
     port: 10050/tcp
     permanent: true
