@@ -1,0 +1,11 @@
+##
+## This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
+##
+## After changing this file restart handler will be notified!
+## 
+
+{% if zabbix_agent_conf is defined %}
+{% for opt in zabbix_agent_conf %}
+{{ opt }}={{ zabbix_agent_conf[opt] }}
+{% endfor %}
+{% endif %}
