@@ -2,5 +2,8 @@
 - import_tasks: setup.yml
   tags: zabbix-agent
 
+# Try to register with zabbix server. Need Admin user and password.
+# Default - false
 - import_tasks: zabbix_register.yml
   tags: zabbix-agent-register
+  when: zabbix_agent_register == true
