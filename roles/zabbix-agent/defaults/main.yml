@@ -1,6 +1,7 @@
 ---
 zabbix_version: 4.0
 zabbix_proxy: ""
+zabbix_agent_register: false
 
 zabbix_agent_conf:
   PidFile: /var/run/zabbix/zabbix_agentd.pid
