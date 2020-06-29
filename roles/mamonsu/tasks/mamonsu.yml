@@ -1,51 +1,14 @@
 ---
-- name: Add mamonsu user.
-  user:
-    name: mamonsu
-    comment: mamonsu monitoring user
-    createhome: true
-    home: /var/run/mamonsu
-    shell: /sbin/nologin
-    state: present
-  tags: slave
-
-- name: Install PostgreSQL packages
+- name: Install mamonsu repo
   yum:
-    state: present
-    name:
-      - python-setuptools
-      - python3-setuptools
+    state: present 
+    name: https://repo.postgrespro.ru/mamonsu/keys/mamonsu-repo-centos.noarch.rpm
+  tags: slave
 
 - name: Install mamonsu(pip)
-  pip:
+  yum:
     name: mamonsu
     state: present
-    executable: pip3
-  tags: slave
-
-- name: Copy unit from template.
-  template:
-    owner: root
-    group: root
-    mode: 0755
-    src: mamonsu_init.j2
-    dest: /etc/init.d/mamonsu
-  tags: slave
-
-- name: Create mamonsu etc directory
-  file:
-    path: /etc/mamonsu/plugins
-    state: directory
-    mode: 0755
-  tags: slave
-
-- name: Create mamonsu log directory
-  file:
-    path: /var/log/mamonsu
-    owner: mamonsu
-    group: mamonsu
-    state: directory
-    mode: 0755
   tags: slave
 
 - name: Copy agent.conf template
@@ -75,14 +38,6 @@
   become_user: postgres
   become: true
 
-# - name: Bootstrap DDL for monitoring
-#  shell: mamonsu bootstrap -M mamonsu --port="{{ postgresql_port }}" mamonsu
-#  become_user: postgres
-#  become: true
-#  ignore_errors: true
-#  notify:
-#    - restart mamonsu
-
 - name: Start monitoring service.
   service:
     daemon_reload: true
@@ -90,37 +45,3 @@
     state: started
     enabled: true
   tags: slave
-
-# - name: Install zabbix-api on ansible host.
-#  local_action:
-#    module: pip
-#    name: zabbix-api
-#  run_once: true
-#  tags: slave
-
-# - name: Create new of update existing zabbix host.
-#  local_action:
-#    module: zabbix_host
-#    server_url: "{{ zabbix_url }}"
-#   login_user: Admin
-#    login_password: zabbix
-#    host_name: "{{ ansible_hostname }}"
-#    visible_name: "{{ ansible_hostname }}"
-#    host_groups:
-#      - Linux servers
-#      - PostgreSQL
-#      - "{{ zabbix_group }}"
-#    link_templates:
-#      - Template OS Linux
-#      - PostgresPro-Linux
-#    status: enabled
-#    state: present
-#    inventory_mode: automatic
-#    interfaces:
-#      - type: 1
-#        main: 1
-#        useip: 1
-#        ip: "{{ ansible_default_ipv4.address }}"
-#        dns: "{{ ansible_hostname }}"
-#        port: 10050
-#  tags: slave
