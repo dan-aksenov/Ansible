@@ -1,10 +1,4 @@
 ---
-- name: Install mamonsu repo
-  yum:
-    state: present 
-    name: https://repo.postgrespro.ru/mamonsu/keys/mamonsu-repo-centos.noarch.rpm
-  tags: slave
-
 - name: Install mamonsu(pip)
   yum:
     name: mamonsu
