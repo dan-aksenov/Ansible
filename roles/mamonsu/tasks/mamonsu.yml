@@ -1,8 +1,50 @@
 ---
-- name: Install mamonsu(pip)
+- name: Add mamonsu user.
+  user:
+    name: mamonsu
+    comment: mamonsu monitoring user
+    createhome: true
+    home: /var/run/mamonsu
+    shell: /sbin/nologin
+    state: present
+  tags: slave
+
+- name: Install PostgreSQL packages
   yum:
+    state: present
+    name:
+      - python-setuptools
+      - python3-setuptools
+
+- name: Install mamonsu(pip)
+  pip:
     name: mamonsu
     state: present
+  tags: slave
+
+- name: Copy unit from template.
+  template:
+    owner: root
+    group: root
+    mode: 0755
+    src: mamonsu_init.j2
+    dest: /etc/init.d/mamonsu
+  tags: slave
+
+- name: Create mamonsu etc directory
+  file:
+    path: /etc/mamonsu/plugins
+    state: directory
+    mode: 0755
+  tags: slave
+
+- name: Create mamonsu log directory
+  file:
+    path: /var/log/mamonsu
+    owner: mamonsu
+    group: mamonsu
+    state: directory
+    mode: 0755
   tags: slave
 
 - name: Copy agent.conf template
@@ -31,6 +73,14 @@
     owner: mamonsu
   become_user: postgres
   become: true
+
+# - name: Bootstrap DDL for monitoring
+#  shell: mamonsu bootstrap -M mamonsu --port="{{ postgresql_port }}" mamonsu
+#  become_user: postgres
+#  become: true
+#  ignore_errors: true
+#  notify:
+#    - restart mamonsu
 
 - name: Start monitoring service.
   service:
