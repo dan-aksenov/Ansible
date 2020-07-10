@@ -9,7 +9,7 @@
     state: present
   tags: slave
 
-- name: Install PostgreSQL packages
+- name: Install python packages
   yum:
     state: present
     name:
