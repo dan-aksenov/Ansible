@@ -9,9 +9,9 @@ client = {{ ansible_fqdn }}
 [postgres]
 enabled = True
 host = auto
-user = mamonsu
-database = mamonsu
-port = 5432
+user = {{ mamonsu_user }}
+database = {{ mamonsu_database }}
+port = {{ postgresql_port }}
 query_timeout = 10
 
 [system]
