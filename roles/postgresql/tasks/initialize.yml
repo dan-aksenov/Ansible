@@ -1,0 +1,21 @@
+---
+- name: Find if pg cluster already exists
+  find: paths="{{ pg_data }}" file_type=file patterns="PG_VERSION"
+  register: pg_dir
+
+- name: Initialize database. Skip this if already exists
+  command: /usr/pgsql-{{ postgresql_version }}/bin/initdb -D {{ pg_data }}
+  become: true
+  become_user: "{{ postgresql_admin_user }}"
+  when: pg_dir.matched|int == 0
+
+- name: Create postmaster.opts. So initial pg_ctl restart will work
+  file:
+    path: "{{ pg_data }}/postmaster.opts"
+    state: touch
+    mode: '0600'
+    modification_time: preserve
+    access_time: preserve
+  become: true
+  become_user: "{{ postgresql_admin_user }}"
+  when: postgresql_service == "pg_ctl"
