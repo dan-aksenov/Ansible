@@ -1,0 +1,14 @@
+---
+- hosts: postgres
+  remote_user: "{{ my_ansible_user }}"
+  become: yes
+  roles:
+   - postgres_repo
+   - postgres_install
+   - postgres_initdb
+   - postgres_config
+   - postgres_security
+   - postgres_start
+   - postgres_powa
+   - postgres_pgbouncer
+   - postgres_mamonsu
