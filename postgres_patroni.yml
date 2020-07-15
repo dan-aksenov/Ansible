@@ -3,5 +3,9 @@
   remote_user: "{{ my_ansible_user }}"
   become: yes
   roles:
-   - postgres-patroni
-   - pgbouncer
+   - postgres_repo
+   - postgres_install
+   - postgres_patroni
+   - postgres_powa
+   - postgres_pgbouncer
+   - postgres_mamonsu
