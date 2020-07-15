@@ -1,0 +1,20 @@
+---
+- name: Configure firewall (ingnored if firewalld is not running)
+  firewalld:
+    service: postgresql
+    permanent: true
+    state: enabled
+    immediate: true
+  ignore_errors: true
+  tags: slave
+
+- name: Setup pg_hba
+  template:
+    src: pg_hba.conf.j2
+    dest: "{{ pg_conf }}/pg_hba.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    backup: true
+  notify: reload postgres
+  when: postgresql_service != "patroni"
+  # patroni handles hba himself.
