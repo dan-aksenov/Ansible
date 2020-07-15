@@ -1,0 +1,53 @@
+---
+- name: "Install pgBackRest package"
+  yum:
+    state: present
+    name:
+      - pgbackrest
+
+- name: Template backrest configs(20ansible_pgbackrest.conf.j2)
+  template:
+    src: 20ansible_pgbackrest.conf.j2
+    dest: "{{ pg_conf }}/conf.d/20ansible_pgbackrest.conf"
+    owner: "{{ postgresql_admin_user }}"
+    group: "{{ postgresql_admin_user }}"
+    backup: true
+  notify: restart postgres
+
+- name: Place config for pgBackRest
+  template:
+    src: pgbackrest.conf.j2
+    dest: /etc/pgbackrest.conf
+  tags: slave
+
+- name: Create stanza
+  command: >
+    pgbackrest --stanza="{{ pgbackrest_stanza }}"
+    --log-level-console=info stanza-create
+  register: result
+  become: true
+  become_user: "{{ postgresql_admin_user }}"
+  changed_when:
+    - '"ERROR" in result.stderr'
+
+- name: Configure cron for pgBackRest full
+  cron:
+    name: "pgbackrest full"
+    user: "{{ postgresql_admin_user }}"
+    minute: "00"
+    hour: "03"
+    weekday: 0
+    job: >
+      "pgbackrest --type=full --stanza=
+      {{ pgbackrest_stanza }} backup &>/tmp/backup0.log"
+
+- name: Configure cron for pgBackRest diff.
+  cron:
+    name: "pgbackrest diff"
+    user: "{{ postgresql_admin_user }}"
+    minute: "00"
+    hour: "03"
+    weekday: 1-6
+    job: >
+      "pgbackrest --type=diff --stanza=
+      {{ pgbackrest_stanza }} backup &>/tmp/backup1.log"
