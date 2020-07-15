@@ -1,0 +1,20 @@
+---
+- name: Create conf.d
+  file: path={{ pg_conf }}/conf.d state=directory owner=postgres group=postgres
+
+- name: Set conf.d include in postgresql.conf
+  lineinfile:
+      regexp: "^#?include_dir"
+      line: "include_dir = 'conf.d'"
+      dest: "{{ pg_conf }}/postgresql.conf"
+      backup: true
+  notify: restart postgres
+
+- name: Template configs(25ansible_postgresql.conf)
+  template:
+      src: 25ansible_postgresql.conf.j2
+      dest: "{{ pg_conf }}/conf.d/25ansible_postgresql.conf"
+      owner: "{{ postgresql_admin_user }}"
+      group: "{{ postgresql_admin_user }}"
+      backup: true
+  notify: reload postgres
