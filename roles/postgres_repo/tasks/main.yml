@@ -5,4 +5,4 @@
       https://download.postgresql.org/pub/repos/yum/reporpms/EL-{{
       ansible_distribution_major_version }}-{{
       ansible_architecture }}/pgdg-redhat-repo-latest.noarch.rpm
-  tags: pgdg
+  tags: 1_pgdg
