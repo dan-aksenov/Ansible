@@ -1,7 +1,4 @@
 ---
-- import_tasks: repository.yml
-  tags: 1_repository,slave
-
 - import_tasks: install.yml
   tags: 2_install,slave
 
