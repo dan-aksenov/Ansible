@@ -1,4 +1,5 @@
 import os
+import pytest
 
 import testinfra.utils.ansible_runner
 
@@ -7,9 +8,14 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts('all')
 
 
-def test_hosts_file(host):
-    f = host.file('/etc/hosts')
+@pytest.fixture(scope='module')
+def AnsibleRoleDefaults(host):
+    return host.ansible('include_vars', '../../defaults/main.yml')['ansible_facts']
 
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+
+def test_my_ansible_user(host, AnsibleRoleDefaults):
+    my_ansible_user = AnsibleRoleDefaults['my_ansible_user']
+    
+    u = host.user( my_ansible_user )
+
+    assert u.exists
