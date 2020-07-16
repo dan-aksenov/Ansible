@@ -12,19 +12,19 @@
         state=present
   tags: ansible_user
 
-- name: add my ansible user pub_key
+- name: Add my ansible user pub_key
   authorized_key:
     user: "{{ my_ansible_user }}"
     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
   tags: linux_key
 
-- name: add my ansible user pub_key from Windows
+- name: Add my ansible user pub_key from Windows
   authorized_key:
     user: "{{ my_ansible_user }}"
     key: "{{ lookup('file', lookup('env','HOME') + '/localrepo/my_key_win') }}"
   tags: windows_key
 
-- name: configure sudoers
+- name: Configure sudoers
   template:
     src: sudoers.d.j2
     dest: "/etc/sudoers.d/{{ my_ansible_user }}"
