@@ -1,4 +1,12 @@
 ---
+- name: Disable the built-in PostgreSQL module on Centos 8
+  # Find a way to do in without command!
+  command: dnf -qy module disable postgresql
+  register: result
+  when: ansible_distribution_major_version|int == 8
+  changed_when: '"Nothing to do" in result.stdout'
+  tags: 1_pgdg
+
 - name: Install pgdg repository package.
   package:
     name: >
