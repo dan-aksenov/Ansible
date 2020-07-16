@@ -1,2 +1,2 @@
 ---
-my_ansible_user: ansible
+my_ansible_user: "{{ lookup('env','USER') }}"
