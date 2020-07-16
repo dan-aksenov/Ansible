@@ -6,10 +6,12 @@
       - sudo
 
 - name: Add my ansible user.
-  user: name="{{ my_ansible_user }}"
-        createhome=yes
-        home="/home/{{ my_ansible_user }}"
-        state=present
+  user: 
+    name: "{{ my_ansible_user }}"
+    createhome: yes
+    home: "/home/{{ my_ansible_user }}"
+    state: present
+    expires: -1
   tags: ansible_user
 
 - name: Add my ansible user pub_key
