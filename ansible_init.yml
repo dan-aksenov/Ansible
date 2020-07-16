@@ -4,4 +4,4 @@
   become: true
 
   roles:
-    - init
+    - ansible_init
