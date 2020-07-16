@@ -1,13 +1,14 @@
 ---
 galaxy_info:
-  author: "Daniil Aksenov"
-  description: Setup basic PostgreSQL 9+ configurations on CentOS Linux.
+  author: Daniil Aksenov
+  description: Install Postgres server and userfull extensions.
   license: as-is
   min_ansible_version: 2.9
   platforms:
     - name: EL
       versions:
         - 7
+        - 8
   tags:
     - database
     - postgresql
