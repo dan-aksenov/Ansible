@@ -18,7 +18,6 @@
       - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
       - powa_{{ postgresql_version | replace('.', '') }}
       - pg_qualstats{{ postgresql_version | replace('.', '') }}
-      - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
       - hypopg_{{ postgresql_version | replace('.', '') }}
       - repmgr{{ postgresql_version | replace('.', '') }}
       - pg_wait_sampling_{{ postgresql_version | replace('.', '') }}
