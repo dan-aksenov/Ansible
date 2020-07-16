@@ -4,9 +4,9 @@
   become: yes
   roles:
    - postgres_repo
+   - postgres_install
+   - postgres_initdb
    - postgresql
-   #- postgres_install
-   #- postgres_initdb
    #- postgres_config
    #- postgres_security
    #- postgres_start
