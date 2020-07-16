@@ -13,9 +13,3 @@ def test_hosts_file(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
-
-# def test_etcd_service(host):
-#    etcd = host.service('postgresql*')
-#
-#    assert etcd.is_running
-#    assert etcd.is_enabled
