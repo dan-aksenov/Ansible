@@ -23,8 +23,6 @@ provisioner:
     prepare: prepare.yml
   lint:
     name: ansible-lint
-  options:
-    skip-tags: mamonsu
 verifier:
   name: testinfra
   lint:

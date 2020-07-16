@@ -21,8 +21,6 @@ provisioner:
     prepare: prepare.yml
   lint:
     name: ansible-lint
-  options:
-    skip-tags: mamonsu,pgbackrest,pgbadger
 verifier:
   name: testinfra
   lint:

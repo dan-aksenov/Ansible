@@ -4,4 +4,4 @@
   vars:
     postgresql_version: 12
   roles:
-    - role: postgresql
+    - role: postgres_install
