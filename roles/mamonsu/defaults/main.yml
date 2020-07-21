@@ -1,3 +1,4 @@
 ---
 mamonsu_user: postgres
 mamonsu_database: mamonsu
+zabbix_server_port: 10051
