@@ -1,2 +1,3 @@
 ---
-# tasks file for pgbackrest
+- import_tasks: pgbackrest.yml
+  tags: pgbackrest
