@@ -15,7 +15,7 @@ def AnsibleRoleDefaults(host):
 
 def test_pgdata(host, AnsibleRoleDefaults):
     postgresql_version = AnsibleRoleDefaults['postgresql_version']
-    
+
     # pg_data needs to be constructed including postgresql_version. How to do in in testinfra?
     f = host.file('/var/lib/pgsql/' + str(postgresql_version) + '/data')
 
