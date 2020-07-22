@@ -6,7 +6,7 @@
    - postgres_repo
    - postgres_install
    - postgres_initdb
-   - pgbackrest  
+   #- pgbackrest  
    - postgresql
    #- postgres_config
    #- postgres_security

@@ -1,0 +1,11 @@
+##
+## This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
+##
+## After changing this file restart handler will be notified!
+## 
+
+{% if postgresql_conf is defined %}
+{% for opt in postgresql_conf %}
+{{ opt }} = {{ postgresql_conf[opt] }}
+{% endfor %}
+{% endif %}

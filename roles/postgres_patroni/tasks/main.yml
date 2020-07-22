@@ -1,0 +1,8 @@
+---
+- import_tasks: patroni-install.yml
+  tags: patroni_install
+  when: postgresql_service == "patroni"
+
+- import_tasks: patroni-setup.yml
+  tags: patroni_config
+  when: postgresql_service == "patroni"
