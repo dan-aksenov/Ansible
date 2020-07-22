@@ -1,0 +1,9 @@
+#!/bin/bash
+{% set pg_log = "log" if (postgresql_version >= 10) else "pg_log" %}
+
+echo Running pgbadger parser:
+# set nice to maximun, so job won't affect system performance. 
+time nice -n 19 pgbadger -Z '+03' -q --retention 4 -I -O /var/www/badger/ {{ pg_data }}/{{ pg_log }}/postgresql*.log
+echo Deleting old logs:
+# mmin 60 ensures that current log will be ratained
+find {{ pg_data }}/{{ pg_log }}/ -type f -name 'postgresql*.log' -mmin +60 -print -delete
