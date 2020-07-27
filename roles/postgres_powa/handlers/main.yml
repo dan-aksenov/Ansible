@@ -1,9 +1,4 @@
 ---
-- name: restart httpd
-  service:
-    name: httpd
-    state: restarted
-
 # Restart and reload postgres depending on service management.
 # Use pg_ctl if postgres not namaged by systemd.
 
@@ -25,22 +20,9 @@
     state: reloaded
   when: postgresql_service == "systemd"
 
-- name: restart postgres systemd
-  service:
-    name: postgresql-{{ postgresql_version }}
-    state: restarted
-  when: postgresql_service == "systemd"
-
 - name: reload postgres pg_ctl
   command: >
     /usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ pg_data }} reload
-  become: true
-  become_user: "{{ postgresql_admin_user }}"
-  when: postgresql_service == "pg_ctl"
-
-- name: restart postgres pg_ctl
-  command: >
-    /usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ pg_data }} restart
   become: true
   become_user: "{{ postgresql_admin_user }}"
   when: postgresql_service == "pg_ctl"

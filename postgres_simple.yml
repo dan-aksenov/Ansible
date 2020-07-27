@@ -11,6 +11,6 @@
    #- postgres_config
    #- postgres_security
    #- postgres_start
-   #- postgres_powa
-   #- postgres_pgbouncer
-   #- postgres_mamonsu
+   - postgres_powa
+   - pgbouncer
+   - mamonsu

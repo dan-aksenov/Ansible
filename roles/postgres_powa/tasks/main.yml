@@ -1,43 +1,27 @@
 ---
-- import_tasks: postgresql_conf.yml
-  tags: 4_config
-  when: postgresql_service != "patroni"
-
-- import_tasks: patroni-setup.yml
-  tags: 4_config
-  when: postgresql_service == "patroni"
-
-- import_tasks: security.yml
-  tags: 5_security
-
-- import_tasks: start.yml
-  tags: 6_startdb
-  when: postgresql_service != "patroni"
-
-- name: Check patroni api responce
+- name: Get patroni replication master
   # This task is essential to determine current master
   # and run powa tasks on him instead of entire cluster
   uri:
     url: http://localhost:8008
     body_format: json
     status_code: [200, 503]
-  register: get_master
+  register: api_repsonce
   check_mode: no
-  when: postgresql_service == "patroni" 
+  when: postgresql_service == "patroni"
+  tags: powa
 
-#- name: Get Master server.
-  # This task is essential to determine current master
-  # and run powa tasks on him instead of entire cluster
-#  postgresql_query:
-#    query: SELECT pg_is_in_recovery();
-#  register: output
-#  check_mode: no
+- name: Get Master server.
+  postgresql_query:
+    query: SELECT pg_is_in_recovery();
+  register: isinrecovery
+  become: true
+  become_user: "postgres"
+  check_mode: no
+  tags: powa
 
 - import_tasks: powa.yml
   tags: powa
-  when: postgresql_service != "patroni" or
-    (get_master.json.role == "master" and postgresql_service == "patroni")
-
-- import_tasks: repmgr.yml
-  tags: repmgr
-  when: postgresql_service != "patroni"
+  when: isinrecovery.query_result[0].pg_is_in_recovery == false
+  #(postgresql_service != "patroni" a) or
+  #  (get_master.json.role == "master" and postgresql_service == "patroni")
