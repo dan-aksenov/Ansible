@@ -1,0 +1,46 @@
+---
+- name: Create POWA database.
+  postgresql_db:
+    name: powa
+    state: present
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
+
+- name: Create extensions.
+  postgresql_ext:
+    name: "{{ item[1] }}"
+    db: "{{ item[0] }}"
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
+  with_nested:
+    - [postgres, powa]
+    - [pg_stat_statements, btree_gist, powa,
+       pg_qualstats, pg_stat_kcache, pg_buffercache,
+       pg_wait_sampling, pg_track_settings]
+
+- name: Get existing databases
+  become: true
+  become_user: postgres
+  postgresql_info:
+    filter:
+      - "databases"
+  register: database_list
+
+- name: Create extension hypopg in all existing databases
+  postgresql_ext:
+    name: hypopg
+    db: "{{ item[0] }}"
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
+  with_nested: "{{ database_list.databases }}"
+
+- name: Create POWA user.
+  postgresql_user:
+    name: powa
+    role_attr_flags: SUPERUSER
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
