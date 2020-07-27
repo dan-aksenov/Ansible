@@ -6,6 +6,6 @@
    - postgres_repo
    - postgres_install
    - postgres_patroni
-   #- postgres_powa
+   - postgres_powa
    - pgbouncer
    #- postgres_mamonsu
