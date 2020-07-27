@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    postgresql_version: 12
+  roles:
+    - role: postgresql
