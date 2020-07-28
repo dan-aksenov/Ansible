@@ -1,0 +1,4 @@
+---
+- import_tasks: postgresql_conf.yml
+  tags: 4_config
+  when: postgresql_service != "patroni"
