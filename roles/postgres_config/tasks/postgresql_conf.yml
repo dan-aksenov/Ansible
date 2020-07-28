@@ -1,0 +1,9 @@
+---
+- name: Template configs
+  template:
+      src: postgresql.conf.j2
+      dest: "{{ pg_conf }}/postgresql.conf"
+      owner: "{{ postgresql_admin_user }}"
+      group: "{{ postgresql_admin_user }}"
+      backup: true
+  notify: reload postgres
