@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+#lint:
+#  name: yamllint
+platforms:
+  - name: postgresql_pgctl
+    image: centos:7
+    env:
+      http_proxy: "${http_proxy}"
+      https_proxy: "${http_proxy}"
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  playbooks:
+    prepare: prepare.yml
+  lint:
+    name: ansible-lint
+  options:
+    skip-tags: mamonsu
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
