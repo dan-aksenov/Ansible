@@ -8,4 +8,4 @@
    - postgres_patroni
    - postgres_powa
    - pgbouncer
-   #- postgres_mamonsu
+   - postgres
