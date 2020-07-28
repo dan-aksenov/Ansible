@@ -6,9 +6,9 @@
    - postgres_repo
    - postgres_install
    - postgres_initdb
-   #- pgbackrest  
    - postgres_config
    #- postgres_security
+   #- pgbackrest  
    #- postgres_start
    - postgres_powa
    - pgbouncer
