@@ -15,7 +15,7 @@ def AnsibleRoleDefaults(host):
 
 def test_pgdata(host, AnsibleRoleDefaults):
     postgresql_version = AnsibleRoleDefaults['postgresql_version']
-    
+
     # pg_data needs to be constructed including postgresql_version. How to do in in testinfra?
     f = host.file('/var/lib/pgsql/' + str(postgresql_version) + '/data')
 
@@ -23,13 +23,3 @@ def test_pgdata(host, AnsibleRoleDefaults):
     assert f.is_directory
     assert f.user == 'postgres'
     assert f.group == 'postgres'
-
-
-def test_etcd_service(host, AnsibleRoleDefaults):
-
-    postgresql_version = AnsibleRoleDefaults['postgresql_version']
-    
-    postgresql_service = host.service('postgresql-' + str(postgresql_version))
-
-    assert postgresql_service.is_running
-    assert postgresql_service.is_enabled

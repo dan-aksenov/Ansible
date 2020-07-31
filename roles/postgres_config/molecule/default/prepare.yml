@@ -3,4 +3,6 @@
   hosts: all
   roles:
     - role: proxy_settings
-    - role: anacron
+    - role: postgres_repo
+    - role: postgres_install
+    - role: postgres_initdb
