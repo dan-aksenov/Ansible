@@ -8,8 +8,8 @@
    - postgres_initdb
    - postgres_config
    #- postgres_security
+   - postgres_start
    #- pgbackrest  
-   #- postgres_start
    - postgres_powa
    - pgbouncer
    - mamonsu
