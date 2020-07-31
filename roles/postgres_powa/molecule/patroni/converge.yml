@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: all
-  vars:
-    postgresql_service: patroni
-  roles:
-    - role: postgresql
