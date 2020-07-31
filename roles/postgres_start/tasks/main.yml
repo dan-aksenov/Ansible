@@ -1,0 +1,4 @@
+---
+- import_tasks: start.yml
+  tags: 6_startdb
+  when: postgresql_service != "patroni"
