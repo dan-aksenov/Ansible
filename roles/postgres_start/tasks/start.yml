@@ -1,0 +1,20 @@
+---
+- name: Start and enable postgresql systemd service.
+  service:
+    name: "postgresql-{{ postgresql_version }}"
+    state: started
+    enabled: true
+  when: postgresql_service == "systemd"
+
+- name: Check if postgresql is running. For pg_ctl.
+  stat:
+    path: "/var/run/postgresql/.s.PGSQL.{{ postgresql_port }}"
+  register: pg_pid
+  when: postgresql_service == "pg_ctl"
+
+- name: Start postgresql service with pg_ctl.
+  command: |
+    /usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ pg_data }} start
+  become: true
+  become_user: "{{ postgresql_admin_user }}"
+  when: postgresql_service == "pg_ctl" and not pg_pid.stat.exists
