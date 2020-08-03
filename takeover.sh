@@ -11,3 +11,4 @@ ansible -i $INVENTORY $HOST -m postgresql_info --become --become-user=postgres -
 # Parse /tmp/$HOST for modified PostgreSQL settings.
 
 # Generate ansible host_vars list with gathered values.
+#jq -c 'to_entries[] | select(.value.sourcefile=="/mnt/pgsql/11/data/postgresql.conf") | [.key, .value.boot_val]' /tmp/settings.json
