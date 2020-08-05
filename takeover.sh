@@ -10,5 +10,7 @@ ansible -i $INVENTORY $HOST -m postgresql_info --become --become-user=postgres -
 
 # Parse /tmp/$HOST for modified PostgreSQL settings.
 
-# Generate ansible host_vars list with gathered values.
-#jq -c 'to_entries[] | select(.value.sourcefile=="/mnt/pgsql/11/data/postgresql.conf") | [.key, .value.boot_val]' /tmp/settings.json
+# Generate ansible host_vars for postgresql.conf with gathered values.
+# REMEMBER: some postgresql.conf values(listen_address, log_line_prefix) must contain additional quotes!
+echo postgresql_conf: > /tmp/${HOST}.pgconf.yml
+jq -rc '.settings | to_entries[] | select(.value.sourcefile | contains("postgresql.conf")) | [.key, .value.boot_val] | "  \(.[0]): \"\(.[1])\""' /tmp/$HOST >> /tmp/${HOST}.pgconf.yml
