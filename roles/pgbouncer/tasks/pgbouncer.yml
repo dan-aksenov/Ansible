@@ -1,29 +1,9 @@
 ---
-- name: Install pgdg repository package.
-  yum:
-    name: >
-      https://download.postgresql.org/pub/repos/yum/reporpms/EL-{{
-      ansible_distribution_major_version }}-{{
-      ansible_architecture }}/pgdg-redhat-repo-latest.noarch.rpm
-
 - name: Install pgbouncer
   yum:
     state: present
     name:
       - pgbouncer
-
-- name: Set include additional file in pgbouncer.ini.
-  lineinfile:
-    line: "%include /etc/pgbouncer/pgbouncer-ansible.ini"
-    dest: "/etc/pgbouncer/pgbouncer.ini"
-    backup: true
-  notify: reload pgbouncer
-
-- name: Insert reminder to pgbouncer.ini.
-  lineinfile:
-    dest: "/etc/pgbouncer/pgbouncer.ini"
-    insertbefore: BOF
-    line: ;; Ansible managed pgbouncer-ansible.ini overrides this file!
 
 - name: Copy pgbouncer.ini template.
   template:
@@ -32,7 +12,7 @@
     mode: 0644
     backup: true
     src: pgbouncer.ini.j2
-    dest: /etc/pgbouncer/pgbouncer-ansible.ini
+    dest: /etc/pgbouncer/pgbouncer.ini
   notify:
     - reload pgbouncer
 
