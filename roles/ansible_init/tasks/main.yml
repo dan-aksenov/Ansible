@@ -4,6 +4,7 @@
     state: present
     name:
       - sudo
+  tags: install_sudo
 
 - name: Add my ansible user.
   user: 
