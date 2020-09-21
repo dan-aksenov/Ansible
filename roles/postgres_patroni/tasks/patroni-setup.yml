@@ -4,6 +4,13 @@
     state: directory
     dest: /etc/patroni
 
+- name: Create /var/log/patroni
+  file:
+    state: directory
+    owner: postgres
+    group: postgres
+    dest: /var/log/patroni
+  
 - name: Create patroni systemd service
   template:
     src: patroni.service.j2
