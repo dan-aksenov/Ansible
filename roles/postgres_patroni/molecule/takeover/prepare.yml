@@ -7,3 +7,6 @@
     - role: postgres_repo
     - role: postgres_install
     - role: postgres_initdb
+    - role: postgres_config
+    - role: postgres_start
+    - role: postgres_powa
