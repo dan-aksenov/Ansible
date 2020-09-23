@@ -28,8 +28,10 @@ consul:
   url: "{{ consul_url }}"
 {% endif %}
 
+{% if patroni_log_dir is defined %}
 log:
-  dir: /var/log/patroni
+  dir: "{{ patroni_log_dir }}"
+{% endif %}
 
 bootstrap:
   # this section will be written into Etcd:/<namespace>/<scope>/config after initializing new cluster
