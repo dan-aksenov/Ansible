@@ -1,6 +1,8 @@
 ---
 - name: Get current master 
-  command: stolonctl status --cluster-name {{ cluster_name }}  --store-backend consul --store-endpoints {{ store_endpoint }} -f json 
+  command: stolonctl status --cluster-name {{ cluster_name }}  --store-backend consul --store-endpoints {{ store_endpoint }} -f json
+  become: true
+  become_user: postgres
   register: stolon_output
 
 - debug: 
