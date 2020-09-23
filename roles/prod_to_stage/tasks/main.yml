@@ -1,2 +1,3 @@
 ---
-# tasks file for prod-to-stage
+- import_tasks: restore_pg.yml
+  tags: restore_pg
