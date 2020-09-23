@@ -7,7 +7,7 @@
   msg: "{{ stolon_output.cluster.master_keeper_uid }}"
 
 - name: Set master
-  set_fact: stolon_master = "stolon_output.stdout"
+  set_fact: stolon_master = "{{ stolon_output.stdout | from_json }}"
 
 - name: Download backup
 # when: "{{ ansible_hostname }}" == "{{ master_node }}"
