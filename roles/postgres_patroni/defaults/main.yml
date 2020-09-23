@@ -20,7 +20,10 @@ etcd_hosts: "localhost:2379"
 # patroni_log_dir
 
 # pg_data mast be real directory not symlink, or pgbackrest won't work.
-pg_data: /var/lib/pgsql/{{ postgresql_version }}/data
+pg_data: 
+  - /var/lib/pgsql/{{ postgresql_version }}/data if ansible_distribution == "Centos"
+  - /var/lib/postgresql/{{ postgresql_version }}/main if ansible_distribution == "Ubuntu"
+
 pg_conf: "{{ pg_data }}"
 pgbackrest_dir: /var/lib/pgsql/{{ postgresql_version }}/backups
 postgresql_admin_user: postgres
