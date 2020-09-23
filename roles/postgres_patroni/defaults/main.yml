@@ -16,6 +16,9 @@ etcd_hosts: "localhost:2379"
 # consul_token: ""
 # consul_url: "localhost:8500"
 
+# directory to orgaize separate logging insdead of logging to messages
+# patroni_log_dir
+
 # pg_data mast be real directory not symlink, or pgbackrest won't work.
 pg_data: /var/lib/pgsql/{{ postgresql_version }}/data
 pg_conf: "{{ pg_data }}"
