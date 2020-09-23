@@ -1,7 +1,11 @@
 ---
-- import_tasks: patroni-install.yml
+- import_tasks: patroni-install-pip.yml
   tags: patroni_install
-  when: postgresql_service == "patroni"
+  when: postgresql_service == "patroni" and ansible_pkg_mgr != "apt"
+
+- import_tasks: patroni-install-apt.yml
+  tags: patroni_install
+  when: postgresql_service == "patroni" and ansible_pkg_mgr == "apt"
 
 - import_tasks: patroni-setup.yml
   tags: patroni_config
