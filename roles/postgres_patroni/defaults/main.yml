@@ -45,7 +45,7 @@ databases:
   - repmgr
 
 postgres_superuser_password: invalid
-rewind_password: rewind
+rewind_user_password: rewind
 replicator_password: replicator
   
 # List of precreated users.
