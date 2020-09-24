@@ -3,8 +3,8 @@ namespace: "{{ patroni_namespace }}"
 name: "{{ patroni_host_name }}"
 
 restapi:
-  listen: 127.0.0.1:8008
-  connect_address: 127.0.0.1:8008
+  listen: {{ patroni_api_listen }}
+  connect_address: {{ patroni_api_connect_address }}
 #  certfile: /etc/ssl/certs/ssl-cert-snakeoil.pem
 #  keyfile: /etc/ssl/private/ssl-cert-snakeoil.key
 #  authentication:
@@ -99,13 +99,13 @@ postgresql:
   authentication:
     replication:
       username: replicator
-      password: rep-pass
+      password: "{{ replicator_password }}"
     superuser:
       username: postgres
-      password: zalando
+      password: "{{ postgres_superuser_password }}"
     rewind:  # Has no effect on postgres 10 and lower
       username: rewind_user
-      password: rewind_password
+      password: "{{ rewind_user_password }}"
   # Server side kerberos spn
 #  krbsrvname: postgres
   parameters:
