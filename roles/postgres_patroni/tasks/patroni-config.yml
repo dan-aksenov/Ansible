@@ -3,6 +3,7 @@
   file:
     state: directory
     dest: /etc/patroni
+  when: ansible_pkg_mgr != "apt"
 
 - name: Create /var/log/patroni
   file:
