@@ -4,7 +4,7 @@ el_version: 7
 postgresql_version: 11
 
 # Manage cluster with systemd, pg_ctl or patroni
-postgresql_service: systemd
+postgresql_service: patroni
 
 # Patroni specific settings. Used if postgresql_service = patroni.
 patroni_cluster_name: "batman"
