@@ -1,3 +1,0 @@
----
-- import_tasks: restore_pg.yml
-  tags: restore_pg
