@@ -6,7 +6,7 @@
 INVENTORY=$1
 HOST=$2
 # Get current postgresql settings.
-ansible -i $INVENTORY $HOST -m postgresql_info --become --become-user=postgres -a "filter=settings" -t /tmp 
+ansible -i $INVENTORY $HOST -m postgresql_info --become --become-user=postgres -a "filter=settings" -t /tmp --ask-vault-pass
 
 # Parse /tmp/$HOST for modified PostgreSQL settings.
 

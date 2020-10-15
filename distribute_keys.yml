@@ -1,0 +1,5 @@
+- hosts: all
+  remote_user: dstaksenov
+  become: yes
+  roles:
+   - ssh_key_exchange
