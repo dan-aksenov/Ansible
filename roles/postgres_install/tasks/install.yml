@@ -22,3 +22,23 @@
       - repmgr{{ postgresql_version | replace('.', '') }}
       - pg_wait_sampling_{{ postgresql_version | replace('.', '') }}
       - pg_track_settings{{ postgresql_version | replace('.', '') }}
+  when: ansible_distribution_major_version|int == 7
+
+- name: Install PostgreSQL packages on EL8 using dnf
+  dnf:
+    state: present
+    name:
+      - "postgresql{{ postgresql_version | replace('.', '') }}"
+      - "postgresql{{ postgresql_version | replace('.', '') }}-server"
+      - "postgresql{{ postgresql_version | replace('.', '') }}-contrib"
+      - "postgresql{{ postgresql_version | replace('.', '') }}-libs"
+      - python3-psycopg2
+      - pg_stat_kcache{{ postgresql_version | replace('.', '') }}
+      - powa_{{ postgresql_version | replace('.', '') }}
+      - pg_qualstats{{ postgresql_version | replace('.', '') }}
+      - hypopg_{{ postgresql_version | replace('.', '') }}
+      - repmgr{{ postgresql_version | replace('.', '') }}
+      - pg_wait_sampling_{{ postgresql_version | replace('.', '') }}
+      - pg_track_settings{{ postgresql_version | replace('.', '') }}
+  when: ansible_distribution_major_version|int == 8
+

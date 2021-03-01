@@ -1,0 +1,33 @@
+---
+- name: Create REPMGR user.
+  postgresql_user:
+    name: repmgr
+    password:
+    role_attr_flags: SUPERUSER,REPLICATION
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
+
+- name: Create REPMGR database.
+  postgresql_db:
+    name: repmgr
+    state: present
+    owner: repmgr
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
+
+- name: Create extensions.
+  postgresql_ext:
+    name: repmgr
+    db: repmgr
+    port: "{{ postgresql_port }}"
+  become_user: postgres
+  become: true
+
+- name: Setup repmgr.conf
+  template:
+    src: repmgr.conf.j2
+    dest: "/etc/repmgr/{{ postgresql_version }}/repmgr.conf"
+    backup: true
+  tags: slave

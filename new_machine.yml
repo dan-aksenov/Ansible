@@ -4,14 +4,14 @@
   become: yes
 
   roles:
-    # - proxy_settings
+    - proxy_settings
     - epel
-    # - essentials
+    #- essentials
     - vim
-    # - hostname
-    # - selinux
+    #- hostname
+    #- selinux
     - zabbix-agent
-    # - ntpd
+    #- ntpd
     - atop
     - tmux
     - anacron
@@ -26,5 +26,5 @@
    #- postfix
 
 #  environment:
-#    http_proxy: "{{ proxy_ip }}"
-#    https_proxy: "{{ proxy_ip }}"
+#    http_proxy: "{{ http_proxy }}"
+#    https_proxy: "{{ http_proxy }}"

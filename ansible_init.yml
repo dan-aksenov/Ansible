@@ -1,7 +1,7 @@
 ---
 - hosts: all
-  remote_user: daksenov  
+  remote_user: daksenov
   become: true
 
   roles:
-    - ansible_init
+    - ansible_init

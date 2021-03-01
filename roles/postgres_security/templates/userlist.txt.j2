@@ -1,0 +1,5 @@
+{% if db_users is defined %}
+{% for user in db_users %}
+"{{ user.username }}" "{{ user.password }}"
+{% endfor %}
+{% endif %}
