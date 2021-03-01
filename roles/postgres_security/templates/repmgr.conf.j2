@@ -1,0 +1,162 @@
+##
+## This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
+##
+
+
+#node_id=1
+node_name={{ansible_hostname }}		 
+conninfo='host={{ ansible_hostname }} user=repmgr dbname=repmgr connect_timeout=2' 
+
+data_directory='{{ pg_data }}'		 
+
+
+config_directory='{{ pg_conf }}'
+
+#------------------------------------------------------------------------------
+# Replication settings
+#------------------------------------------------------------------------------
+
+#replication_user='repmgr'	 # User to make replication connections with, if not set
+#replication_type=physical	 # Must be one of "physical" or "bdr".
+#location=default		 # An arbitrary string defining the location of the node; this
+#use_replication_slots=no	 # whether to use physical replication slots
+
+#------------------------------------------------------------------------------
+# Witness server settings
+#------------------------------------------------------------------------------
+
+#witness_sync_interval=15	 # interval (in seconds) to synchronise node records
+
+#------------------------------------------------------------------------------
+# Logging settings
+#------------------------------------------------------------------------------
+
+#log_level=INFO			 # Log level: possible values are DEBUG, INFO, NOTICE,
+
+#log_facility=STDERR		 # Logging facility: possible values are STDERR, or for
+
+#log_file=''			 # STDERR can be redirected to an arbitrary file
+#log_status_interval=300	 # interval (in seconds) for repmgrd to log a status message
+
+#------------------------------------------------------------------------------
+# Event notification settings
+#------------------------------------------------------------------------------
+
+#event_notification_command=''		# An external program or script which
+#event_notifications=''			# A commas-separated list of notification
+
+#------------------------------------------------------------------------------
+# Environment/command settings
+#------------------------------------------------------------------------------
+
+pg_bindir='/usr/pgsql-{{ postgresql_version }}/bin/'				# Path to PostgreSQL binary directory (location
+
+#repmgr_bindir=''			# Path to repmgr binary directory (location of the repmgr
+#use_primary_conninfo_password=false	# explicitly set "password" in recovery.conf's
+#passfile=''				# path to .pgpass file to include in "primary_conninfo"
+
+#------------------------------------------------------------------------------
+# external command options
+#------------------------------------------------------------------------------
+ssh_options='-q -o ConnectTimeout=10'	# Options to append to "ssh"
+
+#------------------------------------------------------------------------------
+# "standby clone" settings
+#------------------------------------------------------------------------------
+#tablespace_mapping=''	  		# Tablespaces can be remapped from one
+#restore_command=''			# This will be placed in the recovery.conf file generated
+#archive_cleanup_command=''		# This will be placed in the recovery.conf file generated
+#recovery_min_apply_delay=		# If provided, "recovery_min_apply_delay" in recovery.conf
+
+#------------------------------------------------------------------------------
+# "standby promote" settings
+#------------------------------------------------------------------------------
+
+#promote_check_timeout=60		# The length of time (in seconds) to wait
+#promote_check_interval=1		# The interval (in seconds) to check whether
+
+#------------------------------------------------------------------------------
+# "standby follow" settings
+#------------------------------------------------------------------------------
+#primary_follow_timeout=60		# The max length of time (in seconds) to wait
+#standby_follow_timeout=15		# The max length of time (in seconds) to wait
+
+#------------------------------------------------------------------------------
+# "standby switchover" settings
+#------------------------------------------------------------------------------
+
+#shutdown_check_timeout=60		# The max length of time (in seconds) to wait for the demotion
+#standby_reconnect_timeout=60		# The max length of time (in seconds) to wait
+#wal_receive_check_timeout=30		# The max length of time (in seconds) to wait for the walreceiver
+
+#------------------------------------------------------------------------------
+# "node rejoin" settings
+#------------------------------------------------------------------------------
+
+#node_rejoin_timeout=60		# The maximum length of time (in seconds) to wait for
+
+#------------------------------------------------------------------------------
+# Barman options
+#------------------------------------------------------------------------------
+
+#barman_server=''			# The barman configuration section
+#barman_host=''				# The host name of the barman server
+#barman_config=''			# The Barman configuration file on the
+
+#------------------------------------------------------------------------------
+# Failover and monitoring settings (repmgrd)
+#------------------------------------------------------------------------------
+#failover=manual			# one of 'automatic', 'manual'.
+#priority=100				# indicates a preferred priority for promoting nodes;
+#connection_check_type=ping		# How to check availability of the upstream node; valid options:
+#reconnect_attempts=6			# Number of attempts which will be made to reconnect to an unreachable
+#reconnect_interval=10			# Interval between attempts to reconnect to an unreachable
+#promote_command=			# command repmgrd executes when promoting a new primary; use something like:
+#follow_command=			# command repmgrd executes when instructing a standby to follow a new primary;
+#primary_notification_timeout=60	# Interval (in seconds) which repmgrd on a standby
+#repmgrd_standby_startup_timeout=60	# Interval (in seconds) which repmgrd on a standby will wait
+#monitoring_history=no                  # Whether to write monitoring data to the "montoring_history" table
+#monitor_interval_secs=2                # Interval (in seconds) at which to write monitoring data
+#degraded_monitoring_timeout=-1		# Interval (in seconds) after which repmgrd will terminate if the
+#async_query_timeout=60			# Interval (in seconds) which repmgrd will wait before
+#repmgrd_pid_file=			# Path of PID file to use for repmgrd; if not set, a PID file will
+#standby_disconnect_on_failover=false	# If "true", in a failover situation wait for all standbys to
+#sibling_nodes_disconnect_timeout=30	# If "standby_disconnect_on_failover" is true, the maximum length of time
+#primary_visibility_consensus=false	# If "true", only continue with failover if no standbys have seen
+#failover_validation_command=		# Script to execute for an external mechanism to validate the failover
+#election_rerun_interval=15		# if "failover_validation_command" is set, and the command returns
+#child_nodes_check_interval=5		# Interval (in seconds) to check for attached child nodes (standbys)
+#child_nodes_connected_min_count=-1	# Minimum number of child nodes which must remain connected, otherwise
+#child_nodes_disconnect_min_count=-1	# Minimum number of disconnected child nodes required to execute disconnection command
+#child_nodes_disconnect_timeout=30	# Interval between child node disconnection and disconnection command execution
+#child_nodes_disconnect_command=	# Command to execute if child node disconnection detected
+
+#------------------------------------------------------------------------------
+# service control commands
+#------------------------------------------------------------------------------
+
+#service_start_command = ''
+#service_stop_command = ''
+#service_restart_command = ''
+#service_reload_command = ''
+#service_promote_command = ''		# This parameter is intended for systems which provide a
+
+#repmgrd_service_start_command = ''
+#repmgrd_service_stop_command = ''
+
+#------------------------------------------------------------------------------
+# Status check thresholds
+#------------------------------------------------------------------------------
+
+#archive_ready_warning=16  	      	# repmgr node check --archive-ready
+#archive_ready_critical=128		#
+#replication_lag_warning=300		# repmgr node check --replication-lag
+#replication_lag_critical=600		#
+
+
+#------------------------------------------------------------------------------
+# BDR monitoring options
+#------------------------------------------------------------------------------
+
+#bdr_local_monitoring_only=false         # Only monitor the local node; no checks will be
+#bdr_recovery_timeout                    # If a BDR node was offline and has become available

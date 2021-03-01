@@ -1,0 +1,24 @@
+---
+# Basic settings
+el_version: 7
+postgresql_version: 11
+
+# Manage cluster with systemd, pg_ctl or patroni
+postgresql_service: systemd
+
+# pg_data mast be real directory not symlink, or pgbackrest won't work.
+pg_data: /var/lib/pgsql/{{ postgresql_version }}/data
+pg_conf: "{{ pg_data }}"
+pgbackrest_dir: /var/lib/pgsql/{{ postgresql_version }}/backups
+postgresql_admin_user: postgres
+postgresql_port: 5432
+pgbackrest_stanza: "{{ ansible_hostname }}"
+
+# Right now this section only affects patroni's hba.
+postgresql_hba:
+  - local all all peer
+  - host all all 127.0.0.1/32 trust
+  - host all all ::1/128 trust
+  - local replication all trust
+  - host replication all 127.0.0.1/32 trust
+  - host replication all ::1/128 trust

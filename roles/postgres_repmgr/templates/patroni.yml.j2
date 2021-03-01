@@ -1,0 +1,135 @@
+scope: "{{ patroni_cluster_name }}"
+namespace: "{{ patroni_namespace }}"
+name: "{{ patroni_host_name }}"
+
+restapi:
+  listen: 127.0.0.1:8008
+  connect_address: 127.0.0.1:8008
+#  certfile: /etc/ssl/certs/ssl-cert-snakeoil.pem
+#  keyfile: /etc/ssl/private/ssl-cert-snakeoil.key
+#  authentication:
+#    username: username
+#    password: password
+
+# ctl:
+#   insecure: false # Allow connections to SSL sites without certs
+#   certfile: /etc/ssl/certs/ssl-cert-snakeoil.pem
+#   cacert: /etc/ssl/certs/ssl-cacert-snakeoil.pem
+
+{% if etcd_hosts is defined %}
+etcd:
+  hosts: {{ etcd_hosts }}
+{% endif %}
+
+{% if consul_host is defined %}
+consul:
+  host: "{{ consul_host }}"
+  token: "{{ consul_token }}"
+  url: "{{ consul_url }}"
+{% endif %}
+
+bootstrap:
+  # this section will be written into Etcd:/<namespace>/<scope>/config after initializing new cluster
+  # and all other cluster members will use it as a `global configuration`
+  # max_connections and max_worker_processes can be set only here!
+  dcs:
+    ttl: 30
+    loop_wait: 10
+    retry_timeout: 10
+    maximum_lag_on_failover: 1048576
+#    master_start_timeout: 300
+#    synchronous_mode: false
+    #standby_cluster:
+      #host: 127.0.0.1
+      #port: 1111
+      #primary_slot_name: patroni
+    postgresql:
+      use_pg_rewind: true
+      use_slots: true
+      parameters:
+#        max_connections: 100
+#        max_worker_processes: 8
+#        wal_level: hot_standby
+#        hot_standby: "on"
+#        wal_keep_segments: 8
+#        max_wal_senders: 10
+#        max_replication_slots: 10
+#        wal_log_hints: "on"
+#        archive_mode: "on"
+#        archive_timeout: 1800s
+#        archive_command: mkdir -p ../wal_archive && test ! -f ../wal_archive/%f && cp %p ../wal_archive/%f
+#      recovery_conf:
+#        restore_command: cp ../wal_archive/%f %p
+
+  # some desired options for 'initdb'
+  initdb:  # Note: It needs to be a list (some options need values, others are switches)
+  - encoding: UTF8
+  - data-checksums
+
+  pg_hba:  # Add following lines to pg_hba.conf after running 'initdb'
+{% if postgresql_hba is defined %}
+  {% for opt in postgresql_hba %}
+  - {{ opt }}
+  {% endfor %}
+  {% endif %}
+
+  # Additional script to be launched after initial cluster creation (will be passed the connection URL as parameter)
+# post_init: /usr/local/bin/setup_cluster.sh
+
+  # Some additional users users which needs to be created after initializing new cluster
+#  users:
+#    admin:
+#      password: admin
+#      options:
+#        - createrole
+#        - createdb
+
+postgresql:
+  listen: 0.0.0.0:5432
+  connect_address: {{ ansible_hostname }}:5432
+  data_dir: /var/lib/pgsql/{{ postgresql_version }}/data/
+  bin_dir: /usr/pgsql-{{ postgresql_version }}/bin
+  config_dir: /var/lib/pgsql/{{ postgresql_version }}/data/
+  pgpass: /tmp/pgpass0
+  authentication:
+    replication:
+      username: replicator
+      password: rep-pass
+    superuser:
+      username: postgres
+      password: zalando
+    rewind:  # Has no effect on postgres 10 and lower
+      username: rewind_user
+      password: rewind_password
+  # Server side kerberos spn
+#  krbsrvname: postgres
+  parameters:
+{% if postgresql_conf is defined %}
+  {% for opt in postgresql_conf %}
+  {{ opt }}: {{ postgresql_conf[opt] }}
+  {% endfor %}
+  {% endif %}
+
+  pg_hba:
+{% if postgresql_hba is defined %}
+  {% for opt in postgresql_hba %}
+  - {{ opt }}
+  {% endfor %}
+  {% endif %}
+
+  # Fully qualified kerberos ticket file for the running user
+  # same as KRB5CCNAME used by the GSS
+  # krb_server_keyfile: /var/spool/keytabs/postgres
+ 
+  unix_socket_directories: '.'
+
+#watchdog:
+#  mode: automatic # Allowed values: off, automatic, required
+#  device: /dev/watchdog
+#  safety_margin: 5
+
+tags:
+    nofailover: false
+    noloadbalance: false
+    clonefrom: false
+    nosync: false

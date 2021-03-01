@@ -8,3 +8,5 @@
    - postgres_patroni
    - postgres_powa
    - pgbouncer
+   - mamonsu
+   - pgbackrest

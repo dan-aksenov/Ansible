@@ -1,0 +1,12 @@
+---
+#- name: Get Master server.
+  # This task is essential to determine current master
+  # and run powa tasks on him instead of entire cluster
+#  postgresql_query:
+#    query: SELECT pg_is_in_recovery();
+#  register: output
+#  check_mode: no
+
+- import_tasks: repmgr.yml
+  tags: repmgr
+  when: postgresql_service != "patroni"

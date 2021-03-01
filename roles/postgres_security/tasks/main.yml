@@ -1,0 +1,3 @@
+---
+- import_tasks: security.yml
+  tags: 5_security
