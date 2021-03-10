@@ -1,0 +1,33 @@
+---    
+- name: Read {{ user }} user info
+  getent:
+    database: passwd
+    key: "{{ user }}"
+    
+- name: Create SSH key directory
+  file:
+    path: "{{ getent_passwd[user][4] }}/.ssh"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0700
+    
+- name: Generate SSH keypair
+  openssh_keypair:
+    path: "{{ getent_passwd[user][4] }}/.ssh/id_rsa"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0600
+    
+- name: Get SSH public key
+  slurp:
+    src: "{{ getent_passwd[user][4] }}/.ssh/id_rsa.pub"
+  register: ssh_public_key
+        
+- name: Add ssh public key to authorized keys
+  authorized_key:
+    user: "{{ user }}"
+    state: present
+    key: "{{ ssh_public_key.content | b64decode }}"
+  delegate_to: "{{ item }}"
+  with_items: "{{ ansible_play_hosts }}"

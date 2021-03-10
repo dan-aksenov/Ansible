@@ -1,0 +1,5 @@
+- name: Install patroni with apt
+  apt:
+    state: present
+    name:
+      - patroni
