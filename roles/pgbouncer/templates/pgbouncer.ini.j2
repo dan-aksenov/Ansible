@@ -1,3 +1,4 @@
+#jinja2: trim_blocks:True
 ;;
 ;; This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
 ;;
@@ -7,7 +8,7 @@
 {% if pgbouncer_databases is defined %}
 [databases]
 {% for database in pgbouncer_databases %}
-{{ database.db_name }} = host=127.0.0.1 port={{ postgresql_port }} dbname={{ database.db_name }} {% if database.db_pool_size is defined %} pool_size={{ database.db_pool_size }} {% endif %}
+{{ database.db_name }} = host=127.0.0.1 port={{ postgresql_port }} dbname={{ database.db_name }}{%if database.pool_size is defined %} pool_size={{ database.pool_size }}{% endif %}{{''}}
 {% endfor %}
 {% endif %}
 
