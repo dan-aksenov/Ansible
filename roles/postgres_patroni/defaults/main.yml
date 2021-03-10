@@ -4,21 +4,34 @@ el_version: 7
 postgresql_version: 11
 
 # Manage cluster with systemd, pg_ctl or patroni
-postgresql_service: systemd
+postgresql_service: patroni
 
 # Patroni specific settings. Used if postgresql_service = patroni.
 patroni_cluster_name: "batman"
 patroni_namespace: "/service"
 patroni_host_name: "{{ ansible_hostname }}"
+
+patroni_api_listen: 127.0.0.1:8008
+patroni_api_connect_address: 127.0.0.1:8008
+
 etcd_hosts: "localhost:2379"
 # Consul settings
 # consul_host: "localhost:8500"
 # consul_token: ""
 # consul_url: "localhost:8500"
 
+# directory to orgaize separate logging insdead of logging to messages
+# patroni_log_dir
+
 # pg_data mast be real directory not symlink, or pgbackrest won't work.
-pg_data: /var/lib/pgsql/{{ postgresql_version }}/data
-pg_conf: "{{ pg_data }}"
+pg_data: 
+  - /var/lib/pgsql/{{ postgresql_version }}/data if ansible_distribution == "Centos"
+  - /var/lib/postgresql/{{ postgresql_version }}/main if ansible_distribution == "Ubuntu"
+
+pg_conf: 
+  - /{{ pg_data }} if ansible_distribution == "Centos"
+  - /etc/postgres/{{ postgresql_verstion }}/main if ansible_distribution == "Ubuntu"
+
 pgbackrest_dir: /var/lib/pgsql/{{ postgresql_version }}/backups
 postgresql_admin_user: postgres
 postgresql_port: 5432
@@ -31,12 +44,12 @@ databases:
   - mamonsu
   - repmgr
 
+postgres_superuser_password: invalid
+rewind_user_password: rewind
+replicator_password: replicator
+  
 # List of precreated users.
 db_users:
-  - username: postgres
-    password: invalid
-    superuser: true
-    replication: true
   - username: mamonsu
     password:
     superuser: false

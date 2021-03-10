@@ -3,18 +3,8 @@ namespace: "{{ patroni_namespace }}"
 name: "{{ patroni_host_name }}"
 
 restapi:
-  listen: 127.0.0.1:8008
-  connect_address: 127.0.0.1:8008
-#  certfile: /etc/ssl/certs/ssl-cert-snakeoil.pem
-#  keyfile: /etc/ssl/private/ssl-cert-snakeoil.key
-#  authentication:
-#    username: username
-#    password: password
-
-# ctl:
-#   insecure: false # Allow connections to SSL sites without certs
-#   certfile: /etc/ssl/certs/ssl-cert-snakeoil.pem
-#   cacert: /etc/ssl/certs/ssl-cacert-snakeoil.pem
+  listen: {{ patroni_api_listen }}
+  connect_address: {{ patroni_api_connect_address }}
 
 {% if etcd_hosts is defined %}
 etcd:
@@ -26,6 +16,11 @@ consul:
   host: "{{ consul_host }}"
   token: "{{ consul_token }}"
   url: "{{ consul_url }}"
+{% endif %}
+
+{% if patroni_log_dir is defined %}
+log:
+  dir: "{{ patroni_log_dir }}"
 {% endif %}
 
 bootstrap:
@@ -73,17 +68,6 @@ bootstrap:
   {% endfor %}
   {% endif %}
 
-  # Additional script to be launched after initial cluster creation (will be passed the connection URL as parameter)
-# post_init: /usr/local/bin/setup_cluster.sh
-
-  # Some additional users users which needs to be created after initializing new cluster
-#  users:
-#    admin:
-#      password: admin
-#      options:
-#        - createrole
-#        - createdb
-
 postgresql:
   listen: 0.0.0.0:5432
   connect_address: {{ ansible_hostname }}:5432
@@ -94,15 +78,13 @@ postgresql:
   authentication:
     replication:
       username: replicator
-      password: rep-pass
+      password: "{{ replicator_password }}"
     superuser:
       username: postgres
-      password: zalando
+      password: "{{ postgres_superuser_password }}"
     rewind:  # Has no effect on postgres 10 and lower
       username: rewind_user
-      password: rewind_password
-  # Server side kerberos spn
-#  krbsrvname: postgres
+      password: "{{ rewind_user_password }}"
   parameters:
 {% if postgresql_conf is defined %}
   {% for opt in postgresql_conf %}
@@ -116,17 +98,8 @@ postgresql:
   - {{ opt }}
   {% endfor %}
   {% endif %}
-
-  # Fully qualified kerberos ticket file for the running user
-  # same as KRB5CCNAME used by the GSS
-  # krb_server_keyfile: /var/spool/keytabs/postgres
  
   unix_socket_directories: '.'
-
-#watchdog:
-#  mode: automatic # Allowed values: off, automatic, required
-#  device: /dev/watchdog
-#  safety_margin: 5
 
 tags:
     nofailover: false
