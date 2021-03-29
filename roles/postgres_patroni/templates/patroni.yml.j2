@@ -53,8 +53,12 @@ bootstrap:
 #        archive_mode: "on"
 #        archive_timeout: 1800s
 #        archive_command: mkdir -p ../wal_archive && test ! -f ../wal_archive/%f && cp %p ../wal_archive/%f
-#      recovery_conf:
-#        restore_command: cp ../wal_archive/%f %p
+{% if patroni_recovery_conf is defined %}
+      recovery_conf:
+      {% for opt in patroni_recovery_conf %}
+      {{ opt }}: {{ patroni_recovery_conf[opt] }}
+      {% endfor %}
+{% endif %}
 
   # some desired options for 'initdb'
   initdb:  # Note: It needs to be a list (some options need values, others are switches)
