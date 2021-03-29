@@ -6,7 +6,12 @@ postgresql_port: 5432
 
 # List of databases to set in pgbouncer.ini
 pgbouncer_databases:
-  - postgres
+  - foo:
+    db_name: "foo"
+    db_pool_size: 30
+  - bar:
+    db_name: "bar"
+
 # Defaults for pgbouncer.
 pgbouncer_port: 6432
 
@@ -32,3 +37,6 @@ db_users:
   - postgres:
     username: "postgres"
     password: "invalid"
+  - foo:
+    username: "foo"
+    password: "bar"

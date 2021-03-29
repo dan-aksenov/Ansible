@@ -7,9 +7,10 @@
    - postgres_install
    - postgres_initdb
    - postgres_config
-   #- postgres_security
+   - postgres_security
    - postgres_start
-   #- pgbackrest  
+   - pgbackrest
    - postgres_powa
-   - pgbouncer
+   - postgres_repmgr
+#   - pgbouncer
    - mamonsu

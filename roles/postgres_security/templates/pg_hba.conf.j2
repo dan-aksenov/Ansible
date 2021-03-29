@@ -1,0 +1,9 @@
+##
+## This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
+##
+
+{% if postgresql_hba is defined %}
+{% for line in postgresql_hba %}
+{{ line }}
+{% endfor %}
+{% endif %}

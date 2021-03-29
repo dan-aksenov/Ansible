@@ -1,9 +1,12 @@
 ---
 - name: prepare
   hosts: all
+  vars:
+    http_proxy: http://prx-srv.proxy.ru:3128  
   roles:
     - role: proxy_settings
     - role: postgres_repo
     - role: postgres_install
     - role: postgres_initdb
     - role: postgres_config
+  

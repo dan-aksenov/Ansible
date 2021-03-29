@@ -14,3 +14,6 @@
     state: absent
   tags: proxy_yum
   when: http_proxy is not defined
+
+- import_tasks: proxy_bash_profile.yml
+  tags: proxy_bash

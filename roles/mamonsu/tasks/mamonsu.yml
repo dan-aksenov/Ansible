@@ -13,15 +13,29 @@
   yum:
     state: present
     name:
-      - python-setuptools
+      - python2-setuptools
       - python3-pip
-      - python-pip
+      - python2-pip
       - python3-setuptools
+  when: ansible_distribution_major_version|int == 7
 
+- name: Install python packages EL8
+  dnf:
+    state: present
+    name:
+      - python2-setuptools
+      - python3-pip
+      - python2-pip
+      - python3-setuptools
+  when: ansible_distribution_major_version|int == 8
+  
 - name: Install mamonsu(pip)
   pip:
     name: mamonsu
     state: present
+  environment:
+    HTTP_PROXY: 'prx-srv.proxy.ru:3128'
+    HTTPS_PROXY: 'prx-srv.proxy.ru:3128'
   tags: slave
 
 - name: Copy unit from template.
@@ -60,21 +74,21 @@
     - restart mamonsu
   tags: slave
 
-- name: Create mamonsu database user
-  postgresql_user:
-    name: mamonsu
-    port: "{{ postgresql_port }}"
-  become_user: postgres
-  become: true
+#- name: Create mamonsu database user
+#  postgresql_user:
+#    name: mamonsu
+#    port: "{{ postgresql_port }}"
+#  become_user: postgres
+#  become: true
 
-- name: Create Mamonsu database.
-  postgresql_db:
-    name: mamonsu
-    state: present
-    port: "{{ postgresql_port }}"
-    owner: mamonsu
-  become_user: postgres
-  become: true
+#- name: Create Mamonsu database.
+#  postgresql_db:
+#    name: mamonsu
+#    state: present
+#    port: "{{ postgresql_port }}"
+#    owner: mamonsu
+#  become_user: postgres
+#  become: true
 
 # - name: Bootstrap DDL for monitoring
 #  shell: mamonsu bootstrap -M mamonsu --port="{{ postgresql_port }}" mamonsu
