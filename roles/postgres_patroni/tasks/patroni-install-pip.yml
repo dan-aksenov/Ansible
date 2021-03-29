@@ -1,0 +1,35 @@
+- name: Install support packages for partoni
+  yum:
+    state: present
+    name:
+      - gcc
+      - python3-devel
+      - python3-pip
+      - python3-setuptools
+  when: postgresql_service == "patroni"
+
+- name: Install python-setuptools for Centos7
+  package:
+    state: present
+    name:
+      - python-setuptools
+  when: ansible_distribution_major_version|int == 7 and postgresql_service == "patroni"
+
+#- name: Install Patroni with etcd
+#  pip:
+#    name:
+#      - "patroni[etcd]"
+#    state: present
+#    executable: pip3
+#  when: etcd_hosts is defined and postgresql_service == "patroni"
+
+- name: Install Patroni with consul
+  pip:
+    name:
+      - "patroni[consul]"
+    state: present
+    executable: pip3
+  environment:
+    HTTP_PROXY: 'prx-srv.proxy.ru:3128'
+    HTTPS_PROXY: 'prx-srv.proxy.ru:3128'
+  when: consul_host is defined and postgresql_service == "patroni"
