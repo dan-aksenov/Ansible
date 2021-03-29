@@ -1,0 +1,107 @@
+---
+- name: Add mamonsu user.
+  user:
+    name: mamonsu
+    comment: mamonsu monitoring user
+    createhome: true
+    home: /var/run/mamonsu
+    shell: /sbin/nologin
+    state: present
+  tags: slave
+
+- name: Install python packages
+  yum:
+    state: present
+    name:
+      - python2-setuptools
+      - python3-pip
+      - python2-pip
+      - python3-setuptools
+  when: ansible_distribution_major_version|int == 7
+
+- name: Install python packages EL8
+  dnf:
+    state: present
+    name:
+      - python2-setuptools
+      - python3-pip
+      - python2-pip
+      - python3-setuptools
+  when: ansible_distribution_major_version|int == 8
+  
+- name: Install mamonsu(pip)
+  pip:
+    name: mamonsu
+    state: present
+  environment:
+    HTTP_PROXY: 'prx-srv.proxy.ru:3128'
+    HTTPS_PROXY: 'prx-srv.proxy.ru:3128'
+  tags: slave
+
+- name: Copy unit from template.
+  template:
+    owner: root
+    group: root
+    mode: 0755
+    src: mamonsu_init.j2
+    dest: /etc/init.d/mamonsu
+  tags: slave
+
+- name: Create mamonsu etc directory
+  file:
+    path: /etc/mamonsu/plugins
+    state: directory
+    mode: 0755
+  tags: slave
+
+- name: Create mamonsu log directory
+  file:
+    path: /var/log/mamonsu
+    owner: mamonsu
+    group: mamonsu
+    state: directory
+    mode: 0755
+  tags: slave
+
+- name: Copy agent.conf template
+  template:
+    owner: root
+    group: root
+    mode: 0644
+    src: mamonsu_agent.conf.j2
+    dest: /etc/mamonsu/agent.conf
+  notify:
+    - restart mamonsu
+  tags: slave
+
+#- name: Create mamonsu database user
+#  postgresql_user:
+#    name: mamonsu
+#    port: "{{ postgresql_port }}"
+#  become_user: postgres
+#  become: true
+
+#- name: Create Mamonsu database.
+#  postgresql_db:
+#    name: mamonsu
+#    state: present
+#    port: "{{ postgresql_port }}"
+#    owner: mamonsu
+#  become_user: postgres
+#  become: true
+
+# - name: Bootstrap DDL for monitoring
+#  shell: mamonsu bootstrap -M mamonsu --port="{{ postgresql_port }}" mamonsu
+#  become_user: postgres
+#  become: true
+#  ignore_errors: true
+#  notify:
+#    - restart mamonsu
+
+- name: Start monitoring service.
+  service:
+    daemon_reload: true
+    name: mamonsu
+    state: started
+    enabled: true
+  tags: slave
